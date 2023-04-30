@@ -25,6 +25,7 @@ function App() {
         <input onChange={(e) => setInput(e.target.value)}></input>
         <button onClick={adder}>Add value</button>
         <button onClick={subber}>Remove value</button>
+        <button onClick={(e) => { e.preventDefault(); setValue(0) }}>Reset</button>
       </form>
 
     </div>
