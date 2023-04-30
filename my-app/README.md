@@ -1,0 +1,1 @@
+This is used as a refresher of my knowledge, will be a combination of React aspects
