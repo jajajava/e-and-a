@@ -9,24 +9,31 @@ function App() {
   const [input, setInput] = useState('')
 
   function adder(e) {
-    e.preventDefault()
-    setValue(parseInt(value) + parseInt(input))
+    e.preventDefault();
+    setValue(parseInt(value) + parseInt(input));
   }
 
   function subber(e) {
-    e.preventDefault()
-    setValue(parseInt(value) - parseInt(input))
+    e.preventDefault();
+    setValue(parseInt(value) - parseInt(input));
+  }
+
+  function resetter(e) {
+    e.preventDefault();
+    setValue(0);
+    setInput('')
+
   }
 
   return (
     <div className="App">
       <h1>Value: {value} </h1>
-      <form>
-        <input onChange={(e) => setInput(e.target.value)}></input>
+      <div>
+        <input value={input} onChange={(e) => setInput(e.target.value)}></input>
         <button onClick={adder}>Add value</button>
         <button onClick={subber}>Remove value</button>
-        <button onClick={(e) => { e.preventDefault(); setValue(0) }}>Reset</button>
-      </form>
+        <button onClick={resetter}>Reset</button>
+      </div>
 
     </div>
   );
