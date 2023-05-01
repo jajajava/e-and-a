@@ -7,23 +7,35 @@ function App() {
 
   const [value, setValue] = useState(0)
   const [input, setInput] = useState('')
+  const [checked, setChecked] = useState(false)
 
   function adder(e) {
     e.preventDefault();
     setValue(parseInt(value) + parseInt(input));
+    if (checked === true) {
+      setInput(input)
+    } else {
+      setInput('')
+    }
   }
 
   function subber(e) {
     e.preventDefault();
     setValue(parseInt(value) - parseInt(input));
+    if (checked === true) {
+      setInput(input)
+    } else {
+      setInput('')
+    }
   }
 
   function resetter(e) {
     e.preventDefault();
     setValue(0);
-    setInput('')
-
+    setInput('');
   }
+
+  console.log(checked)
 
   return (
     <div className="App">
@@ -33,6 +45,8 @@ function App() {
         <button onClick={adder}>Add value</button>
         <button onClick={subber}>Remove value</button>
         <button onClick={resetter}>Reset</button>
+        <input id='checkbox' type='checkbox' onClick={() => setChecked(!checked)}></input>
+        <label htmlFor='checkbox'>Keep input</label>
       </div>
 
     </div>
