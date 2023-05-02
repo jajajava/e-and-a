@@ -11,21 +11,29 @@ function App() {
 
   function adder(e) {
     e.preventDefault();
-    setValue(parseInt(value) + parseInt(input));
-    if (checked === true) {
-      setInput(input)
+    if (Number.isNaN(parseInt(input)) === false) {
+      setValue(parseInt(value) + parseInt(input))
     } else {
-      setInput('')
+      setInput(0)
+    }
+    if (checked === true) {
+      setInput(input);
+    } else {
+      setInput('');
     }
   }
 
   function subber(e) {
     e.preventDefault();
-    setValue(parseInt(value) - parseInt(input));
-    if (checked === true) {
-      setInput(input)
+    if (Number.isNaN(parseInt(input)) === false) {
+      setValue(parseInt(value) - parseInt(input))
     } else {
-      setInput('')
+      setInput(0)
+    }
+    if (checked === true) {
+      setInput(input);
+    } else {
+      setInput('');
     }
   }
 
@@ -35,7 +43,9 @@ function App() {
     setInput('');
   }
 
-  console.log(checked)
+
+  // BECAUSE OF THE LINES THAT SAY setInput('');, WHEN YOU CLICK ADD/SUB AND THE INPUT IS EMPTY, IT GIVES NaN!! 
+
 
   return (
     <div className="App">
