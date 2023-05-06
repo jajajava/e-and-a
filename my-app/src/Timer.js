@@ -15,7 +15,7 @@ function Timer() {
             <input placeholder="month"></input>
             <input placeholder="day"></input>
             <input placeholder="year"></input>
-            <h1>Sugg it</h1>
+            <h1>Oops forgot to change placeholder</h1>
         </div>
     )
 }
