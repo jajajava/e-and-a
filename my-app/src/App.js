@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Timer from './Timer';
 
 
 
@@ -43,10 +44,6 @@ function App() {
     setInput('');
   }
 
-
-  // BECAUSE OF THE LINES THAT SAY setInput('');, WHEN YOU CLICK ADD/SUB AND THE INPUT IS EMPTY, IT GIVES NaN!! 
-
-
   return (
     <div className="App">
       <h1>Value: {value} </h1>
@@ -58,6 +55,7 @@ function App() {
         <input id='checkbox' type='checkbox' onClick={() => setChecked(!checked)}></input>
         <label htmlFor='checkbox'>Keep input</label>
       </div>
+      <Timer />
 
     </div>
   );
