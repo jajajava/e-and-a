@@ -2,13 +2,13 @@ import React, { useState } from "react";
 
 function Timer() {
 
-    const [inputtedDate, setInputtedDate] = useState('');
+    const [firstDate, setFirstDate] = useState('');
     const [secondDate, setSecondDate] = useState('')
     const [intervals, setIntervals] = useState({});
     const [isChecked, setIsChecked] = useState(true);
 
     function calculateIntervals() {
-        let custom = new Date(inputtedDate);
+        let custom = new Date(firstDate);
         let custom2 = new Date(secondDate);
         let now = Date.now();
         let interval = isChecked ? now - custom : Math.abs(custom - custom2);
@@ -37,17 +37,15 @@ function Timer() {
         calculateIntervals();
     }
 
-    console.log(secondDate)
-
     return (
         <div style={{ marginTop: '100px' }}>
             <form onSubmit={submitted}>
-                <input placeholder="MM/DD/YYYY" onChange={(e) => setInputtedDate(e.target.value)}></input>
-                <input type="checkbox" onClick={() => setIsChecked(!isChecked)} checked={isChecked}></input>
-                <label htmlFor='checkbox'>Use today's date</label>
+                <input placeholder="MM/DD/YYYY" onChange={(e) => setFirstDate(e.target.value)}></input>
                 {!isChecked ?
                     <input placeholder="MM/DD/YYYY" onChange={(e) => setSecondDate(e.target.value)}></input>
                     : null}
+                <input type="checkbox" onClick={() => setIsChecked(!isChecked)} defaultChecked={isChecked}></input>
+                <label htmlFor='checkbox'>Use today's date</label>
                 <button>Calculate</button>
             </form>
             {Object.entries(intervals).map(([key, value]) => (
