@@ -54,8 +54,4 @@ function Adder() {
     )
 }
 
-
-
-
-
 export default Adder

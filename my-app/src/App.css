@@ -13,6 +13,18 @@ div>div {
   margin: auto;
 }
 
+#header {
+  background-color: black;
+  min-height: 100px;
+  min-width: 100vw;
+}
+
+
 div>div>* {
   margin: 3px
+}
+
+#timerSubmit {
+  padding: 1px;
+  margin-inline: 10px;
 }

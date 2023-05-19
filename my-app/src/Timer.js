@@ -46,7 +46,7 @@ function Timer() {
                     : null}
                 <input type="checkbox" onClick={() => setIsChecked(!isChecked)} defaultChecked={isChecked}></input>
                 <label htmlFor='checkbox'>Use today's date</label>
-                <button>Calculate</button>
+                <button id='timerSubmit'>Calculate</button>
             </form>
             {Object.entries(intervals).map(([key, value]) => (
                 <p key={key}>{key}: {value}</p>
