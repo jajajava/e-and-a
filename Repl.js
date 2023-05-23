@@ -30,3 +30,35 @@
 
 // console.log(fibRecurve(4))
 
+// function recursive(num) {
+//     if (num == 0) {
+//         console.log("All done!")         //* Just a recursive function counting down even numbers
+//         return
+//     }
+//     num % 2 == 0 ? console.log(num) : null
+//     num -= 1
+//     recursive(num)
+
+// }
+
+// recursive(10)
+
+// function fizzBuzz(num) {
+//     for (let i = 1; i <= num; i++) {
+//         if (i % 3 === 0 && i % 5 === 0) {
+//             console.log(i, "FizzBuzz")
+//         } else if (i % 3 === 0) {            //* FizzBuzz algorithm
+//             {
+//                 console.log(i, "Fizz")
+//             }
+//         } else if (i % 5 === 0) {
+//             console.log(i, "Buzz")
+//         } else {
+//             console.log(i)
+//         }
+
+//     }
+
+// }
+
+// fizzBuzz(45)
