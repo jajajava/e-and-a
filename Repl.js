@@ -62,3 +62,18 @@
 // }
 
 // fizzBuzz(45)
+
+function pyramid(word) {
+    let array = [word];
+    let newWord = word;
+    if (newWord.length == 0) {             //* A recursive function that should print a pyramid out of the word inputted. For some reason, array.unshift(newWord) doesn't work.
+        return
+    }
+    console.log(array.join('\n'))
+    newWord = word.slice(0, -1)
+    array.unshift(newWord)
+    array.push(newWord)
+    pyramid(newWord)
+}
+
+console.log(pyramid('supercalifragilisticexpialidocious'))
