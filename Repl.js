@@ -63,17 +63,28 @@
 
 // fizzBuzz(45)
 
-function pyramid(word) {
-    let array = [word];
-    let newWord = word;
-    if (newWord.length == 0) {             //* A recursive function that should print a pyramid out of the word inputted. For some reason, array.unshift(newWord) doesn't work.
-        return
-    }
-    console.log(array.join('\n'))
-    newWord = word.slice(0, -1)
-    array.unshift(newWord)
-    array.push(newWord)
-    pyramid(newWord)
-}
+// function pyramid(word) {
+//     let array = [word];
+//     let newWord = word;
+//     if (newWord.length == 0) {             //* A recursive function that should print a pyramid out of the word inputted. It is over-engineered and doesnt work; will redo.
+//         return
+//     }
+//     newWord = newWord.slice(0, -1)
+//     array.unshift(newWord)
+//     array.push(newWord)
+//     pyramid(newWord)
+//     console.log(array)
+// }
 
-console.log(pyramid('supercalifragilisticexpialidocious'))
+// console.log(pyramid('word'))
+
+// function pyramid(word) {
+//     for (let i = 0; i < word.length; i++) {
+//         console.log(word.slice(0, i))            //* This version works and is much simpler, just two loops that print both sides of the pyramid, no recursion, no array
+//     }
+//     for (let i = word.length; i > 0; i--) {
+//         console.log(word.slice(0, i))
+//     }
+// }
+
+// console.log(pyramid('supercalifragilisticexpialidocious'))
