@@ -184,3 +184,86 @@
 # print(do_while(vet_data))
 
 # print(len(vet_data))
+
+# * input() lets the user input information.
+# // input('What is your name?') --> "What is your name?" (allows you to type response. Then you can do the following)
+# // name = input('What is your name?')
+
+# * Notes from python CS50:
+# * To better understand return values, think of a function as a friend. You tell the friend, go ask that person whether they like me.
+# * When they come back, you hope that they will share this knowledge with you, after having performed the operation.
+
+# * Comments should be used liberally when coding to make your code easy to understand for yourself, your teacher, or your colleagues.
+
+# * In python, you can use ''' (three single- or double- quotes) to comment out multiple lines, as follows:
+
+'''
+    This is a comment
+'''
+
+# * The print function is shown to have 3 default parameters in the official documentation.
+# * print(*objects, sep=' ', end='\n')
+# * This means it can take any (*) number of objects, the arguments will be separated by a single space, and it will end by breaking the line.
+# * THESE ARE DEFAULTS; you can change the values if you wanted to. For instance:
+# // print("Alfred", "Barry", "Charlie", sep='!') --> "Alfred!Barry!Charlie"
+
+# * Built in string method- .strip(), removes blank space
+# // name = "      david   "
+# // name.strip() --> "david"
+
+# // name.capitalize() --> "David"
+# // name.title() --> "Capitalizes First Letter Of Each Word"
+
+# * In Python, you can assign multiple variables at once, which can sometimes come in handy:
+# // name = input('what is your name?').strip().title() <-- input('david')
+# // first, last = name.split(' ')
+# // print(f"Hello, {first}") --> "Hello, David"
+
+#! Data types in Python:
+# * str - string
+# * int - integer
+# * float - float (decimal)
+# * bool - boolean (true/false)
+# * list - array basically
+# * dict - dictionary (object basically)
+# * None - None (null basically)
+
+
+# * int(x) method would try to convert the data type of x to number
+# * float(x) method would try to convert the data type of x to float
+# * round(number[, ndigits]) from python docs- the square brackets indicate optional. ndigits = number of digits, decimal point values to round to
+# * There is also a way to pick the rounding using the format strings:
+# // x = 3.141592
+# // print(f"{x:.2f}") --> 3.14
+# * If you want to format a number output that's really big to have commas separating it, you can use the following syntax:
+# // x = 1000
+# // print(f"{x:,}") --> 1,000
+
+# * In python you can create a range without using "and":
+# // if 90 <= score <= 100: --> This conditional is saying if the score is between 90 and 100, do ___.
+
+# * In python THERE IS NO i++ or i--. Only i+1, i-1
+
+# * for loop allows you to iterate over a list in a very simple way:
+# // for i in [1, 2, 3]:        <-- Could put range(3)
+# //     print(i)
+# //     i+1            --> 1 / 2 / 3 (/ = line break)
+
+# * In loops, like some other languages, you can return, continue, and break.
+# * Break- stops the loop without returning anything
+# * Continue- Keeps the loop going if a condition is (or isn't) met
+# * Return- lets you use a value returned by the function
+
+# * list-
+# // cowboys = ["John", "Bill", "Arthur"]
+
+# * dict-
+# // cowboys = {
+# // "John": "high honor",
+# // "Bill": "low honor",
+# // "Arthur": "high honor"}
+
+# // print(cowboys["Arthur"]) --> "high honor"
+
+# // for cowboy in cowboys:
+# //     print(cowboy, cowboys[cowboy], sep=": ") --> John: high honor / Bill: low honor / Arthur: high honor
