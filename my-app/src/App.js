@@ -1,16 +1,16 @@
 import './App.css';
-import Header from './Header';
-// import Adder from './Adder';
-// import Timer from './Timer';
+import Header from './Components/Header';
+import Landing from './Components/Landing';
 
+//! MAKE A VERSION OF TOAST POS? SERVER LOGS EMPLOYEE TIME.
 
 function App() {
 
   return (
     <div className="App">
-      <Header />
-      {/* <Adder /> */}
-      {/* <Timer /> */}
+      {/* <Header /> RETURN THIS WHEN USER IS LOGGED IN*/}
+      <Landing />
+
     </div>
   );
 }
