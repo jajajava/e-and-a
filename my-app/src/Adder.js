@@ -42,7 +42,7 @@ function Adder() {
     return (
         <div>
             <h1>Value: {value} </h1>
-            <div>
+            <div id="adderComponent">
                 <input value={input} onChange={(e) => setInput(e.target.value)}></input>
                 <button onClick={adder}>Add value</button>
                 <button onClick={subber}>Remove value</button>

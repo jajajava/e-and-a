@@ -4,8 +4,7 @@
 
 }
 
-div>div {
-  align-content: center;
+#adderComponent {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -13,15 +12,16 @@ div>div {
   margin: auto;
 }
 
+#adderComponent>* {
+  margin: 3px;
+}
+
+
+
 #header {
   background-color: black;
   min-height: 100px;
   min-width: 100vw;
-}
-
-
-div>div>* {
-  margin: 3px
 }
 
 #timerSubmit {
