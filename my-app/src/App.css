@@ -1,7 +1,8 @@
 .App {
   text-align: center;
   align-items: center;
-
+  height: 10000px;
+  max-width: 100%;
 }
 
 #adderComponent {
@@ -18,13 +19,33 @@
 
 
 
-#header {
+.header {
   background-color: black;
-  min-height: 100px;
-  min-width: 100vw;
+  width: 100%;
+  min-height: 80px;
+  position: relative;
+  top: 0;
+  display: flex;
+  align-items: center;
 }
 
-#timerSubmit {
+.header>* {
+  color: white;
+  margin: 0;
+}
+
+.logo {
+  left: 2%;
+  position: absolute;
+}
+
+.login {
+  left: calc(98% - 64px);
+  /* ^^^^  This allows me to space the logo and login the same distance. 2%, and whatever the lenght of "Login" is. */
+  position: absolute;
+}
+
+#header>#timerSubmit {
   padding: 1px;
   margin-inline: 10px;
 }
