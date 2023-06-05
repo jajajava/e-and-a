@@ -1,6 +1,6 @@
 import React from "react";
 
-function Login() {
+function Signup() {
 
     return (
         <div>
@@ -11,17 +11,17 @@ function Login() {
                 <input></input>
                 <label>Password:</label>
                 <input></input>
-                <button>Login</button>
+                <button>Sign up</button>
             </form>
-            <a className='loginAnchorTag' href="/Signup">Create an account</a>
+            <a className='loginAnchorTag' href="/login">Log in</a>
         </div>
     )
 }
 
 
-//! REMEMBER TO MAKE SIGNUP/LOGIN PATHS!
+//! REMEMBER TO MAKE SIGNUP/Signup PATHS!
 //! Stretch goals: Make show password button and/or save password option
 
 
 
-export default Login
+export default Signup

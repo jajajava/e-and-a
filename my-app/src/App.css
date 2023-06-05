@@ -5,7 +5,7 @@
   }
 
   /* LOGIN PAGE */
-  #loginLogo {
+  .loginLogo {
     color: var(--main-font);
     font-size: 3.5rem;
     text-shadow: 0.2px 0.2px rgba(39, 27, 6, 0.438);
@@ -15,28 +15,28 @@
     right: 1%
   }
 
-  #loginGreeting {
+  .loginGreeting {
     font-size: 5rem;
     color: var(--main-font)
   }
 
-  #loginForm {
+  .loginForm {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
-  #loginForm>* {
+  .loginForm>* {
     margin-top: 3px;
     font-size: 1.5rem
   }
 
-  #loginForm>input {
+  .loginForm>input {
     outline-color: var(--main-font);
     /* color: var(--main-font) */
   }
 
-  #loginForm>button {
+  .loginForm>button {
     align-items: center;
     background-color: #fff;
     border-radius: 12px;
@@ -63,6 +63,14 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    width: 109px;
+  }
+
+  .loginAnchorTag {
+    position: relative;
+    top: 20px;
+    color: var(--main-font);
+    text-shadow: 0.1px 0.1px 0.1px var(--main-font);
   }
 
   .App {
