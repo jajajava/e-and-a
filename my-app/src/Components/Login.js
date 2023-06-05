@@ -1,11 +1,12 @@
 import React from "react";
 
-function Landing() {
+function Login() {
+
     return (
         <div>
-            <h1 id="landingLogo">🥐 toasty </h1>
-            <h1 id="landingGreeting">Welcome!</h1>
-            <form id='landingForm'>
+            <h1 id="loginLogo">🥐 toasty </h1>
+            <h1 id="loginGreeting">Welcome!</h1>
+            <form id='loginForm'>
                 <label>Username:</label>
                 <input></input>
                 <label>Password:</label>
@@ -17,8 +18,9 @@ function Landing() {
 }
 
 
+//! REMEMBER TO MAKE SIGNUP/LOGIN PATHS!
+//! Stretch goals: Make show password button and/or save password option
 
 
 
-
-export default Landing
+export default Login

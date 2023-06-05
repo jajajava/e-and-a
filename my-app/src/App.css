@@ -4,8 +4,8 @@
     --main-font: rgba(39, 26, 6, 0.76);
   }
 
-  /* LANDING PAGE */
-  #landingLogo {
+  /* LOGIN PAGE */
+  #loginLogo {
     color: var(--main-font);
     font-size: 3.5rem;
     text-shadow: 0.2px 0.2px rgba(39, 27, 6, 0.438);
@@ -15,28 +15,28 @@
     right: 1%
   }
 
-  #landingGreeting {
+  #loginGreeting {
     font-size: 5rem;
     color: var(--main-font)
   }
 
-  #landingForm {
+  #loginForm {
     display: flex;
     align-items: center;
     flex-direction: column;
   }
 
-  #landingForm>* {
+  #loginForm>* {
     margin-top: 3px;
     font-size: 1.5rem
   }
 
-  #landingForm>input {
+  #loginForm>input {
     outline-color: var(--main-font);
     /* color: var(--main-font) */
   }
 
-  #landingForm>button {
+  #loginForm>button {
     align-items: center;
     background-color: #fff;
     border-radius: 12px;
