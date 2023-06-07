@@ -4,6 +4,13 @@
     --main-font: rgba(39, 26, 6, 0.76);
   }
 
+  .background {
+    text-align: center;
+    align-items: center;
+    min-height: 100vh;
+    max-width: 100%;
+  }
+
   /* LOGIN PAGE */
   .loginLogo {
     color: var(--main-font);
@@ -78,7 +85,6 @@
     align-items: center;
     min-height: 100vh;
     max-width: 100%;
-    background-color: var(--main-orange);
   }
 
   #adderComponent {
@@ -94,7 +100,7 @@
   }
 
   .header {
-    background-color: black;
+    background-color: var(--main-orange);
     width: 100%;
     min-height: 80px;
     position: relative;
@@ -105,7 +111,7 @@
   }
 
   .header>* {
-    color: white;
+    color: var(--main-font);
     margin: 0;
   }
 
@@ -124,7 +130,7 @@
 
   .nav-bar {
     display: flex;
-    left: calc(98% - 193.4px);
+    left: calc(98% - 395px);
     /* ^^^^  This allows me to space the logo and login the same distance. 2%, and whatever the lenght of "Login" is. */
     position: absolute;
     margin-bottom: -1px;
@@ -132,8 +138,9 @@
 
   .nav-link {
     padding-inline: 15px;
-    padding-bottom: 5px;
     border-bottom: 1px solid transparent;
+    width: auto;
+    white-space: nowrap;
   }
 
   .nav-link:hover {

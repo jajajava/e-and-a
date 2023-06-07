@@ -3,7 +3,7 @@ import React from "react";
 function Signup() {
 
     return (
-        <div>
+        <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' }}>
             <h1 className="loginLogo">🥐 toasty </h1>
             <h1 className="loginGreeting">Welcome!</h1>
             <form className='loginForm'>
