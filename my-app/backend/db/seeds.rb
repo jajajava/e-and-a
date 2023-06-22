@@ -33,3 +33,9 @@ puts "Finished orders..."
 
 
 puts "DB SUCCESSFULLY SEEDED"
+
+# BUG SOLUTION:
+# I noticed that every table but one was getting loaded into the database when seeded. 
+# Every time I would do rails db:reset, if my associations weren't commented out in my model, it wouldn't be seeded, despite no error message.
+# Turns out it was because of the order. If your association says that it belongs to something, and you're putting it before that thing, it won't load.
+# To fix, just move the code further down in the seed file, past the association it belongs to.

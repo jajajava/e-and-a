@@ -24,9 +24,9 @@ function Login() {
                 <td><button>9</button></td>
             </tr>
             </table>
-            <button>Log in</button>
+            <button>Time clock</button>
+            <button>Start</button>
             </form>
-            <a className='loginAnchorTag' href="/signup">Create an account</a>
         </div>
     )
 }
