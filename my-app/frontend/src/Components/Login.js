@@ -7,13 +7,26 @@ function Login() {
             <h1 className="loginLogo">🥐 toasty </h1>
             <h1 className="loginGreeting">Welcome!</h1>
             <form className='loginForm'>
-                <label>Username:</label>
-                <input></input>
-                <label>Password:</label>
-                <input></input>
-                <button>Login</button>
+            <table>
+            <tr>
+                <td><button>1</button></td>
+                <td><button>2</button></td>
+                <td><button>3</button></td>
+            </tr>
+            <tr>
+                <td><button>4</button></td>
+                <td><button>5</button></td>
+                <td><button>6</button></td>
+            </tr>
+            <tr>
+                <td><button>7</button></td>
+                <td><button>8</button></td>
+                <td><button>9</button></td>
+            </tr>
+            </table>
+            <button>Log in</button>
             </form>
-            <a className='loginAnchorTag' href="/Signup">Create an account</a>
+            <a className='loginAnchorTag' href="/signup">Create an account</a>
         </div>
     )
 }
