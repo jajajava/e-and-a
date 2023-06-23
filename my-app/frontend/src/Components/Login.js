@@ -9,23 +9,25 @@ function Login() {
             <form className='loginForm'>
             <table>
             <tr>
-                <td><button>1</button></td>
-                <td><button>2</button></td>
-                <td><button>3</button></td>
+                <td><button className="pinButton">1</button></td>
+                <td><button className="pinButton">2</button></td>
+                <td><button className="pinButton">3</button></td>
             </tr>
             <tr>
-                <td><button>4</button></td>
-                <td><button>5</button></td>
-                <td><button>6</button></td>
+                <td><button className="pinButton">4</button></td>
+                <td><button className="pinButton">5</button></td>
+                <td><button className="pinButton">6</button></td>
             </tr>
             <tr>
-                <td><button>7</button></td>
-                <td><button>8</button></td>
-                <td><button>9</button></td>
+                <td><button className="pinButton">7</button></td>
+                <td><button className="pinButton">8</button></td>
+                <td><button className="pinButton">9</button></td>
             </tr>
             </table>
-            <button>Time clock</button>
-            <button>Start</button>
+            <div style={{alignSelf: 'center'}}>
+                <button className='loginButton' style={{marginRight: '10px'}}>Time clock</button>
+                <button className='loginButton' style={{marginLeft: '10px'}}>Start</button>
+            </div>
             </form>
         </div>
     )

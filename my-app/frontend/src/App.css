@@ -38,12 +38,7 @@
     font-size: 1.5rem
   }
 
-  .loginForm>input {
-    outline-color: var(--main-font);
-    /* color: var(--main-font) */
-  }
-
-  .loginForm>button {
+  .loginButton {
     align-items: center;
     background-color: #fff;
     border-radius: 12px;
@@ -70,7 +65,14 @@
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 109px;
+    width: 150px;
+  }
+
+  .pinButton{
+    height: 100px;
+    width: 75px;
+    font-size: larger;
+    border: solid thin black;
   }
 
   .App {
