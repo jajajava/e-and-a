@@ -27,6 +27,29 @@
     color: var(--main-font)
   }
 
+  #pinInputContainer{
+    display: flex;
+    align-items: center;
+    width: 177px;
+    justify-content: flex-end;
+  }
+
+  #TiDelete{
+    padding-left: 10px;
+  }
+
+  #loginInput{
+    width: 100px;
+    size: 100px;
+    text-align: center;
+    outline: none;
+  }
+
+  input[type='password']{
+    letter-spacing: 0.125em;
+    font-size: 3rem;
+  }
+
   .loginForm {
     display: flex;
     align-items: center;
