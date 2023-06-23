@@ -20,8 +20,8 @@ function Login() {
             <h1 className="loginGreeting">Welcome!</h1>
             <form className='loginForm'>
             <div id="pinInputContainer">
-                <input id="loginInput" type="password" maxlength="4"></input>
-                <TiDelete id="TiDelete"/>
+                <input id="loginInput" type="password" maxlength="4" value={pin}></input>
+                <TiDelete id="TiDelete" onClick={()=> {setPin('')}}/>
             </div>
             <table>
             <tr>
