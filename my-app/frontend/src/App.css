@@ -34,9 +34,15 @@
     justify-content: flex-end;
   }
 
-  #TiDelete{
+  #delete{
     padding-left: 10px;
   }
+
+  #delete:hover{
+    cursor: pointer;
+  }
+
+
 
   #loginInput{
     width: 100px;

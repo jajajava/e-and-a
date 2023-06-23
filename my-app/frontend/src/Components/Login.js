@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TiDelete } from "react-icons/ti";
+import { HiXCircle } from "react-icons/hi";
 
 function Login() {
 
@@ -7,9 +7,17 @@ function Login() {
 
     function handlePin(e){
         e.preventDefault()
-        setPin(pin + e.target.innerText)
+        setPin(pin + parseInt(e.target.innerText))
         if (pin.length === 4){
             setPin(pin)
+        }
+    }
+
+    function keyboardInput(e) {
+        if (e.key === 'Backspace'){
+            setPin('')
+        } else if (/[0-9]/.test(e.key) && pin.length < 4){
+            setPin(pin + e.key)
         }
     }
     console.log(pin)
@@ -20,8 +28,8 @@ function Login() {
             <h1 className="loginGreeting">Welcome!</h1>
             <form className='loginForm'>
             <div id="pinInputContainer">
-                <input id="loginInput" type="password" maxlength="4" value={pin}></input>
-                <TiDelete id="TiDelete" onClick={()=> {setPin('')}}/>
+                <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
+                <HiXCircle id="delete" onClick={()=> {setPin('')}}/>
             </div>
             <table>
             <tr>
