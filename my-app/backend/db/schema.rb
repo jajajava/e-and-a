@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_001634) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_28_231025) do
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -52,12 +52,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001634) do
 
   create_table "users", force: :cascade do |t|
     t.string "name"
-    t.string "pin"
     t.boolean "is_clocked_in"
     t.boolean "is_admin"
     t.integer "hours_worked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   add_foreign_key "order_items", "foods"

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Routes, Route } from "react-router-dom";
 import '../App.css';
 import Login from './Login';
-import Header from './Header';
 import Signup from './Signup';
 import Home from './Home';
 import BlankPage from './BlankPage';
