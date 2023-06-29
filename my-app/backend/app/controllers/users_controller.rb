@@ -35,8 +35,7 @@ class UsersController < ApplicationController
 
     def priv_params
         defaults = {is_clocked_in: false, hours_worked: 0}
-        params.permit(:name, :password, :password_confirmation).merge(defaults)
-        
+        params.permit(:name, :password, :password_confirmation, :is_admin).merge(defaults)
     end
 
     def edit_params

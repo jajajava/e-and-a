@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::API
+    require 'dotenv/load'
     before_action :authorized
-    @@secret_key = "#{ENV["secret_key"]}"
+    @@secret_key = ENV["SECRET_KEY"]
         
         def encode_token(payload)
             JWT.encode(payload, @@secret_key) 

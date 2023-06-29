@@ -81,6 +81,7 @@ GEM
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    dotenv (2.8.1)
     erubi (1.12.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
@@ -171,6 +172,7 @@ DEPENDENCIES
   activerecord
   bcrypt (~> 3.1, >= 3.1.12)
   debug
+  dotenv
   jwt
   puma (~> 5.0)
   rack-cors
