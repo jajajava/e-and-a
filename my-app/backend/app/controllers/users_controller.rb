@@ -1,51 +1,53 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[ show update destroy ]
+    rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
+    rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+    skip_before_action :authorized, only: [:create]
 
-  # GET /users
-  def index
-    @users = User.all
 
-    render json: @users
-  end
-
-  # GET /users/1
-  def show
-    render json: @user
-  end
-
-  # POST /users
-  def create
-    @user = User.new(user_params)
-
-    if @user.save
-      render json: @user, status: :created, location: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # PATCH/PUT /users/1
-  def update
-    if @user.update(user_params)
-      render json: @user
-    else
-      render json: @user.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /users/1
-  def destroy
-    @user.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
+    def create 
+        user = User.create!(priv_params)
+        @token = encode_token(user_id: user.id)
+        render json: {user: user, token: @token}, status: :created  # Old line: render json: {user: UserSerializer.new(user), token: @token}, status: :created
     end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name, :pin, :is_clocked_in, :is_admin, :hours_worked)
+    def me 
+        render json: current_user, status: :ok
+    end
+
+    def update
+        if current_user.is_admin
+        user = User.find(params[:id])
+        user.update!(edit_params)
+        render json: user, status: :ok
+        else 
+        render json: {error: "Not authorized"}, status: 401
+        end
+    end
+
+    def destroy
+        user = User.find(params[:id])
+        user.destroy
+        render json: user, status: :ok
+    end
+# MAKE THE user ACTIONS CREATE AND DESTROY ACCESSIBLE ONLY TO ADMINS
+
+    private
+
+    def priv_params
+        defaults = {is_clocked_in: false, hours_worked: 0}
+        params.permit(:name, :password, :password_confirmation).merge(defaults)
+        
+    end
+
+    def edit_params
+        params.permit(:is_clocked_in, :hours_worked)
+    end
+
+    def record_invalid (error)
+        render json: {error: error.record.errors.full_messages}, status: 422
+    end
+
+    def record_not_found
+        render json: {error: "Event not found"}, status: 404
     end
 end
