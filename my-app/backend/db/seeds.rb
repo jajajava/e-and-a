@@ -1,5 +1,5 @@
-User.create(name: "David", password: "2001", password_confirmation: '2001', is_clocked_in: false, is_admin: false, hours_worked: 0)
-User.create(name: "Kevin", password: "0000", password_confirmation: '0000', is_clocked_in: false, is_admin: true, hours_worked: 0)
+User.create(name: "David", pin: "2001", is_clocked_in: false, is_admin: false, hours_worked: 0)
+User.create(name: "Kevin", pin: "0000", is_clocked_in: false, is_admin: true, hours_worked: 0)
 puts "Finished generating users..."
 
 

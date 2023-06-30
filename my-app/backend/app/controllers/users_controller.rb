@@ -1,16 +1,18 @@
 class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
-    skip_before_action :authorized, only: [:create]
+
+    if @user
+        @current_user = @user
+    end
 
 
     def create 
         user = User.create!(priv_params)
-        @token = encode_token(user_id: user.id)
-        render json: {user: user, token: @token}, status: :created  # Old line: render json: {user: UserSerializer.new(user), token: @token}, status: :created
+        render json: {user: user, token: @token}, status: :created
     end
 
-    def me 
+    def me
         render json: current_user, status: :ok
     end
 
@@ -35,11 +37,11 @@ class UsersController < ApplicationController
 
     def priv_params
         defaults = {is_clocked_in: false, hours_worked: 0}
-        params.permit(:name, :password, :password_confirmation, :is_admin).merge(defaults)
+        params.permit(:name, :pin,:is_admin).merge(defaults)
     end
 
-    def edit_params
-        params.permit(:is_clocked_in, :hours_worked)
+    def edit_params     #! GIVE EDIT PARAMS ONLY TO ADMIN USERS
+        params.permit(:is_clocked_in, :hours_worked, :name, :pin)
     end
 
     def record_invalid (error)

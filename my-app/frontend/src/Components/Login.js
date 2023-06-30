@@ -1,9 +1,15 @@
 import React, { useState } from "react";
 import { HiXCircle } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 
     const [pin, setPin] = useState('')
+    const [currentUser, setCurrentUser] = useState([])
+    const [error, setError] = useState([])
+    const [IsSignedIn, setIsSignedIn] = useState(false)
+    const navigate = useNavigate()
+
 
     function handlePin(e){
         e.preventDefault()
@@ -20,7 +26,32 @@ function Login() {
             setPin(pin + e.key)
         }
     }
-    console.log(pin)
+    
+    function handleStart(e){
+        e.preventDefault()
+            fetch("http://127.0.0.1:3000/auth/login", {
+                method: "POST",
+                headers: {
+                  "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  pin: pin,
+                }),
+              })
+                .then((res) => {
+                    if (res.ok){
+                        res.json()
+                        .then((data) => {
+                        localStorage.setItem("jwt", data.token);
+                        setIsSignedIn(true);
+                        setCurrentUser(data.user)
+                        navigate('/home')
+                        })
+                    } else {
+                        res.json().then((data) => setError(data))
+                    }
+                })
+    }
 
     return (
         <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' }}>
@@ -50,7 +81,7 @@ function Login() {
             </table>
             <div style={{alignSelf: 'center'}}>
                 <button className='loginButton' style={{marginRight: '10px'}}>Time clock</button>
-                <button className='loginButton' style={{marginLeft: '10px'}}>Start</button>
+                <button className='loginButton' style={{marginLeft: '10px'}} onClick={handleStart}>Start</button>
             </div>
             </form>
         </div>
