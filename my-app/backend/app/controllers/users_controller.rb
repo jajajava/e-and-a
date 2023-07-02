@@ -2,14 +2,10 @@ class UsersController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :record_invalid
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
 
-    if @user
-        @current_user = @user
-    end
-
 
     def create 
         user = User.create!(priv_params)
-        render json: {user: user, token: @token}, status: :created
+        render json: user, status: :created
     end
 
     def me
@@ -49,6 +45,6 @@ class UsersController < ApplicationController
     end
 
     def record_not_found
-        render json: {error: "Event not found"}, status: 404
+        render json: {error: "User not found"}, status: 404
     end
 end
