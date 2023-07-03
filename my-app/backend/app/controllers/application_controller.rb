@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::API
+    require 'dotenv/load'
     before_action :authorized
-    # @@secret_key = "#{ENV['SECRET_KEY']}"
-    @@secret_key = 'test'
+    @@secret_key = ENV["SECRET_KEY"]
 
     def encode_token(user_id)
         payload = { user_id: user_id }
