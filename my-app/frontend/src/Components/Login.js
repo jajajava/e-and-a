@@ -2,12 +2,12 @@ import React, { useState } from "react";
 import { HiXCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
-function Login() {
+function Login({setUser, setIsSignedIn}) {
 
     const [pin, setPin] = useState('')
-    const [currentUser, setCurrentUser] = useState([])
+    // const [currentUser, setCurrentUser] = useState([])
     const [error, setError] = useState([])
-    const [IsSignedIn, setIsSignedIn] = useState(false)
+    // const [IsSignedIn, setIsSignedIn] = useState(false)
     const navigate = useNavigate()
 
 
@@ -29,22 +29,22 @@ function Login() {
     
     function handleStart(e){
         e.preventDefault()
-            fetch("http://127.0.0.1:3000/auth/login", {
+            fetch("http://127.0.0.1:3001/auth/login", {
                 method: "POST",
                 headers: {
-                  "Content-type": "application/json",
+                    "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                  pin: pin,
+                    pin: pin,
                 }),
-              })
+                })
                 .then((res) => {
                     if (res.ok){
                         res.json()
                         .then((data) => {
                         localStorage.setItem("jwt", data.token);
                         setIsSignedIn(true);
-                        setCurrentUser(data.user)
+                        setUser(data.user);
                         navigate('/home')
                         })
                     } else {

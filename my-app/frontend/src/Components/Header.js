@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Context } from "./App";
 
-function Header() {
+function Header({handleSignout}) {
 
     let user = useContext(Context)
+
+
 
     return (
         <header className='header'>
@@ -11,7 +13,7 @@ function Header() {
             <h1 className="greeting">Welcome, {user.name}.</h1>
             <div className="nav-bar">
                 <h3 className="nav-link">Start a new order</h3>
-                <h3 className="nav-link">Switch users</h3>
+                <h3 className="nav-link" onClick={handleSignout}>Switch users</h3>
 
             </div>
 

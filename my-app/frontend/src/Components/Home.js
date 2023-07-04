@@ -2,10 +2,10 @@ import React from "react";
 import Header from "./Header";
 
 
-function Home() {
+function Home({handleSignout}) {
     return (
         <div className="body2">
-            <Header />
+            <Header handleSignout={handleSignout} />
             <div></div>
         </div>
     )
