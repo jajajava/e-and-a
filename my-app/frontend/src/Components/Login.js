@@ -1,13 +1,11 @@
 import React, { useState } from "react";
-import { HiXCircle } from "react-icons/hi";
+// import { HiXCircle } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 
 function Login({setUser, setIsSignedIn}) {
 
     const [pin, setPin] = useState('')
-    // const [currentUser, setCurrentUser] = useState([])
     const [error, setError] = useState([])
-    // const [IsSignedIn, setIsSignedIn] = useState(false)
     const navigate = useNavigate()
 
 
@@ -26,7 +24,14 @@ function Login({setUser, setIsSignedIn}) {
             setPin(pin + e.key)
         }
     }
-    
+
+    function removeLast(e){
+        e.preventDefault()
+        let poppedPin = pin.split('')
+     poppedPin.pop()
+        setPin(poppedPin.join(''))
+    }
+
     function handleStart(e){
         e.preventDefault()
             fetch("http://127.0.0.1:3001/auth/login", {
@@ -60,7 +65,7 @@ function Login({setUser, setIsSignedIn}) {
             <form className='loginForm'>
             <div id="pinInputContainer">
                 <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
-                <HiXCircle id="delete" onClick={()=> {setPin('')}}/>
+                {/* <HiXCircle id="delete" onClick={()=> {setPin('')}}/> */}
             </div>
             <table>
             <tr>
@@ -77,6 +82,11 @@ function Login({setUser, setIsSignedIn}) {
                 <td><button className="pinButton" onClick={handlePin}>7</button></td>
                 <td><button className="pinButton" onClick={handlePin}>8</button></td>
                 <td><button className="pinButton" onClick={handlePin}>9</button></td>
+            </tr>
+            <tr>
+                <td><button className="pinButton" onClick={(e)=> {e.preventDefault(); setPin('')}}>Clear</button></td>
+                <td><button className="pinButton" onClick={handlePin}>0</button></td>
+                <td><button className="pinButton" onClick={removeLast}>X</button></td>
             </tr>
             </table>
             <div style={{alignSelf: 'center'}}>

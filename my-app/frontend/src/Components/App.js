@@ -37,10 +37,12 @@ function App() {
       
       <Context.Provider value={user}>
       <Routes>
-        <Route path='/' element={<Login />} />
-        <Route path='/login' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>} />
+        {!isSignedIn ? 
+        <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>} />
+        : <Route path='/' element={<Home handleSignout={handleSignout}/>}/>
+        }
+        {isSignedIn ? <Route path='/home' element={<Home handleSignout={handleSignout}/>}/> : <Route path='*' element={<BlankPage />}/>}
         <Route path='/signup' element={<Signup />} />
-        <Route path='/home' element={<Home handleSignout={handleSignout}/>} />
         <Route path='*' element={<BlankPage/>} />
       </Routes>
       </Context.Provider>
