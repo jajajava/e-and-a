@@ -11,10 +11,11 @@ function App() {
 
   const [user, setUser] = useState('')
   const [isSignedIn, setIsSignedIn] = useState(false)
-  const token = localStorage.getItem('jwt')
   const navigate = useNavigate()
   
-  useEffect(()=> {token !== null? 
+  useEffect(()=> {
+    const token = localStorage.getItem('jwt') 
+    token!== null? 
     fetch('http://127.0.0.1:3001/me', {
       method: 'GET',
       headers: {
@@ -37,11 +38,9 @@ function App() {
       
       <Context.Provider value={user}>
       <Routes>
-        {!isSignedIn ? 
-        <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>} />
-        : <Route path='/' element={<Home handleSignout={handleSignout}/>}/>
-        }
-        {isSignedIn ? <Route path='/home' element={<Home handleSignout={handleSignout}/>}/> : <Route path='*' element={<BlankPage />}/>}
+        {isSignedIn ? <Route path='/' element={<Home handleSignout={handleSignout}/>}/> : <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>} />} {/* If the user is signed in, root directs you to /home; else, to /login */}
+        {isSignedIn ? <Route path='/home' element={<Home handleSignout={handleSignout}/>}/> : <Route path='*' element={<BlankPage />}/>} {/* If user is signed in, /home route available; else takes to BlankPage*/}
+        {isSignedIn ? <Route path='*' element={<BlankPage />}/> : <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>} {/* If user is not signed in, /login route available; else takes to BlankPage*/}
         <Route path='/signup' element={<Signup />} />
         <Route path='*' element={<BlankPage/>} />
       </Routes>

@@ -23,6 +23,6 @@ class AuthController < ApplicationController
     end
 
     def handle_record_not_found(e)
-        render json: { message: "User doesn't exist" }, status: :unauthorized
+        render json: { message: "User doesn't exist!" }, status: :unauthorized
     end
 end

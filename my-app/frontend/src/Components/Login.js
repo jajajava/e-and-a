@@ -25,10 +25,16 @@ function Login({setUser, setIsSignedIn}) {
         }
     }
 
+    function handleClear(e){
+        e.preventDefault();
+        setPin('')
+        setError([])
+    }
+
     function removeLast(e){
         e.preventDefault()
         let poppedPin = pin.split('')
-     poppedPin.pop()
+        poppedPin.pop()
         setPin(poppedPin.join(''))
     }
 
@@ -53,10 +59,11 @@ function Login({setUser, setIsSignedIn}) {
                         navigate('/home')
                         })
                     } else {
-                        res.json().then((data) => setError(data))
+                        res.json().then((data) => setError(data), setPin(''))
                     }
                 })
     }
+    console.log(error.message)
 
     return (
         <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' }}>
@@ -65,8 +72,8 @@ function Login({setUser, setIsSignedIn}) {
             <form className='loginForm'>
             <div id="pinInputContainer">
                 <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
-                {/* <HiXCircle id="delete" onClick={()=> {setPin('')}}/> */}
             </div>
+            {error !== [] ? <h4 style={{marginTop: '5px', marginBottom: '5px'}}>{error.message}</h4> : null}
             <table>
             <tr>
                 <td><button className="pinButton" onClick={handlePin}>1</button></td>
@@ -84,7 +91,7 @@ function Login({setUser, setIsSignedIn}) {
                 <td><button className="pinButton" onClick={handlePin}>9</button></td>
             </tr>
             <tr>
-                <td><button className="pinButton" onClick={(e)=> {e.preventDefault(); setPin('')}}>Clear</button></td>
+                <td><button className="pinButton" onClick={handleClear} style={{fontSize: '25px'}}>Clear</button></td>
                 <td><button className="pinButton" onClick={handlePin}>0</button></td>
                 <td><button className="pinButton" onClick={removeLast}>X</button></td>
             </tr>
