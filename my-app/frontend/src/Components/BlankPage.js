@@ -11,9 +11,9 @@ function BlankPage (){
     }
 
     return (
-        <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' , display: "flex", justifyContent: 'center' , alignItems: 'center'}}>
+        <div className="background" id="blankBackground">
             <h1 className="loginLogo" style={{padding: '0'}}>This page does not exist... yet?</h1>
-            <button onClick={goBack}>Take me back!</button>
+            <button onClick={goBack}>Go back</button>
         </div>
     )
 }
