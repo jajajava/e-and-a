@@ -36,8 +36,8 @@ class UsersController < ApplicationController
         params.permit(:name, :pin,:is_admin).merge(defaults)
     end
 
-    def edit_params     #! GIVE EDIT PARAMS ONLY TO ADMIN USERS
-        params.permit(:is_clocked_in, :hours_worked, :name, :pin, :created_at, :updated_at)
+    def edit_params
+        params.permit(:is_clocked_in, :hours_worked, :name, :pin, :time_in)
     end
 
     def record_invalid (error)

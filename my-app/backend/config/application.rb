@@ -24,8 +24,8 @@ module Backend
     # config.load_defaults 7.0
     config.middleware.insert_before 0, Rack::Cors do
       allow do
-        origins '*'
-        resource '*', :headers => :any, :methods => [:get, :post, :options]
+        origins 'http://localhost:3000'
+        resource '*', headers: :any, methods: [:get, :post, :patch, :put, :delete, :options, :head]
       end
     end
     # config.api_only = true
