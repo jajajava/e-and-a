@@ -56,6 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001634) do
     t.boolean "is_clocked_in"
     t.boolean "is_admin"
     t.integer "hours_worked"
+    t.datetime "time_in"
+    t.datetime "time_out"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

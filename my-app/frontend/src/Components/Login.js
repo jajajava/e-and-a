@@ -56,14 +56,14 @@ function Login({setUser, setIsSignedIn}) {
                         localStorage.setItem("jwt", data.token);
                         setIsSignedIn(true);
                         setUser(data.user);
-                        navigate('/home')
+                        data.user.is_clocked_in? navigate('/home') : navigate('*') // NEED TO MAKE CLOCK IN PAGE
                         })
                     } else {
                         res.json().then((data) => setError(data), setPin(''))
                     }
                 })
     }
-    console.log(error.message)
+    
 
     return (
         <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' }}>

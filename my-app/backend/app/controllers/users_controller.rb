@@ -13,12 +13,12 @@ class UsersController < ApplicationController
     end
 
     def update
-        if current_user.is_admin
         user = User.find(params[:id])
-        user.update!(edit_params)
-        render json: user, status: :ok
-        else 
-        render json: {error: "Not authorized"}, status: 401
+        if current_user && (current_user.is_admin || current_user == user)
+            user.update!(edit_params)
+            render json: user, status: :ok
+        else
+            render json: { error: "Not authorized" }, status: :unauthorized
         end
     end
 
@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     end
 
     def edit_params     #! GIVE EDIT PARAMS ONLY TO ADMIN USERS
-        params.permit(:is_clocked_in, :hours_worked, :name, :pin)
+        params.permit(:is_clocked_in, :hours_worked, :name, :pin, :created_at, :updated_at)
     end
 
     def record_invalid (error)

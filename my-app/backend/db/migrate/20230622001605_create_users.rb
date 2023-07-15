@@ -6,6 +6,8 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.boolean :is_clocked_in
       t.boolean :is_admin
       t.integer :hours_worked
+      t.datetime :time_in
+      t.datetime :time_out
 
       t.timestamps
     end
