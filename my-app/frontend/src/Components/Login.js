@@ -38,6 +38,32 @@ function Login({setUser, setIsSignedIn}) {
         setPin(poppedPin.join(''))
     }
 
+    function handleClocking(e){
+        e.preventDefault()
+        fetch("http://127.0.0.1:3001/auth/login", {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify({
+                    pin: pin,
+                }),
+                })
+                .then((res) => {
+                    if (res.ok){
+                        res.json()
+                        .then((data) => {
+                        localStorage.setItem("jwt", data.token);
+                        setIsSignedIn(true);
+                        setUser(data.user);
+                        navigate('/timeclock')
+                        })
+                    } else {
+                        res.json().then((data) => setError(data), setPin(''))
+                    }
+                })
+    }
+
     function handleStart(e){
         e.preventDefault()
             fetch("http://127.0.0.1:3001/auth/login", {
@@ -63,7 +89,6 @@ function Login({setUser, setIsSignedIn}) {
                     }
                 })
     }
-    
 
     return (
         <div className="background" style={{ backgroundColor: 'rgba(255, 166, 0, 0.884)' }}>
@@ -97,7 +122,7 @@ function Login({setUser, setIsSignedIn}) {
             </tr>
             </table>
             <div style={{alignSelf: 'center'}}>
-                <button className='loginButton' style={{marginRight: '10px'}}>Time clock</button>
+                <button className='loginButton' style={{marginRight: '10px'}} onClick={handleClocking}>Time clock</button>
                 <button className='loginButton' style={{marginLeft: '10px'}} onClick={handleStart}>Start</button>
             </div>
             </form>

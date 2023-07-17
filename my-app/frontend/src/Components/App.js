@@ -42,13 +42,14 @@ function App() {
       <Context.Provider value={user}>
       <Routes>
         {isSignedIn ? 
-        [<Route path='/' element={<Home handleSignout={handleSignout}/>}/>, 
-        <Route path='/home' element={<Home handleSignout={handleSignout}/>}/>,
-        <Route path='*' element={<BlankPage />}/>,
-        <Route path='/timeclock' element={<TimePage/>}/>
-        ] : [
-          <Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>
-        ]} {/* NOTE the use of an array to keep all conditional routes under one ternary! */}
+          [<Route path='/' element={<Home handleSignout={handleSignout}/>}/>, 
+          <Route path='/home' element={<Home handleSignout={handleSignout}/>}/>,
+          <Route path='*' element={<BlankPage />}/>,
+          <Route path='/timeclock' element={<TimePage/>}/>
+          ] : [
+            <Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>
+          ]
+        } {/* NOTE the use of an array to keep all conditional routes under one ternary! */}
       </Routes>
       </Context.Provider>
       
