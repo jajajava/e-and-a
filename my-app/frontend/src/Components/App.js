@@ -47,9 +47,8 @@ function App() {
         <Route path='*' element={<BlankPage />}/>,
         <Route path='/timeclock' element={<TimePage/>}/>
         ] : [
-          <Route path='*' element={<Login />}/>
+          <Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>
         ]} {/* NOTE the use of an array to keep all conditional routes under one ternary! */}
-        <Route path='/signup' element={<Signup />} />
       </Routes>
       </Context.Provider>
       
