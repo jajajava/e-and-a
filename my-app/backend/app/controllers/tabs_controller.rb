@@ -46,6 +46,6 @@ class TabsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tab_params
-      params.require(:tab).permit(:name, :user_id, :total, :is_active)
+      params.permit(:name, :user_id, :total, :is_active)
     end
 end

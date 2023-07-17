@@ -1,5 +1,6 @@
 class FoodsController < ApplicationController
   before_action :set_food, only: %i[ show update destroy ]
+  before_action :check_admin, only: %i[create update destroy]
 
   # GET /foods
   def index
@@ -46,6 +47,12 @@ class FoodsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def food_params
-      params.require(:food).permit(:name, :price, :category, :description)
+      params.permit(:name, :price, :category, :description)
+    end
+
+    def check_admin
+      unless current_user&.is_admin
+        render json: { error: 'Unauthorized request.' }, status: :unauthorized
+      end
     end
 end
