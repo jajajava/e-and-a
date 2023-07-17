@@ -56,7 +56,7 @@ function Login({setUser, setIsSignedIn}) {
                         localStorage.setItem("jwt", data.token);
                         setIsSignedIn(true);
                         setUser(data.user);
-                        data.user.is_clocked_in? navigate('/home') : navigate('*') // NEED TO MAKE CLOCK IN PAGE
+                        data.user.is_clocked_in? navigate('/home') : navigate('/timeclock')
                         })
                     } else {
                         res.json().then((data) => setError(data), setPin(''))
