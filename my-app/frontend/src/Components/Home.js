@@ -2,10 +2,11 @@ import React from "react";
 import Header from "./Header";
 
 
-function Home({handleSignout}) {
+function Home({toHomepage}) {
+    
     return (
         <div className="body2">
-            <Header handleSignout={handleSignout} />
+            <Header toHomepage={toHomepage} />
             <div></div>
         </div>
     )

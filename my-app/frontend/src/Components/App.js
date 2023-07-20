@@ -31,6 +31,10 @@ function App() {
       localStorage.removeItem('jwt')
       setUser({})
       setIsSignedIn(false)
+    }
+
+    function toHomepage(){
+      handleSignout()
       navigate('/')
     }
 
@@ -43,14 +47,18 @@ function App() {
       <Routes>
       {isSignedIn && user.is_clocked_in ? 
           [
-          <Route path='*' element={<BlankPage />}/>,
           <Route path='/timeclock' element={<TimePage/>}/>,
-          <Route path='/' element={<Home handleSignout={handleSignout}/>}/>, 
-          <Route path='/home' element={<Home handleSignout={handleSignout}/>}/>
+          <Route path='/' element={<Home toHomepage={toHomepage}/>}/>, 
+          <Route path='/home' element={<Home toHomepage={toHomepage}/>}/>,
+          <Route path='*' element={<BlankPage />}/>
           ] : (
             isSignedIn && !user.is_clocked_in ? 
-            [<Route path='*' element={<TimePage/>}/>]
-            : [<Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>]
+            [
+            <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>, 
+            <Route path='/home' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>,
+            <Route path='/timeclock' element={<TimePage/>}/>,
+            <Route path='*' element={<TimePage/>}/>
+          ] : [<Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>]
           )
         }
       </Routes>

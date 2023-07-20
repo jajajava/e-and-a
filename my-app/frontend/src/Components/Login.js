@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-// import { HiXCircle } from "react-icons/hi";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login({setUser, setIsSignedIn}) {
+function Login({setUser, setIsSignedIn, handleSignout}) {
 
     const [pin, setPin] = useState('')
     const [error, setError] = useState([])
     const navigate = useNavigate()
 
+    useEffect(()=> {
+        handleSignout()
+    }, [])
 
     function handlePin(e){
         e.preventDefault()

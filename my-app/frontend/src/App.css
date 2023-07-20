@@ -183,7 +183,7 @@
 
   .nav-bar {
     display: flex;
-    left: calc(98% - 321px);
+    left: calc(98% - 447px);
     /* ^^^^  This allows me to space the logo and login the same distance. 2%, and whatever the lenght of "Login" is. */
     position: absolute;
     margin-bottom: -1px;
