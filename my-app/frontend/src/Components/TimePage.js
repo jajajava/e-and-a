@@ -1,10 +1,16 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./App";
+import { useNavigate } from "react-router-dom";
 
-function TimePage() {
+function TimePage({handleSignout}) {
     let user = useContext(Context);
+    const navigate = useNavigate()
     const [clockedIn, setClockedIn] = useState(user.is_clocked_in);
     let date = new Date();
+
+    useEffect(() => {
+        setClockedIn(user.is_clocked_in);
+    }, [user.is_clocked_in]);
 
     let variableBody;
     if (clockedIn === false) {
@@ -39,11 +45,21 @@ function TimePage() {
         });
     }
 
+    function toHomePage(){
+        if (!clockedIn){
+        handleSignout()
+        navigate('/login')
+        } else {
+        navigate('/home')
+        }
+    }
+
     return (
     <div>
         <form onSubmit={handleClocking}>
         <button>{clockedIn === true ? 'Clock out' : 'Clock in'}</button>
         </form>
+        <button onClick={toHomePage}>Home</button>
     </div>
     );
   }

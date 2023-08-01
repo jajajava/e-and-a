@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function Login({setUser, setIsSignedIn, handleSignout}) {
+function Login({setUser, setIsSignedIn}) {
 
     const [pin, setPin] = useState('')
     const [error, setError] = useState([])
     const navigate = useNavigate()
-
-    useEffect(()=> {
-        handleSignout()
-    }, [])
 
     function handlePin(e){
         e.preventDefault()

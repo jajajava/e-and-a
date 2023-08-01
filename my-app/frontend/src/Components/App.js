@@ -38,6 +38,30 @@ function App() {
       navigate('/')
     }
 
+    let routeArray
+    if (isSignedIn === true && user.is_clocked_in === true){
+      routeArray = [
+        <Route path='/timeclock' element={<TimePage handleSignout={handleSignout}/>}/>,
+        <Route path='/' element={<Home toHomepage={toHomepage} isSignedIn={isSignedIn} user={user}/>}/>, 
+        <Route path='/home' element={<Home toHomepage={toHomepage} isSignedIn={isSignedIn} user={user}/>}/>
+      ]
+    } else if (isSignedIn === true && user.is_clocked_in === false){
+      routeArray = [
+        <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>, 
+        <Route path='/home' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>,
+        <Route path='/timeclock' element={<TimePage handleSignout={handleSignout}/>}/>
+      ]
+    }
+
+    let routeElement
+    if (isSignedIn && user.is_clocked_in === true) {
+      routeElement = <BlankPage />;
+    } else if (isSignedIn && user.is_clocked_in === false) {
+      routeElement = <TimePage handleSignout={handleSignout}/>;
+    } else {
+      routeElement = (<Login setUser={setUser} setIsSignedIn={setIsSignedIn} />);
+    }
+
     console.log(user)
 
   return (
@@ -45,22 +69,8 @@ function App() {
       
       <Context.Provider value={user}>
       <Routes>
-      {isSignedIn && user.is_clocked_in ? 
-          [
-          <Route path='/timeclock' element={<TimePage/>}/>,
-          <Route path='/' element={<Home toHomepage={toHomepage}/>}/>, 
-          <Route path='/home' element={<Home toHomepage={toHomepage}/>}/>,
-          <Route path='*' element={<BlankPage />}/>
-          ] : (
-            isSignedIn && !user.is_clocked_in ? 
-            [
-            <Route path='/' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>, 
-            <Route path='/home' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>,
-            <Route path='/timeclock' element={<TimePage/>}/>,
-            <Route path='*' element={<TimePage/>}/>
-          ] : [<Route path='*' element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn} handleSignout={handleSignout}/>}/>]
-          )
-        }
+      {routeArray}
+      <Route path='*' element={routeElement} />
       </Routes>
       </Context.Provider>
       
