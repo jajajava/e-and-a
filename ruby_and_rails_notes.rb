@@ -93,3 +93,27 @@
 #* Private methods are methods you can create within the class; cannot be accessed outside the class.
 
 #* To start our server, we run "rails s"
+
+#* 5. In the models, create associations as follows:
+#// class employee < ApplicationRecord
+#//     has_many :orders
+#//     has_many :customers, through: :orders
+#* We also put our validations in the models, as such:
+#//     validates :order_number, presence: true, uniqueness: true
+#* You can create custom validations (USE THE VALIDATE KEYWORD INSTEAD OF VALIDATES):
+#//     validate :genre, :no_more_musicals
+
+#// def no_more_musicals
+#//     if self.genre == "Musical" && Production.where(ongoing: true, genre: 'Musical').length > 0
+#//         errors.add(:genre, "Sorry only 1 musical at a time")
+#//     end
+#// end
+
+
+#* 6. When we create a serializer, they replace whatever "render json:" we have, it returns custom data.
+#// rails g serializer employee (make sure the serializer matches model you're serializing; SINGULAR)
+
+#// class EmployeeSerializer < ActiveModel::Serializer
+#//     attributes :id, :name, :age
+#//     has_many :orders  --> (Because we have that association in the model, we can show the orders with the employee data)
+#// end 

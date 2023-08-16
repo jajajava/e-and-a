@@ -21,6 +21,7 @@ function Signup() {
 
 //! REMEMBER TO MAKE SIGNUP/Signup PATHS!
 //! Stretch goals: Make show password button and/or save password option
+//! MAKE THIS ROUTE ONLY ACCESSIBLE TO ADMIN USER. ADMIN CAN CLICK CREATE USER AND MAKE ONE IN THIS PATH.
 
 
 
