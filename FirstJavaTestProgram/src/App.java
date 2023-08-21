@@ -21,9 +21,40 @@
 // 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
 
 // import javax.swing.JOptionPane;
+// public class App {
+//     public static void main(String args[]){
+//         JOptionPane.showMessageDialog(null, "test", "header", JOptionPane.INFORMATION_MESSAGE);
+//     }
+// }
+
+// 8/21/23 - Important lecture notes
+
+// JAVA PRIMITIVE DATA TYPES:
+// 1. Byte: Stores whole numbers from -128 to 127 (Size: 1 byte)
+// 2. Short: Stores whole numbers from -32,768 to 32,767 (Size: 2 bytes)
+// 3. Int: Stores whole numbers from ~2.1 million to 2.1 million (Size: 4 bytes)
+// 4. Long: Stores whole numbers from ~9.2 quintillion to 9.2 quintillion (Size: 8 bytes)
+// 5. Float: Stores fractional numbers. Stores 6-7 decimal digits (Size: 4 bytes)
+// 6. Double: Stores fractional numbers. Stores 15 decimal digits (Size: 8 bytes)
+// 7. Boolean: Stores true/false values (Size: 1 byte)
+// 8. Char: Stores a single character/letter or ASCII values (Size: 2 bytes)
+
+// variable = expression   <-- Variable is always on the left of the = operator (= being assignent operator, not equality)
+
+// DECLARING VARIABLES IN JAVA: 
+// Unlike JavaScript where you have a keyword to declare the variable (let, const, var), you simply write dataType variableName. Here's how it looks:
+// double radius;    <-- Declare the variable (allocates memory)
+// radius = 20;      <-- Initialize the variable (assigns value)
+// Java lets you assign values in the same line (double radius = 20;) and also declare multiple variables at once (double radius, area;)
+
+// In Java, you can only use double quotes (" ") only for strings, and only the single quotes (' ') only for chars.
+
+// Java has STRING CONCATENATION ("Hello my name is " + variableName);
+// There are also template literals, but it's much uglier than in newer languages. If you want more info, look up "Java string format"
 
 // public class App {
 //     public static void main(String args[]){
-//         JOptionPane.showMessageDialog(null, "test", "header", JOptionPane.CANCEL_OPTION);
+//         String variableName = "David";
+//         System.out.println("My name is " + variableName);
 //     }
 // }
