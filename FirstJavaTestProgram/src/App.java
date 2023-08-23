@@ -67,14 +67,66 @@
 // 3. Use the methods next(), nextByte(), nextShort(), nextInt(), nextLong(), nextFloat(), nextDouble(), or nextBoolean() to obtain
 // a string, byte, short, int, long, float, double, or boolean value. For example:
 
-import java.util.Scanner;
-public class App{
-    public static void main(String args[]){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter a number for radius: ");  // NOTE the fact that it's not .println()- print vs println is that print has no line break, looks better
-        double radius = input.nextDouble();
-        double area = (radius * radius) * 3.14159265359;
-        System.out.println("Your area is " + area);    
-        input.close(); // This isn't necessary but it makes your code run faster by ending unnecessary operations
-    }
-}
+// Calculating area of a circle (classwork)
+// import java.util.Scanner;
+// public class App{
+//     public static void main(String args[]){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Enter a number for radius: ");  // NOTE the fact that it's not .println()- print vs println is that print has no line break, looks better
+//         double radius = input.nextDouble();
+//         double area = (radius * radius) * 3.14159265359;
+//         System.out.println("Your area is " + area);    
+//         input.close(); // This isn't necessary but it makes your code run faster by ending unnecessary operations
+//     }
+// }
+
+// Homework 1 - Calculating the area of a cylinder
+
+// import java.util.Scanner;
+// public class HW1 {
+//     public static void main (String args[]){
+//         // Declare and initialize constant variable "PI"
+//         final double PI = 3.14159;
+
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Please input a value for radius: ");
+
+//         // Declare and initialize "radius" with value that user inputs
+//         double radius = input.nextDouble();
+
+//         System.out.print("Please input a value for length: ");
+//         double length = input.nextDouble();
+
+//         // Close the Scanner to preserve resources
+//         input.close();
+
+//         double area = radius * radius * PI;
+        
+//         double volume = area * length;
+
+//         // Prints area and volume
+//         System.out.println("The area of the cylinder is " + area + " units squared.");
+//         System.out.println("The volume of the cylinder is " + volume + " units cubed.");
+
+//     }
+// }
+
+// Lab 1 - Converting feet to meters
+
+// import java.util.Scanner;
+
+// public class Lab1{
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Please enter the value of feet: ");
+//         // Declare and initialize foot variable
+//         double foot = input.nextDouble();
+//         input.close();
+//         // Declare meter variable, assign converted value
+//         double meter = foot * 0.305;
+//         // Output result
+//         System.out.println(foot + " ft converted to meters is " + meter + " m");
+//     }
+// }
+
+// 
