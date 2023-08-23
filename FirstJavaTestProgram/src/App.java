@@ -58,3 +58,23 @@
 //         System.out.println("My name is " + variableName);
 //     }
 // }
+
+// 8/23/23 - Lecture notes: Getting user input through console
+
+// Getting input from the console-
+// 1. Import java.util.Scanner;
+// 2. Create a Scanner object -> Scanner input = new Scanner(System.in);
+// 3. Use the methods next(), nextByte(), nextShort(), nextInt(), nextLong(), nextFloat(), nextDouble(), or nextBoolean() to obtain
+// a string, byte, short, int, long, float, double, or boolean value. For example:
+
+import java.util.Scanner;
+public class App{
+    public static void main(String args[]){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter a number for radius: ");  // NOTE the fact that it's not .println()- print vs println is that print has no line break, looks better
+        double radius = input.nextDouble();
+        double area = (radius * radius) * 3.14159265359;
+        System.out.println("Your area is " + area);    
+        input.close(); // This isn't necessary but it makes your code run faster by ending unnecessary operations
+    }
+}
