@@ -129,4 +129,64 @@
 //     }
 // }
 
+// 8/28/23 - Lecture notes
+
+// A LITERAL is a value you hardcode into your program.
+// When you have a long type integer literal, you need to append an L to the end of the number (upper/lowercase ok) --> long L = 2147483648L;
+// You do the same thing with floats, you need to append an F to the end of the number --> float f = 10.2f;
+
+// Java allows binary operations on values of different types. In that situation, the computer takes the value that stores more data.
+// This is why 5.0 / 2 = 2.5 while 5 / 2 = 2!
+
+// TYPE CASTING: an operation that converts a value of one data type to a value of another data type.
+// TYPE WIDENING is always fine. This means a smaller range value is assigned to a variable with a larger range value:
+// byte b = 10; --> int i = b   OK
+// int i = 1500; --> byte b = i   NOT OK (TYPE NARROWING can only be achieved with type casting)
+
+// How to type cast:
+// double d = 4.5;
+// int i = (int) d; --> This result is that i = 4. When you narrow the type, you lose some information (in this case, the decimal). 
+
+
+// public class App {
+//     public static void main (String args[]){
+//         long L = 2147483648L;
+//         int i = (int) L; --> Type casting performed
+//         System.out.print(i); --> -2147483648 (When a number is too large or too small, out of the range of int, it will lose some of the bits and be misrepresented.)
+//     }
+// }
+
+// Shortcut operators:
+// += (add and assign)
+// -= (subtract and assign)
+// *= (multiply and assign)
+// /= (divide and assign)
+// %= (modulo and assign)
+// ++ (increment operator)
+// -- (decrement operator)
+
+// About the increment/decrement operator:
+// If you put it before the variable, preincrement/predecrement, (++var or --var), it will change the value of var and update it immediately.
+// If you put it after the variable, postincrement/postdecrement, (var++ or var--), it will change the value of var but not update it right away.
+
+// Example of preincrement:
+// int i = ++5;
+// int j = i;
+// Output: i = 6, j = 6
+
+// Example of postincrement:
+// int i = 5++;
+// int j = i;
+// Output: i = 6, j = 5
+
+// Character data types:
+// char letter  = 'A'; (ASCII)
+// char numChar = '4'; (ASCII)
+// char letter = '\u0041'; (Unicode)
+// char numChar = '\u0034'; (Unicode)
+
+// Note: Increment and decrement operators can be used on char variables to get the next or preceding unicode character. Ex:
+// char ch = 'a';
+// System.out.print(++ch); --> 'b';
+
 // 
