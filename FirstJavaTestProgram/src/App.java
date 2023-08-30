@@ -231,3 +231,34 @@
 //         System.out.println("Should you practice today? " + doPractice);
 //     }
 // }
+
+//! Lab 2 - Sort two numbers
+
+// import java.util.Scanner;
+
+// public class Lab2 {
+//     public static void main(String args[]) {
+//         // Open the scanner
+//         Scanner input = new Scanner(System.in);
+
+//         // Get value for num1
+//         System.out.print("Enter the value of num1: ");
+//         int num1 = input.nextInt();
+
+//         // Get value for num2
+//         System.out.print("Enter the value of num2: ");
+//         int num2 = input.nextInt();
+
+//         // Close the scanner
+//         input.close();
+
+//         // By writing <= in the conditional, you avoid an extra "else if" to check
+//         // equality
+//         if (num1 <= num2) {
+//             System.out.println("The sorted numbers are " + num1 + ", " + num2);
+//         } else {
+//             System.out.println("The sorted numbers are " + num2 + ", " + num1);
+//         }
+
+//     }
+// }
