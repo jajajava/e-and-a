@@ -262,3 +262,18 @@
 
 //     }
 // }
+
+//! 9/6/23 - Lecture notes
+
+//# '\n' is the line break character. Here's how you can use it:
+// System.out.print("Welcome to \nJava!") --> "Welcome to (new line) Java!"
+
+//# '\t' is a tab character (makes tables in output):
+// System.out.print("Student\t\tGrade")  -->  Student        Grade
+// System.out.print("Bob\t\t" + 92)     -->   Bob            92
+// The \t spaces the columns & helps with aligning
+
+//# You must use \" to be able to use double quotes in a string:
+// System.out.print("He said \"Java is fun\"") --> "He said "Java is fun""
+// Note the wrapping: \" ... \"
+
