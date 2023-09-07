@@ -86,7 +86,7 @@
 // public class HW1 {
 //     public static void main (String args[]){
 //      // Declare and initialize constant variable "PI"
-//         final double PI = 3.14159;
+//         final double PI = 3.14159; 
 
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Please input a value for radius: ");
@@ -111,6 +111,10 @@
 //     }
 // }
 
+//! Final keyword:
+//# Note the final keyword- like const in Java, this modifier makes your variable immodifiable.
+//# Naming convention for constant variables is the following: CAPITAL_WORDS_WITH_UNDERSCORES_SEPARATING
+
 //! Lab 1 - Converting feet to meters
 
 // import java.util.Scanner;
@@ -132,8 +136,10 @@
 //! 8/28/23 - Lecture notes
 
 //# A LITERAL is a value you hardcode into your program.
-//# When you have a long type integer literal, you need to append an L to the end of the number (upper/lowercase ok) --> long L = 2147483648L;
-//# You do the same thing with floats, you need to append an F to the end of the number --> float f = 10.2f;
+//# When you have a long type integer literal, you need to append an L to the end of the number or it will think it's an int (upper/lowercase ok):
+//# long L = 2147483648L;
+//# You do the same thing with floats, you need to append an F to the end of the number or it will think it's a double (upper/lowercase ok):
+//# float f = 10.2f;
 
 //# Java allows binary operations on values of different types. In that situation, the computer takes the value that stores more data.
 //# This is why 5.0 / 2 = 2.5 while 5 / 2 = 2!
@@ -168,6 +174,7 @@
 //! About the increment/decrement operator:
 //# If you put it before the variable, preincrement/predecrement, (++var or --var), it will change the value of var and update it immediately.
 //# If you put it after the variable, postincrement/postdecrement, (var++ or var--), it will change the value of var but not update it right away.
+//# int y=x++ means x=x+1, y=x. int y=++x means x=x+1, y=x+1
 
 //! Example of preincrement:
 //# int i = ++5;
@@ -275,6 +282,19 @@
 //# You must use \" to be able to use double quotes in a string:
 // System.out.print("He said \"Java is fun\"") --> "He said "Java is fun""
 // Note the wrapping: \" ... \"
+
+//! Input modal using JOptionPane:
+
+// import javax.swing.JOptionPane;
+
+// public class App{
+//     public static void main(String args[]){
+//         String test = JOptionPane.showInputDialog(null, "Prompt message", "Header", JOptionPane.INFORMATION_MESSAGE);
+//         System.out.println(test);
+//     }
+// }
+
+
 
 //! HW3 - Tax calculator
 
@@ -406,3 +426,14 @@
 // }
 
 //
+
+//! Personal notes - Math.random()
+// public class App{
+//     public static void main (String args[]){
+//         // Math.random() naturally gives a double between 0.0 and 0.1 (ex- 0.06067281955789661). If you want random whole #:
+//         System.out.println((int)(Math.random() * 10));
+//     }
+// }
+// Math.random()* 10 == 8.231… ; (int) changes double to int, resulting in 8.
+// MAKE SURE if you do this you separate Math.random() * 10 and int with parenthesis or you’ll get zero every time-
+// (Math.random gets turned to int first, then *10; 0.01… -> int rounds to 0)
