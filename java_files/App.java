@@ -425,8 +425,6 @@
 //     }
 // }
 
-//
-
 //! Personal notes - Math.random()
 // public class App{
 //     public static void main (String args[]){
@@ -437,3 +435,5 @@
 // Math.random()* 10 == 8.231… ; (int) changes double to int, resulting in 8.
 // MAKE SURE if you do this you separate Math.random() * 10 and int with parenthesis or you’ll get zero every time-
 // (Math.random gets turned to int first, then *10; 0.01… -> int rounds to 0)
+
+//
