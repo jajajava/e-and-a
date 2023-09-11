@@ -436,4 +436,40 @@
 //# MAKE SURE if you do this you separate Math.random() * 10 and int with parentheses or you’ll get zero every time-
 //# (Math.random gets turned to int first, then *10; 0.01… -> int rounds to 0)
 
-//
+//! 9/11/23 - Lecture notes (Module 4 - Loops)
+//# Loop body: Statements to be repeated
+//# Iteration of the loop: One full execution of a loop body
+//# Condition (continuation-condition): A boolean expression. If true, execution of loop body is repeated; else, loop terminates. 
+
+//! WHILE LOOP
+// while (condition){
+//     loop body
+// }
+
+// The while loop repeats while the condition is true.
+// A loop that goes on forever is known as a "dead loop"
+
+// This program calculates the number of years it would take (from now) to double your initial investment
+import java.util.Scanner;
+public class App{
+    public static void main (String args[]){
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter the initial amount: ");
+        double tuition = input.nextInt();
+        // The initial variable's purpose is to remain constant, hence the final modifier
+        final double initial = tuition;
+        System.out.print("Enter the rate in percentage: ");
+        // Percent -> decimal
+        double percentToDecimal = ((input.nextDouble())*0.01);
+        // Close scanner
+        input.close();
+        // First year starts with 0 because it's calculating FROM NOW
+        int year = 0;
+        // While - until double the initial value is reached, increment year
+        while (tuition < initial * 2){
+            tuition = tuition * (1 + percentToDecimal);
+            year++;  
+        }
+        System.out.println(year);
+        }
+    }
