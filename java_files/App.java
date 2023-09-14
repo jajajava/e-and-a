@@ -450,26 +450,26 @@
 // A loop that goes on forever is known as a "dead loop"
 
 // This program calculates the number of years it would take (from now) to double your initial investment
-import java.util.Scanner;
-public class App{
-    public static void main (String args[]){
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter the initial amount: ");
-        double tuition = input.nextInt();
-        // The initial variable's purpose is to remain constant, hence the final modifier
-        final double initial = tuition;
-        System.out.print("Enter the rate in percentage: ");
-        // Percent -> decimal
-        double percentToDecimal = ((input.nextDouble())*0.01);
-        // Close scanner
-        input.close();
-        // First year starts with 0 because it's calculating FROM NOW
-        int year = 0;
-        // While - until double the initial value is reached, increment year
-        while (tuition < initial * 2){
-            tuition = tuition * (1 + percentToDecimal);
-            year++;  
-        }
-        System.out.println(year);
-        }
-    }
+// import java.util.Scanner;
+// public class App{
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Enter the initial amount: ");
+//         double tuition = input.nextInt();
+//         // The initial variable's purpose is to remain constant, hence the final modifier
+//         final double initial = tuition;
+//         System.out.print("Enter the rate in percentage: ");
+//         // Percent -> decimal
+//         double percentToDecimal = ((input.nextDouble())*0.01);
+//         // Close scanner
+//         input.close();
+//         // First year starts with 0 because it's calculating FROM NOW
+//         int year = 0;
+//         // While - until double the initial value is reached, increment year
+//         while (tuition < initial * 2){
+//             tuition = tuition * (1 + percentToDecimal);
+//             year++;  
+//         }
+//         System.out.println(year);
+//         }
+//     }
