@@ -473,3 +473,85 @@
 //         System.out.println(year);
 //         }
 //     }
+
+//! 9/13/23 - Lecture notes
+
+// Sentinel value - Sometimes the number of iterations isn't predetermined. The sentinel value is the "exit value", the thing that lets you choose to break the loop.
+
+
+// import java.util.Scanner;
+
+// public class App{
+//     public static void main(String args[]){
+//         Scanner input = new Scanner(System.in);
+//         double sum = 0;
+//         System.out.print("Enter a number: ");
+//         double inputted = input.nextDouble();
+//         while (inputted != 0){
+//             sum += inputted;
+//             System.out.print("Enter a number: ");
+//             inputted = input.nextDouble();
+//         }
+//         input.close();
+//         System.out.println("Your total sum is: " + sum);
+//     }
+// }
+
+//# Input redirection: If you have a large number of data to enter, it would be cumbersome to type from the keyboard.
+//# You can take data from another file and input it into your program. Example:
+// input.txt - 1 2 3 4 5 0
+//$ java ClassName < input.txt 
+// Result: "Your total sum is: 15"
+
+// NOTE: Your input.txt file has to be in the same directory as the source code for this to work
+// NOTE 2: If there was a non-number value there, it would give you an error because of the input.nextDouble();
+
+//# Output redirection: Instead of the result appearing in the CLI you can make it appear in a textfile
+//$ java ClassName > output.txt
+// Result: "Your total sum is: 15" (inside of Output.txt)
+
+//# Input AND output redirection: $ java ClassName < input.txt > output.txt
+// The following code was used to test the input + output command; successfully outputted text
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         // While checks whether input HAS a next input
+//         while (input.hasNext()){
+//         String string = input.next();
+//         // This prints the words separately
+//         System.out.print(string + " ");
+//         }
+
+//     }
+// }
+
+// Similar program that takes strings and numbers as inputs
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         double total = 0;
+
+//         // While checks whether input HAS a next input
+//         while (input.hasNext()){
+//             // If checks if the input is a number or a string
+//             if (input.hasNextDouble()){
+//                 double number = input.nextDouble();
+//                 total += number;
+//             } else {
+//                 String string = input.next();
+//                 // This prints the words separately
+//                 System.out.print(string + " ");
+//             }}
+
+//         // Prints total on separate line
+//         input.close();
+
+//         // If there's no number, don't print a total
+//         if (total != 0.0)
+//         System.out.print('\n' + "Total: " + total);
+//     }
+// }
+
+
