@@ -5,7 +5,7 @@ class CreateUsers < ActiveRecord::Migration[7.0]
       t.string :pin
       t.boolean :is_clocked_in
       t.boolean :is_admin
-      t.float :hours_worked
+      t.decimal :hours_worked
       t.datetime :time_in
 
       t.timestamps

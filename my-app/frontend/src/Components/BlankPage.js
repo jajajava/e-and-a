@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-
+// This component is the blank page that exists for the clocked in user's * route
 function BlankPage (){
 
     const navigate = useNavigate()
