@@ -7,8 +7,8 @@ function TimePage({ handleSignout }) {
   const user = useContext(Context);
   const navigate = useNavigate();
   const [clockedIn, setClockedIn] = useState(user.is_clocked_in);
-  const [timeIn, setTimeIn] = useState(null);
-  const [hours, setHours] = useState(user.hours_worked || 0); // Initialize hours from user data or 0 if not available
+  const [timeIn, setTimeIn] = useState(user.time_in || 0); // Initialize timeIn based on user's time_in, or 0 if not available
+  const [hours, setHours] = useState(user.hours_worked || 0); // Initialize hours from user data, or 0 if not available
 
   function handleClocking(e) {
     e.preventDefault();
@@ -79,4 +79,3 @@ function TimePage({ handleSignout }) {
   export default TimePage;
 
 //! Fix this page's CSS and add more features
-//! Issue with the logic that updates the user.hours_worked
