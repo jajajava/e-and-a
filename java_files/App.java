@@ -526,30 +526,32 @@
 //     }
 // }
 
-// Similar program that takes strings and numbers as inputs
-import java.util.Scanner;
-public class App {
-    public static void main (String args[]){
-        Scanner input = new Scanner(System.in);
-        double total = 0;
+// Similar program that takes strings and numbers as inputs; numbers added together
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         double total = 0;
 
-        // While checks whether input HAS a next input
-        while (input.hasNext()){
-            // If checks if the input is a number or a string
-            if (input.hasNextDouble()){
-                double number = input.nextDouble();
-                total += number;
-            } else {
-                String string = input.next();
-                // This prints the words separately
-                System.out.print(string + " ");
-            }}
+//         // While checks whether input HAS a next input
+//         while (input.hasNext()){
+//             // If checks if the input is a number or a string
+//             if (input.hasNextDouble()){
+//                 double number = input.nextDouble();
+//                 total += number;
+//             } else {
+//                 String string = input.next();
+//                 // This prints the words separately
+//                 System.out.print(string + " ");
+//             }}
 
-        // Prints total on separate line
-        input.close();
+//         // Prints total on separate line
+//         input.close();
 
-        // If there's no number, don't print a total
-        if (total != 0.0)
-        System.out.print('\n' + "Total: " + total);
-    }
-}
+//         // If there's no number, don't print a total
+//         if (total != 0.0)
+//         System.out.print('\n' + "Total: " + total);
+//     }
+// }
+
+//! 9/18/23 - Lecture notes
