@@ -525,6 +525,7 @@
 
 //     }
 // }
+//# One possible use for this ability that I thought of is logging when something happens in a program
 
 // Similar program that takes strings and numbers as inputs; numbers added together
 // import java.util.Scanner;
@@ -554,4 +555,45 @@
 //     }
 // }
 
+//! Personal notes - How to use printf method, Java's string interpolation
+
+//# System.out.printf("This is a format string %d", var);
+//# Two arguments: printf(FORMAT STRING, [OBJECT/VARIABLE/VALUE])
+//# When you use printf, you have several components: % [flags] [precision] [width] [conversion-character]
+// The % lets the code know where to insert a value. 
+// You write % and then the letter corresponding to the data type of the value. Known as "conversion character"
+
+//# MOST COMMON CONVERSION CHARACTERS:
+//# 1. %d = integers (stands for 'decimal')
+//# 2. %f = doubles/floats
+//# 3. %s = strings
+//# 4. %c = char
+//# 5. %b = booleans
+
+//# You can set the minimum number of characters to display with the "width" argument. Ex:
+// String myString = "user";
+// System.out.printf("Welcome%10s", myString);    -> The 10 means there will be a total of 10 characters after Welcome
+// Output: "Welcome      user" (including the length of "user" (4 chars), 10 characters after "Welcome")
+
+// public class App{
+//     public static void main (String args[]){
+//         String myString = "user";
+//         System.out.printf("Welcome%-10s" + '\n', myString);     //The escape character was added to make terminal look nicer
+//     }
+// }
+
+//# Precision- making the %f a decimal value indicates how many spaces you want after the decimal point. Ex:
+// "%.2f" converts 1000.000000 to 1000.00
+
+//# Flags-
+//# - : makes the output left justified, meaning if you make %10s a negative number, %-10s, you'll have "Welcomeuser      "
+//# + : output a plus or minus sign for a numeric value  (negative value displayed)
+//# , : comma grouping separator if numbers > 1000
+
 //! 9/18/23 - Lecture notes
+
+//# do-while loop
+// Perfect time to use it is when you want to iterate a loop at least once
+
+// Syntax: do {} while ()
+

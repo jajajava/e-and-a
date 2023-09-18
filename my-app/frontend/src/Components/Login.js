@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+// This component authenticates the user and has the input logic for the digital pin pad
 function Login({setUser, setIsSignedIn}) {
 
     const [pin, setPin] = useState('')
@@ -36,6 +37,7 @@ function Login({setUser, setIsSignedIn}) {
         setPin(poppedPin.join(''))
     }
 
+    // Regardless of whether the user is clocked in or not, this function will take them to the clocking page
     function handleClocking(e){
         e.preventDefault()
         fetch("http://127.0.0.1:3001/auth/login", {
@@ -61,7 +63,7 @@ function Login({setUser, setIsSignedIn}) {
                     }
                 })
     }
-
+    // If the user is not clocked in, it takes them to the clocking page. If they are, it takes them to the home page
     function handleStart(e){
         e.preventDefault()
             fetch("http://127.0.0.1:3001/auth/login", {
@@ -96,6 +98,7 @@ function Login({setUser, setIsSignedIn}) {
             <div id="pinInputContainer">
                 <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
             </div>
+            {/* If the user enters a pin that's not in the database, it gives an error message ("User doesn't exist!") */}
             {error !== [] ? <h4 style={{marginTop: '5px', marginBottom: '5px'}}>{error.message}</h4> : null}
             <table>
             <tr>

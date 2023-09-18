@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Header from "./Header";
 import { useNavigate } from "react-router-dom";
 
-
+// This component is the home page, which is conditionally set depending on the user's state
 function Home({toHomepage, isSignedIn, user}) {
 
     let navigate = useNavigate()
