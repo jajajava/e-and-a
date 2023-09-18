@@ -592,8 +592,46 @@
 
 //! 9/18/23 - Lecture notes
 
-//# do-while loop
-// Perfect time to use it is when you want to iterate a loop at least once
+//# do-while loop: use it is when you want to iterate a loop at least once
+//# Syntax: do {loop body} while (iteration-condition);
 
-// Syntax: do {} while ()
+// import java.util.Scanner;
+// public class App{
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         int sum = 0;
+//         System.out.print("Please enter a number: ");
+//         int inputted; // You declare the variable here because it wouldn't be accessable in the while loop, because it's not in the global scope
+//         do {
+//             System.out.print("Please enter a number: ");
+//             inputted = input.nextInt();
+//             sum += inputted;
+//         } while (inputted != 0); // This is the sentinel condition
+//         System.out.println(sum);
+//         input.close();
+//     }
+// }
+
+//# For loop: best for counter-controlled repetition (set number of iterations)
+//# Syntax: for (initial-action; continuation-condition; action-after-iteration){loop body}
+
+// public class App{
+//     public static void main (String args[]){
+//         int count; // This is how you can keep the count variable in the global scope
+//         for (count = 0; count < 100; ++count){ // Iterates 100 times. ++count is why it ends on 100 instead of 99
+//             System.out.println(count);
+//         }
+//         System.out.println("Your count is now " + count); // Note that the count was updated inside the loop and its value is updated in main method's scope
+//     }
+// }
+
+public class App{
+    public static void main (String args[]){
+        int sum = 0;
+        for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even #s only
+            sum += count;
+        }
+        System.out.println(sum);
+    }
+}
 
