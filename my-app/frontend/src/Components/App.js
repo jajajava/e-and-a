@@ -44,14 +44,15 @@ function App() {
       user, 
       toHomepage,
       setUser,
-      setIsSignedIn
+      setIsSignedIn,
+      handleSignout
     }
 
     let routeArray
     // Routes that exist if the user is signed AND clocked in
     if (isSignedIn === true && user.is_clocked_in === true){
       routeArray = [
-        <Route path="/timeclock" element={<TimePage handleSignout={handleSignout}/>}/>,
+        <Route path="/timeclock" element={<TimePage/>}/>,
         <Route path="/" element={<OrderPage/>}/>, 
         <Route path="/home" element={<OrderPage/>}/>,
         <Route path="/orderpage" element={<OrderPage/>} />,
@@ -62,17 +63,17 @@ function App() {
       routeArray = [
         <Route path="/" element={<Login/>}/>, 
         <Route path="/home" element={<Login/>}/>,
-        <Route path="/timeclock" element={<TimePage handleSignout={handleSignout}/>}/>
+        <Route path="/timeclock" element={<TimePage/>}/>
       ]
     }
     // Defines the path for * depending on user state
     let routeElement
     if (isSignedIn && user.is_clocked_in === true) {
-      routeElement = <BlankPage />;
+      routeElement = <BlankPage/>;
     } else if (isSignedIn && user.is_clocked_in === false) {
-      routeElement = <TimePage handleSignout={handleSignout}/>;
+      routeElement = <TimePage/>;
     } else {
-      routeElement = (<Login />);
+      routeElement = (<Login/>);
     }
 
     console.log(user)

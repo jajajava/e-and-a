@@ -2,10 +2,9 @@ import React, { useContext, useState } from "react";
 import { Context } from "./App";
 import { useNavigate } from "react-router-dom";
 
-//! FIX TIME DISPLAYED, MIGHT BE useCONTEXT BUG
 // This component is for the page where you clock in. It also handles the calculation logic to show how many hours the worker was clocked in
-function TimePage({ handleSignout }) {
-  const {user} = useContext(Context); //This is called destructuring an object. Assigns a variable of the same name the corresponding data in the object
+function TimePage() {
+  const {user, handleSignout} = useContext(Context); //This is called destructuring an object. Assigns a variable of the same name the corresponding data in the object
   const navigate = useNavigate();
   const [clockedIn, setClockedIn] = useState(user.is_clocked_in);
   const [timeIn, setTimeIn] = useState(user.time_in || 0); // Initialize timeIn based on user's time_in, or 0 if not available
