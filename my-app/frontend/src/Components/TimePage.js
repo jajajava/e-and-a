@@ -11,7 +11,6 @@ function TimePage({ handleSignout }) {
   const [timeIn, setTimeIn] = useState(user.time_in || 0); // Initialize timeIn based on user's time_in, or 0 if not available
   const [hours, setHours] = useState(user.hours_worked || 0); // Initialize hours from user data, or 0 if not available
 
-  console.log(user)
   function handleClocking(e) {
     e.preventDefault();
 

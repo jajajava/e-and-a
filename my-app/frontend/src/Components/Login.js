@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Context } from "./App";
 
 // This component authenticates the user and has the input logic for the digital pin pad
-function Login({setUser, setIsSignedIn}) {
+function Login() {
+
+    const {setUser, setIsSignedIn} = useContext(Context);
 
     const [pin, setPin] = useState('')
     const [error, setError] = useState([])

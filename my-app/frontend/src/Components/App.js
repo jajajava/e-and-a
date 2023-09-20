@@ -39,21 +39,29 @@ function App() {
       navigate("/")
     }
 
+    // This array has all the useContext values! I didn't want to overcrowd the context provider's value at the bottom
+    const useContextArray={
+      user, 
+      toHomepage,
+      setUser,
+      setIsSignedIn
+    }
+
     let routeArray
     // Routes that exist if the user is signed AND clocked in
     if (isSignedIn === true && user.is_clocked_in === true){
       routeArray = [
         <Route path="/timeclock" element={<TimePage handleSignout={handleSignout}/>}/>,
         <Route path="/" element={<OrderPage/>}/>, 
-        <Route path="/home" element={<OrderPage toHomepage={toHomepage}/>}/>,
-        <Route path="/orderpage" element={<OrderPage toHomepage={toHomepage}/>} />,
-        <Route path="/kitchen" element={<KitchenDisplay toHomepage={toHomepage}/>} />
+        <Route path="/home" element={<OrderPage/>}/>,
+        <Route path="/orderpage" element={<OrderPage/>} />,
+        <Route path="/kitchen" element={<KitchenDisplay/>} />
       ]
     // Routes that exist if the user is only signed in
     } else if (isSignedIn === true && user.is_clocked_in === false){
       routeArray = [
-        <Route path="/" element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>, 
-        <Route path="/home" element={<Login setUser={setUser} setIsSignedIn={setIsSignedIn}/>}/>,
+        <Route path="/" element={<Login/>}/>, 
+        <Route path="/home" element={<Login/>}/>,
         <Route path="/timeclock" element={<TimePage handleSignout={handleSignout}/>}/>
       ]
     }
@@ -64,7 +72,7 @@ function App() {
     } else if (isSignedIn && user.is_clocked_in === false) {
       routeElement = <TimePage handleSignout={handleSignout}/>;
     } else {
-      routeElement = (<Login setUser={setUser} setIsSignedIn={setIsSignedIn} />);
+      routeElement = (<Login />);
     }
 
     console.log(user)
@@ -72,7 +80,7 @@ function App() {
   return (
     <div className="App">
       
-      <Context.Provider value={{user, toHomepage}}>
+      <Context.Provider value={useContextArray}>
        <Routes>
         {routeArray}
         <Route path="*" element={routeElement} />
