@@ -742,24 +742,118 @@
 
 //! Lab4 - Pyramid variation
 
-import java.util.Scanner;
+// import java.util.Scanner;
 
-public class App {
-    public static void main(String args[]) {
-        Scanner input = new Scanner(System.in);
+// public class App {
+//     public static void main(String args[]) {
+//         Scanner input = new Scanner(System.in);
 
-        // Prompting the user to enter the number of lines
-        System.out.println("Enter an integer input (ranging from 2 to 9): ");
-        int enteredValue = input.nextInt();
-        input.close();
+//         // Prompting the user to enter the number of lines
+//         System.out.println("Enter an integer input (ranging from 2 to 9): ");
+//         int enteredValue = input.nextInt();
+//         input.close();
 
-        // OUTER LOOP: Starting at 0, it increments number of rows until it's at desired number of rows
-        for (int i = 0; i < enteredValue; i++) {
-            // INNER LOOP: sets j = entered value. Because it starts at row 0, you start the row with 6-0, then 6-1. It then increments to the original #
-            for (int j = enteredValue - i; j <= enteredValue; j++) {
-                System.out.print(j);
-            }
-            System.out.print('\n');
-        }
-    }
-}
+//         // OUTER LOOP: Starting at 0, it increments number of rows until it's at desired number of rows
+//         for (int i = 0; i < enteredValue; i++) {
+//             // INNER LOOP: sets j = entered value. Because it starts at row 0, you start the row with 6-0, then 6-1. It then increments to the original #
+//             for (int j = enteredValue - i; j <= enteredValue; j++) {
+//                 System.out.print(j);
+//             }
+//             System.out.print('\n');
+//         }
+//     }
+// }
+
+//! 9/20/23 - Personal notes
+
+//# Nested for loops have 3 main variables: input (could be a set limit for rows), i (outer loop - rows) and j (inner loop - values)
+
+//# Example 1:
+
+// public class App{
+//     public static void main (String args[]){
+//         int five = 5;
+
+//         for (int i = five; i >= 1; i--){
+//             // The inner loop's conditional sets j dependent on the row number instead of equal to the row number
+//             for (int j = five; j >= i; j--){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Output:
+// 5
+// 54
+// 543
+// 5432
+// 54321
+
+//# Example 2:
+// public class App{
+//     public static void main (String args[]){
+//         int five = 5;
+
+//         for (int i = 0; i < 5; i++){
+//             // The inner loop's conditional sets j dependent on the row number instead of equal to the row number
+//             for (int j = five - i; j <= five; j++){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Output:
+// 5
+// 45
+// 345
+// 2345
+// 12345
+
+//# Example 3:
+// public class App{
+//     public static void main (String args[]){
+//         int five = 5;
+
+//         for (int i = 1; i <= five; i++){
+//             // The difference between int j = 1 and int j = i is that the former will be iterated every time from 1-5. The latter is whatever the row number is, to 5.
+//             for (int j = i; j <= five; j++){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Output:
+// 12345
+// 2345
+// 345
+// 45
+// 5
+
+//# Example 4:
+// public class App{
+//     public static void main (String args[]){
+//         int five = 5;
+
+//         for (int i = 1; i <= five; i++){
+//             // The difference between int j = 1 and int j = i is that the former will be iterated every time from 1-5. The latter is whatever the row number is, to 5.
+//             for (int j = five; j >= i; j--){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
+
+// Because you now start at the top, 5 (in the inner loop), and go down to the row number, it is 5-5, then 5-4, then 5-3, etc.
+// Output:
+// 54321
+// 5432
+// 543
+// 54
+// 5
