@@ -606,7 +606,7 @@
 //             System.out.print("Please enter a number: ");
 //             inputted = input.nextInt();
 //             sum += inputted;
-//         } while (inputted != 0); // This is the sentinel condition
+//         } while (inputted != 0); // This is the sentinel condition. Also note the necessity of the ; at the end
 //         System.out.println(sum);
 //         input.close();
 //     }
@@ -618,20 +618,76 @@
 // public class App{
 //     public static void main (String args[]){
 //         int count; // This is how you can keep the count variable in the global scope
-//         for (count = 0; count < 100; ++count){ // Iterates 100 times. ++count is why it ends on 100 instead of 99
+//         for (count = 0; count < 100; ++count){ // Iterates 100 times. ++count is why it ends on 100 from inside the loop instead of 99
 //             System.out.println(count);
 //         }
 //         System.out.println("Your count is now " + count); // Note that the count was updated inside the loop and its value is updated in main method's scope
 //     }
 // }
 
-public class App{
-    public static void main (String args[]){
-        int sum = 0;
-        for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even #s only
-            sum += count;
-        }
-        System.out.println(sum);
-    }
-}
+// public class App{
+//     public static void main (String args[]){
+//         int sum = 0;
+//         for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even/odd #s only
+//             sum += count;
+//         }
+//         System.out.println(sum);
+//     }
+// }
 
+//! 9/20/23 - Lecture notes (Nested loops)
+
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Please enter a number: ");
+//         int numOfLines = input.nextInt();
+//         input.close();
+//         for (int row = 1; row <= numOfLines; row++){
+            
+//             for (int spaces = 0; spaces < numOfLines-row; spaces++){
+//                 System.out.print(' ');
+//             }
+
+//             for (int num = row; num > 0; num--){
+//                 System.out.print(num);
+//             }
+
+//             for (int endingNum = 2; endingNum <= row; endingNum++){
+//                 System.out.print(endingNum);
+//             }
+
+//             System.out.print('\n');
+//         }
+//     }
+// }
+
+// public class App{
+//     public static void main (String args[]){
+//         int numOfLines = 6;
+//         for (int row = 1; row <= numOfLines; row++){
+//             for (int num = 1; num <= row; num++){
+//                 System.out.print(num);
+//             }
+//             System.out.print('\n');
+//         }
+//     }
+// }
+
+
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String args []){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Please enter a number: ");
+//         int number = input.nextInt();
+//         input.close();
+//         for (int row = number; row > 0; row--){
+//             for (int num = 1; num <= row; num++){
+//                 System.out.print(num);
+//             }
+//         System.out.println();
+//         }
+//     }
+// }
