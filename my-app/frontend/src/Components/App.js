@@ -3,7 +3,7 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import "../App.css";
 import Login from "./Login";
 import Signup from "./Signup";
-import Home from "./Home";
+import KitchenDisplay from "./KitchenDisplay";
 import BlankPage from "./BlankPage";
 import TimePage from "./TimePage";
 import OrderPage from "./OrderPage";
@@ -44,9 +44,10 @@ function App() {
     if (isSignedIn === true && user.is_clocked_in === true){
       routeArray = [
         <Route path="/timeclock" element={<TimePage handleSignout={handleSignout}/>}/>,
-        <Route path="/" element={<Home toHomepage={toHomepage} isSignedIn={isSignedIn} user={user}/>}/>, 
-        <Route path="/home" element={<Home toHomepage={toHomepage} isSignedIn={isSignedIn} user={user}/>}/>,
-        <Route path="/orderpage" element={<OrderPage />} />
+        <Route path="/" element={<OrderPage/>}/>, 
+        <Route path="/home" element={<OrderPage toHomepage={toHomepage}/>}/>,
+        <Route path="/orderpage" element={<OrderPage toHomepage={toHomepage}/>} />,
+        <Route path="/kitchen" element={<KitchenDisplay toHomepage={toHomepage}/>} />
       ]
     // Routes that exist if the user is only signed in
     } else if (isSignedIn === true && user.is_clocked_in === false){
@@ -71,11 +72,11 @@ function App() {
   return (
     <div className="App">
       
-      <Context.Provider value={user}>
-      <Routes>
-      {routeArray}
-      <Route path="*" element={routeElement} />
-      </Routes>
+      <Context.Provider value={{user, toHomepage}}>
+       <Routes>
+        {routeArray}
+        <Route path="*" element={routeElement} />
+       </Routes>
       </Context.Provider>
       
     </div>
