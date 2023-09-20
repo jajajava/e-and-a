@@ -694,48 +694,72 @@
 
 //! HW4 - Factorial calculator
 
+// import java.util.Scanner;
+
+// public class App {
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+
+//         // Initialize this variable for the do-while loop encapsulating entire code
+//         boolean keepGoing = true;
+
+//         // The do-while allows for the code to ask the user whether they want to keep practicing after completion
+//         do {
+//         // Ask user whether they'd like to practice factorials
+//         System.out.print("Would you like to practice your factorials? (Answer 'true' or 'false'): ");
+//         // If the user chooses to continue, it lets you practice. If not, it changes the keepGoing value in the while loop, breaking the loop
+//         boolean choice = input.nextBoolean();
+//         if (choice == true){
+//             // Get practice problem from user
+//             System.out.print("Please enter a number to begin practicing: ");
+//             int enteredInt = input.nextInt();
+//             // Initialize solution this way (and now) so that it's accessible as enteredInt. Cannot be enteredInt itself because then the for loop gets messed up
+//             int trueSolutionInt = enteredInt;
+//             // Ask user for solution
+//             System.out.printf("What does %d! equal? ", enteredInt);
+//             int enteredSolutionInt = input.nextInt();
+//             for (int i = 1; i < enteredInt; i++){
+//                 trueSolutionInt = trueSolutionInt * i;
+//             }
+
+//             // If the user's solution is incorrect, it keeps looping until the solution is correct
+//             while (enteredSolutionInt != trueSolutionInt){
+//                 System.out.println("Try again!");
+//                 System.out.printf("What does %d! equal? ", enteredInt);
+//                 enteredSolutionInt = input.nextInt();
+//             }
+
+//             // The code will not get to this point until the answer is indeed correct
+//             System.out.println("Correct!");
+
+//         } else {
+//             keepGoing = false;
+//             System.out.println("Goodbye.");
+//         }} while (keepGoing);
+//         // This needs to be outside of the loop or it will not run again (because the initialization of Scanner is outside of the loop too)
+//         input.close();
+//     }}
+
+//! Lab4 - Pyramid variation
+
 import java.util.Scanner;
 
-public class HW4 {
-    public static void main (String args[]){
+public class App {
+    public static void main(String args[]) {
         Scanner input = new Scanner(System.in);
 
-        // Initialize this variable for the do-while loop encapsulating entire code
-        boolean keepGoing = true;
-
-        // The do-while allows for the code to ask the user whether they want to keep practicing after completion
-        do {
-        // Ask user whether they'd like to practice factorials
-        System.out.print("Would you like to practice your factorials? (Answer 'true' or 'false'): ");
-        // If the user chooses to continue, it lets you practice. If not, it changes the keepGoing value in the while loop, breaking the loop
-        boolean choice = input.nextBoolean();
-        if (choice == true){
-            // Get practice problem from user
-            System.out.print("Please enter a number to begin practicing: ");
-            int enteredInt = input.nextInt();
-            // Initialize solution this way (and now) so that it's accessible as enteredInt. Cannot be enteredInt itself because then the for loop gets messed up
-            int trueSolutionInt = enteredInt;
-            // Ask user for solution
-            System.out.printf("What does %d! equal? ", enteredInt);
-            int enteredSolutionInt = input.nextInt();
-            for (int i = 1; i < enteredInt; i++){
-                trueSolutionInt = trueSolutionInt * i;
-            }
-
-            // If the user's solution is incorrect, it keeps looping until the solution is correct
-            while (enteredSolutionInt != trueSolutionInt){
-                System.out.println("Try again!");
-                System.out.printf("What does %d! equal? ", enteredInt);
-                enteredSolutionInt = input.nextInt();
-            }
-
-            // The code will not get to this point until the answer is indeed correct
-            System.out.println("Correct!");
-
-        } else {
-            keepGoing = false;
-            System.out.println("Goodbye.");
-        }} while (keepGoing);
-        // This needs to be outside of the loop or it will not run again (because the initialization of Scanner is outside of the loop too)
+        // Prompting the user to enter the number of lines
+        System.out.println("Enter an integer input (ranging from 2 to 9): ");
+        int enteredValue = input.nextInt();
         input.close();
-    }}
+
+        // OUTER LOOP: Starting at 0, it increments number of rows until it's at desired number of rows
+        for (int i = 0; i < enteredValue; i++) {
+            // INNER LOOP: sets j = entered value. Because it starts at row 0, you start the row with 6-0, then 6-1. It then increments to the original #
+            for (int j = enteredValue - i; j <= enteredValue; j++) {
+                System.out.print(j);
+            }
+            System.out.print('\n');
+        }
+    }
+}
