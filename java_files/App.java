@@ -628,7 +628,7 @@
 // public class App{
 //     public static void main (String args[]){
 //         int sum = 0;
-//         for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even/odd #s only
+//         for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even #s only
 //             sum += count;
 //         }
 //         System.out.println(sum);

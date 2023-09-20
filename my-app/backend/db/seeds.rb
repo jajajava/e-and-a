@@ -3,10 +3,10 @@ User.create(name: "Kevin", pin: "0000", is_clocked_in: false, is_admin: true, ho
 puts "Finished generating users..."
 
 
-Food.create(name: "Fish Tacos", price: 17.00, description: "3x soft corn tortilla, roasted cod, chili lime slaw, mexican crema, avocado mousse, cilantro, pickled onions & fresno peppers", category: "entree")
-Food.create(name: "Salmon Burger", price: 18, description: "homemade salmon fillet patty contains: capers, dill, egg, peppers, breadcrumbs & lemon, topped with cucumber, tomato, lemon aioli & baby field greens, soft bun, side of kettle chips & mcclure's spicy pickle", category: "entree")
-Food.create(name: "Caesar Salad", price: 11, description: "mixed greens, parmesan, sourdough crouton, heirloom grape tomato, house cheddar", category: "appetizer")
-Food.create(name: "Sunset Sangria", price: 11, description: "chilled white wine, peach, fresh juices, fruits & berries", category: "beverage")
+Food.create(name: "Fish Tacos", price: 17.00, description: "3x soft corn tortilla, roasted cod, chili lime slaw, mexican crema, avocado mousse, cilantro, pickled onions & fresno peppers", category: "mains")
+Food.create(name: "Salmon Burger", price: 18, description: "homemade salmon fillet patty contains: capers, dill, egg, peppers, breadcrumbs & lemon, topped with cucumber, tomato, lemon aioli & baby field greens, soft bun, side of kettle chips & mcclure's spicy pickle", category: "mains")
+Food.create(name: "Caesar Salad", price: 11, description: "mixed greens, parmesan, sourdough crouton, heirloom grape tomato, house cheddar", category: "sides")
+Food.create(name: "Sunset Sangria", price: 11, description: "chilled white wine, peach, fresh juices, fruits & berries", category: "drinks")
 puts "Finished generating menu..."
 
 
