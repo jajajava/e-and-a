@@ -2,13 +2,14 @@ import React, { useContext, useState } from "react";
 import { Context } from "./App";
 import { useNavigate } from "react-router-dom";
 
+//! See if there's a way to update clockedIn without setting the state into App.js, so that hitting "home" would instantly take you to signed in homepage
 // This component is for the page where you clock in. It also handles the calculation logic to show how many hours the worker was clocked in
 function TimePage() {
   const {user, handleSignout} = useContext(Context); //This is called destructuring an object. Assigns a variable of the same name the corresponding data in the object
-  const navigate = useNavigate();
-  const [clockedIn, setClockedIn] = useState(user.is_clocked_in);
   const [timeIn, setTimeIn] = useState(user.time_in || 0); // Initialize timeIn based on user's time_in, or 0 if not available
   const [hours, setHours] = useState(user.hours_worked || 0); // Initialize hours from user data, or 0 if not available
+  const [clockedIn, setClockedIn] = useState(user.is_clocked_in); // This cannot be passed down because it causes bugs. Keep it in this file!
+  const navigate = useNavigate();
 
   function handleClocking(e) {
     e.preventDefault();
@@ -26,7 +27,6 @@ function TimePage() {
       const timeOut = date.toISOString();
       const elapsedTime = (Date.parse(timeOut) - Date.parse(timeIn)) / (1000 * 60 * 60);
       const updatedHours = parseFloat(hours) + elapsedTime; // Convert hours to a number here
-      console.log(updatedHours)
       variableBody = {
         time_in: null,
         is_clocked_in: false,

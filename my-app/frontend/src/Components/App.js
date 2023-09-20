@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import "../App.css";
 import Login from "./Login";
-import Signup from "./Signup";
 import KitchenDisplay from "./KitchenDisplay";
 import BlankPage from "./BlankPage";
 import TimePage from "./TimePage";
@@ -17,7 +16,7 @@ function App() {
   
   useEffect(()=> {
     const token = localStorage.getItem("jwt") 
-    token!== null? 
+    token !== null? 
     fetch("http://127.0.0.1:3001/me", {
       method: "GET",
       headers: {
@@ -68,7 +67,7 @@ function App() {
     }
     // Defines the path for * depending on user state
     let routeElement
-    if (isSignedIn && user.is_clocked_in === true) {
+    if (isSignedIn && user.is_clocked_in) {
       routeElement = <BlankPage/>;
     } else if (isSignedIn && user.is_clocked_in === false) {
       routeElement = <TimePage/>;
