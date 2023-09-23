@@ -80,6 +80,10 @@
     border-radius: 3px;
   }
 
+  .pinButton:hover{
+    cursor: pointer;
+  }
+
   #loginInput{
     width: 100px;
     size: 100px;
