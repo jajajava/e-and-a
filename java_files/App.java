@@ -904,27 +904,27 @@
 // 1
 
 //# This was the first nested loop shown in class. This time I made it myself
-public class App {
-    public static void main (String args[]){
-        int rows = 5;
-        for (int i = 1; i <= rows; i++){
-            // First nested loop: Blank spaces
-            for (int j = rows - i ; j > 0; j--){
-                System.out.print(" ");
-            }
-            // Second nested loop: numbers, descending
-            for (int k = i; k >= 1; k--){
-                System.out.print(k);
-            }
+// public class App {
+//     public static void main (String args[]){
+//         int rows = 5;
+//         for (int i = 1; i <= rows; i++){
+//             // First nested loop: Blank spaces
+//             for (int j = rows - i ; j > 0; j--){
+//                 System.out.print(" ");
+//             }
+//             // Second nested loop: numbers, descending
+//             for (int k = i; k >= 1; k--){
+//                 System.out.print(k);
+//             }
 
-            // Third nested loop: numbers, ascending (iterations - 1)
-            for (int l = 2; l <= i; l++ ){
-                System.out.print(l);
-            }
-            System.out.println();
-        }
-    }
-}
+//             // Third nested loop: numbers, ascending (iterations - 1)
+//             for (int l = 2; l <= i; l++ ){
+//                 System.out.print(l);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
 
 // Output:
 //     1
@@ -932,3 +932,68 @@ public class App {
 //   32123
 //  4321234
 // 543212345
+
+//! 9/25/23 - Lecture notes
+
+//# A method is a group of statements bundled together in order to be called later to perform an operation
+
+//# Syntax: 
+//# modifiers returnValueDataType methodName (parameters){
+//#     // method body;
+//# }
+
+//# If you have a value you want to return- say, int = 2+2- you MUST end the method with a return AND also declare the method's "returnValueDataType" as "int".
+//# If not, you don't need return, and your "returnValueDataType" is "void"
+
+//# You don't have to name the parameters "args", it can be anything you want.
+//# Example: public static int max(int num1, int num2){ // whatever body you want, but return value at the end}
+//# Note that you have to specify the data type of the parameters
+
+//# JAVA DOES NOT ALLOW METHOD NESTING, AND NO METHOD HOISTING
+//# Java always starts the execution at the main method. THEREFORE:
+//! ALWAYS PUT THE OTHER METHODS BEFORE MAIN METHOD
+
+//# Method signature: combination of the method name and parameters, like so- methodName(param1, param2)
+
+//# You can have a chain of method invocation. Let's say you have a method, max(num1,num2), that finds the max number out of 2 args.
+//# int m = max(max(1,2), 3) --> 3 
+//# First compares inner max's args, 1 and 2. That is set as arg1 of outer max(), and is compared to 3. 3>2.
+
+//# To invoke a static method that's in another class in the same directory:
+//# ClassName.methodName();
+//# If it's not in the same directory, you can import it somehow too
+
+//# BREAK/CONTINUE STATEMENTS (used in loops to alter flow of control):
+//# break: Causes immediate exit from the loop, no more iterations
+//# continue: stops the current iteration of the loop
+//# The following shows the difference between the two keywords
+
+//# CONTINUE:
+// public class App {
+//     public static void main (String[] args){
+//         for (int i = 1; i < 10; i++){
+//             if (i%2==0){
+//                 continue;
+//             }
+//             System.out.print(i + " ");
+//         }
+//     }
+// }
+
+// Output:
+// 1 3 5 7 9
+
+//# BREAK:
+// public class App {
+//     public static void main (String[] args){
+//         for (int i = 1; i < 10; i++){
+//             if (i%2==0){
+//                 break;
+//             }
+//             System.out.print(i + " ");
+//         }
+//     }
+// }
+
+// Output:
+// 1
