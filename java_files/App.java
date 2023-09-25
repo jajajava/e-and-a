@@ -860,27 +860,27 @@
 
 //! 9/24/23 - Personal notes
 
-public class App {
-    public static void main (String args[]){
-        int endRows = 10;
+// public class App {
+//     public static void main (String args[]){
+//         int endRows = 10;
 
-        // Increasing pattern
-        for (int i = 1; i <= endRows; i++){
-            for ( int j = 1; j <= i; j++){
-                System.out.print(j);
-            }
-            System.out.println();
-        }
+//         // Increasing pattern
+//         for (int i = 1; i <= endRows; i++){
+//             for ( int j = 1; j <= i; j++){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
 
-        // Decreasing pattern
-        for (int i = 1; i < endRows; i++ ){
-            for (int j = 1; j <= endRows - i; j++){
-                System.out.print(j);
-            }
-            System.out.println();
-        }
-    }
-}
+//         // Decreasing pattern
+//         for (int i = 1; i < endRows; i++ ){
+//             for (int j = 1; j <= endRows - i; j++){
+//                 System.out.print(j);
+//             }
+//             System.out.println();
+//         }
+//     }
+// }
 
 // Output:
 // 1
@@ -902,3 +902,33 @@ public class App {
 // 123
 // 12
 // 1
+
+//# This was the first nested loop shown in class. This time I made it myself
+public class App {
+    public static void main (String args[]){
+        int rows = 5;
+        for (int i = 1; i <= rows; i++){
+            // First nested loop: Blank spaces
+            for (int j = rows - i ; j > 0; j--){
+                System.out.print(" ");
+            }
+            // Second nested loop: numbers, descending
+            for (int k = i; k >= 1; k--){
+                System.out.print(k);
+            }
+
+            // Third nested loop: numbers, ascending (iterations - 1)
+            for (int l = 2; l <= i; l++ ){
+                System.out.print(l);
+            }
+            System.out.println();
+        }
+    }
+}
+
+// Output:
+//     1
+//    212
+//   32123
+//  4321234
+// 543212345
