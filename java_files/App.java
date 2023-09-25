@@ -857,3 +857,48 @@
 // 543
 // 54
 // 5
+
+//! 9/24/23 - Personal notes
+
+public class App {
+    public static void main (String args[]){
+        int endRows = 10;
+
+        // Increasing pattern
+        for (int i = 1; i <= endRows; i++){
+            for ( int j = 1; j <= i; j++){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+
+        // Decreasing pattern
+        for (int i = 1; i < endRows; i++ ){
+            for (int j = 1; j <= endRows - i; j++){
+                System.out.print(j);
+            }
+            System.out.println();
+        }
+    }
+}
+
+// Output:
+// 1
+// 12
+// 123
+// 1234
+// 12345
+// 123456
+// 1234567
+// 12345678
+// 123456789
+// 12345678910
+// 123456789
+// 12345678
+// 1234567
+// 123456
+// 12345
+// 1234
+// 123
+// 12
+// 1
