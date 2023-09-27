@@ -1069,7 +1069,7 @@
 
 //! Lab5 - Overloading methods
 
-// public class App {
+// public class Lab5 {
 //     //Main method declares/initializes variables, calls methods, and displays output
 //     public static void main (String[] args) {
 //         int a = 4, b = -9, c = 7, d = 10;
