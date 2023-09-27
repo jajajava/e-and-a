@@ -1067,3 +1067,49 @@
 // 	}	
 // }
 
+//! Lab5 - Overloading methods
+
+// public class Lab5 {
+//     //Main method declares/initializes variables, calls methods, and displays output
+//     public static void main (String[] args) {
+//         int a = 4, b = -9, c = 7, d = 10;
+//         int larger = max(a,b);
+//         System.out.println("The larger of a and b is " + larger);
+//         int largestOfThree = max(a,b,c);
+//         System.out.println("The largest of a, b, and c is " + largestOfThree);
+//         int largestOfFour = max(a,b,c,d);
+//         System.out.println("The largest of a, b, c and d is " + largestOfFour);
+//     }
+//     // First "max" method: checks greatest number out of 2 inputs
+//     public static int max (int num1, int num2){
+//         if (num1 > num2){
+//             return num1;
+//         } else {
+//             return num2;
+//         }
+//     }
+
+//     // Second "max" method: checks greatest number out of 3 inputs
+//     public static int max (int num1, int num2, int num3){
+//         if (num1 > num2 && num1 > num3){
+//             return num1;
+//         } else if (num2 > num1 && num2 > num3){
+//             return num2;
+//         } else {
+//             return num3;
+//         }
+//     }
+
+//     // Third "max" method: checks greatest number out of 4 inputs
+//     public static int max (int num1, int num2, int num3, int num4){
+//         if (num1 > num2 && num1 > num3 && num1 > num4){
+//             return num1;
+//         } else if (num2 > num1 && num2 > num3 && num2 > num4){
+//             return num2;
+//         } else if (num3 > num1 && num3 > num2 && num3 > num4){
+//             return num3;
+//         } else {
+//             return num4;
+//         }
+//     }
+// }
