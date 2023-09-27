@@ -1069,8 +1069,7 @@
 
 //! Lab5 - Overloading methods
 
-// // Change to Lab5 and redo file for upload
-// public class Lab5 {
+// public class App {
 //     //Main method declares/initializes variables, calls methods, and displays output
 //     public static void main (String[] args) {
 //         int a = 4, b = -9, c = 7, d = 10;
@@ -1103,8 +1102,8 @@
 //     public static int max (int num1, int num2, int num3, int num4){
 //         if (num4 > max(max(num1, num2), num3)){
 //             return num4;
-//     } else {
-//         return max(max(num1, num2), num3);
+//         } else {
+//             return max(max(num1, num2), num3);
+//         }
 //     }
-// }
 // }
