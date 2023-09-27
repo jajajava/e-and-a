@@ -1021,3 +1021,49 @@
 //# Math.random() * 50 --> [0.0, 50.0)            // Raises range's max
 //# (int)(Math.random() * 50) --> [0, 49]         // Rounds max down to 49 since it's no longer a double
 //# 50 + (int)(Math.random() * 50) --> [50, 99]   // Adds 50 to both ends of the range
+
+//! HW5 - Creating the mean and deviation methods
+
+// public class HW5 {
+// 	/** Main method */
+// 	public static void main(String[] args) {
+//  		// Get mean
+// 		double meanValue = mean(99, 1000);
+//  		// Get deviation
+// 		double deviationValue = deviation(99, 1000);
+//  		// Display result
+// 		System.out.println("The mean is " + meanValue);
+// 		System.out.println("The standard deviation is " + deviationValue);
+// 	}
+
+	// public static double mean (int boundary, int n) {
+// 		double sum = 0;
+// 		// For loop gets a random number and adds it to the sum
+// 		for (int i = 0; i < n; i++){
+// 		sum += (int)(Math.random()*(boundary + 1));
+// 		}
+// 		return sum/n;
+// 	}	
+
+// 	public static double deviation (int boundary, int n) {
+// 		double num = 0; // Store a random number
+// 		double sumSquared = 0; // Store the sum of the squares
+// 		double sum = 0; // Store the sum of the numbers
+
+// 		// Create numbers, find its sum, and its square sum
+// 		for (int i = 0; i < n; i++) {
+// 			// Generate a new random number
+// 			num = (int)(Math.random() * (boundary + 1));
+// 			// Add the number to sum
+// 			sum += num;
+// 			// Add the square of the number to squareSum
+// 			sumSquared += Math.pow(num, 2);
+// 		}
+// 		// Find standard deviation
+// 		double temp = (sumSquared - ((sum*sum))/n)/(n-1);
+// 		return Math.sqrt(temp);
+
+	
+// 	}	
+// }
+
