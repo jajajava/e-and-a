@@ -950,8 +950,7 @@
 //# Note that you have to specify the data type of the parameters
 
 //# JAVA DOES NOT ALLOW METHOD NESTING, AND NO METHOD HOISTING
-//# Java always starts the execution at the main method. THEREFORE:
-//! ALWAYS PUT THE OTHER METHODS BEFORE MAIN METHOD
+//# However, it only runs from the main method, it doesn't need to have the methods in a particular order
 
 //# Method signature: combination of the method name and parameters, like so- methodName(param1, param2)
 
@@ -997,3 +996,28 @@
 
 // Output:
 // 1
+
+//! 9/27/23 - Lecture notes
+
+//# Overloading methods in Java:
+//# You can have several methods w/ the same name. To do so, your params must be different- either a *different number of params* or a *different param type*. EX:
+// max(int num1, int num2) --> 2 ints in params
+// max(int num1) --> 1 int in params
+// max(boolean yesOrNo) --> 1 boolean in params
+
+//# When is this useful? If you want to let the user have a wider range of inputs. Here's a practical example:
+//# System.out.println("Hello"); --> prints string
+//# System.out.println(1+2); --> prints int
+//# System.out.println(); --> prints just the linebreak
+
+//# Ambiguous invocation: If there are 2+ methods that are possible matches for the invocation of the method, the compiler will throw an error
+
+//# Local variable: a variable defined inside a method
+//# Scope: part of the program where the variable can be referenced. 
+//# The scope of a local variable starts at its declaration, to the end of the block that contains it.
+
+//# Some Math.random notes:
+//# Math.random(); --> [0.0, 1.0)                 // Includes double 0.0, excludes double 1.0
+//# Math.random() * 50 --> [0.0, 50.0)            // Raises range's max
+//# (int)(Math.random() * 50) --> [0, 49]         // Rounds max down to 49 since it's no longer a double
+//# 50 + (int)(Math.random() * 50) --> [50, 99]   // Adds 50 to both ends of the range
