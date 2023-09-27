@@ -1069,6 +1069,7 @@
 
 //! Lab5 - Overloading methods
 
+// // Change to Lab5 and redo file for upload
 // public class Lab5 {
 //     //Main method declares/initializes variables, calls methods, and displays output
 //     public static void main (String[] args) {
@@ -1091,25 +1092,19 @@
 
 //     // Second "max" method: checks greatest number out of 3 inputs
 //     public static int max (int num1, int num2, int num3){
-//         if (num1 > num2 && num1 > num3){
-//             return num1;
-//         } else if (num2 > num1 && num2 > num3){
-//             return num2;
-//         } else {
+//         if (num3 > max(num1, num2)){
 //             return num3;
+//         } else {
+//             return max(num1, num2);
 //         }
 //     }
 
 //     // Third "max" method: checks greatest number out of 4 inputs
 //     public static int max (int num1, int num2, int num3, int num4){
-//         if (num1 > num2 && num1 > num3 && num1 > num4){
-//             return num1;
-//         } else if (num2 > num1 && num2 > num3 && num2 > num4){
-//             return num2;
-//         } else if (num3 > num1 && num3 > num2 && num3 > num4){
-//             return num3;
-//         } else {
+//         if (num4 > max(max(num1, num2), num3)){
 //             return num4;
-//         }
+//     } else {
+//         return max(max(num1, num2), num3);
 //     }
+// }
 // }
