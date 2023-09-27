@@ -12,9 +12,10 @@ function OrderPage({toHomepage}){
     const [selectedSubCategory2Array, setSelectedSubCategory2Array] = useState([])
     const [orderArray, setOrderArray] = useState([])
 
-    // <button className="orderSubCategory"></button>
+    //! orderArray to be used as JSON body for POST call. 
+    //! You should put all the arrays like "tempArray" (all menu organizing arrays) into a separate file and import it
 
-    useEffect(()=> { //! Add onClick to all buttons that adds it to the array that is the order- json body for POST call
+    useEffect(()=> {
         let tempArray = []
         if (selectedSubCategory2 === "soft drinks"){
             tempArray = [

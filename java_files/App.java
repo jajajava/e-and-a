@@ -872,7 +872,7 @@
 //             System.out.println();
 //         }
 
-//         // Decreasing pattern
+//         // Decreasing pattern (note the < operator instead of the <=)
 //         for (int i = 1; i < endRows; i++ ){
 //             for (int j = 1; j <= endRows - i; j++){
 //                 System.out.print(j);
