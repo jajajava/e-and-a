@@ -1110,7 +1110,8 @@
 
 //! 10/2/23 - Lecture notes
 
-//# The "stack" is a memory space. It is initially empty. When a local variable is declared, it gets added to the top of the stack.
+//# The "stack" is a memory storage within a computer's RAM. 
+//# It is initially empty. When a local variable is declared, it gets added to the top of the stack.
 //# If an int is added to a stack, the stack allocates 4 bytes for that variable. The stack stores main method variables first.
 //# Note that passing params and getting the result requires separate memory allocation. Example:
 
