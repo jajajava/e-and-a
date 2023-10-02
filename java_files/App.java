@@ -1100,10 +1100,27 @@
 
 //     // Third "max" method: checks greatest number out of 4 inputs
 //     public static int max (int num1, int num2, int num3, int num4){
-//         if (num4 > max(max(num1, num2), num3)){
+//         if ( max(num1, num2) < max(num3, num4)){
 //             return num4;
 //         } else {
 //             return max(max(num1, num2), num3);
 //         }
 //     }
 // }
+
+//! 10/2/23 - Lecture notes
+
+//# The "stack" is a memory space. It is initially empty. When a local variable is declared, it gets added to the top of the stack.
+//# If an int is added to a stack, the stack allocates 4 bytes for that variable. The stack stores main method variables first.
+//# Note that passing params and getting the result requires separate memory allocation. Example:
+
+// 6. int result;                         //# The result is obtained, and when it's assigned to int k,
+// 5. int num2 = 2                        //# the stack gets rid of the max method and its local variables
+// 4. int num1 = 5                        //# to clear up memory space
+// // Max method called         -->      
+// 3. int k;                               3. int k = {result}
+// 2. int j = 2                            2. int j = 2
+// 1. int i = 5                            1. int i = 5
+// // Main method called
+
+
