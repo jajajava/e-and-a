@@ -1,3 +1,6 @@
+//! CSCI 1301 - Programming Principles 1, Fall 2023
+
+
 //! 8/15/23 - First program (following tutorial provided in class)
 
 // public class App {
@@ -1124,4 +1127,58 @@
 // 1. int i = 5                            1. int i = 5
 // // Main method called
 
+//! 10/4/23 - Lecture notes
 
+//# OBJECT ORIENTED PROGRAMMING (OOP)
+
+//# An object represents an entity in the real world that can be distinctly identified.
+//# The state of an object consists of a set of DATA FIELDS (also known as properties) with their current values
+//# The behavior of an object is defined by a set of methods.
+
+//# Objects of the same type are defined using a common CLASS
+//# A class is a template that defines an object's data and methods. An object is an INSTANCE of a class.
+//# Creating an instance is referred to as INSTANTIATION.
+
+//# DATA FIELD: A variable defined in the class, outside of all methods. Class variables can be accessed in any method.
+
+//# Constructors: A special kind of method that is invoked to construct objects.
+//# RULES FOR CONSTRUCTORS:
+//# 1. Constructors must have the same name as the class itself.
+//# 2. Constructors do not have a return type, not even void (do not write the keyword)
+//# 3. Constructors are invoked using the "new" keyword when an object is created. Constructors initialize objects.
+
+//# Constructors are generally overloaded. You can pass no arguments, or you can pass an argument. EX:
+
+// class App {
+//     public static void main (String[] args){
+//         // Declaring an object/instance: ConstructorClass variableName = new ConstructorMethod(params). ConstructorMethod and ConstructorClass always the same
+//         Circle myCircle = new Circle(10);
+//         System.out.print("The circle's radius is " + myCircle.radius + " and the circle's area is " + myCircle.getArea());
+//     }
+// }
+
+// class Circle {
+//     double radius = 1.0;
+
+//     // When the constructor is called without a parameter, it creates the Circle without special params, and uses the data fields given (in this case, radius = 1)
+//     // If you create a class without constructors, it's automatically given the no-arg constructor, the "default constructor". Has empty method body
+//     Circle(){}
+
+//     // To construct an object with parameters, create the constructor
+//     // If you have a constructor like this, you MUST pass a double as an argument or it will say "The constructor Circle() does not exist" (no default constructor)
+//     Circle(double r){
+//         radius = r;
+//     }
+
+//     // METHODS OF THE CLASS
+//     double getArea(){
+//         return radius * radius * Math.PI;
+//     }
+
+// }
+
+//# Multiple classes can go into one file, but only one should be "public", and it must have the same name as the file.
+//# The dot operator, ".", aka the object member access operator, allows you to reference an object's data or to invoke the object's methods
+
+//# If you call a constructor and there is an uninitialized data field in the class, a default value is given to that data field.
+//# Null for a reference type, 0 for a numeric type, false for a boolean type, '\u0000' for a char type.
