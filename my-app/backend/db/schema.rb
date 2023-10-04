@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_001634) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_04_011405) do
   create_table "foods", force: :cascade do |t|
     t.string "name"
     t.float "price"
@@ -18,6 +18,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_001634) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_alc"
+    t.string "subcategory2"
   end
 
   create_table "order_items", force: :cascade do |t|
