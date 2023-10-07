@@ -12,9 +12,12 @@ function OrderPage({toHomepage}){
     const [selectedSubCategory2Array, setSelectedSubCategory2Array] = useState([])
     const [orderArray, setOrderArray] = useState([])
 
+
     //! orderArray to be used as JSON body for POST call. 
     //! You should put all the arrays like "tempArray" (all menu organizing arrays) into a separate file and import it
 
+
+    //! MAKE THE USE EFFECT FETCH DATA FROM BACKEND, THEN DO .MAP() TO CREATE THE FOLLOWING BUTTONS FOR EACH CATEGORY
     useEffect(()=> {
         let tempArray = []
         if (selectedSubCategory2 === "soft drinks"){
@@ -74,9 +77,7 @@ function OrderPage({toHomepage}){
                                     <button className="orderSubCategory">Beers</button>
                                     <button className="orderSubCategory">Wines</button>
                                     <button className="orderSubCategory">Cocktails</button>
-                                    <button className="orderSubCategory">Liquors</button>
-                                    {/* Make happy hour access certain alcoholic drinks at a reduced price! */}
-                                    <button className="orderSubCategory">Happy Hour</button>
+                                    <button className="orderSubCategory">Spirits</button>
                                 </div>
                             }
                         </div>}
