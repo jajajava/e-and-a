@@ -1,3 +1,4 @@
 # Java class files will now be ignored
 **/*.class
 .vscode
+java_files/CostcoCalculation.java
