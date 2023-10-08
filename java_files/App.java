@@ -1131,14 +1131,14 @@
 //# OBJECT ORIENTED PROGRAMMING (OOP)
 
 //# An object represents an entity in the real world that can be distinctly identified.
-//# The state of an object consists of a set of DATA FIELDS (also known as properties) with their current values
+//# The state of an object consists of a set of DATA FIELDS (also known as properties / instance variables) with their current values
 //# The behavior of an object is defined by a set of methods.
 
 //# Objects of the same type are defined using a common CLASS
 //# A class is a template that defines an object's data and methods. An object is an INSTANCE of a class.
 //# Creating an instance is referred to as INSTANTIATION.
 
-//# DATA FIELD: A variable defined in the class, outside of all methods. Class variables can be accessed in any method.
+//# DATA FIELD: A variable defined in the class, outside of all methods. Class variables can be accessed in any method. MORE ON THIS 10/8/23
 
 //# Constructors: A special kind of method that is invoked to construct objects.
 //# RULES FOR CONSTRUCTORS:
@@ -1202,3 +1202,73 @@
 //         System.out.print("How dare you");
 //     }
 // }
+
+//! 10/8/23 - Personal notes
+
+//# Data fields are also known as instance variables. 
+//# Each object created from a class has its own set of instance variables. These variables store data that is unique to that particular object.
+//# Instance variables can have a default value, or they can be declared without initialization- this will give them default values.
+//# The value is accessed by creating a "GETTER" method inside the class. 
+//# The "SETTER" method is what updates it; usually given only to authenticated admins.
+
+//! IMPORTANT NOTE ON OBJECT ORIENTED PROGRAMMING (OOP)-
+//# There are several types of classes. The two I'll write about now are "blueprint" classes, and "application" classes (idk their correct names).
+//# Blueprint classes are classes used as skeletons/blueprints, to allow the user to build instances with them.
+//# Application classes (like what you are used to using in class) serve as entry points for the program, and manage the overall flow of the program.
+
+//# INSTANCE METHODS VS CLASS METHODS:
+//# Instance methods are called on objects, and they operate on the state of those objects. (declared without "static" keyword)
+//# Class methods are called on the class itself and typically perform tasks that are independent of any specific instance. (declared with "static")
+
+//# HOW TO CREATE DATA FIELDS, GETTERS, SETTERS, AND CONSTRUCTORS:
+
+//# The "Application" class that provides the general flow of the program
+//# NOTE that if you have more than one class in a file, only ONE can have the public keyword, and its name must match the file's name
+// public class App {
+//     public static void main(String[] args){
+//         // You create the Person: Class customObjectName = new Constructor(parameters)
+//         Person david = new Person("David", 21);
+//         // Uses instance method to update the value of the "age" instance variable
+//         david.setAge(22);
+//         System.out.print(david.getAge()); // OUTPUTS 22 BECAUSE OF PREVIOUS LINE
+//     }
+// }
+
+//# The "Blueprint" class that allows you to build a Person instance anywhere you want
+// class Person {
+//     // Instance variables/ data fields: They are private as a form of encapsulation, an important concept in OOP.
+//     // By making these variables private, you hide their implementation details from external classes, preventing unexpected bugs or unauthorized access.
+//     // If another class wants to interact with these variables, it would have to do so through public methods like getName and setAge, which provide controlled access to the data.
+//     private String name;
+//     private int age;
+
+//     // Constructor; USES "THIS", which references the instance variables IN THAT CLASS
+//     // Allows you to initialize the instance variables for that instance.
+//     public Person(String name, int age) {
+//         this.name = name;
+//         this.age = age;
+//     }
+
+//     // Method that allows you to get the name
+//     public String getName() {
+//         return name;
+//     }
+
+//     // Method that allows you to get the age
+//     public int getAge(){
+//         return age;
+//     }
+
+//     // Method that allows you to SET the age
+//     public void setAge(int age) {
+//         // Updates the "age" property of "this" (The INSTANCE of the Person class, in this case david), setting it to the age argument you pass
+//         this.age = age;
+//     }
+// }
+
+//# By allowing only a certain way (setters) to update the values, you are also creating a way to control who gets to update it.
+//# Without the setter method, you'd be able to do person.name = "John" and it would change the value.
+//# By making that instance variable private, you allow the regulation of WHO is authorized to use the setter method to update that value!
+
+
+
