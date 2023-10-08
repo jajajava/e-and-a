@@ -648,7 +648,6 @@
 //         int numOfLines = input.nextInt();
 //         input.close();
 //         for (int row = 1; row <= numOfLines; row++){
-            
 //             for (int spaces = 0; spaces < numOfLines-row; spaces++){
 //                 System.out.print(' ');
 //             }
@@ -1182,3 +1181,24 @@
 
 //# If you call a constructor and there is an uninitialized data field in the class, a default value is given to that data field.
 //# Null for a reference type, 0 for a numeric type, false for a boolean type, '\u0000' for a char type.
+
+//! 10/7/23 - Personal notes
+
+//# .equals() method is used for strings. In Java, you cannot directly write string == "stringOfChoice".
+//# When you do that, that compares the reference to its place in the memory, not the contents of the string.
+//# .equals() compares strings, and .equalsIgnoresCase() compares the string without case sensitivity.
+//# In the following program, it is used to set "next" as the sentinel value for that loop
+// import java.util.Scanner;
+// public class App {
+//     public static void main (String[] args){
+//         Scanner input = new Scanner(System.in);
+//         System.out.print("Enter input: ");
+//         String s = input.next();
+//         while (!s.equalsIgnoreCase("next")){
+//             System.out.println("That's fine");
+//             System.out.print("Enter input: ");
+//             s = input.next();
+//         }
+//         System.out.print("How dare you");
+//     }
+// }
