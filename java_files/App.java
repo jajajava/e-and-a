@@ -1270,5 +1270,109 @@
 //# Without the setter method, you'd be able to do person.name = "John" and it would change the value.
 //# By making that instance variable private, you allow the regulation of WHO is authorized to use the setter method to update that value!
 
+//! 10/9/23 - Lecture notes
+
+//# UML Diagrams (unified modeling language) - standard way of mapping out program, to show you:
+
+//   +--------------------------------------------------+
+//   |                    Rectangle                     |   <-- Class name
+//   +--------------------------------------------------+
+//   | width: double                                    |   <-- Data field names and types
+//   | height: double                                   |
+//   +--------------------------------------------------+
+//   | Rectangle()                                      | 
+//   | Rectangle(newWidth: double, newHeight: double )  |   <-- Constructors with parameters and param types
+//   | getArea(): double                                |   <-- Methods with params and param types
+//   +--------------------------------------------------+
+
+//# Data Fields -> dataFieldName: dataFieldType
+//# Constructors -> ClassName(paramName: paramType)   <- Params separated with commas
+//# Methods -> methodName(paramName: paramType)
 
 
+// public class App {
+//     public static void main (String[] args){
+//         Rectangle r = new Rectangle(5, 5);
+//         Rectangle r2 = new Rectangle();
+//         System.out.println("Area is " + r.getArea() + " and the perimeter is " + r.getPerimeter());
+//         System.out.println("Area is " + r2.getArea() + " and the perimeter is " + r2.getPerimeter());
+//     }
+// }
+
+// class Rectangle {
+//     double width = 1.0;
+//     double height = 1.0;
+
+//     // CONSTRUCTORS
+//     Rectangle(){}
+
+//     Rectangle(double width, double height){
+//         this.width = width;
+//         this.height = height;
+//     }
+
+//     // INSTANCE METHODS
+//     double getArea(){
+//         return width * height;
+//     }
+
+//     double getPerimeter(){
+//         return (2*(width) + 2*(height));
+//     }
+// }
+
+//# Alternatively, and preferably, you can make each class a separate file in the same directory/package,
+//# That way you'd be able to access it from your other class and keep the program organized neatly.
+
+//! STATIC KEYWORD
+//# What is the "static" keyword? You see it in public static void main(), but didn't know why you need it.
+//# Static members (static methods and variables) are associated with the class itself, NOT the instances of the class
+//# This also means that STATIC MEMBERS ARE SHARED BETWEEN ALL OBJECTS OF A CLASS
+
+//# Math.pow() is a static method. Math is the class, but you don't create a Math instance to use it.
+//# .pow() isn't tied to an instance of Math, it's not an instance method
+
+//# Here's one use of a static method:
+
+// public class App {
+//     public static void main (String [] args){
+//         System.out.println("Your number of circles is: " + Circle.getNumberOfCircles()); // At the start, 0 circles were made
+//         Circle c1 = new Circle(); // A new circle instance is made, constructor is called; numberOfCircles = 1
+//         System.out.println("Your number of circles is: " + Circle.getNumberOfCircles()); // 1 circle
+//         Circle c2 = new Circle(5); // A new circle instance is made, constructor is called; numberOfCircles = 2
+
+//         // You can see that the number of circles is not affected by the instances- different values given for instances
+//         System.out.println("Your number of circles is: " + Circle.getNumberOfCircles()); // 2 circles
+//         System.out.println("Your c1 area is: " + c1.getArea() + "\nYour c2 area is: " + c2.getArea()); // Different area values
+//     }
+// }
+
+// class Circle {
+//     // DATA FIELDS
+//     int radius = 1;
+
+//     // STATIC VARIABLE- ONLY AFFECTS CIRCLE CLASS AS A WHOLE
+//     static int numberOfCircles = 0;
+
+//     // CONSTRUCTORS
+//     Circle(){
+//         // This increments the class variable when the constructor is called
+//         numberOfCircles++;
+//     }
+
+//     Circle(int radius){
+//         this.radius = radius;
+//         // This increments the class variable when the constructor is called
+//         numberOfCircles++;
+//     }
+
+//     // METHODS
+//     double getArea(){
+//         return (Math.PI * Math.pow(radius, 2));
+//     }
+
+//     // STATIC METHOD- CAN TELL YOU INFO ABOUT THE CIRCLE CLASS, BUT NOT ITS INSTANCES
+//     static int getNumberOfCircles(){
+//         return numberOfCircles;
+//     }
+// }
