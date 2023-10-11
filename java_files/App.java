@@ -1,6 +1,3 @@
-//! CSCI 1301 - Programming Principles 1, Fall 2023
-
-
 //! 8/15/23 - First program (following tutorial provided in class)
 
 // public class App {
@@ -817,7 +814,7 @@
 
 //# Example 3:
 // public class App{
-//     public static void main (String args[]){
+    // public static void main (String args[]){
 //         int five = 5;
 
 //         for (int i = 1; i <= five; i++){
@@ -1392,3 +1389,69 @@
 //# Setter/mutator - A method to update the value. Normally has NO return value
 
 //# Anyone trying to modify a private variable from another class would need to use a getter/setter method.
+
+//! HW6 - Cylinder (visibility modifiers, static methods, multiple classes)
+
+// public class Cylinder {
+//     // DATA FIELDS:
+//     private double radius;
+//     private double length;
+//     public static int numberOfObjects;
+
+//     // CONSTRUCTORS
+//     public Cylinder(){
+//         radius = 1.0;
+//         length = 1.0;
+//         numberOfObjects++;
+//     }
+
+//     public Cylinder(double radius, double length){
+//         this.radius = radius;
+//         this.length = length;
+//         numberOfObjects++;
+//     }
+
+//     // METHODS
+//     public double getRadius(){
+//         return radius;
+//     }
+
+//     public void setRadius(double radius){
+//         this.radius = radius;
+//     }
+
+//     public double getLength(){
+//         return length;
+//     }
+
+//     public void setLength(double length){
+//         this.length = length;
+//     }
+
+//     public double getArea(){
+//         return (Math.PI * Math.pow(radius, 2));
+//     }
+
+//     public double getVolume(){
+//         double area = getArea();
+//         return (length * area);
+//     }
+
+//     public static int getNumberOfObjects(){
+//         return numberOfObjects;
+//     }
+// }
+
+// public class CylinderTest {
+//     public static void main (String[] args){
+//         Cylinder cylinder1 = new Cylinder();
+//         Cylinder cylinder2 = new Cylinder(2.5, 12.3);
+//         Cylinder cylinder3 = new Cylinder();
+//         cylinder3.setRadius(5.0);
+//         cylinder3.setLength(6.5);
+//         System.out.println("The radius of the first cylinder is: " + cylinder1.getRadius() + " and the length is: " + cylinder1.getLength());
+//         System.out.println("The base area of the second cylinder is: " + cylinder2.getArea());
+//         System.out.println("The volume of the third cylinder is: " + cylinder3.getVolume());
+//         System.out.println("The amount of objects created is: " + Cylinder.getNumberOfObjects());
+//     }
+// }
