@@ -1455,3 +1455,74 @@
 //         System.out.println("The amount of objects created is: " + Cylinder.getNumberOfObjects());
 //     }
 // }
+
+//! Lab 6 - Rectangle calculations
+
+// public class Rectangle {
+//     // DATA FIELDS
+//     private double width;
+//     private double height;
+
+//     // CONSTRUCTORS
+//     public Rectangle(){
+//         width = 1.0;
+//         height = 1.0;
+//     }
+
+//     public Rectangle(double width, double height){
+//         this.width = width;
+//         this.height = height;
+//     }
+
+//     // METHODS
+//     public double getWidth(){
+//         return width;
+//     }
+
+//     public double getHeight(){
+//         return height;
+//     }
+
+//     public void setWidth(double width){
+//         this.width = width;
+//     }
+
+//     public void setHeight(double height){
+//         this.height = height;
+//     }
+
+//     public double getArea(){
+//         double area = width * height;
+//         return area;
+//     }
+
+//     public double getPerimeter(){
+//         double perimeter = (2*(width) + 2*(height));
+//         return perimeter;
+//     }
+
+// }
+
+// public class RectangleTest {
+//     public static void main (String[] args){
+//         // Instantiating the rectangle
+//         Rectangle rectangle = new Rectangle(4.0, 40.0);
+
+//         // Outputting the initial dimensions of the rectangle object
+//         System.out.println("The width before is " + rectangle.getWidth());
+//         System.out.println("The height before is " + rectangle.getHeight());
+
+//         // Changing the dimensions using setter methods
+//         rectangle.setWidth(5.0);
+//         rectangle.setHeight(50.0);
+
+//         // Outputting the updated dimensions of the rectangle object
+//         System.out.println("The width after is " + rectangle.getWidth());
+//         System.out.println("The height after is " + rectangle.getHeight());
+
+//         // Get the area and perimeter of the updated rectangle object
+//         System.out.println("The area is " + rectangle.getArea());
+//         System.out.println("The perimeter is " + rectangle.getPerimeter());
+//     }
+// }
+
