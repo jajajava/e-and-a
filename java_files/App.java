@@ -1212,7 +1212,7 @@
 //# The "SETTER" method is what updates it; usually given only to authenticated admins.
 
 //! IMPORTANT NOTE ON OBJECT ORIENTED PROGRAMMING (OOP)-
-//# There are several types of classes. The two I'll write about now are "blueprint" classes, and "application" classes (idk their correct names).
+//# There are several types of classes. The two I'll write about now are "blueprint/definition" classes, and "application" classes (idk their correct names).
 //# Blueprint classes are classes used as skeletons/blueprints, to allow the user to build instances with them.
 //# Application classes (like what you are used to using in class) serve as entry points for the program, and manage the overall flow of the program.
 
@@ -1284,6 +1284,9 @@
 //   | Rectangle(newWidth: double, newHeight: double )  |   <-- Constructors with parameters and param types
 //   | getArea(): double                                |   <-- Methods with params and param types
 //   +--------------------------------------------------+
+
+//! NOTE:
+//# In UML diagrams, + means the member is public, - means the member is private, and nothing means it is default.
 
 //# Data Fields -> dataFieldName: dataFieldType
 //# Constructors -> ClassName(paramName: paramType)   <- Params separated with commas
@@ -1376,3 +1379,16 @@
 //         return numberOfCircles;
 //     }
 // }
+
+//! 10/11/23 - Lecture notes
+
+//# VISIBILITY MODIFIERS:
+//# Public - This keyword makes the class, variable, or method accessible by ANY class in ANY package.
+//# Private - This keyword makes the class, variable, or method accessible only by its own class.
+//# By default, without any visibility modifier, your class/variable/method would be accessible within the package but not outside of it
+
+//# IF YOUR VARIABLE/DATA FIELD IS PRIVATE, YOU CAN USE GETTERS OR SETTERS TO USE THAT VALUE
+//# Getter/accessor - A method to get the value. Normally has a return value
+//# Setter/mutator - A method to update the value. Normally has NO return value
+
+//# Anyone trying to modify a private variable from another class would need to use a getter/setter method.
