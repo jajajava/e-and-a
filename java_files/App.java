@@ -1525,4 +1525,3 @@
 //         System.out.println("The perimeter is " + rectangle.getPerimeter());
 //     }
 // }
-
