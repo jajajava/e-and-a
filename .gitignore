@@ -2,4 +2,5 @@
 **/*.class
 .vscode
 java_files/CostcoCalculation.java
+# Delete this once you're done with the class + java file and are no longer using it
 java_files/Circle2.java
