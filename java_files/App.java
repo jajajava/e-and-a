@@ -1525,3 +1525,60 @@
 //         System.out.println("The perimeter is " + rectangle.getPerimeter());
 //     }
 // }
+
+//! 10/16/23 - Lecure notes
+
+//# Reference variables (aka "Object variables") contain references (memory addresses). EX:
+//# Circle myCircle = new Circle(5.0);
+//# In the above example, your myCircle variable is a reference variable. 
+//# It doesn't store the object itself, just a reference to the object.
+
+//# HEAP VS STACK:
+//# The stack is an organized memory space that's executed in a predictable order. You know that it's last in/first out.
+//# The variable is linked to an address of the object which is in the HEAP
+//# Think of the heap as a box into which you throw info, with no particular order or predictable organization.
+//# Making changes to the object is done *through* the stack, but the updates save in the heap.
+//# If you do c1 = c2, your c1 will now reference the c2 object. Now your c1 object has no variable addressing it...
+//# THIS IS KNOWN AS GARBAGE
+
+//# Strings are objects
+
+//# You can't access instance variables inside of static methods, but you can access static variables inside of instance methods.
+
+//# Local variables cannot be left uninitialized, but data fields can be (they'll have default values).
+
+//# If you have a local variable that has the same name as a data field, the local variable takes precedence (the compiler ignores the data field).
+//# This is why constructors with custom values for the data fields take the new value and not the data field's value
+//# This is also the reason why the "this" keyword works the way it does: It sets precedence on the INSTANCE variable instead of the local variable. EX:
+
+// public class valueOfI{
+//    int i = 0;
+//    getI(){
+//    return i       --> Returns i = 0
+//    }
+
+    // setI(int i){
+    //     return this.i = i  --> Returns i = param i
+    // }
+// }
+//# In the above example, the "this" keyword indicates to the compiler that it's referencing the class. That's also why you can do this-
+//# You can use this() as a constructor. Here's how:
+
+// public class ClassName{
+//     int radius;
+    
+//     //Constructors
+//     ClassName(int radius, int height){     
+//         this.radius = radius;
+//         this.height = height;
+//     }
+
+//     ClassName(){
+//         this(3, 5); // Using this(3, 5) invokes another constructor, the first constructor with (int radius, int height) as its params
+//     }
+// }
+
+
+
+
+
