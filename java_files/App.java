@@ -1600,4 +1600,82 @@
 // newObject = firstClass.getOtherClass();
 // newObject.setDataField("updated value");
 
+//! In-class practice assignment:
+
+// public class Fan {
+//     // CONSTANTS
+//     public static final int SLOW = 1;
+//     public static final int MEDIUM = 2;
+//     public static final int FAST = 3;
+
+//     // DATA FIELDS
+//     private int speed = SLOW;
+//     private boolean status = false;
+//     private double radius = 5.0;
+//     private String color = "blue";
+
+//     // CONSTRUCTORS
+//     public Fan(){
+//     }
+
+//     public Fan(int speed, boolean status, double radius, String color){
+//         this.speed = speed;
+//         this.status = status;
+//         this.radius = radius;
+//         this.color = color;
+//     }
+
+//     // METHODS
+//     public int getSpeed() {
+//         return speed;
+//     }
+
+//     public boolean getStatus(){
+//         return status;
+//     }
+
+//     public double getRadius(){
+//         return radius;
+//     }
+
+//     public String getColor(){
+//         return color;
+//     }
+
+//     public void setSpeed(int speed) {
+//         this.speed = speed;
+//     }
+
+//     public void setStatus(boolean status){
+//         this.status = status;
+//     }
+
+//     public void setRadius(double radius){
+//         this.radius = radius;
+//     }
+
+//     public void setColor(String color){
+//         this.color = color;
+//     }
+
+//     public String toString(){
+//         String onOrOff;
+//         if (this.getStatus() == true){
+//             onOrOff = "on";
+//         } else {
+//             onOrOff = "off";
+//         }
+//         return "The fan's speed is " + this.getSpeed() + ", it is " + onOrOff + ", its radius is " + this.getRadius() + ", and its color is " + this.getColor() + ".";
+//     }
+// }
+
+// public class FanTest {
+//     public static void main (String[] args){
+//         Fan f1 = new Fan(Fan.FAST, true, 10, "yellow");
+//         Fan f2 = new Fan(Fan.MEDIUM, true, 5, "blue");
+//         System.out.println(f1.toString());
+//         System.out.println(f2.toString());
+//     }
+// }
+
 
