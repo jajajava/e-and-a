@@ -1678,4 +1678,121 @@
 //     }
 // }
 
+//! HW7 - Package ordering system
 
+// import java.util.*;
+// public class Order {
+//     // Static variables
+//     public static final int ON_ORDER = 0;
+//     public static final int CANCELED = 1;
+//     public static final int SHIPPED = 2;
+//     private static int totalOrder = 0;
+
+//     // Instance variables
+//     private String orderName;
+//     private Date date;
+//     private int status;
+//     private String shippingAddress;
+//     private String phoneNumber;
+//     private String billingAddress;
+
+//     // CONSTRUCTORS
+//     public Order(String Name){
+//         orderName = Name;
+//         totalOrder += 1;
+//         status = ON_ORDER;
+//         date = new Date();
+//     }
+
+//     // METHODS
+//     public void cancel(){
+//         date = new Date();
+//         status = CANCELED;
+//     }
+
+//     public void ship(){
+//         date = new Date();
+//         status = SHIPPED;
+//     }
+
+//     public String getShippingAddress(){
+//         return shippingAddress;
+//     }
+
+//     public void setShippingAddress(String a) {
+//         shippingAddress = a;
+//     }
+
+//     public String getPhoneNumber(){
+//         return phoneNumber;
+//     }
+
+//     public void setPhoneNumber(String p){
+//         phoneNumber = p;
+//     }
+
+//     public String getBillingAddress(){
+//         return billingAddress;
+//     }
+
+//     public void setBillingAddress(String add){
+//         billingAddress = add;
+//     }
+
+//     public static int getTotalOrder(){
+//         return totalOrder;
+//     }
+
+//     public String getOrderName(){
+//         return orderName;
+//     }
+
+//     public Date getDate(){
+//         return date;
+//     }
+
+//     public int getStatus(){
+//         return status;
+//     }
+
+//     public String toString(){
+//         return "Order Name: " + orderName + "| Date: " + date + "| Status: " + status + "| Shipping Address: " + 
+//         shippingAddress + "| Billing Address: " + billingAddress + "| Phone Number: " + phoneNumber;
+//     }
+
+// }
+
+// public class TestOrder {
+//     public static void main(String[] args){
+//         Order o1 = new Order("One PC");
+//         Order o2 = new Order("Two Cars");
+//         Order o3 = new Order("Three Baskets");
+        
+//         // Setting all values for o1
+//         o1.cancel();
+
+//         // Setting all values for o2
+//         o2.setShippingAddress("91 Oliverio Drive");
+//         o2.setBillingAddress("255 Counts Lane");
+//         o2.setPhoneNumber("(620)-562-5212");
+//         o2.ship();
+
+//         // Setting all values for o3
+//         o3.setShippingAddress("123 Ave Street");
+//         o3.setBillingAddress("67 North Lane");
+//         o3.setPhoneNumber("(999)-999-9999");
+
+//         // ALL OUTPUTS FOR ASSIGNMENT:
+//         System.out.println("Order 2's Name: " + o2.getOrderName());
+//         System.out.println("Order 3's Date: " + o3.getDate());
+//         System.out.println("Order 2's Status: " + o2.getStatus());
+//         System.out.println("Order 3's Shipping Address: " + o3.getShippingAddress());
+//         System.out.println("Order 2's Billing Address: " + o2.getBillingAddress());
+//         System.out.println("Order 3's Number: " + o3.getPhoneNumber());
+//         System.out.println("The number of orders is: " + Order.getTotalOrder());
+//         System.out.println(o1.toString());
+//         System.out.println(o2.toString());        
+//         System.out.println(o3.toString());
+
+//     }
+// }
