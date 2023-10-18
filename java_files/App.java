@@ -1762,6 +1762,7 @@
 
 // }
 
+
 // public class TestOrder {
 //     public static void main(String[] args){
 //         Order o1 = new Order("One PC");
@@ -1794,5 +1795,73 @@
 //         System.out.println(o2.toString());        
 //         System.out.println(o3.toString());
 
+//     }
+// }
+
+//! Lab 7 - Distance between two circles
+
+// public class Circle {
+//     // The radius of this circle, and the x & y coordinates of the circle center
+//     private double radius, centerX, centerY;
+
+//     // CONSTRUCTORS
+//     public Circle(double radius, double centerX, double centerY) {
+//         this.radius = radius;
+//         this.centerX = centerX;
+//         this.centerY = centerY;
+//     }
+
+//     public Circle() {
+//         this (1.0, 1.0, 1.0);
+//     }
+//     // get and set methods for the private data fields radius, centerX, centerY
+//     public double getRadius(){
+//         return radius;
+//     }
+
+//     public void setRadius(int radius){
+//         this.radius = radius;
+//     }
+
+//     public double getCenterX(){
+//         return centerX;
+//     }
+
+//     public void setCenterX(int centerX){
+//         this.centerX = centerX;
+//     }
+
+//     public double getCenterY(){
+//         return centerY;
+//     }
+
+//     public void setCenterY(int centerY){
+//         this.centerY = centerY;
+//     }
+    
+//     // An instance distance method 
+//     // (it would be better as static w/ 2 objects as params, imo)
+//     public double distance(Circle c2){
+//         // d = sqrt((x2- x1)^2 + (y2- y1)^2)
+//         Circle c1 = this;
+//         double innerFunction = ((Math.pow((c2.getCenterX() - c1.getCenterY()), 2)) + (Math.pow((c2.getCenterY() - c1.getCenterY()), 2)));
+//         return Math.sqrt(innerFunction);
+//     }
+// }
+
+
+// public class TestCircle {
+//     public static void main (String[] args){
+//         Circle c1 = new Circle();
+//         Circle c2 = new Circle(5.5, 3.5, 4.2);
+//         double d = c1.distance(c2);
+
+//         System.out.println("Circle 1's Radius: " + c1.getRadius());
+//         System.out.println("Circle 1's CenterX: " + c1.getCenterX());
+//         System.out.println("Circle 1's CenterY: " + c1.getCenterY());
+//         System.out.println("Circle 2's Radius: " + c2.getRadius());
+//         System.out.println("Circle 2's CenterX: " + c2.getCenterX());
+//         System.out.println("Circle 2's CenterY: " + c2.getCenterY());
+//         System.out.println("Distance from Circle1 to Circle2: " + d);
 //     }
 // }
