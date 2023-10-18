@@ -1579,7 +1579,25 @@
 //     }
 // }
 
+//! 10/18/23 - Lecture notes
 
+//# If the contents of an object cannot be changed once the object is created, the object is called an "immutable object",
+//# and its class is called an "immutable class".
 
+//# To create a completely immutable object:
+//# 1. Your data fields must be private
+//# 2. Your class must have no setter methods
+//# 3. The class that references the private class cannot have a getter method that returns that mutable object
+
+//# The third condition is a little confusing. This means that you can't have the following:
+
+// public Otherclass getOtherClass(){
+//     return otherClass;
+// }
+
+//# If you have a method that returns the mutable object, you can assign it to a variable and change its value like that (see below).
+
+// newObject = firstClass.getOtherClass();
+// newObject.setDataField("updated value");
 
 
