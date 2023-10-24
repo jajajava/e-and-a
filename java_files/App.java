@@ -1600,7 +1600,7 @@
 // newObject = firstClass.getOtherClass();
 // newObject.setDataField("updated value");
 
-//! In-class practice assignment:
+//! In-class practice assignment
 
 // public class Fan {
 //     // CONSTANTS
@@ -1865,3 +1865,73 @@
 //         System.out.println("Distance from Circle1 to Circle2: " + d);
 //     }
 // }
+
+//! 10/23/23 - Lecture notes
+
+//# ARRAYS:
+//# An array is a data structure that represents a collection of the SAME TYPE OF DATA
+
+//# Arrays are reference type, like objects and strings.
+
+//# DECLARING ARRAYS VARIABLES (first half)
+//# double arrayName[];
+
+//# INITIALIZING ARRAY VARIABLES (second half)
+//# arrayName = new dataType[size];
+// EX: array = new double[10]; --> this array can store 10 doubles
+
+//# Like data fields taking default values, when you create an array, your elements are assigned default values
+
+//# Once an array is created, you cannot change its size; it's fixed.
+//# arrayName.length; --> returns the size of the array.
+//# arrayName[arrayName.length - 1]; --> returns the last element's value.
+
+//# If you know your array's values ahead of time, you can use the SHORTHAND INITIALIZER:
+//# double[] myList = {1, 2, 3} --> this creates an array (length= 3) w/ those values.
+
+//# USING FOR LOOPS FOR ARRAYS:
+//# 1. Initializing arrays- once you declared your array, you must change from default values. You can use a for loop like so:
+
+// import java.util.Scanner;
+//# You must import the following line to have Array methods
+// import java.util.Arrays;
+// public class App{
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         double myArray[] = new double[10];
+//         for (int i = 0; i< myArray.length; i++){
+//             System.out.print("Please enter a value for the array: ");
+//             myArray[i] = input.nextDouble();
+//         }
+//         input.close();
+//         System.out.print(Arrays.toString(myArray));
+//     }
+// }
+
+//# 2. Copying arrays=
+// import java.util.Arrays;
+// public class App{
+//     public static void main(String args[]){
+//         int array1[] = {1, 2, 3, 4};
+//         // Declare an array with the length of the first array
+//         int array2[] = new int[array1.length];
+
+//         // This for loop sets each array element in a2 to be the same as a1
+//         for (int i = 0; i < array1.length; i++){
+//             array2[i] = array1[i];
+//         }
+//         System.out.println(Arrays.toString(array1));
+//         System.out.println(Arrays.toString(array2));
+//     }
+// }
+
+//! 10/24/23 - Personal notes
+
+//# Though I'm not sure when you'd need this, you can mass initialize a bunch of objects at the same time with a loop:
+
+// Circle circleArray[] = new Circle[10];
+// for (int i = 0; i < circleArray.length; i++){
+//     circleArray[i] = new Circle();
+// }
+
+//# This would create an array of objects
