@@ -18,7 +18,7 @@
  */
 
 
-//# 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
+//! 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
 
 // import javax.swing.JOptionPane;
 // public class App {
@@ -27,7 +27,8 @@
 //     }
 // }
 
-//# 8/21/23 - Important lecture notes
+
+//! 8/21/23 - Important lecture notes
 
 //! JAVA PRIMITIVE DATA TYPES:
 // 1. Byte: Stores whole numbers from -128 to 127 (Size: 1 byte)
@@ -59,7 +60,8 @@
 //     }
 // }
 
-//# 8/23/23 - Lecture notes: Getting user input through console
+
+//! 8/23/23 - Lecture notes: Getting user input through console
 
 //! Getting input from the console-
 //# 1. Import java.util.Scanner;
@@ -79,6 +81,7 @@
 //         input.close(); // This isn't necessary but it makes your code run faster by ending unnecessary operations
 //     }
 // }
+
 
 //! Homework 1 - Calculating the area of a cylinder
 
@@ -115,6 +118,7 @@
 //# Note the final keyword- like const in Java, this modifier makes your variable immodifiable.
 //# Naming convention for constant variables is the following: CAPITAL_WORDS_WITH_UNDERSCORES_SEPARATING
 
+
 //! Lab 1 - Converting feet to meters
 
 // import java.util.Scanner;
@@ -132,6 +136,7 @@
 //         System.out.println(foot + " ft converted to meters is " + meter + " m");
 //     }
 // }
+
 
 //! 8/28/23 - Lecture notes
 
@@ -196,6 +201,7 @@
 //# char ch = 'a';
 //# System.out.print(++ch); --> 'b';
 
+
 //! Homework 2 - Should the tennis player practice for the tournament?
 
 // import java.util.Scanner;
@@ -239,6 +245,7 @@
 //     }
 // }
 
+
 //! Lab 2 - Sort two numbers
 
 // import java.util.Scanner;
@@ -269,6 +276,7 @@
 //     }
 // }
 
+
 //! 9/6/23 - Lecture notes
 
 //# '\n' is the line break character. Here's how you can use it:
@@ -293,7 +301,6 @@
 //         System.out.println(test);
 //     }
 // }
-
 
 
 //! HW3 - Tax calculator
@@ -397,6 +404,7 @@
 //     }
 // }
 
+
 //! Lab3 - If/else statement that checks if number is divisible by 5 and 6
 
 // import java.util.Scanner;
@@ -425,6 +433,7 @@
 //     }
 // }
 
+
 //! Personal notes - Math.random()
 // public class App{
 //     public static void main (String args[]){
@@ -435,6 +444,7 @@
 //# Math.random()* 10 == 8.231… ; (int) changes double to int, resulting in 8.
 //# MAKE SURE if you do this you separate Math.random() * 10 and int with parentheses or you’ll get zero every time-
 //# (Math.random gets turned to int first, then *10; 0.01… -> int rounds to 0)
+
 
 //! 9/11/23 - Lecture notes (Module 4 - Loops)
 //# Loop body: Statements to be repeated
@@ -473,6 +483,7 @@
 //         System.out.println(year);
 //         }
 //     }
+
 
 //! 9/13/23 - Lecture notes
 
@@ -590,6 +601,7 @@
 //# + : output a plus or minus sign for a numeric value  (negative value displayed)
 //# , : comma grouping separator if numbers > 1000
 
+
 //! 9/18/23 - Lecture notes
 
 //# do-while loop: use it is when you want to iterate a loop at least once
@@ -634,6 +646,7 @@
 //         System.out.println(sum);
 //     }
 // }
+
 
 //! 9/20/23 - Lecture notes (Nested loops)
 
@@ -691,6 +704,7 @@
 //     }
 // }
 
+
 //! HW4 - Factorial calculator
 
 // import java.util.Scanner;
@@ -739,6 +753,7 @@
 //         input.close();
 //     }}
 
+
 //! Lab4 - Pyramid variation
 
 // import java.util.Scanner;
@@ -762,6 +777,7 @@
 //         }
 //     }
 // }
+
 
 //! 9/20/23 - Personal notes
 
@@ -857,6 +873,7 @@
 // 54
 // 5
 
+
 //! 9/24/23 - Personal notes
 
 // public class App {
@@ -932,6 +949,7 @@
 //  4321234
 // 543212345
 
+
 //! 9/25/23 - Lecture notes
 
 //# A method is a group of statements bundled together in order to be called later to perform an operation
@@ -996,6 +1014,7 @@
 // Output:
 // 1
 
+
 //! 9/27/23 - Lecture notes
 
 //# Overloading methods in Java:
@@ -1020,6 +1039,7 @@
 //# Math.random() * 50 --> [0.0, 50.0)            // Raises range's max
 //# (int)(Math.random() * 50) --> [0, 49]         // Rounds max down to 49 since it's no longer a double
 //# 50 + (int)(Math.random() * 50) --> [50, 99]   // Adds 50 to both ends of the range
+
 
 //! HW5 - Creating the mean and deviation methods
 
@@ -1066,6 +1086,7 @@
 // 	}	
 // }
 
+
 //! Lab5 - Overloading methods
 
 // public class Lab5 {
@@ -1107,6 +1128,7 @@
 //     }
 // }
 
+
 //! 10/2/23 - Lecture notes
 
 //# The "stack" is a memory storage within a computer's RAM. 
@@ -1122,6 +1144,7 @@
 // 2. int j = 2                            2. int j = 2
 // 1. int i = 5                            1. int i = 5
 // // Main method called
+
 
 //! 10/4/23 - Lecture notes
 
@@ -1179,6 +1202,7 @@
 //# If you call a constructor and there is an uninitialized data field in the class, a default value is given to that data field.
 //# Null for a reference type, 0 for a numeric type, false for a boolean type, '\u0000' for a char type.
 
+
 //! 10/7/23 - Personal notes
 
 //# .equals() method is used for strings. In Java, you cannot directly write string == "stringOfChoice".
@@ -1199,6 +1223,7 @@
 //         System.out.print("How dare you");
 //     }
 // }
+
 
 //! 10/8/23 - Personal notes
 
@@ -1266,6 +1291,7 @@
 //# By allowing only a certain way (setters) to update the values, you are also creating a way to control who gets to update it.
 //# Without the setter method, you'd be able to do person.name = "John" and it would change the value.
 //# By making that instance variable private, you allow the regulation of WHO is authorized to use the setter method to update that value!
+
 
 //! 10/9/23 - Lecture notes
 
@@ -1377,6 +1403,7 @@
 //     }
 // }
 
+
 //! 10/11/23 - Lecture notes
 
 //# VISIBILITY MODIFIERS:
@@ -1389,6 +1416,7 @@
 //# Setter/mutator - A method to update the value. Normally has NO return value
 
 //# Anyone trying to modify a private variable from another class would need to use a getter/setter method.
+
 
 //! HW6 - Cylinder (visibility modifiers, static methods, multiple classes)
 
@@ -1455,6 +1483,7 @@
 //         System.out.println("The amount of objects created is: " + Cylinder.getNumberOfObjects());
 //     }
 // }
+
 
 //! Lab 6 - Rectangle calculations
 
@@ -1526,6 +1555,7 @@
 //     }
 // }
 
+
 //! 10/16/23 - Lecure notes
 
 //# Reference variables (aka "Object variables") contain references (memory addresses). EX:
@@ -1578,6 +1608,7 @@
 //         this(3, 5); // Using this(3, 5) invokes another constructor, the first constructor with (int radius, int height) as its params
 //     }
 // }
+
 
 //! 10/18/23 - Lecture notes
 
@@ -1677,6 +1708,7 @@
 //         System.out.println(f2.toString());
 //     }
 // }
+
 
 //! HW7 - Package ordering system
 
@@ -1798,6 +1830,7 @@
 //     }
 // }
 
+
 //! Lab 7 - Distance between two circles
 
 // public class Circle {
@@ -1866,6 +1899,7 @@
 //     }
 // }
 
+
 //! 10/23/23 - Lecture notes
 
 //# ARRAYS:
@@ -1925,6 +1959,7 @@
 //     }
 // }
 
+
 //! 10/24/23 - Personal notes
 
 //# Though I'm not sure when you'd need this, you can mass initialize a bunch of objects at the same time with a loop:
@@ -1935,6 +1970,7 @@
 // }
 
 //# This would create an array of objects
+
 
 //! 10/25/23 - Lecture notes
 
@@ -1958,4 +1994,51 @@
 
 //     // remember that you must return an array
 //      return result;
+// }
+
+
+//! Lab 8: Find a value greater than or equal to the average in an array
+
+// import java.util.Scanner;
+// public class Lab8 {
+//     // Put the scanner as a static datafield to be accessed in all methods
+//     private static Scanner input = new Scanner(System.in);
+
+//     public static void main (String[] args){
+//         System.out.println("Please enter the array size:");
+//         int arraySize = input.nextInt();
+//         double[] scores = inputScores(arraySize);
+//         // Get return value from highScoreCount
+//         int highScore = highScoreCount(scores);
+//         System.out.println("The number of scores above average is: " + highScore);
+//     }
+
+//     // A method that returns a double array using user’s inputs from the console window
+//     public static double[] inputScores (int size){
+//         double[] array = new double[size];
+//         System.out.print("Please enter " + size + " scores in the array you want to make: \n");
+//         for (int i = 0; i < size; i++){
+//             System.out.println("Please enter a score");
+//             array[i] = input.nextDouble();
+//         }
+//         return array;
+//     }
+
+//     public static int highScoreCount(double[] scores){
+//         int sum = 0;
+//         // A for loop to add each array element together for the average
+//         for (int i = 0; i < scores.length; i++){
+//             sum += scores[i];
+//         }
+//         double average = (sum * 1.0) / scores.length;
+
+//         int highScore = 0;
+//         // Another for loop to count the number of scores above the average
+//         for (int j = 0; j < scores.length; j++){
+//             if (scores[j] > average){
+//                 highScore++;
+//             }
+//         }
+//         return highScore;
+//     }
 // }
