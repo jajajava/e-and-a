@@ -1997,9 +1997,10 @@
 // }
 
 
-//! Lab 8: Find a value greater than or equal to the average in an array
+//! Lab 8 - Find a value greater than or equal to the average in an array
 
 // import java.util.Scanner;
+
 // public class Lab8 {
 //     // Put the scanner as a static datafield to be accessed in all methods
 //     private static Scanner input = new Scanner(System.in);
@@ -2025,7 +2026,7 @@
 //     }
 
 //     public static int highScoreCount(double[] scores){
-//         int sum = 0;
+//         double sum = 0;
 //         // A for loop to add each array element together for the average
 //         for (int i = 0; i < scores.length; i++){
 //             sum += scores[i];
@@ -2040,5 +2041,63 @@
 //             }
 //         }
 //         return highScore;
+//     }
+// }
+
+
+//! HW8: Create 2 arrays of the same length, find the average, and find sums of both arrays at each index
+
+// import java.util.Scanner;
+// import java.util.Arrays;
+
+// public class HW8 {
+//     // I kept reusing "array.length", so I just made arraySize a global variable
+//     public static int arraySize;
+//     private static Scanner input = new Scanner(System.in);
+
+//     public static void main(String[] args) {
+//         System.out.print("Enter a number for the array size: ");
+//         arraySize = input.nextInt();
+//         int[] arr1 = inputArray(arraySize);
+//         System.out.println("Thank you for your input. Enter " + arraySize + " integer values to add to the second array.");
+//         int[] arr2 = inputArray(arraySize);
+//         //Prints the average of the elements in the first array.
+//         double average = average(arr1);
+//         System.out.println("The average of the first array provided is " + average + ".");
+//         //Creates an array that holds the value of the sums from adding the two integer arrays.
+//         int[] resultingArray = add(arr1, arr2);
+//         //Prints the array with the sum of the two added integer arrays.
+//         displayArray(resultingArray);
+//     }
+
+//     public static int[] inputArray(int arraySize) {
+//         //Creates an array of size provided.
+//         int[] inputArr = new int[arraySize];
+//         //Asks user to input values for elements to be.
+//         System.out.println("Enter " + arraySize + " integer values to add to the array.");
+//         for (int i = 0; i < arraySize; i++){
+//             inputArr[i] = input.nextInt();
+//         }
+//         return inputArr;
+//     }
+//     public static double average(int[] list) {
+//         double sum = 0;
+//         for (int i = 0; i < arraySize; i++){
+//             sum += list[i];
+//         }
+//         double average = sum / arraySize;
+//         return average;
+//     }
+
+//     public static int[] add(int[] list1, int[] list2) {
+//         int[] merged = new int[arraySize];
+//         for (int i = 0; i < arraySize; i++){
+//             merged[i] = list1[i] + list2[i];
+//         }
+//         return merged;
+//     }
+
+//     public static void displayArray(int[] list) {
+//         System.out.println("The sum resulting array is " + Arrays.toString(list));
 //     }
 // }
