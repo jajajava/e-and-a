@@ -1935,3 +1935,27 @@
 // }
 
 //# This would create an array of objects
+
+//! 10/25/23 - Lecture notes
+
+//# Understanding the brackets:
+//# In java, when the compiler sees a datatype and [], it knows that it isn't working with that datatype, but an ARRAY of that type.
+//# This is why PASSING ARRAYS AS ARGUMENTS needs your method to be written like so:
+
+// public static voic printArray (int[] array){
+// }
+
+//# A useful example demonstrating nuances when passing arrays as arguments:
+//# int[] indicates that the method returns an array of ints. the param is an array of ints.
+// public static int[] reverse (int[] list){
+//     // sets the length of the new array = to array passed as argument
+//     int[] result = new int[list.length];  
+
+//     // i increases, going from the start of the argument array. j decreases, going from the end of the new array
+//     for (int i = 0, j = result.length - 1; i < list.length; i++, j--){ 
+//         result[j] = list[i];
+//     }
+
+//     // remember that you must return an array
+//      return result;
+// }
