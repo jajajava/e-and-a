@@ -38,13 +38,21 @@ def tool():
             elif (professor.would_take_again is None):
                 print(f"Would take {professor} again: 0 %")
             else:
-                print(f"Would take again: {round(professor.would_take_again, 1)} %")
+                print(f"Would take {professor} again: {round(professor.would_take_again, 1)} %")
     # Comparing data of two professors:
     else:
         name1 = input("Enter the 1st professor's name: ")
+        school2Bool = input(f"Is the second professor teaching also teaching at {school_name}? [y/n]: ")
+        if (school2Bool.lower() == 'n'):
+            school2_name = input("Enter the university's full name: ")
+        elif (school2Bool.lower() == 'y'):
+            pass
+        else:
+            print("Error: y/n not entered.\nGoodbye.")
+            return
         name2 = input("Enter the 2nd professor's name: ")
         professor1 = ratemyprofessor.get_professor_by_school_and_name(ratemyprofessor.get_school_by_name(school_name), name1)
-        professor2 = ratemyprofessor.get_professor_by_school_and_name(ratemyprofessor.get_school_by_name(school_name), name2)
+        professor2 = ratemyprofessor.get_professor_by_school_and_name(ratemyprofessor.get_school_by_name(school2_name), name2)
         # Both professors must exist in order to be compared
         if (professor1 and professor2) is not None:
             print("--------------------------------------------------------------------------------")
@@ -71,14 +79,14 @@ def tool():
             elif (professor1.would_take_again is None):
                 print(f"Would take {professor1} again: 0 %")
             else:
-                print(f"Would take again: {round(professor.would_take_again, 1)} %")
+                print(f"Would take {professor1} again: {round(professor1.would_take_again, 1)} %")
 
             if (professor2.would_take_again == -1):
                 print(f"Would take {professor2} again: N/A")
             elif (professor2.would_take_again is None):
                 print(f"Would take {professor2} again: 0 %")
             else:
-                print(f"Would take again: {round(professor.would_take_again, 1)} %")
+                print(f"Would take {professor2} again: {round(professor2.would_take_again, 1)} %")
         # Misspelled name or professor not on RateMyProfessor
         else:
             print("\nCheck your spelling and try again.")
