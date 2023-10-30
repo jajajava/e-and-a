@@ -2101,3 +2101,33 @@
 //         System.out.println("The sum resulting array is " + Arrays.toString(list));
 //     }
 // }
+
+//! 10/30/23 - Lecture notes
+
+//# When we modicy the value of an element in an array, it is stored in the HEAP not the stack.
+//# Therefore, modifying a variable inside a method remains the same outside of the method, while the array element will persist.
+
+// int i = 0;
+// int[] j = new int[3];
+// m(i, j)
+
+// public static void m(int i, int[] j){
+//     i = 1;
+//     j[0] = 1;
+// }
+
+// System.out.print(i); --> 0 (the change was not persisted)
+// System.out.print(j[0]); --> 1 (the change was persisted, stored in the heap)
+
+//# How to SWAP two elements in an array:
+
+// int[] arr = {1,2,3};
+
+// public static void method(int[] array){
+//     int temp = array[0];  --> temp = 1 (new variable temporarily stores value of array index 0)
+//     array[0] = array[1];  --> array[0] = 2 (array index 0 is now the value of array index 1)
+//     array[1] = temp;      --> array[1] = 1 (array index 1 is now the value of array index 0)
+// }
+
+//# Because of the note right before this section that explains why this happens, your temp variable is removed from the stack but the change to the array
+//# is persisted in the heap.
