@@ -18,3 +18,8 @@
 //* 6. Now you have access to the userContext data. You can interpolate it, like so:
 //*    <h1>Hello, {user.data}.</h1> --> "Hello, John."
 
+
+//# UPDATE: You don't need to use useContext anymore! It is easier and faster to use "signals" instead of useEffect and useContext.
+//# If you update the signal variable in one spot, only that component is updated everywhere it's referenced (making it faster than regular React)
+//# You must install it with npm i @preact/signals-react, then import it and then use the methods provided. 
+//# Web Dev Simplified made a really good video about signals, refer back to it 
