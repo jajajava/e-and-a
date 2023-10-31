@@ -1865,3 +1865,8 @@
 //         System.out.println("Distance from Circle1 to Circle2: " + d);
 //     }
 // }
+
+//! 10/19/23 - Personal notes
+
+//# Why do we use the private method? The objective is "encapsulation", to make an object's instance variables (data fields) hidden from other instances.
+//# Encapsulation also allows us to create methods that can be used for authorization, or data validation.
