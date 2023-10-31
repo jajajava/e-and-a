@@ -18,7 +18,7 @@
  */
 
 
-//# 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
+//! 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
 
 // import javax.swing.JOptionPane;
 // public class App {
@@ -27,7 +27,8 @@
 //     }
 // }
 
-//# 8/21/23 - Important lecture notes
+
+//! 8/21/23 - Important lecture notes
 
 //! JAVA PRIMITIVE DATA TYPES:
 // 1. Byte: Stores whole numbers from -128 to 127 (Size: 1 byte)
@@ -59,7 +60,8 @@
 //     }
 // }
 
-//# 8/23/23 - Lecture notes: Getting user input through console
+
+//! 8/23/23 - Lecture notes: Getting user input through console
 
 //! Getting input from the console-
 //# 1. Import java.util.Scanner;
@@ -79,6 +81,7 @@
 //         input.close(); // This isn't necessary but it makes your code run faster by ending unnecessary operations
 //     }
 // }
+
 
 //! Homework 1 - Calculating the area of a cylinder
 
@@ -115,6 +118,7 @@
 //# Note the final keyword- like const in Java, this modifier makes your variable immodifiable.
 //# Naming convention for constant variables is the following: CAPITAL_WORDS_WITH_UNDERSCORES_SEPARATING
 
+
 //! Lab 1 - Converting feet to meters
 
 // import java.util.Scanner;
@@ -132,6 +136,7 @@
 //         System.out.println(foot + " ft converted to meters is " + meter + " m");
 //     }
 // }
+
 
 //! 8/28/23 - Lecture notes
 
@@ -196,6 +201,7 @@
 //# char ch = 'a';
 //# System.out.print(++ch); --> 'b';
 
+
 //! Homework 2 - Should the tennis player practice for the tournament?
 
 // import java.util.Scanner;
@@ -239,6 +245,7 @@
 //     }
 // }
 
+
 //! Lab 2 - Sort two numbers
 
 // import java.util.Scanner;
@@ -269,6 +276,7 @@
 //     }
 // }
 
+
 //! 9/6/23 - Lecture notes
 
 //# '\n' is the line break character. Here's how you can use it:
@@ -293,7 +301,6 @@
 //         System.out.println(test);
 //     }
 // }
-
 
 
 //! HW3 - Tax calculator
@@ -397,6 +404,7 @@
 //     }
 // }
 
+
 //! Lab3 - If/else statement that checks if number is divisible by 5 and 6
 
 // import java.util.Scanner;
@@ -425,6 +433,7 @@
 //     }
 // }
 
+
 //! Personal notes - Math.random()
 // public class App{
 //     public static void main (String args[]){
@@ -435,6 +444,7 @@
 //# Math.random()* 10 == 8.231… ; (int) changes double to int, resulting in 8.
 //# MAKE SURE if you do this you separate Math.random() * 10 and int with parentheses or you’ll get zero every time-
 //# (Math.random gets turned to int first, then *10; 0.01… -> int rounds to 0)
+
 
 //! 9/11/23 - Lecture notes (Module 4 - Loops)
 //# Loop body: Statements to be repeated
@@ -473,6 +483,7 @@
 //         System.out.println(year);
 //         }
 //     }
+
 
 //! 9/13/23 - Lecture notes
 
@@ -590,6 +601,7 @@
 //# + : output a plus or minus sign for a numeric value  (negative value displayed)
 //# , : comma grouping separator if numbers > 1000
 
+
 //! 9/18/23 - Lecture notes
 
 //# do-while loop: use it is when you want to iterate a loop at least once
@@ -634,6 +646,7 @@
 //         System.out.println(sum);
 //     }
 // }
+
 
 //! 9/20/23 - Lecture notes (Nested loops)
 
@@ -691,6 +704,7 @@
 //     }
 // }
 
+
 //! HW4 - Factorial calculator
 
 // import java.util.Scanner;
@@ -739,6 +753,7 @@
 //         input.close();
 //     }}
 
+
 //! Lab4 - Pyramid variation
 
 // import java.util.Scanner;
@@ -762,6 +777,7 @@
 //         }
 //     }
 // }
+
 
 //! 9/20/23 - Personal notes
 
@@ -857,6 +873,7 @@
 // 54
 // 5
 
+
 //! 9/24/23 - Personal notes
 
 // public class App {
@@ -932,6 +949,7 @@
 //  4321234
 // 543212345
 
+
 //! 9/25/23 - Lecture notes
 
 //# A method is a group of statements bundled together in order to be called later to perform an operation
@@ -996,6 +1014,7 @@
 // Output:
 // 1
 
+
 //! 9/27/23 - Lecture notes
 
 //# Overloading methods in Java:
@@ -1020,6 +1039,7 @@
 //# Math.random() * 50 --> [0.0, 50.0)            // Raises range's max
 //# (int)(Math.random() * 50) --> [0, 49]         // Rounds max down to 49 since it's no longer a double
 //# 50 + (int)(Math.random() * 50) --> [50, 99]   // Adds 50 to both ends of the range
+
 
 //! HW5 - Creating the mean and deviation methods
 
@@ -1066,6 +1086,7 @@
 // 	}	
 // }
 
+
 //! Lab5 - Overloading methods
 
 // public class Lab5 {
@@ -1107,6 +1128,7 @@
 //     }
 // }
 
+
 //! 10/2/23 - Lecture notes
 
 //# The "stack" is a memory storage within a computer's RAM. 
@@ -1122,6 +1144,7 @@
 // 2. int j = 2                            2. int j = 2
 // 1. int i = 5                            1. int i = 5
 // // Main method called
+
 
 //! 10/4/23 - Lecture notes
 
@@ -1179,6 +1202,7 @@
 //# If you call a constructor and there is an uninitialized data field in the class, a default value is given to that data field.
 //# Null for a reference type, 0 for a numeric type, false for a boolean type, '\u0000' for a char type.
 
+
 //! 10/7/23 - Personal notes
 
 //# .equals() method is used for strings. In Java, you cannot directly write string == "stringOfChoice".
@@ -1199,6 +1223,7 @@
 //         System.out.print("How dare you");
 //     }
 // }
+
 
 //! 10/8/23 - Personal notes
 
@@ -1266,6 +1291,7 @@
 //# By allowing only a certain way (setters) to update the values, you are also creating a way to control who gets to update it.
 //# Without the setter method, you'd be able to do person.name = "John" and it would change the value.
 //# By making that instance variable private, you allow the regulation of WHO is authorized to use the setter method to update that value!
+
 
 //! 10/9/23 - Lecture notes
 
@@ -1377,6 +1403,7 @@
 //     }
 // }
 
+
 //! 10/11/23 - Lecture notes
 
 //# VISIBILITY MODIFIERS:
@@ -1389,6 +1416,7 @@
 //# Setter/mutator - A method to update the value. Normally has NO return value
 
 //# Anyone trying to modify a private variable from another class would need to use a getter/setter method.
+
 
 //! HW6 - Cylinder (visibility modifiers, static methods, multiple classes)
 
@@ -1455,6 +1483,7 @@
 //         System.out.println("The amount of objects created is: " + Cylinder.getNumberOfObjects());
 //     }
 // }
+
 
 //! Lab 6 - Rectangle calculations
 
@@ -1526,6 +1555,7 @@
 //     }
 // }
 
+
 //! 10/16/23 - Lecure notes
 
 //# Reference variables (aka "Object variables") contain references (memory addresses). EX:
@@ -1579,6 +1609,7 @@
 //     }
 // }
 
+
 //! 10/18/23 - Lecture notes
 
 //# If the contents of an object cannot be changed once the object is created, the object is called an "immutable object",
@@ -1600,7 +1631,7 @@
 // newObject = firstClass.getOtherClass();
 // newObject.setDataField("updated value");
 
-//! In-class practice assignment:
+//! In-class practice assignment
 
 // public class Fan {
 //     // CONSTANTS
@@ -1677,6 +1708,7 @@
 //         System.out.println(f2.toString());
 //     }
 // }
+
 
 //! HW7 - Package ordering system
 
@@ -1798,6 +1830,7 @@
 //     }
 // }
 
+
 //! Lab 7 - Distance between two circles
 
 // public class Circle {
@@ -1870,3 +1903,236 @@
 
 //# Why do we use the private method? The objective is "encapsulation", to make an object's instance variables (data fields) hidden from other instances.
 //# Encapsulation also allows us to create methods that can be used for authorization, or data validation.
+
+
+//! 10/23/23 - Lecture notes
+
+//# ARRAYS:
+//# An array is a data structure that represents a collection of the SAME TYPE OF DATA
+
+//# Arrays are reference type, like objects and strings.
+
+//# DECLARING ARRAYS VARIABLES (first half)
+//# double arrayName[];
+
+//# INITIALIZING ARRAY VARIABLES (second half)
+//# arrayName = new dataType[size];
+// EX: array = new double[10]; --> this array can store 10 doubles
+
+//# Like data fields taking default values, when you create an array, your elements are assigned default values
+
+//# Once an array is created, you cannot change its size; it's fixed.
+//# arrayName.length; --> returns the size of the array.
+//# arrayName[arrayName.length - 1]; --> returns the last element's value.
+
+//# If you know your array's values ahead of time, you can use the SHORTHAND INITIALIZER:
+//# double[] myList = {1, 2, 3} --> this creates an array (length= 3) w/ those values.
+
+//# USING FOR LOOPS FOR ARRAYS:
+//# 1. Initializing arrays- once you declared your array, you must change from default values. You can use a for loop like so:
+
+// import java.util.Scanner;
+//# You must import the following line to have Array methods
+// import java.util.Arrays;
+// public class App{
+//     public static void main (String args[]){
+//         Scanner input = new Scanner(System.in);
+//         double myArray[] = new double[10];
+//         for (int i = 0; i< myArray.length; i++){
+//             System.out.print("Please enter a value for the array: ");
+//             myArray[i] = input.nextDouble();
+//         }
+//         input.close();
+//         System.out.print(Arrays.toString(myArray));
+//     }
+// }
+
+//# 2. Copying arrays=
+// import java.util.Arrays;
+// public class App{
+//     public static void main(String args[]){
+//         int array1[] = {1, 2, 3, 4};
+//         // Declare an array with the length of the first array
+//         int array2[] = new int[array1.length];
+
+//         // This for loop sets each array element in a2 to be the same as a1
+//         for (int i = 0; i < array1.length; i++){
+//             array2[i] = array1[i];
+//         }
+//         System.out.println(Arrays.toString(array1));
+//         System.out.println(Arrays.toString(array2));
+//     }
+// }
+
+
+//! 10/24/23 - Personal notes
+
+//# Though I'm not sure when you'd need this, you can mass initialize a bunch of objects at the same time with a loop:
+
+// Circle circleArray[] = new Circle[10];
+// for (int i = 0; i < circleArray.length; i++){
+//     circleArray[i] = new Circle();
+// }
+
+//# This would create an array of objects
+
+
+//! 10/25/23 - Lecture notes
+
+//# Understanding the brackets:
+//# In java, when the compiler sees a datatype and [], it knows that it isn't working with that datatype, but an ARRAY of that type.
+//# This is why PASSING ARRAYS AS ARGUMENTS needs your method to be written like so:
+
+// public static voic printArray (int[] array){
+// }
+
+//# A useful example demonstrating nuances when passing arrays as arguments:
+//# int[] indicates that the method returns an array of ints. the param is an array of ints.
+// public static int[] reverse (int[] list){
+//     // sets the length of the new array = to array passed as argument
+//     int[] result = new int[list.length];  
+
+//     // i increases, going from the start of the argument array. j decreases, going from the end of the new array
+//     for (int i = 0, j = result.length - 1; i < list.length; i++, j--){ 
+//         result[j] = list[i];
+//     }
+
+//     // remember that you must return an array
+//      return result;
+// }
+
+
+//! Lab 8 - Find a value greater than or equal to the average in an array
+
+// import java.util.Scanner;
+
+// public class Lab8 {
+//     // Put the scanner as a static datafield to be accessed in all methods
+//     private static Scanner input = new Scanner(System.in);
+
+//     public static void main (String[] args){
+//         System.out.println("Please enter the array size:");
+//         int arraySize = input.nextInt();
+//         double[] scores = inputScores(arraySize);
+//         // Get return value from highScoreCount
+//         int highScore = highScoreCount(scores);
+//         System.out.println("The number of scores above average is: " + highScore);
+//     }
+
+//     // A method that returns a double array using user’s inputs from the console window
+//     public static double[] inputScores (int size){
+//         double[] array = new double[size];
+//         System.out.print("Please enter " + size + " scores in the array you want to make: \n");
+//         for (int i = 0; i < size; i++){
+//             System.out.println("Please enter a score");
+//             array[i] = input.nextDouble();
+//         }
+//         return array;
+//     }
+
+//     public static int highScoreCount(double[] scores){
+//         double sum = 0;
+//         // A for loop to add each array element together for the average
+//         for (int i = 0; i < scores.length; i++){
+//             sum += scores[i];
+//         }
+//         double average = (sum * 1.0) / scores.length;
+
+//         int highScore = 0;
+//         // Another for loop to count the number of scores above the average
+//         for (int j = 0; j < scores.length; j++){
+//             if (scores[j] > average){
+//                 highScore++;
+//             }
+//         }
+//         return highScore;
+//     }
+// }
+
+
+//! HW8: Create 2 arrays of the same length, find the average, and find sums of both arrays at each index
+
+// import java.util.Scanner;
+// import java.util.Arrays;
+
+// public class HW8 {
+//     // I kept reusing "array.length", so I just made arraySize a global variable
+//     public static int arraySize;
+//     private static Scanner input = new Scanner(System.in);
+
+//     public static void main(String[] args) {
+//         System.out.print("Enter a number for the array size: ");
+//         arraySize = input.nextInt();
+//         int[] arr1 = inputArray(arraySize);
+//         System.out.println("Thank you for your input. Enter " + arraySize + " integer values to add to the second array.");
+//         int[] arr2 = inputArray(arraySize);
+//         //Prints the average of the elements in the first array.
+//         double average = average(arr1);
+//         System.out.println("The average of the first array provided is " + average + ".");
+//         //Creates an array that holds the value of the sums from adding the two integer arrays.
+//         int[] resultingArray = add(arr1, arr2);
+//         //Prints the array with the sum of the two added integer arrays.
+//         displayArray(resultingArray);
+//     }
+
+//     public static int[] inputArray(int arraySize) {
+//         //Creates an array of size provided.
+//         int[] inputArr = new int[arraySize];
+//         //Asks user to input values for elements to be.
+//         System.out.println("Enter " + arraySize + " integer values to add to the array.");
+//         for (int i = 0; i < arraySize; i++){
+//             inputArr[i] = input.nextInt();
+//         }
+//         return inputArr;
+//     }
+//     public static double average(int[] list) {
+//         double sum = 0;
+//         for (int i = 0; i < arraySize; i++){
+//             sum += list[i];
+//         }
+//         double average = sum / arraySize;
+//         return average;
+//     }
+
+//     public static int[] add(int[] list1, int[] list2) {
+//         int[] merged = new int[arraySize];
+//         for (int i = 0; i < arraySize; i++){
+//             merged[i] = list1[i] + list2[i];
+//         }
+//         return merged;
+//     }
+
+//     public static void displayArray(int[] list) {
+//         System.out.println("The sum resulting array is " + Arrays.toString(list));
+//     }
+// }
+
+//! 10/30/23 - Lecture notes
+
+//# When we modicy the value of an element in an array, it is stored in the HEAP not the stack.
+//# Therefore, modifying a variable inside a method remains the same outside of the method, while the array element will persist.
+
+// int i = 0;
+// int[] j = new int[3];
+// m(i, j)
+
+// public static void m(int i, int[] j){
+//     i = 1;
+//     j[0] = 1;
+// }
+
+// System.out.print(i); --> 0 (the change was not persisted)
+// System.out.print(j[0]); --> 1 (the change was persisted, stored in the heap)
+
+//# How to SWAP two elements in an array:
+
+// int[] arr = {1,2,3};
+
+// public static void method(int[] array){
+//     int temp = array[0];  --> temp = 1 (new variable temporarily stores value of array index 0)
+//     array[0] = array[1];  --> array[0] = 2 (array index 0 is now the value of array index 1)
+//     array[1] = temp;      --> array[1] = 1 (array index 1 is now the value of array index 0)
+// }
+
+//# Because of the note right before this section that explains why this happens, your temp variable is removed from the stack but the change to the array
+//# is persisted in the heap.
