@@ -2136,3 +2136,50 @@
 
 //# Because of the note right before this section that explains why this happens, your temp variable is removed from the stack but the change to the array
 //# is persisted in the heap.
+
+//! 11/1/23 - Lecture notes
+
+//# "Searching" an array refers to the act of looking for a specific element in an array.
+
+//# The simplest searching algorithm is LINEAR SEARCH:
+
+//# Key: 3
+//# List: [6, 4, 1, 9, 3, 7] --> should return "4" because that's the index at which 3 shows up for the first time
+
+//# Here's the actual code for a linear search:
+
+// public static int linearSearch(int[] list, int key){
+//     for (int i = 0; i < list.length; i++){
+//         if (list[i] == key){
+//             return i;
+//         }
+//     }
+// }
+
+//# Searching is a very common task in computer programming. Another very common task is "sorting".
+
+//# A very basic sorting algorithm is called "SELECTION SORT".
+//# Selection sort goes from left to right and swaps elements one at a time.
+
+//# The code was too long to copy down but basically just find the location and value of the smallest element, then swap it. The next iteration would be from i to list.length - 1
+//# Hopefully we'll get to practice it so that I can better show it in the notes. Might have to revisit it later if I remember to.
+
+//# 2D ARRAYS / MATRIX
+//# In math, a vector is like a regular, one dimensional array, and a matrix is a 2 dimensional array
+
+//# int[][] matrixName = new int[x][y] --> x = # of rows, y = # of columns. 
+//# EXAMPLE: int[][] matrix = {{1,2,3}, {4,5,6}, {7,8,9}, {10, 11, 12}}
+//# This creates a matrix with 4 rows and 3 columns per row.
+
+//# Assignment of elements in a matrix: matrix[2][1] = 7. These are like (x,y) coordinate pairs, with the index starting at 0 (like the origin in math, but code runs downwards and to the right).
+//# matrix.length = # of rows
+//# matrix[0].length = # of columns in the first row.
+
+//# When working with matrices, to perform operations on them you need to use NESTED FOR LOOPS.
+
+// for (int i = 0; i < matrix.length; i++){               <- First time, performs operations on the first row
+//     for (int j = 0; j < matrix[i].length; j++){        <- Performs operations on each column in the first row
+//         System.out.print(matrix[i][j] + " ")
+//     }
+//     System.out.print('\n');                            <- Separates the rows, and then the next inner row's inner loop is executed
+// }
