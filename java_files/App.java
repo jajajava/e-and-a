@@ -2107,6 +2107,7 @@
 //     }
 // }
 
+
 //! 10/30/23 - Lecture notes
 
 //# When we modicy the value of an element in an array, it is stored in the HEAP not the stack.
@@ -2136,6 +2137,7 @@
 
 //# Because of the note right before this section that explains why this happens, your temp variable is removed from the stack but the change to the array
 //# is persisted in the heap.
+
 
 //! 11/1/23 - Lecture notes
 
@@ -2184,12 +2186,13 @@
 //     System.out.print('\n');                            <- Separates the rows, and then the next inner row's inner loop is executed
 // }
 
+
 //! HW9 - Sum employees' scheduled work hours and sort (2d arrays + sorting)
 
 // public class HW9 {
 //     public static void main(String[] args) {
 
-//         // Initialize workHours matrix
+//         // Declare/initialize workHours matrix
 //         int[][] workHours = {
 //         {2, 4, 3, 4, 5, 8, 8},
 //         {7, 3, 4, 3, 3, 4, 4},
@@ -2246,7 +2249,7 @@
 //             temp = array[i];
 //             array[i] = array[max];
 //             array[max] = temp;
-            
+
 //             // Swap the elements in employeeSort to keep track of original indices
 //             tempEmployee = employeeSort[i];
 //             employeeSort[i] = employeeSort[max];
@@ -2261,5 +2264,62 @@
 //         for (int i = 0; i < array.length; i++){
 //             System.out.println("Employee" + indexArray[i] + ": " + array[i] + " hours");
 //         }
+//     }
+// }
+
+
+//! Lab9 - Create a matrix of objects and print it
+
+// public class Lab9 {
+//     public static void main(String[] args) {
+//         // Create a matrix called matrix, with the data type being MyPoint objects
+//         MyPoint[][] matrix = new MyPoint[2][3];
+        
+//         // Assign a value to each element in the matrix
+//         matrix[0][0] = new MyPoint(0.5, 1.2);
+//         matrix[0][1] = new MyPoint(0.0, 3.14);
+//         matrix[0][2] = new MyPoint(15.0, 27.5);
+//         matrix[1][0] = new MyPoint(6.6, 7.7);
+//         matrix[1][1] = new MyPoint(1.2, 2.1);
+//         matrix[1][2] = new MyPoint(12.0, 127.0);
+
+//         // Print each element of the matrix. Outer loop is the number of rows, inner is the number of columns
+//         for (int i = 0; i < matrix.length; i++){
+//             for (int j = 0; j < matrix[i].length; j++){
+//                 System.out.println("Array[" + i + "][" + j + "] = (" + matrix[i][j].getX() + ", " + matrix[i][j].getY() + ")");
+//             }
+//         }
+//     }
+// }
+
+// public class MyPoint {
+//     // DATA FIELDS
+//     private double x;
+//     private double y;
+
+//     // CONSTRUCTORS
+//     public MyPoint(){
+//     }
+
+//     public MyPoint(double x, double y){
+//         this.x = x;
+//         this.y = y;
+//     }
+
+//     // METHODS
+//     public double getX() {
+//         return x;
+//     }
+
+//     public double getY() {
+//         return y;
+//     }
+
+//     public void setX(double x){
+//         this.x = x;
+//     }
+
+//     public void setY(double y) {
+//         this.y = y;
 //     }
 // }
