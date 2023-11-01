@@ -2183,3 +2183,83 @@
 //     }
 //     System.out.print('\n');                            <- Separates the rows, and then the next inner row's inner loop is executed
 // }
+
+//! HW9 - Sum employees' scheduled work hours and sort (2d arrays + sorting)
+
+// public class HW9 {
+//     public static void main(String[] args) {
+
+//         // Initialize workHours matrix
+//         int[][] workHours = {
+//         {2, 4, 3, 4, 5, 8, 8},
+//         {7, 3, 4, 3, 3, 4, 4},
+//         {3, 3, 4, 3, 3, 2, 2},
+//         {9, 3, 4, 7, 3, 4, 1},
+//         {3, 5, 4, 3, 6, 3, 8},
+//         {3, 4, 4, 6, 3, 4, 4},
+//         {3, 7, 4, 8, 3, 8, 4},
+//         {6, 3, 5, 9, 2, 7, 9}
+//         };
+
+//         // Get sum of all workers' hours in an array
+//         int[] sumArray = calculateSum(workHours);
+//         // Takes sumArray and calls method to sort it
+//         int[] indexArray = decreasingSort(sumArray);
+//         // Prints the sumArray with the corresponding worker
+//         displayArray(indexArray, sumArray);
+//     }
+
+//     // Method that takes a matrix and puts all sums into a 1D array
+//     public static int[] calculateSum (int[][] array) {
+//         int[] employeeHours = new int[array.length];
+//         for(int i = 0; i < array.length; i++){
+//             for (int j = 0; j < array[i].length; j++){
+//                 employeeHours[i] += array[i][j];
+//             }
+//         }
+//         return employeeHours;
+//     }
+
+//     // Method that sorts an array in descending order
+//     public static int[] decreasingSort (int[] array) {
+//         // Creates a new array; this array will keep track of the index of the employee whose hours were sorted
+//         int[] employeeSort = new int[array.length];
+
+//         // Initializes all elements in ascending order
+//         for (int i = 0; i < array.length; i++) {
+//             employeeSort[i] = i;
+//         }
+
+//         // Outer loop is for swapping the elements
+//         for (int i = 0; i < array.length - 1; i++){
+//             int temp;
+//             int max = i;
+//             int tempEmployee;
+//             // Inner loop is for determining the max in the array. 
+//             // j = i+1 allows the sorting algorithm to only check unsorted elements
+//             for (int j= i+1; j < array.length; j++){
+//                 if (array[max] < array[j]){
+//                     max = j;
+//                 }
+//             }
+//             // Swap the element locations of the actual hours
+//             temp = array[i];
+//             array[i] = array[max];
+//             array[max] = temp;
+            
+//             // Swap the elements in employeeSort to keep track of original indices
+//             tempEmployee = employeeSort[i];
+//             employeeSort[i] = employeeSort[max];
+//             employeeSort[max] = tempEmployee;
+//             }
+//         // the array passed as an argument was already mutated; this function returns the worker indices
+//         return employeeSort;
+//     }
+
+//     // Method for printing the employees and their associated hours, from ascending to descending hours
+//     public static void displayArray (int[] indexArray, int[] array) {
+//         for (int i = 0; i < array.length; i++){
+//             System.out.println("Employee" + indexArray[i] + ": " + array[i] + " hours");
+//         }
+//     }
+// }
