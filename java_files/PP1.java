@@ -1,6 +1,6 @@
 //! 8/15/23 - First program (following tutorial provided in class)
 
-// public class App {
+// public class PP1 {
 //     public static void main(String args[]){
 //         JOptionPane.showMessageDialog(null, "test", "header", JOptionPane.CANCEL_OPTION);
 //         System.out.println("Welcome to Java");
@@ -18,10 +18,10 @@
  */
 
 
-//! 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the App class.
+//! 8/16/23 - This program makes a modal window/message come up. Note the import of the java Library before the PP1 class.
 
 // import javax.swing.JOptionPane;
-// public class App {
+// public class PP1 {
 //     public static void main(String args[]){
 //         JOptionPane.showMessageDialog(null, "test", "header", JOptionPane.INFORMATION_MESSAGE);
 //     }
@@ -53,7 +53,7 @@
 //# Java has STRING CONCATENATION ("Hello my name is " + variableName);
 //# There are also template literals, but it's much uglier than in newer languages. If you want more info, look up "Java string format"
 
-// public class App {
+// public class PP1 {
 //     public static void main(String args[]){
 //         String variableName = "David";
 //         System.out.println("My name is " + variableName);
@@ -71,7 +71,7 @@
 
 //# Calculating area of a circle (classwork)
 // import java.util.Scanner;
-// public class App{
+// public class PP1{
 //     public static void main(String args[]){
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Enter a number for radius: ");  // NOTE the fact that it's not .println()- print vs println is that print has no line break, looks better
@@ -159,7 +159,7 @@
 //# int i = (int) d; --> This result is that i = 4. When you narrow the type, you lose some information (in this case, the decimal). 
 
 
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         long L = 2147483648L;
 //         int i = (int) L; --> Type casting performed
@@ -295,7 +295,7 @@
 
 // import javax.swing.JOptionPane;
 
-// public class App{
+// public class PP1{
 //     public static void main(String args[]){
 //         String test = JOptionPane.showInputDialog(null, "Prompt message", "Header", JOptionPane.INFORMATION_MESSAGE);
 //         System.out.println(test);
@@ -435,7 +435,7 @@
 
 
 //! Personal notes - Math.random()
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         // Math.random() naturally gives a double between 0.0 and 0.1 (ex- 0.06067281955789661). If you want random whole #:
 //         System.out.println((int)(Math.random() * 10));
@@ -461,7 +461,7 @@
 
 // This program calculates the number of years it would take (from now) to double your initial investment
 // import java.util.Scanner;
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Enter the initial amount: ");
@@ -492,7 +492,7 @@
 
 // import java.util.Scanner;
 
-// public class App{
+// public class PP1{
 //     public static void main(String args[]){
 //         Scanner input = new Scanner(System.in);
 //         double sum = 0;
@@ -524,7 +524,7 @@
 //# Input AND output redirection: $ java ClassName < input.txt > output.txt
 // The following code was used to test the input + output command; successfully outputted text
 // import java.util.Scanner;
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         // While checks whether input HAS a next input
@@ -540,7 +540,7 @@
 
 // Similar program that takes strings and numbers as inputs; numbers added together
 // import java.util.Scanner;
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         double total = 0;
@@ -586,7 +586,7 @@
 // System.out.printf("Welcome%10s", myString);    -> The 10 means there will be a total of 10 characters after Welcome
 // Output: "Welcome      user" (including the length of "user" (4 chars), 10 characters after "Welcome")
 
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         String myString = "user";
 //         System.out.printf("Welcome%-10s" + '\n', myString);     //The escape character was added to make terminal look nicer
@@ -608,7 +608,7 @@
 //# Syntax: do {loop body} while (iteration-condition);
 
 // import java.util.Scanner;
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         int sum = 0;
@@ -627,7 +627,7 @@
 //# For loop: best for counter-controlled repetition (set number of iterations)
 //# Syntax: for (initial-action; continuation-condition; action-after-iteration){loop body}
 
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int count; // This is how you can keep the count variable in the global scope
 //         for (count = 0; count < 100; ++count){ // Iterates 100 times. ++count is why it ends on 100 from inside the loop instead of 99
@@ -637,7 +637,7 @@
 //     }
 // }
 
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int sum = 0;
 //         for (int count = 1; count <= 100; count++){ // Remember that the action-after-iteration doesn't have to be incrementing, or incrementing by 1. +2 == even #s only
@@ -651,7 +651,7 @@
 //! 9/20/23 - Lecture notes (Nested loops)
 
 // import java.util.Scanner;
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Please enter a number: ");
@@ -675,7 +675,7 @@
 //     }
 // }
 
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int numOfLines = 6;
 //         for (int row = 1; row <= numOfLines; row++){
@@ -689,7 +689,7 @@
 
 
 // import java.util.Scanner;
-// public class App {
+// public class PP1 {
 //     public static void main (String args []){
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Please enter a number: ");
@@ -709,7 +709,7 @@
 
 // import java.util.Scanner;
 
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 
@@ -758,7 +758,7 @@
 
 // import java.util.Scanner;
 
-// public class App {
+// public class PP1 {
 //     public static void main(String args[]) {
 //         Scanner input = new Scanner(System.in);
 
@@ -785,7 +785,7 @@
 
 //# Example 1:
 
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int five = 5;
 
@@ -807,7 +807,7 @@
 // 54321
 
 //# Example 2:
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int five = 5;
 
@@ -829,7 +829,7 @@
 // 12345
 
 //# Example 3:
-// public class App{
+// public class PP1{
     // public static void main (String args[]){
 //         int five = 5;
 
@@ -851,7 +851,7 @@
 // 5
 
 //# Example 4:
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         int five = 5;
 
@@ -876,7 +876,7 @@
 
 //! 9/24/23 - Personal notes
 
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         int endRows = 10;
 
@@ -920,7 +920,7 @@
 // 1
 
 //# This was the first nested loop shown in class. This time I made it myself
-// public class App {
+// public class PP1 {
 //     public static void main (String args[]){
 //         int rows = 5;
 //         for (int i = 1; i <= rows; i++){
@@ -985,7 +985,7 @@
 //# The following shows the difference between the two keywords
 
 //# CONTINUE:
-// public class App {
+// public class PP1 {
 //     public static void main (String[] args){
 //         for (int i = 1; i < 10; i++){
 //             if (i%2==0){
@@ -1000,7 +1000,7 @@
 // 1 3 5 7 9
 
 //# BREAK:
-// public class App {
+// public class PP1 {
 //     public static void main (String[] args){
 //         for (int i = 1; i < 10; i++){
 //             if (i%2==0){
@@ -1168,7 +1168,7 @@
 
 //# Constructors are generally overloaded. You can pass no arguments, or you can pass an argument. EX:
 
-// class App {
+// class PP1 {
 //     public static void main (String[] args){
 //         // Declaring an object/instance: ConstructorClass variableName = new ConstructorMethod(params). ConstructorMethod and ConstructorClass always the same
 //         Circle myCircle = new Circle(10);
@@ -1210,7 +1210,7 @@
 //# .equals() compares strings, and .equalsIgnoresCase() compares the string without case sensitivity.
 //# In the following program, it is used to set "next" as the sentinel value for that loop
 // import java.util.Scanner;
-// public class App {
+// public class PP1 {
 //     public static void main (String[] args){
 //         Scanner input = new Scanner(System.in);
 //         System.out.print("Enter input: ");
@@ -1246,7 +1246,7 @@
 
 //# The "Application" class that provides the general flow of the program
 //# NOTE that if you have more than one class in a file, only ONE can have the public keyword, and its name must match the file's name
-// public class App {
+// public class PP1 {
 //     public static void main(String[] args){
 //         // You create the Person: Class customObjectName = new Constructor(parameters)
 //         Person david = new Person("David", 21);
@@ -1316,7 +1316,7 @@
 //# Methods -> methodName(paramName: paramType)
 
 
-// public class App {
+// public class PP1 {
 //     public static void main (String[] args){
 //         Rectangle r = new Rectangle(5, 5);
 //         Rectangle r2 = new Rectangle();
@@ -1360,7 +1360,7 @@
 
 //# Here's one use of a static method:
 
-// public class App {
+// public class PP1 {
 //     public static void main (String [] args){
 //         System.out.println("Your number of circles is: " + Circle.getNumberOfCircles()); // At the start, 0 circles were made
 //         Circle c1 = new Circle(); // A new circle instance is made, constructor is called; numberOfCircles = 1
@@ -1934,7 +1934,7 @@
 // import java.util.Scanner;
 //# You must import the following line to have Array methods
 // import java.util.Arrays;
-// public class App{
+// public class PP1{
 //     public static void main (String args[]){
 //         Scanner input = new Scanner(System.in);
 //         double myArray[] = new double[10];
@@ -1949,7 +1949,7 @@
 
 //# 2. Copying arrays=
 // import java.util.Arrays;
-// public class App{
+// public class PP1{
 //     public static void main(String args[]){
 //         int array1[] = {1, 2, 3, 4};
 //         // Declare an array with the length of the first array
@@ -2294,8 +2294,7 @@
 
 // public class MyPoint {
 //     // DATA FIELDS
-//     private double x;
-//     private double y;
+//     private double x, y;
 
 //     // CONSTRUCTORS
 //     public MyPoint(){
@@ -2321,5 +2320,63 @@
 
 //     public void setY(double y) {
 //         this.y = y;
+//     }
+// }
+
+
+//! 11/6/23 - Lecture notes
+
+//# BINARY SEARCH
+//# Another type of search besides linear search is binary search. It is used on ALREADY SORTED ARRAYS.
+//# If your array.length is even, you take the smaller value for your insertion (In array [1,2,3,4,5,6], if you take the high (6) - low (1) and divide by 2, there are two values; pick 3.)
+
+//# Here is the code for it
+
+// public static int binarySarch (int[] list, int key){         <- key is what you're searching the array for
+//     int low = 0;
+//     int high = list.length - 1;
+
+//     while (high >= low){
+//         int mid = (low + high)/2;
+//         if (key < list[mid]){
+//             high = mid - 1;
+//         } else if (key == list[mid]){
+//             return mid;
+//         } else {
+//             low = mid + 1;
+//         }
+//     }
+//     return -1 - low
+// }
+
+//# You can also use a prebuilt binarySearch method like so:
+// import java.util.Arrays;
+// Arrays.binarySearch(arrayName, key) <- key is what you're searching the array for
+
+
+//! In class practice - Creates an array with random values and counts occurrences
+// public class PP1{
+//     public static void main(String[] args){
+//         int[] numbers = createArray(100, 9);
+//         countDigits(numbers);
+//     }
+
+//     public static int[] createArray(int n, int boundary){
+//         int[] array = new int[n];
+//         for (int i = 0; i < array.length; i++){
+//             array[i] = (int)(Math.random() * (boundary + 1));
+//         }
+//         return array;
+//     }
+
+//     public static void countDigits(int[] array){
+//         int[] result = new int[10];
+//         for (int i = 0; i < array.length; i++){
+//             result[array[i]]++;
+//         }
+    
+//         for (int i = 0; i < result.length; i++){
+//             System.out.println(i + " appears " + result[i] + " times");
+//         }
 //     }
 // }

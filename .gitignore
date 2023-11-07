@@ -3,3 +3,4 @@
 .vscode
 java_files/CostcoCalculation.java
 .env
+*.excalidraw
