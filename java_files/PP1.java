@@ -2357,10 +2357,13 @@
 //! In class practice - Creates an array with random values and counts occurrences
 // public class PP1{
 //     public static void main(String[] args){
+//      // Creates an array (length 100) of random numbers from 0-9 
 //         int[] numbers = createArray(100, 9);
+//      // Calls method to count occurrences
 //         countDigits(numbers);
 //     }
 
+//  // This method assigns each element an int from [0-9]
 //     public static int[] createArray(int n, int boundary){
 //         int[] array = new int[n];
 //         for (int i = 0; i < array.length; i++){
@@ -2370,13 +2373,19 @@
 //     }
 
 //     public static void countDigits(int[] array){
+//         // It is one greater than the boundary b/c it's counting occurences from 0 to boundary
 //         int[] result = new int[10];
 //         for (int i = 0; i < array.length; i++){
+//          // Counts occurrences. If array[i] is 3, then it would increment result[3], counting another occurence of the number 3
 //             result[array[i]]++;
 //         }
-    
+
+//         // Prints the number of occurrences
 //         for (int i = 0; i < result.length; i++){
+//             // Skips those that has no occurrence
+//             if (result[i] > 0){
 //             System.out.println(i + " appears " + result[i] + " times");
+//             }
 //         }
 //     }
 // }
