@@ -1089,7 +1089,7 @@
 
 //! Lab5 - Overloading methods
 
-// public class Lab5 {
+// public class PP1 {
 //     //Main method declares/initializes variables, calls methods, and displays output
 //     public static void main (String[] args) {
 //         int a = 4, b = -9, c = 7, d = 10;
@@ -1111,20 +1111,12 @@
 
 //     // Second "max" method: checks greatest number out of 3 inputs
 //     public static int max (int num1, int num2, int num3){
-//         if (num3 > max(num1, num2)){
-//             return num3;
-//         } else {
-//             return max(num1, num2);
-//         }
+//         return max(max(num1, num2), num3);
 //     }
 
 //     // Third "max" method: checks greatest number out of 4 inputs
 //     public static int max (int num1, int num2, int num3, int num4){
-//         if ( max(num1, num2) < max(num3, num4)){
-//             return num4;
-//         } else {
-//             return max(max(num1, num2), num3);
-//         }
+//         return max(max(num1, num2), max(num3, num4));
 //     }
 // }
 
@@ -2389,3 +2381,21 @@
 //         }
 //     }
 // }
+
+//! 11/8/23 - Lecture notes
+
+//# HOW TO CREATE AN ARRAY OF OBJECTS:
+//# First, create an empty array of the objects. Instead of writing the type as a primitive type, write the object's name. EX:
+
+//# Circle[] circleArray = new Circle[10];  <- Circle object is the datatype here
+
+//# When we create the array above, our default values for each element are null
+//# NEXT YOU MUST ASSIGN AN OBJECT TO EACH ELEMENT
+
+// for (int i = 0; i < circleArray.length; i++){
+//     circleArray[i] = new Circle();                <- Create a new object and assign it to the element
+// }
+
+//# Here's the process visually:
+// 1.  Circle[] circleArray = new Circle[3] -> [null, null, null]
+// 2.  After the for loop above: [Circle, Circle, Circle]
