@@ -2452,4 +2452,19 @@
 //# To get the operator, you'd need to use args[1].charAt(0), you can't just do args[1].
 //# The only operator that's different is multiplication. For that one you must write "*" in the command line (This is because normally * means you're selecting everything).
 
+//! Lab 10 - pass arguments to main method through CLI
 
+// public class Lab10 {
+//     public static void main(String[] args) {
+//         int counter = 0;
+//         int total = 0;
+//         for (int i = 0; i < args.length; i++){
+//             // Counts number of user inputs
+//             counter++;
+//             // Adds them together
+//             total += Integer.parseInt(args[i]);
+//         }
+//         System.out.println("You entered " + counter + " numbers");
+//         System.out.println("The sum of these numbers is " + total);
+//     }
+// }
