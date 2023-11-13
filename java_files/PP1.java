@@ -2399,3 +2399,57 @@
 //# Here's the process visually:
 // 1.  Circle[] circleArray = new Circle[3] -> [null, null, null]
 // 2.  After the for loop above: [Circle, Circle, Circle]
+
+//! 11/13/23 - Lecture notes
+
+//# STRING isn't a primitive data type, it is a CLASS.
+
+//# WAYS TO DECLARE A STRING:
+//# 1. String message = new String("Hi");
+//# 2. String message = "Hi";
+//# 3. char[] charArray = {'H', 'e', 'l', 'l', 'o'};  --> String message = new String (charArray);
+
+//# Strings are immutable (contents cannot be modified when it's created)
+//# Strings s = "Java"; -> s = "Hello";    --> "Java" is stored as an instance of the String class. When it's reassigned, it takes on a new memory address
+
+//# Interned strings: This concept does not have many (if any) practical uses, but basically JVM can see two variables assigned to the same String (s1 = "Hi", s2= "Hi")
+//# and it would assign it the same memory address. There are ways to overwrite it to reference another object but again, no practical uses.
+
+//! USEFUL STRING METHODS:
+
+//# "Welcome".length() -> returns 7                                                                                 GET LENGTH
+//# message.charAt(index) -> returns char at (index)                                                                FIND INDEX OF CHAR
+//# String s3 = s1.concat(s2) -> s3 = "s1 + s2"                                                                     CONCATENATION
+//# String s2 = s1.substring(0, 11) -> Returns 10 chars from index 0 - 10                                           EXTRACT SUBSTRING
+//# s1.equals(s2) -> compares contents of 2 strings, returns true/false                                             COMPARES STRINGS
+//# s1.toLowerCase -> makes all letters lowercase                                                                   LOWERCASE
+//# s1.toUpperCase -> makes all letters uppercase                                                                   UPPERCASE
+//# s1.trim -> removes whitespace before and after string                                                           TRIM WHITESPACE
+//# s1.replace(oldChar, newChar) -> replace all occurrences of oldChar w/ newChar                                   REPLACE CHARS
+//# s1.indexOf("char/substring", startingIndex) -> find index of a char or starting index of a substring            SEARCH STRING
+//# s1.lastIndexOf('a') -> returns largest index at which a char/substring occurs                                   SEARCH LARGEST INDEX
+//# String.valueOf(5.44) -> Creates string "5.44"                                                                   TO STRING CONVERSION
+
+//# COMMAND LINE PARAMETERS FOR THE MAIN METHOD:
+
+//# class TestMain{
+//#     public static void main (String[] args){
+//#         for (int i = 0; i < args.length; i++){
+//#             System.out.println(args[i]);
+//#         }
+//#     }
+//# }
+//* $ java TestMain Good Morning!  <-- "Good" is args[0], "Morning!" is args[1].
+//# Output:
+// Good
+// Morning!
+
+//# You pass the two args into the String array when you execute the program in the command line, then access it as you would any array (args[i]).
+
+//# You can use this to create a calculator like so:
+//* $ java Test 2 + 3
+//# Inside the program, you'd convert arg[0] and arg[2] (2 and 3) to int like so: Integer.parseInt(arg[i])
+//# To get the operator, you'd need to use args[1].charAt(0), you can't just do args[1].
+//# The only operator that's different is multiplication. For that one you must write "*" in the command line (This is because normally * means you're selecting everything).
+
+
