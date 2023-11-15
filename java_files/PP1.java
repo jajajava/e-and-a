@@ -2468,3 +2468,35 @@
 //         System.out.println("The sum of these numbers is " + total);
 //     }
 // }
+
+//! 11/15/23 - Lecture notes
+
+//# FILE OBJECT:
+//# The File class provides an abstraction that lets the JVM work with files the same way across all Operating Systems it's on
+//# import java.io.File; is necessary to be able to use the File class and its methods.
+
+//# PrintWriter class is also imported with java.io.PrintWriter; . You can pass a file object to a PrintWriter to be able to create files
+
+//# Creating a text file with code:
+// import java.io.*;
+// public class PP1{
+//     // You're required to have "throws exception" to compile. Not yet sure why.
+//     public static void main (String[] args) throws exception {
+//         File fileInstance = new File("filename.txt")
+//         PrintWriter output = new PrintWriter(fileInstance);
+
+//         output.println("This text will be in the new file");
+//         output.close();
+
+// }
+
+//# The .close() method must be used to close the file. If not, the data may not be saved properly in the file.
+
+//# READING FROM A FILE:
+// Scanner input = new Scanner(new File(fileName));
+// while(input.hasNext()){
+//     String firstName = input.next();
+//     String lastName = input.next();
+//     int score = input.nextInt();
+//     System.out.println(firstName + " " lastName + " " + score);
+// }
