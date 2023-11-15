@@ -2382,6 +2382,7 @@
 //     }
 // }
 
+
 //! 11/8/23 - Lecture notes
 
 //# HOW TO CREATE AN ARRAY OF OBJECTS:
@@ -2399,6 +2400,7 @@
 //# Here's the process visually:
 // 1.  Circle[] circleArray = new Circle[3] -> [null, null, null]
 // 2.  After the for loop above: [Circle, Circle, Circle]
+
 
 //! 11/13/23 - Lecture notes
 
@@ -2452,6 +2454,7 @@
 //# To get the operator, you'd need to use args[1].charAt(0), you can't just do args[1].
 //# The only operator that's different is multiplication. For that one you must write "*" in the command line (This is because normally * means you're selecting everything).
 
+
 //! Lab 10 - pass arguments to main method through CLI
 
 // public class Lab10 {
@@ -2469,6 +2472,7 @@
 //     }
 // }
 
+
 //! 11/15/23 - Lecture notes
 
 //# FILE OBJECT:
@@ -2478,11 +2482,12 @@
 //# PrintWriter class is also imported with java.io.PrintWriter; . You can pass a file object to a PrintWriter to be able to create files
 
 //# Creating a text file with code:
-// import java.io.*;
+// import java.io.File;
+// import java.io.PrintWriter;
 // public class PP1{
 //     // You're required to have "throws exception" to compile. Not yet sure why.
 //     public static void main (String[] args) throws exception {
-//         File fileInstance = new File("filename.txt")
+//         File fileInstance = new File("filename.txt");
 //         PrintWriter output = new PrintWriter(fileInstance);
 
 //         output.println("This text will be in the new file");
@@ -2499,4 +2504,65 @@
 //     String lastName = input.next();
 //     int score = input.nextInt();
 //     System.out.println(firstName + " " lastName + " " + score);
+// }
+
+
+//! HW10 - Creating a text file with code
+
+// import java.io.*;
+// import java.util.Scanner;
+
+// public class HW10 {
+//     public static void main(String[] args) throws IOException {
+//         // Create an array of random numbers
+//         int[] randomNumbers = new int[10];
+//         for (int i = 0; i < randomNumbers.length; i++) {
+//         randomNumbers[i] = (int) (Math.random() * 100);
+//         }
+
+//         // Prevents overwriting existing file
+//         File file1 = createFile1(randomNumbers);
+//         if (file1 == null) return;
+//         File file2 = createFile2(file1);
+//         if (file2 == null) return;
+//     }
+
+//     // This method creates the first file with all the numbers in the array printed
+//     public static File createFile1(int[] numbers) throws IOException {
+//         // Create a new file object called "hw10", which represents the file path to "hw10.txt"
+//         File hw10 = new File("hw10.txt");
+//         // Prevent overwrite
+//         if (hw10.exists()){
+//             return null;
+//         }
+//         PrintWriter output = new PrintWriter(hw10);
+//         for (int i = 0; i < numbers.length; i++){
+//             // In the new file "hw10", print a new line with each number in the array
+//             output.println(numbers[i]);
+//         }
+//         output.close();
+//         return hw10;
+//     }
+
+//     // This method creates the second file with all the numbers in the first file multiplied by 10
+//     public static File createFile2(File file1) throws IOException {
+//         // Create a second txt file that scales the first
+//         File hw10_scale = new File("hw10_scale.txt");
+//         // Prevent overwrite
+//         if (hw10_scale.exists()){
+//             return null;
+//         }
+//         // Create scanner object to read file data
+//         Scanner input = new Scanner(file);
+//         // Create second PrintWriter to write the new file
+//         PrintWriter output = new PrintWriter(hw10_scale);
+//         // While there are items in the first file, it will keep performing operations on file1
+//         while (input.hasNext()){
+//             int newNumber = input.nextInt() * 10;
+//             output.println(newNumber);
+//         }
+//         input.close();
+//         output.close();
+//         return hw10_scale;
+//     }
 // }
