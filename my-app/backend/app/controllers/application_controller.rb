@@ -13,7 +13,9 @@ class ApplicationController < ActionController::API
         if header
             token = header.split(" ")[1]
             begin
-                JWT.decode(token, @@secret_key, true, algorithm: 'HS256')
+                tempVar = JWT.decode(token, @@secret_key, true, algorithm: 'HS256')
+                ## DELETE THIS WHEN YOU FINISH
+                print tempVar + "this is a temp var"
             rescue JWT::DecodeError
                 return nil
             end
@@ -23,6 +25,7 @@ class ApplicationController < ActionController::API
     def current_user 
         if decoded_token
             user_id = decoded_token[0]['user_id']['user_id']
+            print user_id
             @user = User.find_by(id: user_id)
         end
     end

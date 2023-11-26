@@ -2428,6 +2428,7 @@
 //# s1.toUpperCase -> makes all letters uppercase                                                                   UPPERCASE
 //# s1.trim -> removes whitespace before and after string                                                           TRIM WHITESPACE
 //# s1.replace(oldChar, newChar) -> replace all occurrences of oldChar w/ newChar                                   REPLACE CHARS
+//# s1.replaceAll(oldString REGEX, newString) -> replace all occurrences of regex selection                         REPLACE VIA REGEX
 //# s1.indexOf("char/substring", startingIndex) -> find index of a char or starting index of a substring            SEARCH STRING
 //# s1.lastIndexOf('a') -> returns largest index at which a char/substring occurs                                   SEARCH LARGEST INDEX
 //# String.valueOf(5.44) -> Creates string "5.44"                                                                   TO STRING CONVERSION
@@ -2564,5 +2565,33 @@
 //         input.close();
 //         output.close();
 //         return hw10_scale;
+//     }
+// }
+
+// //! Practicing file IO
+
+// import java.io.*;
+// import java.util.Scanner;
+
+// public class PP1 {
+//     public static void main (String[] args) throws FileNotFoundException{
+//         Scanner userInput = new Scanner(System.in);
+//         System.out.print("Please enter a file path to be printed: ");
+//         String path = userInput.nextLine();
+//         File file = new File(path);
+//         userInput.close();
+//         File newFile = new File("newFile.txt");
+//         PrintWriter output = new PrintWriter(newFile);
+//         Scanner fileInput = new Scanner(file);
+
+//         while (fileInput.hasNextLine()){
+//             String line = fileInput.nextLine();
+//             // replaceAll uses RegEx. The next line replaces all strings starting with #, as well as the white space that follows it.
+//             line = line.replaceAll("#\\S+\\s?", "");
+//             output.println(line);
+//         }
+
+//         fileInput.close();
+//         output.close();
 //     }
 // }

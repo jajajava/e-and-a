@@ -24,6 +24,8 @@ function Login() {
             setPin('')
         } else if (/[0-9]/.test(e.key) && pin.length < 4){
             setPin(pin + e.key)
+        } else if (e.key === 'Enter'){
+            handleStart(e)
         }
     }
 
@@ -49,7 +51,7 @@ function Login() {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    pin: pin,
+                    pin: pin
                 }),
                 })
                 .then((res) => {
@@ -75,7 +77,7 @@ function Login() {
                     "Content-type": "application/json",
                 },
                 body: JSON.stringify({
-                    pin: pin,
+                    pin: pin
                 }),
                 })
                 .then((res) => {
@@ -102,7 +104,7 @@ function Login() {
                 <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
             </div>
             {/* If the user enters a pin that's not in the database, it gives an error message ("User doesn't exist!") */}
-            {error !== [] ? <h4 style={{marginTop: '5px', marginBottom: '5px'}}>{error.message}</h4> : null}
+            {error != [] ? <h4 style={{marginTop: '5px', marginBottom: '5px'}}>{error.message}</h4> : null}
             <table>
             <tr>
                 <td><button className="pinButton" onClick={handlePin}>1</button></td>

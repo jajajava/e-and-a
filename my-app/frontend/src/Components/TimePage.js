@@ -55,12 +55,7 @@ function TimePage() {
   }
 
   function toHomePage() {
-    if (!clockedIn) {
-      handleSignout();
-      navigate("/login");
-    } else {
-      navigate("/");
-    }
+    navigate('/')
   }
 
   let truncatedHours = Math.trunc(hours * 100) / 100.0

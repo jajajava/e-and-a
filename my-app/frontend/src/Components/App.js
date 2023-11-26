@@ -35,7 +35,7 @@ function App() {
 
     function toHomepage(){
       handleSignout()
-      navigate("/")
+      navigate('/')
     }
 
     // This array has all the useContext values! I didn't want to overcrowd the context provider's value at the bottom
@@ -72,10 +72,11 @@ function App() {
     } else if (isSignedIn && user.is_clocked_in === false) {
       routeElement = <TimePage/>;
     } else {
-      routeElement = (<Login/>);
+      routeElement = <Login/>;
     }
 
     console.log(user)
+    console.log(isSignedIn)
 
   return (
     <div className="App">
