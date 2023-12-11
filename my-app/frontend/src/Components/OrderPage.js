@@ -7,46 +7,64 @@ function OrderPage({toHomepage}){
 
     const [selectedMainCategory, setSelectedMainCategory] = useState("food");
     const [selectedSubCategory, setSelectedSubCategory] = useState("mains");
-    // I'm not yet sure if subcategory2 needs to exist for foods, but it does for drink types.
+    //I'm not yet sure if subcategory2 needs to exist for foods, but it does for drink types.
     const [selectedSubCategory2, setSelectedSubCategory2] = useState("soft drinks");
     const [selectedSubCategory2Array, setSelectedSubCategory2Array] = useState([])
     const [orderArray, setOrderArray] = useState([])
+    const [foodsArray, setFoodsArray] = useState([])
+    const [drinksArray, setDrinksArray] = useState([])
 
 
     //! orderArray to be used as JSON body for POST call. 
     //! You should put all the arrays like "tempArray" (all menu organizing arrays) into a separate file and import it
-
-
-    //! MAKE THE USE EFFECT FETCH DATA FROM BACKEND, THEN DO .MAP() TO CREATE THE FOLLOWING BUTTONS FOR EACH CATEGORY
     useEffect(()=> {
-        let tempArray = []
-        if (selectedSubCategory2 === "soft drinks"){
-            tempArray = [
-            <button onClick={()=> setOrderArray([...orderArray, "Coca Cola"])} className="orderSubCategory">Coca Cola</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Diet Coke"])} className="orderSubCategory">Diet Coke</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Sprite"])} className="orderSubCategory">Sprite</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Pepsi"])} className="orderSubCategory">Pepsi</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Fanta"])} className="orderSubCategory">Fanta</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Root Beer"])} className="orderSubCategory">Root Beer</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Ginger Ale"])} className="orderSubCategory">Ginger Ale</button>
-            ]
-        } else if (selectedSubCategory2 === "lemonades"){
-            tempArray = [
-            <button onClick={()=> setOrderArray([...orderArray, "Classic Lemonade"])} className="orderSubCategory">Classic</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Pink Lemonade"])} className="orderSubCategory">Pink</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Raspberry Lemonade"])} className="orderSubCategory">Raspberry</button>
-            ]
-        } else if (selectedSubCategory2 === "frozen"){
-            tempArray = [
-            <button onClick={()=> setOrderArray([...orderArray, "Frozen Strawberry"])} className="orderSubCategory">Strawberry limeade</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Frozen Blueberry"])} className="orderSubCategory">Blueberry limeade</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Frozen Cherry"])} className="orderSubCategory">Cherry limeade</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Frozen Peach"])} className="orderSubCategory">Peach limeade</button>,
-            <button onClick={()=> setOrderArray([...orderArray, "Frozen Mango"])} className="orderSubCategory">Mango limeade</button>
-            ]
-        }
-        setSelectedSubCategory2Array(tempArray)
-    }, [selectedSubCategory2, orderArray])
+        fetch("http://127.0.0.1:3001/foods", {
+            method: "GET",
+            headers: {
+            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            // Use the functional update to correctly update foodsArray
+            setFoodsArray(prevFoodsArray => [...prevFoodsArray, ...data.filter(x => x.category === "foods")]);
+            setDrinksArray(prevDrinksArray => [...prevDrinksArray, ...data.filter(x => x.category === "drinks")])})
+    }, [])
+
+    console.log(foodsArray)
+    console.log(drinksArray)
+
+
+    // //! MAKE THE USE EFFECT FETCH DATA FROM BACKEND, THEN DO .MAP() TO CREATE THE FOLLOWING BUTTONS FOR EACH CATEGORY
+    // useEffect(()=> {
+    //     let tempArray = []
+    //     if (selectedSubCategory2 === "soft drinks"){
+    //         tempArray = [
+    //         <button onClick={()=> setOrderArray([...orderArray, "Coca Cola"])} className="orderSubCategory">Coca Cola</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Diet Coke"])} className="orderSubCategory">Diet Coke</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Sprite"])} className="orderSubCategory">Sprite</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Pepsi"])} className="orderSubCategory">Pepsi</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Fanta"])} className="orderSubCategory">Fanta</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Root Beer"])} className="orderSubCategory">Root Beer</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Ginger Ale"])} className="orderSubCategory">Ginger Ale</button>
+    //         ]
+    //     } else if (selectedSubCategory2 === "lemonades"){
+    //         tempArray = [
+    //         <button onClick={()=> setOrderArray([...orderArray, "Classic Lemonade"])} className="orderSubCategory">Classic</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Pink Lemonade"])} className="orderSubCategory">Pink</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Raspberry Lemonade"])} className="orderSubCategory">Raspberry</button>
+    //         ]
+    //     } else if (selectedSubCategory2 === "frozen"){
+    //         tempArray = [
+    //         <button onClick={()=> setOrderArray([...orderArray, "Frozen Strawberry"])} className="orderSubCategory">Strawberry limeade</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Frozen Blueberry"])} className="orderSubCategory">Blueberry limeade</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Frozen Cherry"])} className="orderSubCategory">Cherry limeade</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Frozen Peach"])} className="orderSubCategory">Peach limeade</button>,
+    //         <button onClick={()=> setOrderArray([...orderArray, "Frozen Mango"])} className="orderSubCategory">Mango limeade</button>
+    //         ]
+    //     }
+    //     setSelectedSubCategory2Array(tempArray)
+    // }, [selectedSubCategory2, orderArray])
 
     console.log(orderArray)
     return(

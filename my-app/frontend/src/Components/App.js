@@ -7,6 +7,7 @@ import BlankPage from "./BlankPage";
 import TimePage from "./TimePage";
 import OrderPage from "./OrderPage";
 
+  //! Big issue- when you hit home after clocking out it takes you to the order page
 // This component obtains the user data when user logs in, defines routes, connects the CSS file, and creates the React useContext
 function App() {
 
