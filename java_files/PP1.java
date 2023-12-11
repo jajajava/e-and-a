@@ -2568,7 +2568,8 @@
 //     }
 // }
 
-// //! Practicing file IO
+
+//! Practicing file IO
 
 // import java.io.*;
 // import java.util.Scanner;
@@ -2595,3 +2596,10 @@
 //         output.close();
 //     }
 // }
+
+
+//! 11/27/23 - Lecture notes
+
+//# Character class has built in methods too, a lot of them being static. 
+//# Honestly this lesson didn't have a lot of information, we left after 20 minutes
+
