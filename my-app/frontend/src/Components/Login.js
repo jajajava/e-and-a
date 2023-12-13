@@ -5,8 +5,7 @@ import { Context } from "./App";
 // This component authenticates the user and has the input logic for the digital pin pad
 function Login() {
 
-    const {setUser, setIsSignedIn} = useContext(Context);
-
+    const {setUser, setIsSignedIn, handleSignIn} = useContext(Context);
     const [pin, setPin] = useState('')
     const [error, setError] = useState([])
     const navigate = useNavigate()
@@ -68,7 +67,7 @@ function Login() {
                     }
                 })
     }
-    // If the user is not clocked in, it takes them to the clocking page. If they are, it takes them to the home page
+    // If the user is not clocked in, signing in takes them to the clocking page. If they are clocked in, it takes them to the home page
     function handleStart(e){
         e.preventDefault()
             fetch("http://127.0.0.1:3001/auth/login", {

@@ -14,9 +14,9 @@ function App() {
   const [user, setUser] = useState("")
   const [isSignedIn, setIsSignedIn] = useState(false)
   const navigate = useNavigate()
+  const token = localStorage.getItem("jwt") 
   
   useEffect(()=> {
-    const token = localStorage.getItem("jwt") 
     token !== null? 
     fetch("http://127.0.0.1:3001/me", {
       method: "GET",
@@ -25,7 +25,7 @@ function App() {
       }
     })
     .then(res => res.json())
-    .then(res => {setUser(res); setIsSignedIn(true)})
+    .then(res => {setUser(res); setIsSignedIn(true);})
     : setIsSignedIn(false)}, [isSignedIn])
 
     function handleSignout(){
@@ -34,6 +34,14 @@ function App() {
       setIsSignedIn(false)
     }
 
+    // This makes it so that the page refreshes to load the state change. Try to improve this later (no refresh)
+    function handleSignIn(){
+      setIsSignedIn(true)
+      navigate('/');
+      window.location.reload();
+    }
+
+    // Don't touch this function, the Header component relies on it
     function toHomepage(){
       handleSignout()
       navigate('/')
@@ -41,11 +49,12 @@ function App() {
 
     // This array has all the useContext values! I didn't want to overcrowd the context provider's value at the bottom
     const useContextArray={
-      user, 
-      toHomepage,
+      user,
       setUser,
       setIsSignedIn,
-      handleSignout
+      handleSignout,
+      handleSignIn,
+      toHomepage
     }
 
     let routeArray
@@ -66,14 +75,15 @@ function App() {
         <Route path="/timeclock" element={<TimePage/>}/>
       ]
     }
+
     // Defines the path for * depending on user state
-    let routeElement
+    let route404
     if (isSignedIn && user.is_clocked_in) {
-      routeElement = <BlankPage/>;
+      route404 = <BlankPage/>;
     } else if (isSignedIn && user.is_clocked_in === false) {
-      routeElement = <TimePage/>;
+      route404 = <TimePage/>;
     } else {
-      routeElement = <Login/>;
+      route404 = <Login/>;
     }
 
     console.log(user)
@@ -85,7 +95,7 @@ function App() {
       <Context.Provider value={useContextArray}>
        <Routes>
         {routeArray}
-        <Route path="*" element={routeElement} />
+        <Route path="*" element={route404} />
        </Routes>
       </Context.Provider>
       
