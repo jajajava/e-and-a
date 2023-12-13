@@ -54,7 +54,7 @@ function TimePage() {
 
   function toHomePage() {
     navigate('/')
-    if (clockedIn == false){
+    if (clockedIn === false){
       handleSignout()
     }
   }

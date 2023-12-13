@@ -5,7 +5,7 @@ import { Context } from "./App";
 // This component authenticates the user and has the input logic for the digital pin pad
 function Login() {
 
-    const {setUser, setIsSignedIn, handleSignIn} = useContext(Context);
+    const {setUser, setIsSignedIn} = useContext(Context);
     const [pin, setPin] = useState('')
     const [error, setError] = useState([])
     const navigate = useNavigate()
