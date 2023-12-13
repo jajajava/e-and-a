@@ -7,7 +7,6 @@ import BlankPage from "./BlankPage";
 import TimePage from "./TimePage";
 import OrderPage from "./OrderPage";
 
-  //! Big issue- when you hit home after clocking out it takes you to the order page
 // This component obtains the user data when user logs in, defines routes, connects the CSS file, and creates the React useContext
 function App() {
 
@@ -36,7 +35,6 @@ function App() {
 
     // This makes it so that the page refreshes to load the state change. Try to improve this later (no refresh)
     function handleSignIn(){
-      setIsSignedIn(true)
       navigate('/');
       window.location.reload();
     }
@@ -59,7 +57,7 @@ function App() {
 
     let routeArray
     // Routes that exist if the user is signed AND clocked in
-    if (isSignedIn === true && user.is_clocked_in === true){
+    if (user.is_clocked_in === true){
       routeArray = [
         <Route path="/timeclock" element={<TimePage/>}/>,
         <Route path="/" element={<OrderPage/>}/>, 
