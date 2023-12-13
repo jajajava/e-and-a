@@ -5,8 +5,8 @@ import Header from "./Header";
 function OrderPage({toHomepage}){
 
     const [selectedMainCategory, setSelectedMainCategory] = useState("food");
-    const [selectedSubcategory, setSelectedSubcategory] = useState("cocktails")
-    //I'm not yet sure if subcategory2 needs to exist for foods, but it does for drink types.
+    const [selectedSubcategory, setSelectedSubcategory] = useState("")
+    //I'm not yet sure if subcategory needs to exist for foods, but it does for drink types.
     const [alcoholSelected, setAlcoholSelected] = useState(true)
     const [orderArray, setOrderArray] = useState([])
     const [foodsArray, setFoodsArray] = useState([])
@@ -53,15 +53,14 @@ function OrderPage({toHomepage}){
                                 <button onClick={()=> setSelectedSubcategory("wines")}>Wines</button>
                                 <button onClick={()=> setSelectedSubcategory("spirits")}>Spirits</button>
                                 <button onClick={()=> setSelectedSubcategory("beers")}>Beers</button>
-                                {/* You will need to replace .subcategory2 with category in the backend */}
                                 {selectedSubcategory === "cocktails" ?
-                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory2 === "cocktails")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory === "cocktails")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : selectedSubcategory === "wines" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory2 === "wines")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory === "wines")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : selectedSubcategory === "spirits" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory2 === "spirits")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory === "spirits")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : selectedSubcategory === "beers" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory2 === "beers")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === true && x.subcategory === "beers")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : null
                             }
                             </div> 
@@ -71,11 +70,11 @@ function OrderPage({toHomepage}){
                                 <button onClick={()=> setSelectedSubcategory("frozen")}>Frozen</button>
                                 {/* Loads options for selected category (non alcoholic drinks) */}
                                 {selectedSubcategory === "soft drinks" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory2 === "soft drinks")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory === "soft drinks")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : selectedSubcategory === "lemonades" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory2 === "lemonades")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory === "lemonades")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : selectedSubcategory === "frozen" ? 
-                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory2 === "frozen")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
+                                <div> {drinksArray.filter((x) => (x.is_alc === false && x.subcategory === "frozen")).map((y) => <button key={y.id} onClick={() => setOrderArray([...orderArray, y])}>{y.name}</button>)} </div>
                                 : null
                                 }
                             </div>}

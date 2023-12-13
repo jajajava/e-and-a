@@ -18,8 +18,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_011405) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_alc"
     t.string "subcategory2"
+    t.boolean "is_alc"
+    t.string "subcategory"
   end
 
   create_table "order_items", force: :cascade do |t|
