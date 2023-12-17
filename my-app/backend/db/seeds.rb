@@ -85,20 +85,15 @@ Tab.create(name: "Stacey", user_id: 1, total: 0, is_active: true)
 puts "Finished making tabs..."
 
 
-Order.create(total: 61.56, is_complete: true, user_id: 1, tab_id: nil)
-Order.create(total: 18, is_complete: true, user_id: 2, tab_id: nil)
-Order.create(total: 20, is_complete: true, user_id: 2, tab_id: 2)
-Order.create(total: 20, is_complete: true, user_id: 1, tab_id: 2)
-Order.create(total: 20, is_complete: true, user_id: 2, tab_id: 1)
+Order.create(total: 43.68, is_complete: true, user_id: 1, tab_id: nil)
+Order.create(total: 18.72, is_complete: true, user_id: 2, tab_id: nil)
 puts "Created orders..."
 
 # This is each individual item in an order
-OrderItem.create(order_id: 1, food_id: 1)
-OrderItem.create(order_id: 1, food_id: 4)
-OrderItem.create(order_id: 1, food_id: 4)
-OrderItem.create(order_id: 1, food_id: 2)
-OrderItem.create(order_id: 2, food_id: 4)
-OrderItem.create(order_id: 2, food_id: 4)
+OrderItem.create(order_id: 1, food_id: 1, quantity: 1)
+OrderItem.create(order_id: 1, food_id: 4, quantity: 2)
+OrderItem.create(order_id: 1, food_id: 2, quantity: 1)
+OrderItem.create(order_id: 2, food_id: 4, quantity: 2)
 puts "Finished orders..."
 
 
