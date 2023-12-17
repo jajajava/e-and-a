@@ -46,7 +46,14 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      defaults = {user_id: current_user.id, is_complete: false}
-      params.require(:order).permit(:total, :is_complete, :user_id, :tab_id, order_items_attributes: [:food_id, :quantity]).merge(defaults)
+      # Build the order with nested attributes
+      order_instance = Order.new(params.require(:order).permit(:user_id, :tab_id, order_items_attributes: [:food_id, :quantity]))
+    
+      # Calculate total for this order_instance instance
+      total = order_instance.calculate_total
+    
+      # Merge the calculated total and other defaults
+      defaults = { user_id: current_user.id, is_complete: false, total: total }
+      params.require(:order).permit(:is_complete, :user_id, :tab_id, order_items_attributes: [:food_id, :quantity]).merge(defaults)
     end
 end

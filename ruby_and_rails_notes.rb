@@ -117,3 +117,12 @@
 #//     attributes :id, :name, :age
 #//     has_many :orders  --> (Because we have that association in the model, we can show the orders with the employee data)
 #// end 
+
+# To compare Ruby and Java, look at how you create an instance of an object:
+# JAVA:
+# Object o1 = new Object(params) <- invokes a constructor and passes arguments
+# RUBY:
+# o1 = Object.new(params)
+# o1.save 
+
+# OR you can do o1 = Object.create(params) to skip the .new and separate .save step. The former is a safer technique though

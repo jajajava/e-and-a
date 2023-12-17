@@ -1,0 +1,15 @@
+BACKEND:
+1. Add tipping option into Order
+
+FRONTEND:
+1. Fix CSS styling of components
+2. Connect newly upgraded post /Orders route with the frontend. Here's the JSON structure:
+{
+  "order": {
+    "tab_id": 1,
+    "order_items_attributes": [
+      { "food_id": 3, "quantity": 2 },
+      { "food_id": 39, "quantity": 4 }
+    ]
+  }
+}
