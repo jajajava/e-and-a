@@ -6,7 +6,6 @@ function OrderPage({toHomepage}){
 
     const [selectedMainCategory, setSelectedMainCategory] = useState("food");
     const [selectedSubcategory, setSelectedSubcategory] = useState("")
-    //I'm not yet sure if subcategory needs to exist for foods, but it does for drink types.
     const [alcoholSelected, setAlcoholSelected] = useState(true)
     const [orderArray, setOrderArray] = useState([])
     const [foodsArray, setFoodsArray] = useState([])
@@ -14,7 +13,6 @@ function OrderPage({toHomepage}){
     const [finalizedOrderArray, setFinalizedOrderArray] = useState([])
     const [tabID, setTabID] = useState(null)
 
-    //! orderArray to be used as JSON body for POST call. 
     //! Need to fix styling on buttons
     //! Make a way to view active tabs (GET /tabs route)
     // Fetches menu
@@ -68,7 +66,8 @@ function OrderPage({toHomepage}){
             .then(setOrderArray([]), 
                 setSelectedMainCategory("food"), 
                 setSelectedSubcategory(""), 
-                setAlcoholSelected(true)
+                setAlcoholSelected(true),
+                setTabID(null)
             )
         }
     }, [finalizedOrderArray, tabID]);
@@ -80,6 +79,10 @@ function OrderPage({toHomepage}){
 
     function cancelOrder(){
         setOrderArray([])
+        setSelectedMainCategory("food")
+        setSelectedSubcategory("")
+        setAlcoholSelected(true)
+        setTabID(null)
     }
 
     return(

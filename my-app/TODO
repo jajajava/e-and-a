@@ -1,15 +1,7 @@
 BACKEND:
-1. Add tipping option into Order
+1. Add tipping option into Order (this is probably a frontend thing though, could be added as a tip in orderArray)
 
 FRONTEND:
-1. Fix CSS styling of components
-2. Connect newly upgraded post /Orders route with the frontend. Here's the JSON structure:
-{
-  "order": {
-    "tab_id": 1,
-    "order_items_attributes": [
-      { "food_id": 3, "quantity": 2 },
-      { "food_id": 39, "quantity": 4 }
-    ]
-  }
-}
+1. Fix convertMenuItem function in OrderPage.js to accept other quantities and make tabs a thing (need to add setTabID usability that prefereably checks existing tabs first)
+2. Create tab functionality
+3. Fix CSS styling of components
