@@ -12,9 +12,11 @@ function OrderPage({toHomepage}){
     const [foodsArray, setFoodsArray] = useState([])
     const [drinksArray, setDrinksArray] = useState([])
     const [finalizedOrderArray, setFinalizedOrderArray] = useState([])
+    const [tabID, setTabID] = useState(null)
 
     //! orderArray to be used as JSON body for POST call. 
     //! Need to fix styling on buttons
+    //! Make a way to view active tabs (GET /tabs route)
     // Fetches menu
     useEffect(()=> {
         fetch("http://127.0.0.1:3001/foods", {
@@ -35,7 +37,7 @@ function OrderPage({toHomepage}){
         console.log(orderArray)
     }, [orderArray])
 
-    //! FIX THIS TO ACCEPT OTHER QUANTITIES
+    //! FIX THIS TO ACCEPT OTHER QUANTITIES AND MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
     function convertMenuItem(){
         setFinalizedOrderArray(orderArray.map(item => {
             console.log(item); // Log the current item
@@ -58,18 +60,21 @@ function OrderPage({toHomepage}){
                 },
                 body: JSON.stringify({
                     "order": {
-                        "tab_id": 1,
+                        "tab_id": tabID,
                         "order_items_attributes": finalizedOrderArray
                     }
                 })
             })
-            .then(setOrderArray([]))
+            .then(setOrderArray([]), 
+                setSelectedMainCategory("food"), 
+                setSelectedSubcategory(""), 
+                setAlcoholSelected(true)
+            )
         }
-    }, [finalizedOrderArray]);
+    }, [finalizedOrderArray, tabID]);
 
     // When convertMenuItem sets the finalizedOrderArray, the useEffect above is triggered!
-    function createOrder(e){
-        e.preventDefault();
+    function createOrder(){
         convertMenuItem();
     }
 
