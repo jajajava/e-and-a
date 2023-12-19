@@ -11,6 +11,7 @@ function OrderPage({toHomepage}){
     const [orderArray, setOrderArray] = useState([])
     const [foodsArray, setFoodsArray] = useState([])
     const [drinksArray, setDrinksArray] = useState([])
+    const [finalizedOrderArray, setFinalizedOrderArray] = useState([])
 
     //! orderArray to be used as JSON body for POST call. 
     //! Need to fix styling on buttons
@@ -33,6 +34,43 @@ function OrderPage({toHomepage}){
     useEffect(()=> {
         console.log(orderArray)
     }, [orderArray])
+
+    //! FIX THIS TO ACCEPT OTHER QUANTITIES
+    function convertMenuItem(){
+        setFinalizedOrderArray(orderArray.map(item => {
+            console.log(item); // Log the current item
+            return {
+                food_id: item.id,
+                quantity: 1
+            };
+        }));
+    }
+
+    // This useEffect is triggered by the submitOrder function
+    useEffect(() => {
+        if (finalizedOrderArray.length > 0) {
+            console.log(finalizedOrderArray);
+            fetch("http://127.0.0.1:3001/orders", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                },
+                body: JSON.stringify({
+                    "order": {
+                        "tab_id": 1,
+                        "order_items_attributes": finalizedOrderArray
+                    }
+                })
+            });
+        }
+    }, [finalizedOrderArray]);
+
+    // When convertMenuItem sets the finalizedOrderArray, the useEffect above is triggered!
+    function submitOrder(e){
+        e.preventDefault();
+        convertMenuItem();
+    }
 
     return(
         <div>
@@ -79,6 +117,7 @@ function OrderPage({toHomepage}){
                                 }
                             </div>}
                 </div>}
+                <button onClick={submitOrder}>Place Order</button>
             </div>
         </div>
     )
