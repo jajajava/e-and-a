@@ -46,7 +46,7 @@ function OrderPage({toHomepage}){
         }));
     }
 
-    // This useEffect is triggered by the submitOrder function
+    // This useEffect is triggered by the createOrder function
     useEffect(() => {
         if (finalizedOrderArray.length > 0) {
             console.log(finalizedOrderArray);
@@ -62,14 +62,19 @@ function OrderPage({toHomepage}){
                         "order_items_attributes": finalizedOrderArray
                     }
                 })
-            });
+            })
+            .then(setOrderArray([]))
         }
     }, [finalizedOrderArray]);
 
     // When convertMenuItem sets the finalizedOrderArray, the useEffect above is triggered!
-    function submitOrder(e){
+    function createOrder(e){
         e.preventDefault();
         convertMenuItem();
+    }
+
+    function cancelOrder(){
+        setOrderArray([])
     }
 
     return(
@@ -117,7 +122,13 @@ function OrderPage({toHomepage}){
                                 }
                             </div>}
                 </div>}
-                <button onClick={submitOrder}>Place Order</button>
+                {/* Buttons to create/cancel order appear when menu items are selected; maybe change this so that they were greyed out but changed css to light up when first item selected */}
+                {orderArray.length > 0 ? 
+                <div>
+                    <button onClick={createOrder}>Create Order</button>
+                    <button onClick={cancelOrder}>Cancel Order</button>
+                </div> 
+                : null}
             </div>
         </div>
     )
