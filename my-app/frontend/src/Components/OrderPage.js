@@ -36,6 +36,7 @@ function OrderPage({toHomepage}){
     }, [orderArray])
 
     //! FIX THIS TO ACCEPT OTHER QUANTITIES AND MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
+    // Converts the orderArray to be used in the backend
     function convertMenuItem(){
         setFinalizedOrderArray(orderArray.map(item => {
             console.log(item); // Log the current item
@@ -44,6 +45,26 @@ function OrderPage({toHomepage}){
                 quantity: 1
             };
         }));
+    }
+
+    function foodFormatter(x){
+        setOrderArray([...orderArray, {name: x.name, food_id: x.id, quantity: 1}])
+    }
+
+    function quantityIncrementer(foodId){
+        setOrderArray(orderArray.map(item => 
+            item.food_id === foodId ? {...item, quantity: item.quantity + 1} : item
+        ))
+    }
+
+    function quantityDecrementer(foodId) {
+        const updatedOrderArray = orderArray.map(item => 
+            item.food_id === foodId ? {...item, quantity: Math.max(item.quantity - 1, 0)} : item
+        );
+        
+        const filteredOrderArray = updatedOrderArray.filter(item => item.quantity > 0);
+        
+        setOrderArray(filteredOrderArray);
     }
 
     // This useEffect is triggered by the createOrder function
@@ -93,7 +114,7 @@ function OrderPage({toHomepage}){
                 <button onClick={() => setSelectedMainCategory("drinks")}>Drinks</button>
                 {selectedMainCategory === "food" ? 
                     <div>
-                        {foodsArray.map((x) => <button key={x.id} onClick={() => setOrderArray([...orderArray, x])}>{x.name}</button>)} 
+                        {foodsArray.map((x) => <button key={x.id} onClick={()=> foodFormatter(x)}>{x.name}</button>)} 
                     </div>
                     : <div>
                         <button onClick={() => setAlcoholSelected(true)}>Alcohol</button>
@@ -135,6 +156,15 @@ function OrderPage({toHomepage}){
                 <div>
                     <button onClick={createOrder}>Create Order</button>
                     <button onClick={cancelOrder}>Cancel Order</button>
+                    <div className="orderDisplay">
+                        {orderArray.map((item) => <h1>{`${item.name}:`}
+                        <div>
+                            <button onClick={()=> quantityIncrementer(item.food_id)}>+</button>
+                            <h1>{item.quantity}</h1>
+                            <button onClick={()=> quantityDecrementer(item.food_id)}>-</button>
+                        </div>
+                        </h1>)}
+                    </div>
                 </div> 
                 : null}
             </div>
