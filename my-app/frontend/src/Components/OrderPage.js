@@ -93,6 +93,9 @@ function OrderPage({toHomepage}){
                     }
                 })
             })
+            // To be able to see the total in the console:
+            .then(res => res.json())
+            .then(res => console.log(res))
             .then(setOrderArray([]), 
                 setSelectedMainCategory("food"), 
                 setSelectedSubcategory(""), 
