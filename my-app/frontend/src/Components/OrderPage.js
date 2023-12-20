@@ -10,7 +10,6 @@ function OrderPage({toHomepage}){
     const [orderArray, setOrderArray] = useState([])
     const [foodsArray, setFoodsArray] = useState([])
     const [drinksArray, setDrinksArray] = useState([])
-    const [finalizedOrderArray, setFinalizedOrderArray] = useState([])
     const [tabID, setTabID] = useState(null)
 
     //! Need to fix styling on buttons
@@ -35,18 +34,7 @@ function OrderPage({toHomepage}){
         console.log(orderArray)
     }, [orderArray])
 
-    //! FIX THIS TO ACCEPT OTHER QUANTITIES AND MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
-    // Converts the orderArray to be used in the backend
-    //! MAY WANNA DELETE THIS FUNCTION ONCE FOODFORMATTER WORKS
-    function convertMenuItem(){
-        setFinalizedOrderArray(orderArray.map(item => {
-            console.log(item); // Log the current item
-            return {
-                food_id: item.food_id,
-                quantity: item.quantity
-            };
-        }));
-    }
+    //! MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
 
     function foodFormatter(x) {
         const existingItemIndex = orderArray.findIndex(item => item.food_id === x.id)
@@ -76,10 +64,9 @@ function OrderPage({toHomepage}){
         setOrderArray(filteredOrderArray);
     }
 
-    // This useEffect is triggered by the createOrder function
-    useEffect(() => {
-        if (finalizedOrderArray.length > 0) {
-            console.log(finalizedOrderArray);
+    function createOrder(){
+        if (orderArray.length > 0) {
+            console.log(orderArray);
             fetch("http://127.0.0.1:3001/orders", {
                 method: "POST",
                 headers: {
@@ -89,7 +76,7 @@ function OrderPage({toHomepage}){
                 body: JSON.stringify({
                     "order": {
                         "tab_id": tabID,
-                        "order_items_attributes": finalizedOrderArray
+                        "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
                     }
                 })
             })
@@ -103,11 +90,6 @@ function OrderPage({toHomepage}){
                 setTabID(null)
             )
         }
-    }, [finalizedOrderArray, tabID]);
-
-    // When convertMenuItem sets the finalizedOrderArray, the useEffect above is triggered!
-    function createOrder(){
-        convertMenuItem();
     }
 
     function cancelOrder(){
