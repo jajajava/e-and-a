@@ -42,34 +42,33 @@ function OrderPage({toHomepage}){
         setFinalizedOrderArray(orderArray.map(item => {
             console.log(item); // Log the current item
             return {
-                food_id: item.id,
-                quantity: 1
+                food_id: item.food_id,
+                quantity: item.quantity
             };
         }));
     }
 
     function foodFormatter(x) {
         const existingItemIndex = orderArray.findIndex(item => item.food_id === x.id)
-        
+    
         if (existingItemIndex >= 0) {
-            const newOrderArray = orderArray.map((item, index) => 
-                index === existingItemIndex ? {...item, quantity: item.quantity + 1} : item
-            )
-            setOrderArray(newOrderArray)
+            const updatedOrderArray = orderArray.map((item, index) => 
+                index === existingItemIndex ? {...item, quantity: item.quantity + 1, totalPrice: item.unitPrice * (item.quantity + 1)} : item)
+            setOrderArray(updatedOrderArray)
         } else {
-            setOrderArray([...orderArray, { name: x.name, food_id: x.id, quantity: 1 }])
+            setOrderArray([...orderArray, { name: x.name, unitPrice: x.price, totalPrice: x.price, food_id: x.id, quantity: 1 }])
         }
     }
 
     function quantityIncrementer(foodId){
         setOrderArray(orderArray.map(item => 
-            item.food_id === foodId ? {...item, quantity: item.quantity + 1} : item
+            item.food_id === foodId ? {...item, quantity: item.quantity + 1, totalPrice: item.unitPrice * (item.quantity + 1)} : item
         ))
     }
 
     function quantityDecrementer(foodId) {
         const updatedOrderArray = orderArray.map(item => 
-            item.food_id === foodId ? {...item, quantity: Math.max(item.quantity - 1, 0)} : item
+            item.food_id === foodId ? {...item, quantity: Math.max(item.quantity - 1, 0), totalPrice: item.unitPrice * (item.quantity - 1)} : item
         );
         
         const filteredOrderArray = updatedOrderArray.filter(item => item.quantity > 0);
@@ -170,7 +169,7 @@ function OrderPage({toHomepage}){
                         {orderArray.map((item) => <h1>{`${item.name}:`}
                         <div>
                             <button onClick={()=> quantityIncrementer(item.food_id)}>+</button>
-                            <h1>{item.quantity}</h1>
+                            <h3>{item.quantity}</h3>
                             <button onClick={()=> quantityDecrementer(item.food_id)}>-</button>
                         </div>
                         </h1>)}
