@@ -15,8 +15,6 @@ function Tabs(){
         .then(res => setAllTabsArray(res))
     }, [])
 
-    console.log(allTabsArray)
-
     return (
         <div>
             <Header />
