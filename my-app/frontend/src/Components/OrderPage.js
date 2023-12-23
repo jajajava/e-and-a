@@ -14,7 +14,7 @@ function OrderPage({toHomepage}){
     const [currentlyActiveTabs, setCurrentlyActiveTabs] = useState([])
     const [modalStatus, setModalStatus] = useState(false)
     const [searchTerm, setSearchTerm] = useState("")
-    // Not necessary but it makes the code less crowded and confusing
+    // Not necessary but it makes the code less confusing
     const longTabFilter = currentlyActiveTabs.filter(tab => tab.name.toLowerCase().includes(searchTerm))
 
     //! Need to fix styling on buttons
@@ -49,7 +49,7 @@ function OrderPage({toHomepage}){
         console.log(orderArray)
     }, [orderArray])
 
-    //! MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
+    //! MAKE TAB NAMES UNIQUE
 
     function createATabModal(){
         setModalStatus(!modalStatus)
@@ -95,6 +95,27 @@ function OrderPage({toHomepage}){
         setOrderArray(filteredOrderArray)
     }
 
+    function create(){
+        // 1. Create a tab and then an order
+        if (searchTerm !== "" && longTabFilter.length === 0){
+            createTab()
+        // 2. Create a new order on an existing tab
+        } else if (searchTerm !== "" && longTabFilter.length === 1){ // Is && redundant? Or does it prevent null issues?
+            // Check the useEffect with the "tabID !== null" condition
+            setTabID(longTabFilter[0].id)
+        // 3. Create the order without a tab
+        } else {
+            createOrder()
+        }
+    }
+
+    // Because I need setTabID to set the id before createOrder is called so that the tab_id isn't null in the request, I'm making it with useEffect
+    useEffect(() => {
+        if (tabID !== null) {
+            createOrder();
+        }
+    }, [tabID]);
+
     //! Figure out how to make tab's total (all order totals) add up in backend
     function createTab(){
         fetch("http://127.0.0.1:3001/tabs", {
@@ -109,11 +130,14 @@ function OrderPage({toHomepage}){
                 }
             })
         })
-        //! Might have to make it conditional- if error with tab, fail order, else .then(createOrder)
-        .then(createOrder)
+        .then(res => res.json())
+        .then(res => {setCurrentlyActiveTabs([...currentlyActiveTabs, res]); setTabID(res.id)})
     }
 
     function createOrder(){
+        if (longTabFilter.length === 0){
+
+        }
         if (orderArray.length > 0) {
             console.log(orderArray)
             fetch("http://127.0.0.1:3001/orders", {
@@ -124,7 +148,6 @@ function OrderPage({toHomepage}){
                 },
                 body: JSON.stringify({
                     "order": {
-                        //! tabID is an existing state- find out how to change it and you don't have to add it directly to the orderArray (delete reminder when you finish)
                         "tab_id": tabID,
                         "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
                     }
@@ -133,16 +156,19 @@ function OrderPage({toHomepage}){
             // To be able to see the total in the console:
             .then(res => res.json())
             .then(res => {console.log(res)})
+            // Clear the states for the next order
             .then(setOrderArray([]), 
                 setSelectedMainCategory("food"), 
                 setSelectedSubcategory(""), 
                 setAlcoholSelected(true),
+                setModalStatus(false),
+                setSearchTerm(""), 
                 setTabID(null)
             )
         }
     }
 
-    function cancelOrder(){
+    function cancel(){
         setOrderArray([])
         setSelectedMainCategory("food")
         setSelectedSubcategory("")
@@ -207,8 +233,8 @@ function OrderPage({toHomepage}){
                 {/* Buttons to create/cancel order appear when menu items are selected; maybe change this so that they were greyed out but changed css to light up when first item selected */}
                 {orderArray.length > 0 ? 
                 <div>
-                    <button onClick={createOrder}>Create Order</button>
-                    <button onClick={cancelOrder}>Cancel Order</button>
+                    <button onClick={create}>Create Order</button>
+                    <button onClick={cancel}>Cancel Order</button>
                     <div className="orderDisplay">
                         {orderArray.map((item) => <h1>{`${item.name}:`}
                         <div>
