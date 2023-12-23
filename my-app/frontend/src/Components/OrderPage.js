@@ -65,9 +65,8 @@ function OrderPage({toHomepage}){
     }
 
     useEffect(() => {
-        const filteredTabs = longTabFilter
-        console.log(filteredTabs)
-    }, [searchTerm, currentlyActiveTabs])
+        console.log(longTabFilter)
+    }, [longTabFilter])
 
     function foodFormatter(x) {
         const existingItemIndex = orderArray.findIndex(item => item.food_id === x.id)
@@ -135,9 +134,6 @@ function OrderPage({toHomepage}){
     }
 
     function createOrder(){
-        if (longTabFilter.length === 0){
-
-        }
         if (orderArray.length > 0) {
             console.log(orderArray)
             fetch("http://127.0.0.1:3001/orders", {
