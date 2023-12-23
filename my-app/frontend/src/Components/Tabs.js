@@ -23,7 +23,7 @@ function Tabs(){
             {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === true)).map((tab) => (<div><h1>{tab.name}</h1></div>)): null}
 
             {/* ALL INACTIVE TABS: */}
-            <h1>Currently inactive tabs:</h1>
+            <h1>Past tabs:</h1>
             {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === false)).map((tab) => (<div><h1>{tab.name}</h1></div>)): null}
 
             

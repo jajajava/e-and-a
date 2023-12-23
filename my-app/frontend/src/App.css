@@ -206,6 +206,7 @@
     border-bottom: 1px solid transparent;
     width: auto;
     white-space: nowrap;
+    user-select: none;
   }
 
   .nav-link:hover {
