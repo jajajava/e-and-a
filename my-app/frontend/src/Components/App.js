@@ -6,6 +6,7 @@ import KitchenDisplay from "./KitchenDisplay";
 import BlankPage from "./BlankPage";
 import TimePage from "./TimePage";
 import OrderPage from "./OrderPage";
+import Tabs from "./Tabs";
 
 // This component obtains the user data when user logs in, defines routes, connects the CSS file, and creates the React useContext
 function App() {
@@ -63,7 +64,8 @@ function App() {
         <Route path="/" element={<OrderPage/>}/>, 
         <Route path="/home" element={<OrderPage/>}/>,
         <Route path="/orderpage" element={<OrderPage/>} />,
-        <Route path="/kitchen" element={<KitchenDisplay/>} />
+        <Route path="/kitchen" element={<KitchenDisplay/>} />,
+        <Route path="/tabs" element={<Tabs/>} />
       ]
     // Routes that exist if the user is only signed in
     } else if (isSignedIn === true && user.is_clocked_in === false){

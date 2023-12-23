@@ -4,6 +4,6 @@ BACKEND:
 3. Figure out how to make tab's total add up in backend (with each order, not only at the end, unless you do a tab order_items lookup)
 
 FRONTEND:
-1. Make tab names unique (backend validation & frontend error handling?)
+1. 
 2. Make a tabs page to show active and old tabs
 3. Fix CSS styling of components
