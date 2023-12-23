@@ -18,7 +18,6 @@ function OrderPage({toHomepage}){
     const longTabFilter = currentlyActiveTabs.filter(tab => tab.name.toLowerCase().includes(searchTerm))
 
     //! Need to fix styling on buttons
-    //! Make a way to view active tabs (GET /tabs route)
     // Fetches menu
     useEffect(()=> {
         fetch("http://127.0.0.1:3001/foods", {
@@ -96,8 +95,26 @@ function OrderPage({toHomepage}){
         setOrderArray(filteredOrderArray);
     }
 
+    //! Figure out how to make tab's total (all order totals) add up in backend
     function createOrder(){
         if (orderArray.length > 0) {
+            // Create a tab first
+            fetch("http://127.0.0.1:3001/tabs", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                },
+                body: JSON.stringify({
+                    "order": {
+                        //! tabID is an existing state- find out how to change it and you don't have to add it directly to the orderArray (delete reminder when you finish)
+                        "tab_id": tabID,
+                        "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
+                    }
+                })
+            })
+
+            // Create the order
             console.log(orderArray);
             fetch("http://127.0.0.1:3001/orders", {
                 method: "POST",
