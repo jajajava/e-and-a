@@ -1,9 +1,9 @@
 BACKEND:
 1. Add tipping option into Order (this is probably a frontend thing though, could be added as a tip in orderArray)
 2. If there's a way to rearrange tables in database, put the created_at and updated_at in the back for every table
+3. Figure out how to make tab's total add up in backend (with each order, not only at the end, unless you do a tab order_items lookup)
 
 FRONTEND:
-1. Fix convertMenuItem function in OrderPage.js to accept other quantities and make tabs a thing (need to add setTabID usability that prefereably checks existing tabs first)
-2. Create tab functionality + visibility
+1. Make tab names unique (backend validation & frontend error handling?)
+2. Make a tabs page to show active and old tabs
 3. Fix CSS styling of components
-4. Make a tabs page to show active and old tabs
