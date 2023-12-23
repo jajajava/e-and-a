@@ -52,7 +52,7 @@ function OrderPage({toHomepage}){
     //! MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
 
     function createATabModal(){
-        setModalStatus(true)
+        setModalStatus(!modalStatus)
     }
 
     function handleCloseModal(){
@@ -92,30 +92,30 @@ function OrderPage({toHomepage}){
         {...item, quantity: Math.max(item.quantity - 1, 0), totalPrice: item.unitPrice * (item.quantity - 1)} 
         : item)
         const filteredOrderArray = updatedOrderArray.filter(item => item.quantity > 0)
-        setOrderArray(filteredOrderArray);
+        setOrderArray(filteredOrderArray)
     }
 
     //! Figure out how to make tab's total (all order totals) add up in backend
+    function createTab(){
+        fetch("http://127.0.0.1:3001/tabs", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            },
+            body: JSON.stringify({
+                "tab": {
+                    name: searchTerm
+                }
+            })
+        })
+        //! Might have to make it conditional- if error with tab, fail order, else .then(createOrder)
+        .then(createOrder)
+    }
+
     function createOrder(){
         if (orderArray.length > 0) {
-            // Create a tab first
-            fetch("http://127.0.0.1:3001/tabs", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-                },
-                body: JSON.stringify({
-                    "order": {
-                        //! tabID is an existing state- find out how to change it and you don't have to add it directly to the orderArray (delete reminder when you finish)
-                        "tab_id": tabID,
-                        "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
-                    }
-                })
-            })
-
-            // Create the order
-            console.log(orderArray);
+            console.log(orderArray)
             fetch("http://127.0.0.1:3001/orders", {
                 method: "POST",
                 headers: {
@@ -220,9 +220,11 @@ function OrderPage({toHomepage}){
                     </div>
                 </div> 
                 : null}
-                {longTabFilter.length > 0 ?
-                longTabFilter.map(tab => (<h1 key={tab.id}>{tab.name}</h1>)) 
-                : <h1>Tab doesn't exist!</h1>}
+                {modalStatus ?
+                    longTabFilter.length > 0 ? 
+                    longTabFilter.map(tab => (<h1 key={tab.id}>{tab.name}</h1>)) 
+                    : <h1>Tab doesn't exist yet!</h1> 
+                : null}
             </div>
         </div>
     )
