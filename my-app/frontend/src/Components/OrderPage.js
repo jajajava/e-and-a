@@ -64,10 +64,6 @@ function OrderPage({toHomepage}){
         setSearchTerm(e.target.value.toLowerCase())
     }
 
-    useEffect(() => {
-        console.log(longTabFilter)
-    }, [longTabFilter])
-
     function foodFormatter(x) {
         const existingItemIndex = orderArray.findIndex(item => item.food_id === x.id)
     
@@ -177,13 +173,13 @@ function OrderPage({toHomepage}){
     return(
         <div>
             <Header toHomepage={toHomepage}/>
-            <button onClick={createATabModal}>Tab</button>
             {modalStatus === true ?
             <div>
+                    <h3>Tab name:</h3>
                     <input onInput={searchTabs}></input>
                     <button onClick={handleCloseModal}>Close</button>
             </div>
-            : null}
+            : <button onClick={createATabModal}>Tab</button>}
             <div className="orderMainCategory">
                 <button onClick={() => setSelectedMainCategory("food")}>Food</button>
                 <button onClick={() => setSelectedMainCategory("drinks")}>Drinks</button>
