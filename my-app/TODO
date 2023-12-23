@@ -6,3 +6,4 @@ FRONTEND:
 1. Fix convertMenuItem function in OrderPage.js to accept other quantities and make tabs a thing (need to add setTabID usability that prefereably checks existing tabs first)
 2. Create tab functionality + visibility
 3. Fix CSS styling of components
+4. Make a tabs page to show active and old tabs

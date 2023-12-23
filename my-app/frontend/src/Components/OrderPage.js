@@ -4,13 +4,18 @@ import Header from "./Header";
 // This component is for the page used to create new orders
 function OrderPage({toHomepage}){
 
-    const [selectedMainCategory, setSelectedMainCategory] = useState("food");
+    const [selectedMainCategory, setSelectedMainCategory] = useState("food")
     const [selectedSubcategory, setSelectedSubcategory] = useState("")
     const [alcoholSelected, setAlcoholSelected] = useState(true)
     const [orderArray, setOrderArray] = useState([])
     const [foodsArray, setFoodsArray] = useState([])
     const [drinksArray, setDrinksArray] = useState([])
     const [tabID, setTabID] = useState(null)
+    const [currentlyActiveTabs, setCurrentlyActiveTabs] = useState([])
+    const [modalStatus, setModalStatus] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
+    // Not necessary but it makes the code less crowded and confusing
+    const longTabFilter = currentlyActiveTabs.filter(tab => tab.name.toLowerCase().includes(searchTerm))
 
     //! Need to fix styling on buttons
     //! Make a way to view active tabs (GET /tabs route)
@@ -25,8 +30,19 @@ function OrderPage({toHomepage}){
         .then(res => res.json())
         .then(data => {
             // Use the functional update to correctly update foodsArray
-            setFoodsArray(prevFoodsArray => [...prevFoodsArray, ...data.filter(x => x.category === "foods")]);
+            setFoodsArray(prevFoodsArray => [...prevFoodsArray, ...data.filter(x => x.category === "foods")])
             setDrinksArray(prevDrinksArray => [...prevDrinksArray, ...data.filter(x => x.category === "drinks")])})
+    }, [])
+
+    useEffect(()=> {
+        fetch("http://127.0.0.1:3001/tabs", {
+            method: "GET",
+            headers: {
+            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            }
+        })
+        .then(res => res.json())
+        .then(res => setCurrentlyActiveTabs(res.filter(x => x.is_active === true)))
     }, [])
 
     // Keeps the console clean, only logs orderArray when there's a state change
@@ -35,6 +51,24 @@ function OrderPage({toHomepage}){
     }, [orderArray])
 
     //! MAKE TABS A THING (need to add setTabID usability that preferably checks existing tabs first)
+
+    function createATabModal(){
+        setModalStatus(true)
+    }
+
+    function handleCloseModal(){
+        setModalStatus(false)
+        setSearchTerm("")
+    }
+
+    function searchTabs(e){
+        setSearchTerm(e.target.value.toLowerCase())
+    }
+
+    useEffect(() => {
+        const filteredTabs = longTabFilter
+        console.log(filteredTabs)
+    }, [searchTerm, currentlyActiveTabs])
 
     function foodFormatter(x) {
         const existingItemIndex = orderArray.findIndex(item => item.food_id === x.id)
@@ -55,12 +89,10 @@ function OrderPage({toHomepage}){
     }
 
     function quantityDecrementer(foodId) {
-        const updatedOrderArray = orderArray.map(item => 
-            item.food_id === foodId ? {...item, quantity: Math.max(item.quantity - 1, 0), totalPrice: item.unitPrice * (item.quantity - 1)} : item
-        );
-        
-        const filteredOrderArray = updatedOrderArray.filter(item => item.quantity > 0);
-        
+        const updatedOrderArray = orderArray.map(item => item.food_id === foodId ? 
+        {...item, quantity: Math.max(item.quantity - 1, 0), totalPrice: item.unitPrice * (item.quantity - 1)} 
+        : item)
+        const filteredOrderArray = updatedOrderArray.filter(item => item.quantity > 0)
         setOrderArray(filteredOrderArray);
     }
 
@@ -75,6 +107,7 @@ function OrderPage({toHomepage}){
                 },
                 body: JSON.stringify({
                     "order": {
+                        //! tabID is an existing state- find out how to change it and you don't have to add it directly to the orderArray (delete reminder when you finish)
                         "tab_id": tabID,
                         "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
                     }
@@ -82,7 +115,7 @@ function OrderPage({toHomepage}){
             })
             // To be able to see the total in the console:
             .then(res => res.json())
-            .then(res => console.log(res))
+            .then(res => {console.log(res)})
             .then(setOrderArray([]), 
                 setSelectedMainCategory("food"), 
                 setSelectedSubcategory(""), 
@@ -100,9 +133,18 @@ function OrderPage({toHomepage}){
         setTabID(null)
     }
 
+    // If longTabFilter.length === 0, when you createOrder, first create a tab
+
     return(
         <div>
             <Header toHomepage={toHomepage}/>
+            <button onClick={createATabModal}>Tab</button>
+            {modalStatus === true ?
+            <div>
+                    <input onInput={searchTabs}></input>
+                    <button onClick={handleCloseModal}>Close</button>
+            </div>
+            : null}
             <div className="orderMainCategory">
                 <button onClick={() => setSelectedMainCategory("food")}>Food</button>
                 <button onClick={() => setSelectedMainCategory("drinks")}>Drinks</button>
@@ -161,6 +203,9 @@ function OrderPage({toHomepage}){
                     </div>
                 </div> 
                 : null}
+                {longTabFilter.length > 0 ?
+                longTabFilter.map(tab => (<h1 key={tab.id}>{tab.name}</h1>)) 
+                : <h1>Tab doesn't exist!</h1>}
             </div>
         </div>
     )
