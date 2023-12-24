@@ -9,3 +9,4 @@ FRONTEND:
 3. Fix CSS styling of components
 4. Maybe show the time current tabs were opened and the time closed tabs were last updated??
 5. Make tabs that were closed disappear after 24 hours?
+6. Work on kitchen display next to show current orders
