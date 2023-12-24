@@ -98,7 +98,7 @@ function OrderPage({toHomepage}){
             createTab()
         // 2. Create a new order on an existing tab
         } else if (searchTerm !== "" && longTabFilter.length === 1){ // Is && redundant? Or does it prevent null issues?
-            // Check the useEffect with the "tabID !== null" condition
+            // Check the useEffect with the "tabID !== null" condition to understand code
             setTabID(longTabFilter[0].id)
         // 3. Create the order without a tab
         } else {
