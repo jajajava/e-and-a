@@ -11,7 +11,11 @@ class Order < ApplicationRecord
       sum += (food_price * item.quantity)
     end
 
-    # Apply sales tax
-    total *= 1.04
+    # Apply sales tax only if self.tab_id is not nil
+    if self.tab_id == nil
+      total *= 1.04
+    end
+
+    return total
   end
 end

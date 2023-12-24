@@ -146,10 +146,6 @@ function OrderPage({toHomepage}){
         })
         .then(tabsGetter)
     }
-    console.log(currentlyActiveTabs)
-    console.log(longTabFilter)
-    console.log(tabID)
-
 
     function createOrder(){
         if (orderArray.length > 0) {
