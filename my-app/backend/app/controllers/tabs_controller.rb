@@ -26,7 +26,22 @@ class TabsController < ApplicationController
 
   # PATCH/PUT /tabs/1
   def update
-    if @tab.update(tab_params)
+    if @tab.is_active == false
+      render json: @tab
+      return
+    end
+
+    was_active = @tab.is_active
+    updating_active_status = params[:tab].key?(:is_active)
+  
+    if updating_active_status && !params[:tab][:is_active] && was_active
+      new_total = @tab.calculate_total
+      tab_update_params = tab_params.merge(total: new_total)
+    else
+      tab_update_params = tab_params
+    end
+  
+    if @tab.update(tab_update_params)
       render json: @tab
     else
       render json: @tab.errors, status: :unprocessable_entity
@@ -42,6 +57,10 @@ class TabsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_tab
       @tab = Tab.find(params[:id])
+    end
+
+    def calculate_tab_total
+      @tab.total = @tab.calculate_total
     end
 
     # Only allow a list of trusted parameters through.
