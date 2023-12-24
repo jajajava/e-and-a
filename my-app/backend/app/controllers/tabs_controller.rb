@@ -48,7 +48,9 @@ class TabsController < ApplicationController
     def tab_params
       tab_instance = Tab.new(params.require(:tab).permit(:name, :user_id, :total, :is_active))
       
-      defaults = {user_id: current_user.id, total: 0.0, is_active: true}
-      params.require(:tab).permit(:name, :user_id, :total, :is_active).reverse_merge(defaults)
+      user_default = {user_id: current_user.id}
+      main_defaults = {total: 0.0, is_active: true}
+      # .reverse_merge is used so that instead of the second hash overwriting matching values in first hash, it's the opposite (custom values > default values)
+      params.require(:tab).permit(:name, :user_id, :total, :is_active).merge(user_default).reverse_merge(main_defaults)
     end
 end
