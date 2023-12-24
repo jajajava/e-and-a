@@ -1,3 +1,7 @@
+Update (12/14/23)- 
+The actual RateMyProfessor website recently had an update that is essentially this program but with better data visualization in the comparison. 
+Though there's no longer a need to use this tool, I am happy that I got to practice reading documentation, then building a tool in python off of that. It was a cool experience!
+
 I wrote the RateMyProfessorComparisonTool program with the goal of being able to compare two professors in mind.
 When picking professors for my classes, I always use RateMyProfessor to give insight into who the best option is. 
 I was planning my schedule for next semester today and thought, "I wish there was a way to compare professors side by side."
@@ -9,7 +13,3 @@ I also have a .env file with my university's name that I gitignored. You can eit
 SCHOOL_NAME="Your School Name Here"
 
 I hope you'll find this simple program useful!
-
-Update (12/14/23)- 
-The actual RateMyProfessor website recently had an update that is essentially this program but with better data visualization in the comparison. 
-Though there's no longer a need to use this tool, I am happy that I got to practice reading documentation, then building a tool in python off of that. It was a cool experience!
