@@ -14,6 +14,7 @@ function Tabs(){
         .then(res => res.json())
         .then(res => setAllTabsArray(res))
     }, [])
+    console.log(allTabsArray)
 
     return (
         <div>

@@ -49,6 +49,6 @@ class TabsController < ApplicationController
       tab_instance = Tab.new(params.require(:tab).permit(:name, :user_id, :total, :is_active))
       
       defaults = {user_id: current_user.id, total: 0.0, is_active: true}
-      params.require(:tab).permit(:name, :user_id, :total, :is_active).merge(defaults)
+      params.require(:tab).permit(:name, :user_id, :total, :is_active).reverse_merge(defaults)
     end
 end

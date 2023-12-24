@@ -34,6 +34,10 @@ function OrderPage({toHomepage}){
     }, [])
 
     useEffect(()=> {
+        tabsGetter()
+    }, [])
+
+    function tabsGetter(){
         fetch("http://127.0.0.1:3001/tabs", {
             method: "GET",
             headers: {
@@ -42,14 +46,12 @@ function OrderPage({toHomepage}){
         })
         .then(res => res.json())
         .then(res => setCurrentlyActiveTabs(res.filter(x => x.is_active === true)))
-    }, [])
+    }
 
     // Keeps the console clean, only logs orderArray when there's a state change
     useEffect(()=> {
         console.log(orderArray)
     }, [orderArray])
-
-    //! MAKE TAB NAMES UNIQUE
 
     function createATabModal(){
         setModalStatus(!modalStatus)
@@ -107,11 +109,10 @@ function OrderPage({toHomepage}){
     // Because I need setTabID to set the id before createOrder is called so that the tab_id isn't null in the request, I'm making it with useEffect
     useEffect(() => {
         if (tabID !== null) {
-            createOrder();
+            createOrder()
         }
-    }, [tabID]);
+    }, [tabID])
 
-    //! Figure out how to make tab's total (all order totals) add up in backend
     function createTab(){
         fetch("http://127.0.0.1:3001/tabs", {
             method: "POST",
@@ -128,6 +129,27 @@ function OrderPage({toHomepage}){
         .then(res => res.json())
         .then(res => {setCurrentlyActiveTabs([...currentlyActiveTabs, res]); setTabID(res.id)})
     }
+
+    function updateTabTotal(res){
+        const tab = currentlyActiveTabs.find(t => t.id === tabID)
+        fetch(`http://127.0.0.1:3001/tabs/${tabID}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            },
+            body: JSON.stringify({
+                "tab": {
+                    total: tab.total + res.total
+                }
+            })
+        })
+        .then(tabsGetter)
+    }
+    console.log(currentlyActiveTabs)
+    console.log(longTabFilter)
+    console.log(tabID)
+
 
     function createOrder(){
         if (orderArray.length > 0) {
@@ -147,7 +169,7 @@ function OrderPage({toHomepage}){
             })
             // To be able to see the total in the console:
             .then(res => res.json())
-            .then(res => {console.log(res)})
+            .then(res => (console.log(res), tabID !== null ? updateTabTotal(res) : null))
             // Clear the states for the next order
             .then(setOrderArray([]), 
                 setSelectedMainCategory("food"), 
