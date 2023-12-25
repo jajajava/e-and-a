@@ -29,24 +29,21 @@ function KitchenDisplay() {
         .then(res => {setCompleteOrders(res)})
     }, [])
 
-    // for (let i = 0; i < incompleteOrders.length; i++){
-    //     let currentFetch = incompleteOrders[i]
-    //     fetch("")
-    // }
+    
 
     useEffect(()=> {
-        fetch("http://127.0.0.1:3001/orders/8/items", {
-            method: "GET",
-            headers: {
-            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-            }
-        })
-        .then(res => res.json())
-        .then(res => {console.log(res)})
+        for (let i = 0; i < incompleteOrders.length; i++){
+            let currentFetch = incompleteOrders[i].id
+            fetch(`http://127.0.0.1:3001/orders/${currentFetch}/items`, {
+                method: "GET",
+                headers: {
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                }
+            })
+            .then(res => res.json())
+            .then(res => {console.log(res)})
+        }
     }, [])
-
-    console.log(incompleteOrders)
-    console.log(completeOrders)
 
     return (
         <div className="">
