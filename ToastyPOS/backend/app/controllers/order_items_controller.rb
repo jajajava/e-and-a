@@ -11,6 +11,11 @@ class OrderItemsController < ApplicationController
     render json: @order_item
   end
 
+  def oneOrdersItems
+    @order_items = OrderItem.where(order_id: params[:order_id])
+    render json: @order_items
+  end
+
   def create
     @order_item = OrderItem.new(order_item_params)
 

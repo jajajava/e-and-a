@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post "/users", to: "users#create"
   get "/me", to: "users#me"
   post "/auth/login", to: "auth#login"
+  get "/order_items/single/:order_id", to: "order_items#oneOrdersItems"
   resources :order_items
   resources :foods
   resources :tabs
