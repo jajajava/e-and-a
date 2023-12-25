@@ -35,7 +35,7 @@ function KitchenDisplay() {
     // }
 
     useEffect(()=> {
-        fetch("http://127.0.0.1:3001/order_items/single/8", {
+        fetch("http://127.0.0.1:3001/orders/8/items", {
             method: "GET",
             headers: {
             "Authorization": `Bearer ${localStorage.getItem("jwt")}`

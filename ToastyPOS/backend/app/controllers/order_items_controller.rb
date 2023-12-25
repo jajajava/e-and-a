@@ -11,7 +11,7 @@ class OrderItemsController < ApplicationController
     render json: @order_item
   end
 
-  def oneOrdersItems
+  def get_order_items
     @order_items = OrderItem.where(order_id: params[:order_id])
     render json: @order_items
   end
