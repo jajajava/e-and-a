@@ -5,6 +5,7 @@ import Header from "./Header";
 function KitchenDisplay() {
     const [incompleteOrders, setIncompleteOrders] = useState([])
     const [completeOrders, setCompleteOrders] = useState([])
+    const [orderItemsArray, setOrderItemsArray] = useState([])
 
     // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
@@ -31,19 +32,31 @@ function KitchenDisplay() {
 
     
 
-    useEffect(()=> {
-        for (let i = 0; i < incompleteOrders.length; i++){
-            let currentFetch = incompleteOrders[i].id
-            fetch(`http://127.0.0.1:3001/orders/${currentFetch}/items`, {
+    useEffect(() => {
+        // Create an array of fetch promises
+        const fetchPromises = incompleteOrders.map(order => {
+            return fetch(`http://127.0.0.1:3001/orders/${order.id}/items`, {
                 method: "GET",
                 headers: {
-                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
                 }
             })
             .then(res => res.json())
-            .then(res => {console.log(res)})
-        }
-    }, [])
+            .then(items => ({ orderId: order.id, items }));
+        });
+    
+        // Execute all fetch promises and update state once all are done
+        Promise.all(fetchPromises)
+            .then(results => {
+                const newOrderItemsArray = {};
+                results.forEach(result => {
+                    newOrderItemsArray[result.orderId] = result.items;
+                });
+                setOrderItemsArray(newOrderItemsArray);
+            })
+            .catch(error => console.error('Error fetching order items:', error));
+    }, [incompleteOrders]);
+    console.log(orderItemsArray)
 
     return (
         <div className="">
