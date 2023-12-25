@@ -13,7 +13,7 @@ class Order < ApplicationRecord
 
     # Apply sales tax only if self.tab_id is not nil
     if self.tab_id == nil
-      total *= 1.04
+      total *= 1.08875
     end
 
     return total
