@@ -186,8 +186,6 @@ function OrderPage({toHomepage}){
         setTabID(null)
     }
 
-    // If longTabFilter.length === 0, when you createOrder, first create a tab
-
     return(
         <div>
             <Header toHomepage={toHomepage}/>
