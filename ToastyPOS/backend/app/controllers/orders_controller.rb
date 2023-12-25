@@ -4,7 +4,16 @@ class OrdersController < ApplicationController
   # GET /orders
   def index
     @orders = Order.all
+    render json: @orders
+  end
 
+  def indexComplete
+    @orders = Order.where(is_complete: true)
+    render json: @orders
+  end
+
+  def indexIncomplete
+    @orders = Order.where(is_complete: false)
     render json: @orders
   end
 
