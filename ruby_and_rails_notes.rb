@@ -126,3 +126,7 @@
 # o1.save 
 
 # OR you can do o1 = Object.create(params) to skip the .new and separate .save step. The former is a safer technique though
+
+
+# In Java, there's the static keyword. If you apply it to a method, it would make that method apply to the class rather than the instance of the class
+# In other words, that method becomes a "Class method". In Ruby, you have @ vs @@ to indicate an instance variable or method, vs a class variable or method.
