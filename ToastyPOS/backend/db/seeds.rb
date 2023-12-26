@@ -22,36 +22,36 @@ Food.create(name: "Vegan Chili", price: 12.00, description: "side tortilla chips
 puts "Finished generating foods..."
 
 # ALCOHOLIC DRINKS, COCKTAILS
-Food.create(name: "Honeycomb", price: 13, description: "broadhorn rye whiskey, honey, ginger ale, orange juice, candied ginger & lemon", category: "drinks", is_alc: true, subcategory: "cocktails")
-Food.create(name: "Blackberry Mojito", price: 13, description: "don q white rum, cold pressed mint, lime & blackberries, fresh mint", category: "drinks", is_alc: true, subcategory: "cocktails")
-Food.create(name: "Mezcalita", price: 13, description: "smoky mezcal, hard shaken pineapple, orange & citrus, tajin dusted orange", category: "drinks", is_alc: true, subcategory: "cocktails")
-Food.create(name: "Chupacabra", price: 13, description: "tequila blanco, spicy serrano peppers & agave, citrus, pink prickly pear puree", category: "drinks", is_alc: true, subcategory: "cocktails")
-Food.create(name: "Autumn Sangria", price: 12, description: "chilled white wine, peach, fresh juices, fruits & berries", category: "drinks", is_alc: true, subcategory: "cocktails")
-Food.create(name: "Blood Orange Cosmo", price: 14, description: "citrus vodka, blood orange puree, citrus, orange liqueur, orange wedge", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Honeycomb", price: 13.00, description: "broadhorn rye whiskey, honey, ginger ale, orange juice, candied ginger & lemon", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Blackberry Mojito", price: 13.00, description: "don q white rum, cold pressed mint, lime & blackberries, fresh mint", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Mezcalita", price: 13.00, description: "smoky mezcal, hard shaken pineapple, orange & citrus, tajin dusted orange", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Chupacabra", price: 13.00, description: "tequila blanco, spicy serrano peppers & agave, citrus, pink prickly pear puree", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Autumn Sangria", price: 12.00, description: "chilled white wine, peach, fresh juices, fruits & berries", category: "drinks", is_alc: true, subcategory: "cocktails")
+Food.create(name: "Blood Orange Cosmo", price: 14.00, description: "citrus vodka, blood orange puree, citrus, orange liqueur, orange wedge", category: "drinks", is_alc: true, subcategory: "cocktails")
 
 # ALCOHOLIC DRINKS, WINES
-Food.create(name: "Pinot Grigio", price: 8, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Sauvignon Blanc", price: 9, description: "French wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Chardonnay", price: 9, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Rosé", price: 10, description: "French wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Malbec", price: 8, description: "Argentinian wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Cabernet", price: 9, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Pinot Noir", price: 9, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
-Food.create(name: "Prosecco", price: 10, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Pinot Grigio", price: 8.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Sauvignon Blanc", price: 9.00, description: "French wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Chardonnay", price: 9.00, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Rosé", price: 10.00, description: "French wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Malbec", price: 8.00, description: "Argentinian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Cabernet", price: 9.00, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Pinot Noir", price: 9.00, description: "Californian wine", category: "drinks", is_alc: true, subcategory: "wines")
+Food.create(name: "Prosecco", price: 10.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "wines")
 
 # ALCOHOLIC DRINKS, SPIRITS
-Food.create(name: "Vodka", price: 5, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
-Food.create(name: "Whiskey", price: 7, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
-Food.create(name: "Rum", price: 6, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
-Food.create(name: "Tequila", price: 7, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
-Food.create(name: "Gin", price: 7, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
-Food.create(name: "Cognac", price: 12, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Vodka", price: 5.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Whiskey", price: 7.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Rum", price: 6.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Tequila", price: 7.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Gin", price: 7.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
+Food.create(name: "Cognac", price: 12.00, description: "Italian wine", category: "drinks", is_alc: true, subcategory: "spirits")
 
 # ALCOHOLIC DRINKS, BEER CANS
-Food.create(name: "IPA", price: 10, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
-Food.create(name: "Ale", price: 7, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
-Food.create(name: "Pilsner", price: 8, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
-Food.create(name: "Lager", price: 8, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
+Food.create(name: "IPA", price: 10.00, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
+Food.create(name: "Ale", price: 7.00, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
+Food.create(name: "Pilsner", price: 8.00, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
+Food.create(name: "Lager", price: 8.00, description: nil, category: "drinks", is_alc: true, subcategory: "beers")
 
 # NON-ALCOHOLIC DRINKS, SOFT DRINKS
 Food.create(name: "Coca Cola", price: 1.50, description: nil, category: "drinks", is_alc: false, subcategory: "soft drinks")
@@ -70,31 +70,31 @@ Food.create(name: "Pink", price: 4.50, description: nil, category: "drinks", is_
 Food.create(name: "Raspberry", price: 4.50, description: nil, category: "drinks", is_alc: false, subcategory: "lemonades")
 
 # NON-ALCOHOLIC DRINKS, FROZEN
-Food.create(name: "Strawberry limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Blueberry limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Cherry limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Cherry limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Peach limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Mango limeade", price: 6, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Strawberry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Blueberry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Cherry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Cherry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Peach limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
+Food.create(name: "Mango limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 puts "Finished generating drinks..."
 puts "Finished generating menu..."
 
 
-Tab.create(name: "Jim", user_id: 1, total: 0, is_active: true)
-Tab.create(name: "Stacey", user_id: 1, total: 0, is_active: true)
-puts "Finished making tabs..."
+# Tab.create(name: "Jim", user_id: 1, total: 0, is_active: true)
+# Tab.create(name: "Stacey", user_id: 1, total: 0, is_active: true)
+# puts "Finished making tabs..."
 
 
-Order.create(total: 43.68, is_complete: true, user_id: 1, tab_id: nil)
-Order.create(total: 18.72, is_complete: true, user_id: 2, tab_id: nil)
-puts "Created orders..."
+# Order.create(total: 43.68, is_complete: true, user_id: 1, tab_id: nil)
+# Order.create(total: 18.72, is_complete: true, user_id: 2, tab_id: nil)
+# puts "Created orders..."
 
 # This is each individual item in an order
-OrderItem.create(order_id: 1, food_id: 1, quantity: 1)
-OrderItem.create(order_id: 1, food_id: 4, quantity: 2)
-OrderItem.create(order_id: 1, food_id: 2, quantity: 1)
-OrderItem.create(order_id: 2, food_id: 4, quantity: 2)
-puts "Finished orders..."
+# OrderItem.create(order_id: 1, food_id: 1, quantity: 1)
+# OrderItem.create(order_id: 1, food_id: 4, quantity: 2)
+# OrderItem.create(order_id: 1, food_id: 2, quantity: 1)
+# OrderItem.create(order_id: 2, food_id: 4, quantity: 2)
+# puts "Finished orders..."
 
 
 puts "DB SUCCESSFULLY SEEDED"

@@ -4,7 +4,6 @@ class TabsController < ApplicationController
   # GET /tabs
   def index
     @tabs = Tab.all
-
     render json: @tabs
   end
 
@@ -68,7 +67,7 @@ class TabsController < ApplicationController
       tab_instance = Tab.new(params.require(:tab).permit(:name, :user_id, :total, :is_active))
       
       user_default = {user_id: current_user.id}
-      main_defaults = {total: 0.0, is_active: true}
+      main_defaults = {total: 0.00, is_active: true}
       # .reverse_merge is used so that instead of the second hash overwriting matching values in first hash, it's the opposite (custom values > default values)
       params.require(:tab).permit(:name, :user_id, :total, :is_active).merge(user_default).reverse_merge(main_defaults)
     end

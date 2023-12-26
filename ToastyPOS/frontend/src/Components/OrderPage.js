@@ -140,7 +140,7 @@ function OrderPage({toHomepage}){
             },
             body: JSON.stringify({
                 "tab": {
-                    total: tab.total + res.total
+                    total: parseFloat(tab.total) + parseFloat(res.total)
                 }
             })
         })
