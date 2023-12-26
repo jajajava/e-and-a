@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Header from "./Header";
+import KitchenCard from "./KitchenCard";
 
 // This component is the home page, which is conditionally set depending on the user's state
 function KitchenDisplay() {
@@ -38,7 +39,7 @@ function KitchenDisplay() {
                 {incompleteOrders.length > 0 ? 
                 <div>
                     <h2>Current Orders:</h2>
-                    {incompleteOrders.map((order)=> (<h1 key={order.id}>{order.id}</h1>))}
+                    {incompleteOrders.map((order)=> (<KitchenCard key={order.id} order={order}/>))}
                 </div> 
                 : null}
             </div>

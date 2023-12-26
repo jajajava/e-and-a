@@ -163,7 +163,7 @@ function OrderPage({toHomepage}){
                     }
                 })
             })
-            // To be able to see the total in the console:
+            // To be able to see the total in the console (updated tab shown through serializer is not shown in this console.log):
             .then(res => res.json())
             .then(res => (console.log(res), tabID !== null ? updateTabTotal(res) : null))
             // Clear the states for the next order
