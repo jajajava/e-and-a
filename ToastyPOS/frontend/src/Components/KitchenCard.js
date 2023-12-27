@@ -3,10 +3,9 @@ import React, { useEffect, useState } from "react";
 function KitchenCard({order}){
     const [loadedOrders, setLoadedOrders] = useState([])
 
-    // CALL THIS IN A USE EFFECT
     useEffect(()=> {
         orderLoad()
-    }, [])
+    }, [order])
 
     function orderLoad() {
         const newOrders = order.order_items.map((item, index) => (

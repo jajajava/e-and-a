@@ -6,9 +6,10 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
 
   def calculate_total
-    total = self.order_items.inject(0) do |sum, item|
-      food_price = Food.find(item.food_id).price
-      sum += (food_price * item.quantity)
+    total = 0.0
+    self.order_items.each do |n|
+      food_price = Food.find(n.food_id).price
+      total += (food_price * n.quantity)
     end
 
     # Apply sales tax only if self.tab_id is not nil
