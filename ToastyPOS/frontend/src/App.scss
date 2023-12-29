@@ -218,26 +218,37 @@
     margin-inline: 10px;
   }
 
-  .KitchenCard-div{
+  .CardDisplay-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+  
+  .KitchenCard-div {
     color: $main-font;
     font-weight: 100;
     background-color: lightgoldenrodyellow;
     border: black thin solid;
     width: 250px;
-    margin-bottom: 5px;
+    margin: 5px;
     line-break: auto;
-
-    b{
-      color: $main-font; 
-    }
-  }
-
-  #CardDisplay-mainDiv{
-    /* display: flex; */
-  }
-
-  .CardDisplay-div{
+    flex: 1 0;
     display: flex;
-    justify-items: center;
+    flex-wrap: wrap;
     flex-direction: column;
+  
+    h4 {
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+
+    b {
+      color: darken($main-font, 25%);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
