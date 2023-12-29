@@ -16,28 +16,29 @@ function KitchenCard({order}){
     //! Must make handleDoubleClick close the order
 
     function handleDoubleClick() {
-        console.log("Double click detected");
+        console.log("Double click detected")
     }
 
-    let clickCount = 0;
-    let clickTimeout;
+    let clickCount = 0
+    let clickTimeout
     
     function handleSingleClick() {
-        clickCount++;
+        clickCount++
 
         if (clickCount === 1) {
             // Set a timeout to wait for a potential second click
             clickTimeout = setTimeout(function() {
             // If no second click, treat it as a single click
-            console.log("Single click detected! ID: " + order.id);
+            //! REMEMBER THAT YOU DONT WANT TO MAKE ORDER.ID YOUR PATCH REQUEST ID
+            console.log("Single click detected! Order#: " + (order.id))
             // Reset click count
-            clickCount = 0;
-          }, 300); // Adjust the timeout value as needed
+            clickCount = 0
+          }, 300) // Adjust the timeout value as needed
         } else if (clickCount === 2) {
-            clearTimeout(clickTimeout);
-            handleDoubleClick();
+            clearTimeout(clickTimeout)
+            handleDoubleClick()
             // Reset click count
-            clickCount = 0;
+            clickCount = 0
             }
         }
 
@@ -61,9 +62,9 @@ function KitchenCard({order}){
     
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
-            <h3>Order #{order.id}:</h3>
+            <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
-            {order.order_items.length > 18 && <h4><b>Tap to see more</b></h4>}
+            {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
         </div>
     )
 }

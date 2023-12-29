@@ -114,6 +114,7 @@ function OrderPage({toHomepage}){
     }, [tabID])
 
     function createTab(){
+        const capitalizedSearchTerm = searchTerm.charAt(0).toUpperCase() + searchTerm.substring(1)
         fetch("http://127.0.0.1:3001/tabs", {
             method: "POST",
             headers: {
@@ -122,7 +123,7 @@ function OrderPage({toHomepage}){
             },
             body: JSON.stringify({
                 "tab": {
-                    name: searchTerm
+                    name: capitalizedSearchTerm
                 }
             })
         })

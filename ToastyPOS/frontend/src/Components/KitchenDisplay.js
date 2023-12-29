@@ -52,8 +52,4 @@ function KitchenDisplay() {
     )
 }
 
-
-
-
-
 export default KitchenDisplay

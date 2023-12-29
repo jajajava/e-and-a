@@ -222,7 +222,7 @@
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    max-height: 90vh;
+    max-height: 88vh;
     overflow-y: auto;
   }
   
@@ -238,6 +238,10 @@
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
+
+    h3 {
+      margin-bottom: 0;
+    }
   
     h4 {
       margin-top: 10px;
