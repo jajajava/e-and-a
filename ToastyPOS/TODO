@@ -1,8 +1,5 @@
 BACKEND:
 1. Add tipping option into Order (this is probably a frontend thing though, could be added as a tip in orderArray)
-2. If there's a way to rearrange tables in database, put the created_at and updated_at in the back for every table
-3. Figure out how to make tab's total add up in backend (with each order, not only at the end, unless you do a tab order_items lookup)
-4. Fix tab so that once the tab is marked completed, THEN you can add a tip and get taxed *1.04
 5. Make a way to remove an order from a tab
 
 FRONTEND:

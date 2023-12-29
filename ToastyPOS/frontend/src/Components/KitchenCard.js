@@ -2,14 +2,50 @@ import React, { useEffect, useState } from "react";
 
 function KitchenCard({order}){
     const [loadedOrders, setLoadedOrders] = useState([])
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(()=> {
         orderLoad()
     }, [order])
 
+    // Will make this activate when singleClicked
+    function openModal(){
+        setShowModal(true)
+    }
+
+    //! Must make handleDoubleClick close the order
+
+    function handleDoubleClick() {
+        console.log("Double click detected");
+    }
+
+    let clickCount = 0;
+    let clickTimeout;
+    
+    function handleSingleClick() {
+        clickCount++;
+
+        if (clickCount === 1) {
+            // Set a timeout to wait for a potential second click
+            clickTimeout = setTimeout(function() {
+            // If no second click, treat it as a single click
+            console.log("Single click detected!");
+            // Reset click count
+            clickCount = 0;
+          }, 300); // Adjust the timeout value as needed
+        } else if (clickCount === 2) {
+            clearTimeout(clickTimeout);
+            handleDoubleClick();
+            // Reset click count
+            clickCount = 0;
+            }
+        }
+
     function orderLoad() {
         const newOrders = order.order_items.map((item, index) => (
-            <h4 key={index}>{order.foods[index].name} - {item.quantity}</h4>
+            <div key={index} onClick={handleSingleClick}>
+            <h4>{order.foods[index].name} - {item.quantity}</h4>
+            </div>
         ));
         setLoadedOrders(newOrders);
     }

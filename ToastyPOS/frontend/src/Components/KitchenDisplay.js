@@ -6,6 +6,7 @@ import KitchenCard from "./KitchenCard";
 function KitchenDisplay() {
     const [incompleteOrders, setIncompleteOrders] = useState([])
     const [completeOrders, setCompleteOrders] = useState([])
+    const [showRecentlyFulfilled, setShowRecentlyFulfilled] = useState(false)
 
     // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
@@ -36,6 +37,9 @@ function KitchenDisplay() {
         <div className="">
             <Header />
             <div>
+                <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>Show Recently Fulfilled</button>
+                {showRecentlyFulfilled == true ? 
+                completeOrders.map((order)=> (<KitchenCard key={order.id} order={order}/>)) : null}
                 {incompleteOrders.length > 0 ? 
                 <div>
                     <h2>Current Orders:</h2>
