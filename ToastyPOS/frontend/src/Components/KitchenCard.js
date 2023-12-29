@@ -62,7 +62,9 @@ function KitchenCard({order}){
     
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
-            <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
+            <div id="cardHeader">
+                <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
+            </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
             {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
         </div>
