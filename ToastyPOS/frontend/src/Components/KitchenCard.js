@@ -42,18 +42,28 @@ function KitchenCard({order}){
         }
 
     function orderLoad() {
-        const newOrders = order.order_items.map((item, index) => (
-            <div key={index}>
-            <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
-            </div>
-        ));
-        setLoadedOrders(newOrders);
+        if (order.order_items.length > 18) {
+            const newOrders = order.order_items.slice(0, 17).map((item, index) => (
+                <div key={index}>
+                <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
+                </div>
+            ))
+            setLoadedOrders(newOrders)
+            } else {
+            const newOrders = order.order_items.map((item, index) => (
+                <div key={index}>
+                <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
+                </div>
+            ))
+            setLoadedOrders(newOrders)
+            }
     }
     
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
             <h3>Order #{order.id}:</h3>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
+            {order.order_items.length > 18 && <h4><b>Tap to see more</b></h4>}
         </div>
     )
 }
