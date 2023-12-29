@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, useNavigate } from "react-router-dom";
-import "../App.css";
+import "../App.scss";
 import Login from "./Login";
 import KitchenDisplay from "./KitchenDisplay";
 import BlankPage from "./BlankPage";

@@ -29,7 +29,7 @@ function KitchenCard({order}){
             // Set a timeout to wait for a potential second click
             clickTimeout = setTimeout(function() {
             // If no second click, treat it as a single click
-            console.log("Single click detected!");
+            console.log("Single click detected! ID: " + order.id);
             // Reset click count
             clickCount = 0;
           }, 300); // Adjust the timeout value as needed
@@ -43,15 +43,15 @@ function KitchenCard({order}){
 
     function orderLoad() {
         const newOrders = order.order_items.map((item, index) => (
-            <div key={index} onClick={handleSingleClick}>
-            <h4>{order.foods[index].name} - {item.quantity}</h4>
+            <div key={index}>
+            <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
             </div>
         ));
         setLoadedOrders(newOrders);
     }
     
     return (
-        <div>
+        <div onClick={handleSingleClick} className="KitchenCard-div">
             <h3>Order #{order.id}:</h3>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
         </div>
