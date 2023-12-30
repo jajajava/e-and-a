@@ -250,11 +250,11 @@
       border-top-right-radius: 2px;
       text-align: left;
       position: relative;
+      color: white;
     }
 
     #cardHeader1 {
       background-color: rgb(48, 48, 48);
-      color: white;
     }
 
     #cardHeader2 {
@@ -264,10 +264,12 @@
 
     #cardHeader3 {
       background-color: $main-orange;
+      color: $main-font
     }
 
     #cardHeader4 {
       background-color: red;
+      color: peachpuff;
     }
 
     #cardHeader-timer{

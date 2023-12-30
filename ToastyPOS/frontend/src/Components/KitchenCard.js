@@ -28,8 +28,9 @@ function KitchenCard({order}){
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setElapsedTime(getElapsedTime(order.created_at))
-            cardHeaderStyler(elapsedTime)
+            const newElapsedTime = getElapsedTime(order.created_at)
+            setElapsedTime(newElapsedTime)
+            cardHeaderStyler(newElapsedTime)
         }, 1000)
         
         return () => clearInterval(intervalId)
@@ -83,13 +84,16 @@ function KitchenCard({order}){
     }
 
     function cardHeaderStyler(elapsedTime){
-        if (parseInt(elapsedTime) >= 20){
-            setCardHeaderID(4)
-        } else if (parseInt(elapsedTime) >= 10){
-            setCardHeaderID(3)
-        } else if (parseInt(elapsedTime) >= 5){
-            setCardHeaderID(2)
-        }
+        setCardHeaderID(prevCardHeaderID => {
+            if (parseInt(elapsedTime) >= 20) {
+                return 4
+            } else if (parseInt(elapsedTime) >= 10) {
+                return 3
+            } else if (parseInt(elapsedTime) >= 5) {
+                return 2
+            }
+            return prevCardHeaderID
+        })
     }
     
     return (
