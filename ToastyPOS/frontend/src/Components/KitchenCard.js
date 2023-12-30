@@ -4,8 +4,7 @@ function KitchenCard({order}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
-    // Figure out how to make the color right right away
-    const [cardHeaderID, setCardHeaderID] = useState(1)
+    const [cardHeaderID, setCardHeaderID] = useState(cardHeaderStyler(elapsedTime))
 
     useEffect(()=> {
         orderLoad()
@@ -30,7 +29,7 @@ function KitchenCard({order}){
         const intervalId = setInterval(() => {
             const newElapsedTime = getElapsedTime(order.created_at)
             setElapsedTime(newElapsedTime)
-            cardHeaderStyler(newElapsedTime)
+            setCardHeaderID(cardHeaderStyler(newElapsedTime))
         }, 1000)
         
         return () => clearInterval(intervalId)
@@ -84,7 +83,6 @@ function KitchenCard({order}){
     }
 
     function cardHeaderStyler(elapsedTime){
-        setCardHeaderID(prevCardHeaderID => {
             if (parseInt(elapsedTime) >= 20) {
                 return 4
             } else if (parseInt(elapsedTime) >= 10) {
@@ -92,8 +90,7 @@ function KitchenCard({order}){
             } else if (parseInt(elapsedTime) >= 5) {
                 return 2
             }
-            return prevCardHeaderID
-        })
+            return 1
     }
     
     return (
