@@ -9,6 +9,6 @@ FRONTEND:
 4. Maybe show the time current tabs were opened and the time closed tabs were last updated??
 5. Make tabs that were closed disappear after 24 hours?
 7. Make it possible to show a name on the card (see backend TODO #6)
-8. Make modal open/close for each card w/ fulfill options (separate component)
+8. Make modal open/close for each card w/ fulfill options (separate component; show the full tab name there)
 9. Recently fulfilled/recall button 
 10. Make the orders separate drinks on bottom food on top?

@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
   # POST /orders
   def create
-    @order = Order.new(order_params)
+    @order = Order.new(create_params)
 
     if @order.save
       render json: @order, status: :created, location: @order
@@ -40,8 +40,8 @@ class OrdersController < ApplicationController
       render json: @order
       return
     end
-
-    if @order.update(order_params)
+  
+    if @order.update(update_params)
       render json: @order
     else
       render json: @order.errors, status: :unprocessable_entity
@@ -59,8 +59,7 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
-    # Only allow a list of trusted parameters through.
-    def order_params
+    def create_params
         # Build the order with nested attributes
         order_instance = Order.new(params.require(:order).permit(:user_id, :tab_id, order_items_attributes: [:food_id, :quantity]))
       
@@ -71,5 +70,11 @@ class OrdersController < ApplicationController
         not_editable_defaults = {user_id: current_user.id}
         editable_defaults = {is_complete: false, total: total}
         params.require(:order).permit(:is_complete, :user_id, :tab_id, order_items_attributes: [:food_id, :quantity]).merge(not_editable_defaults).reverse_merge(editable_defaults)
+    end
+
+    def update_params
+      total = @order.calculate_total
+      editable_defaults = {total: total}
+      params.require(:order).permit(:is_complete, :total).merge(editable_defaults)
     end
 end

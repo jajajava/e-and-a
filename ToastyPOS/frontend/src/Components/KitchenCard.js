@@ -85,14 +85,18 @@ function KitchenCard({order}){
 
     function upperHeaderContent(){
         if (order.tab?.name.length > 10){
-            let cutName = order.tab.name.substring(0, 7)
-            return `${cutName}...`
+            const cutName = order.tab.name.substring(0, 7)
+            return `Tab: ${cutName}...`
         } else if (order.tab !== null) {
-            return order.tab.name
+            return `Tab: ${order.tab.name}`
         }
     }
 
-    console.log(order.tab_id !== null ? order.tab.name.length : null)
+    // Should be accessible from double click and modal getting all orders fulfilled
+    // function markOrderFulfilled(){
+    //     fetch('')
+    // }
+
     function cardHeaderStyler(elapsedTime){
         if (parseInt(elapsedTime) >= 20) {
             return 4
@@ -107,7 +111,7 @@ function KitchenCard({order}){
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
             <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
-                <h3>{order.tab_id != null ? <span>Tab: {headerName}<br/></span> : null} Order #{order.id}</h3>
+                <h3>{order.tab_id != null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
                 <h3 id="cardHeader-timer" className={parseInt(elapsedTime) > 1000 ? "long-timer" : null}>{elapsedTime}</h3>
             </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
