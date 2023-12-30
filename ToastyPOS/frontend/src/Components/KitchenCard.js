@@ -3,8 +3,9 @@ import React, { useEffect, useState } from "react";
 function KitchenCard({order}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [showModal, setShowModal] = useState(false)
-    const [timerValue, setTimerValue] = useState(0)
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
+    // Figure out how to make the color right right away
+    const [cardHeaderID, setCardHeaderID] = useState(1)
 
     useEffect(()=> {
         orderLoad()
@@ -28,6 +29,7 @@ function KitchenCard({order}){
     useEffect(() => {
         const intervalId = setInterval(() => {
             setElapsedTime(getElapsedTime(order.created_at))
+            cardHeaderStyler(elapsedTime)
         }, 1000)
         
         return () => clearInterval(intervalId)
@@ -79,13 +81,22 @@ function KitchenCard({order}){
             setLoadedOrders(newOrders)
             }
     }
+
+    function cardHeaderStyler(elapsedTime){
+        if (parseInt(elapsedTime) >= 20){
+            setCardHeaderID(4)
+        } else if (parseInt(elapsedTime) >= 10){
+            setCardHeaderID(3)
+        } else if (parseInt(elapsedTime) >= 5){
+            setCardHeaderID(2)
+        }
+    }
     
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
-            <div id="cardHeader">
-                <p>Elapsed Time: {elapsedTime}</p>
+            <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
                 <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
-                <p>Timer Value: {timerValue}</p>
+                <h3 id="cardHeader-timer" className={parseInt(elapsedTime) > 1000 ? "long-timer" : null}>{elapsedTime}</h3>
             </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
             {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}

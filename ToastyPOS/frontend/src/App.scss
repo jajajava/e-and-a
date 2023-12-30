@@ -242,14 +242,42 @@
     flex-direction: column;
     border-radius: 3px;
 
-    #cardHeader {
-      background-color: $main-orange;
+    .cardHeader {
       display: flex;
       padding-left: 0.5rem;
       padding-bottom: 1rem;
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       text-align: left;
+      position: relative;
+    }
+
+    #cardHeader1 {
+      background-color: rgb(48, 48, 48);
+      color: white;
+    }
+
+    #cardHeader2 {
+      background-color: rgb(223, 223, 0);
+      color: black;
+    }
+
+    #cardHeader3 {
+      background-color: $main-orange;
+    }
+
+    #cardHeader4 {
+      background-color: red;
+    }
+
+    #cardHeader-timer{
+      right: 25%;
+      width: 20px;
+      position: absolute;
+    }
+
+    .long-timer {
+      padding-left: 4rem;
     }
 
     h3 {
