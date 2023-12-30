@@ -10,6 +10,11 @@ function KitchenDisplay() {
 
     // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
+        completeOrdersGetterAndSetter()
+        console.log(incompleteOrders)
+    }, [])
+
+    function completeOrdersGetterAndSetter(){
         fetch("http://127.0.0.1:3001/orders/incomplete", {
             method: "GET",
             headers: {
@@ -18,7 +23,7 @@ function KitchenDisplay() {
         })
         .then(res => res.json())
         .then(res => {setIncompleteOrders(res)})
-    }, [])
+    }
 
     useEffect(()=> {
         fetch("http://127.0.0.1:3001/orders/complete", {
@@ -31,8 +36,6 @@ function KitchenDisplay() {
         .then(res => {setCompleteOrders(res)})
     }, [])
 
-    console.log(incompleteOrders)
-
     return (
         <div>
             <Header />
@@ -43,7 +46,7 @@ function KitchenDisplay() {
                         completeOrders.map((order)=> (<KitchenCard key={order.id} order={order}/>)) : null}
                         {incompleteOrders.length > 0 ? 
                         <div className="CardDisplay-div">
-                            {incompleteOrders.map((order)=> (<KitchenCard key={order.id} order={order}/>))}
+                            {incompleteOrders.map((order)=> (<KitchenCard key={order.id} order={order} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>))}
                         </div>
                     : null}
                 </div> 

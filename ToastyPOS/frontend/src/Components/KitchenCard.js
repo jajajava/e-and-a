@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function KitchenCard({order}){
+function KitchenCard({order, completeOrdersGetterAndSetter}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [showModal, setShowModal] = useState(false)
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
@@ -39,7 +39,7 @@ function KitchenCard({order}){
     //! Must make handleDoubleClick close the order
 
     function handleDoubleClick() {
-        console.log("Double click detected")
+        markOrderFulfilled()
     }
 
     let clickCount = 0
@@ -93,9 +93,21 @@ function KitchenCard({order}){
     }
 
     // Should be accessible from double click and modal getting all orders fulfilled
-    // function markOrderFulfilled(){
-    //     fetch('')
-    // }
+    function markOrderFulfilled(){
+        fetch(`http://127.0.0.1:3001/orders/${order.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+            },
+            body: JSON.stringify({
+                "order": {
+                    is_complete: true
+                }
+            })
+        })
+        .then(()=> completeOrdersGetterAndSetter())
+    }
 
     function cardHeaderStyler(elapsedTime){
         if (parseInt(elapsedTime) >= 20) {
