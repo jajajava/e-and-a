@@ -5,6 +5,7 @@ function KitchenCard({order}){
     const [showModal, setShowModal] = useState(false)
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [cardHeaderID, setCardHeaderID] = useState(cardHeaderStyler(elapsedTime))
+    const [headerName, setHeaderName] = useState(upperHeaderContent())
 
     useEffect(()=> {
         orderLoad()
@@ -82,21 +83,31 @@ function KitchenCard({order}){
             }
     }
 
-    function cardHeaderStyler(elapsedTime){
-            if (parseInt(elapsedTime) >= 20) {
-                return 4
-            } else if (parseInt(elapsedTime) >= 10) {
-                return 3
-            } else if (parseInt(elapsedTime) >= 5) {
-                return 2
-            }
-            return 1
+    function upperHeaderContent(){
+        if (order.tab?.name.length > 10){
+            let cutName = order.tab.name.substring(0, 7)
+            return `${cutName}...`
+        } else if (order.tab !== null) {
+            return order.tab.name
+        }
     }
-    
+
+    console.log(order.tab_id !== null ? order.tab.name.length : null)
+    function cardHeaderStyler(elapsedTime){
+        if (parseInt(elapsedTime) >= 20) {
+            return 4
+        } else if (parseInt(elapsedTime) >= 10) {
+            return 3
+        } else if (parseInt(elapsedTime) >= 5) {
+            return 2
+        }
+        return 1
+    }
+
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
             <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
-                <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
+                <h3>{order.tab_id != null ? <span>Tab: {headerName}<br/></span> : null} Order #{order.id}</h3>
                 <h3 id="cardHeader-timer" className={parseInt(elapsedTime) > 1000 ? "long-timer" : null}>{elapsedTime}</h3>
             </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
