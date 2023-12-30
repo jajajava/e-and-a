@@ -245,10 +245,11 @@
     #cardHeader {
       background-color: $main-orange;
       display: flex;
-      padding-left: 5px;
+      padding-left: 0.5rem;
       padding-bottom: 1rem;
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
+      text-align: left;
     }
 
     h3 {

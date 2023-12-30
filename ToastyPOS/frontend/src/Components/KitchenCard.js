@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 function KitchenCard({order}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [showModal, setShowModal] = useState(false)
+    const [timerValue, setTimerValue] = useState(0)
+    const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
 
     useEffect(()=> {
         orderLoad()
@@ -13,6 +15,24 @@ function KitchenCard({order}){
         setShowModal(true)
     }
 
+    function getElapsedTime(createdAt) {
+        // Calculate the elapsed time in seconds
+        const currentTime = new Date().getTime()
+        const createdAtTime = new Date(createdAt).getTime()
+        const elapsedSeconds = Math.floor((currentTime - createdAtTime) / 1000)
+        const elapsedMinutes = Math.floor(elapsedSeconds / 60)
+        const remainingSeconds = (elapsedSeconds % 60 < 10) ? `0${elapsedSeconds % 60}` : elapsedSeconds % 60
+        return `${elapsedMinutes}:${remainingSeconds}`
+    }
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setElapsedTime(getElapsedTime(order.created_at))
+        }, 1000)
+        
+        return () => clearInterval(intervalId)
+        }, [order])
+    
     //! Must make handleDoubleClick close the order
 
     function handleDoubleClick() {
@@ -27,7 +47,7 @@ function KitchenCard({order}){
 
         if (clickCount === 1) {
             // Set a timeout to wait for a potential second click
-            clickTimeout = setTimeout(function() {
+            clickTimeout = setTimeout(()=> {
             // If no second click, treat it as a single click
             //! REMEMBER THAT YOU DONT WANT TO MAKE ORDER.ID YOUR PATCH REQUEST ID
             console.log("Single click detected! Order#: " + (order.id))
@@ -63,7 +83,9 @@ function KitchenCard({order}){
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
             <div id="cardHeader">
+                <p>Elapsed Time: {elapsedTime}</p>
                 <h3>{order.tab_id != null ? <span>Tab: {order.tab.name}<br/></span> : null} Order #{order.id}</h3>
+                <p>Timer Value: {timerValue}</p>
             </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
             {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
