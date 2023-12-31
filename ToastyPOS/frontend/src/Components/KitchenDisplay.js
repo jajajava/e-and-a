@@ -42,7 +42,7 @@ function KitchenDisplay() {
             <div>
                 <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>Show Recently Fulfilled</button>
                     <div id="CardDisplay-mainDiv">
-                        {showRecentlyFulfilled == true ? 
+                        {showRecentlyFulfilled === true ? 
                         completeOrders.map((order)=> (<KitchenCard key={order.id} order={order}/>)) : null}
                         {incompleteOrders.length > 0 ? 
                         <div className="CardDisplay-div">

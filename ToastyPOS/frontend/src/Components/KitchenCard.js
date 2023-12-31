@@ -52,7 +52,6 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
             // Set a timeout to wait for a potential second click
             clickTimeout = setTimeout(()=> {
             // If no second click, treat it as a single click
-            //! REMEMBER THAT YOU DONT WANT TO MAKE ORDER.ID YOUR PATCH REQUEST ID
             console.log("Single click detected! Order#: " + (order.id))
             // Reset click count
             clickCount = 0
@@ -110,21 +109,23 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
     }
 
     function cardHeaderStyler(elapsedTime){
-        if (parseInt(elapsedTime) >= 20) {
-            return 4
-        } else if (parseInt(elapsedTime) >= 10) {
-            return 3
-        } else if (parseInt(elapsedTime) >= 5) {
+        if (parseInt(elapsedTime) < 5) {
+            return 1
+        } else if (parseInt(elapsedTime) < 10) {
             return 2
+        } else if (parseInt(elapsedTime) < 20) {
+            return 3
         }
-        return 1
+        return 4
     }
 
     return (
         <div onClick={handleSingleClick} className="KitchenCard-div">
             <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
                 <h3>{order.tab_id != null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
-                <h3 id="cardHeader-timer" className={parseInt(elapsedTime) > 1000 ? "long-timer" : null}>{elapsedTime}</h3>
+                <h3 id={elapsedTime.length < 5 ? "cardHeader-timer-1" 
+                : elapsedTime.length < 6 ? "cardHeader-timer-2" 
+                : "cardHeader-timer-3"}>{elapsedTime}</h3>
             </div>
             <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
             {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}

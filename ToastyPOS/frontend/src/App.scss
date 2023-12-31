@@ -273,14 +273,22 @@
       color: peachpuff;
     }
 
-    #cardHeader-timer{
-      right: 25%;
+    #cardHeader-timer-1 {
+      right: 13%;
       width: 20px;
       position: absolute;
     }
 
-    .long-timer {
-      padding-left: 4rem;
+    #cardHeader-timer-2 {
+      right: 16%;
+      width: 20px;
+      position: absolute;
+    }
+
+    #cardHeader-timer-3{
+      right: 26%;
+      width: 20px;
+      position: absolute;
     }
 
     h3 {
