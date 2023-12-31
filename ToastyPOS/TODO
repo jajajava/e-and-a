@@ -11,5 +11,3 @@ FRONTEND:
 9. Recently fulfilled/recall button
 11. Make the Order have a name whether or not the tab exists (if it does, take the name from the tab) (should be really easy, only frontend stuff)
 12. Make the Order have a "Dine-in" or "Take-out" option, also frontend only
-13. Figure out transition 5s in CSS for carddisplay-div
-14. Instead of the ugly lightgrey, put a greyscale filter over the entire card

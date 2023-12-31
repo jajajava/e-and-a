@@ -11,7 +11,6 @@ function KitchenDisplay() {
     // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
         completeOrdersGetterAndSetter()
-        console.log(incompleteOrders)
     }, [showRecentlyFulfilled])
 
     function completeOrdersGetterAndSetter(){
@@ -22,7 +21,7 @@ function KitchenDisplay() {
             }
         })
         .then(res => res.json())
-        .then(res => {setIncompleteOrders(res); console.log(res)})
+        .then(res => {setIncompleteOrders(res)})
     }
 
     useEffect(()=> {
