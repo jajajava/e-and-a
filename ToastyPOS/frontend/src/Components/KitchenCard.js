@@ -43,7 +43,7 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
             setElapsedTime(newElapsedTime)
             if (order.is_complete === false){
                 setCardHeaderID(cardHeaderStyler(newElapsedTime))
-                setTimerID(timerStyler)
+                setTimerID(timerStyler())
             }
         }, 1000)
         

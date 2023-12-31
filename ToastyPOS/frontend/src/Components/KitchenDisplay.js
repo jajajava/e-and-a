@@ -12,7 +12,7 @@ function KitchenDisplay() {
     useEffect(()=> {
         completeOrdersGetterAndSetter()
         console.log(incompleteOrders)
-    }, [])
+    }, [showRecentlyFulfilled])
 
     function completeOrdersGetterAndSetter(){
         fetch("http://127.0.0.1:3001/orders/incomplete", {
@@ -22,7 +22,7 @@ function KitchenDisplay() {
             }
         })
         .then(res => res.json())
-        .then(res => {setIncompleteOrders(res)})
+        .then(res => {setIncompleteOrders(res); console.log(res)})
     }
 
     useEffect(()=> {
@@ -34,22 +34,22 @@ function KitchenDisplay() {
         })
         .then(res => res.json())
         .then(res => {setCompleteOrders(res)})
-    }, [])
+    }, [incompleteOrders])
 
     return (
         <div>
             <Header />
             <div>
-                <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>Show Recently Fulfilled</button>
-                <div id="CardDisplay-mainDiv">
+                <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
+                    {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}
+                </button>
                     <div className="CardDisplay-div">
-                    {showRecentlyFulfilled ? 
-                    [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>))
-                    : incompleteOrders.length > 0 ? 
-                    incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>))
-                    : null}
+                        {showRecentlyFulfilled === true && incompleteOrders.length > 0 ? 
+                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>))
+                        : incompleteOrders.length > 0 ? 
+                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>))
+                        : null}
                     </div>
-                </div> 
             </div>
         </div>
     )

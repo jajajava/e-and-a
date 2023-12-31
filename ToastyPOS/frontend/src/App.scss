@@ -224,8 +224,9 @@
     flex-wrap: wrap;
     max-height: 88vh;
     overflow-y: auto;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 3px;
+    margin-right: 3px;
+    align-content: flex-start;
   }
   
   .KitchenCard-div {
