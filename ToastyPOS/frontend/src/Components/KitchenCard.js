@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //! need to pass down open and close modal from parent
-function KitchenCard({order, sharedData}){
+function KitchenCard({order, setSelectedCard, sharedData}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [completionTime, setCompletionTime] = useState(()=> getCompletedTime())
@@ -73,6 +73,7 @@ function KitchenCard({order, sharedData}){
             // Set a timeout to wait for a potential second click
             clickTimeout = setTimeout(()=> {
             // If no second click, treat it as a single click
+            setSelectedCard(order)
             openModal()
             // Reset click count
             clickCount = 0

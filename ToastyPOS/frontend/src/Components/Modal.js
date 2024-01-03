@@ -1,16 +1,19 @@
 import React from "react";
 
-function Modal({sharedData}){
+function Modal({selectedCard, sharedData}){
     const {
         showModal,
         openModal,
         closeModal
         } = sharedData
 
+        console.log(selectedCard?.foods[0])
     return (
         <div className="modal-content">
             <span onClick={closeModal} className="close">&times;</span>
-            <p>PUT THE ORDER INFO HERE- MATTER OF FACT, MAKE MODAL COMPONENT</p>
+            {selectedCard?.order_items.map((item, index)=> (<div key={index}>
+                <h4><b>{item.quantity}</b> - {selectedCard.foods[index].name}</h4>
+                </div>))}
         </div>
     )
 }
