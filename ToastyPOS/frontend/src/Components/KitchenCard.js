@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 //! need to pass down open and close modal from parent
-function KitchenCard({order, kitchenCardBody}){
+function KitchenCard({order, sharedData}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [completionTime, setCompletionTime] = useState(()=> getCompletedTime())
@@ -15,7 +15,7 @@ function KitchenCard({order, kitchenCardBody}){
         showModal,
         openModal,
         closeModal
-      } = kitchenCardBody;
+      } = sharedData
 
     useEffect(()=> {
         orderLoad()
