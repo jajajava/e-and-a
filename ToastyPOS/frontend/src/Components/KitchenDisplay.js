@@ -68,7 +68,7 @@ function KitchenDisplay() {
                 <div id={showModal ? "modalOpened" : "modalClosed"} className="modal">
                     <Modal selectedModalOrder={selectedModalOrder} sharedData={sharedData}/>
                 </div>
-                <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
+                <button tabIndex={showModal === true ? "-1" : "0"} onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}
                 </button>
                     <div className="CardDisplay-div">

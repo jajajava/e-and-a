@@ -371,23 +371,30 @@
     border: 1px solid #888;
     width: 80%;
     position: absolute;
-    top: 50px;
+    top: 5vh;
     left: 0;
     right: 0;
     border-radius: 5px;
+    max-height: 90vh;
+  }
+
+  .inner-modal {
+    max-height: 75vh;
+    overflow: scroll;
+    margin-bottom: 20px;
   }
   
   /* The Close Button */
   .close {
     color: #aaaaaa;
-    float: right;
+    float: none;
     font-size: 28px;
     font-weight: bold;
   }
   
   .close:hover,
   .close:focus {
-    color: #000;
+    color: $main-font;
     text-decoration: none;
     cursor: pointer;
   }

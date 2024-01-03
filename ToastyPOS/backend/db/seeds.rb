@@ -73,7 +73,6 @@ Food.create(name: "Raspberry", price: 4.50, description: nil, category: "drinks"
 Food.create(name: "Strawberry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 Food.create(name: "Blueberry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 Food.create(name: "Cherry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
-Food.create(name: "Cherry limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 Food.create(name: "Peach limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 Food.create(name: "Mango limeade", price: 6.00, description: nil, category: "drinks", is_alc: false, subcategory: "frozen")
 puts "Finished generating drinks..."
