@@ -21,13 +21,12 @@ function Tabs(){
             <Header />
             {/* ALL ACTIVE TABS: */}
             <h1>Currently active tabs:</h1>
-            {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === true)).map((tab) => (<div><h1>{tab.name}</h1></div>)): null}
+            {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === true)).map((tab) => (<div key={tab.id}><h1>{tab.name}</h1></div>)): null}
 
             {/* ALL INACTIVE TABS: */}
             <h1>Past tabs:</h1>
-            {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === false)).map((tab) => (<div><h1>{tab.name}</h1></div>)): null}
+            {allTabsArray.length > 0 ? allTabsArray.filter((tab)=> (tab.is_active === false)).map((tab) => (<div key={tab.id}><h1>{tab.name}</h1></div>)): null}
 
-            
         </div>
     )
 }

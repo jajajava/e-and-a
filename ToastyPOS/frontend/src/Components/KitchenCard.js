@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-function KitchenCard({order, completeOrdersGetterAndSetter}){
+//! need to pass down open and close modal from parent
+function KitchenCard({order, kitchenCardBody}){
     const [loadedOrders, setLoadedOrders] = useState([])
-    const [showModal, setShowModal] = useState(false)
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [completionTime, setCompletionTime] = useState(()=> getCompletedTime())
     const [cardHeaderID, setCardHeaderID] = useState(!order.is_complete ? cardHeaderStyler(elapsedTime) : cardHeaderStyler(completionTime))
@@ -10,14 +10,16 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
     const [kitchenCardComplete, setKitchenCardComplete] = useState(null)
     const [headerName, setHeaderName] = useState(upperHeaderContent())
 
+    const {
+        completeOrdersGetterAndSetter,
+        showModal,
+        openModal,
+        closeModal
+      } = kitchenCardBody;
+
     useEffect(()=> {
         orderLoad()
     }, [order])
-
-    // Will make this activate when singleClicked
-    function openModal(){
-        setShowModal(true)
-    }
 
     function getElapsedTime(createdAt) {
         // Calculate the elapsed time in seconds
@@ -71,7 +73,7 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
             // Set a timeout to wait for a potential second click
             clickTimeout = setTimeout(()=> {
             // If no second click, treat it as a single click
-            console.log("Single click detected! Order#: " + (order.id))
+            openModal()
             // Reset click count
             clickCount = 0
             }, 300) 
@@ -130,10 +132,6 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
     }
 
     function cardHeaderStyler(elapsedTime){
-        // if (order.is_complete === true){
-        //     return 5
-        // }
-
         if (parseInt(elapsedTime) < 5) {
             return 1
         } else if (parseInt(elapsedTime) < 10) {
@@ -157,14 +155,16 @@ function KitchenCard({order, completeOrdersGetterAndSetter}){
     }
 
     return (
-        <div onClick={handleSingleClick} className="KitchenCard-div" id={kitchenCardComplete}>
-            <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
-                {/* If order.tab_id === null, make order name a separate name */}
-                <h3>{order.tab_id !== null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
-                <h3 id={`cardHeader-timer-${timerID}`}>{!order.is_complete ? elapsedTime : completionTime}</h3>
+        <div>
+            <div onClick={handleSingleClick} className="KitchenCard-div" id={kitchenCardComplete}>
+                <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
+                    {/* If order.tab_id === null, make order name a separate name */}
+                    <h3>{order.tab_id !== null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
+                    <h3 id={`cardHeader-timer-${timerID}`}>{!order.is_complete ? elapsedTime : completionTime}</h3>
+                </div>
+                <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
+                {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
             </div>
-            <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
-            {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
         </div>
     )
 }
