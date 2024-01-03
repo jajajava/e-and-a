@@ -9,7 +9,7 @@ function KitchenDisplay() {
     const [completeOrders, setCompleteOrders] = useState([])
     const [showRecentlyFulfilled, setShowRecentlyFulfilled] = useState(false)
     const [showModal, setShowModal] = useState(false)
-    const [selectedCard, setSelectedCard] = useState(null)
+    const [selectedModalOrder, setSelectedModalOrder] = useState(null)
 
     // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
@@ -57,7 +57,7 @@ function KitchenDisplay() {
 
     useEffect(()=> {
         if (showModal === false){
-            setSelectedCard(null)
+            setSelectedModalOrder(null)
         }
     }, [openModal])
 
@@ -66,16 +66,16 @@ function KitchenDisplay() {
             <Header/>
             <div>
                 <div id={showModal ? "modalOpened" : "modalClosed"} className="modal">
-                    <Modal selectedCard={selectedCard} sharedData={sharedData}/>
+                    <Modal selectedModalOrder={selectedModalOrder} sharedData={sharedData}/>
                 </div>
                 <button onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}
                 </button>
                     <div className="CardDisplay-div">
                         {showRecentlyFulfilled === true && incompleteOrders.length > 0 ? 
-                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedCard={setSelectedCard} sharedData={sharedData}/>))
+                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} sharedData={sharedData}/>))
                         : incompleteOrders.length > 0 ? 
-                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedCard={setSelectedCard} sharedData={sharedData}/>))
+                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} sharedData={sharedData}/>))
                         : null}
                     </div>
             </div>
