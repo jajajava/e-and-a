@@ -1,18 +1,13 @@
 import React from "react";
 
-function Modal({selectedModalOrder, sharedData}){
-    const {
-        showModal,
-        openModal,
-        closeModal
-        } = sharedData
+function Modal({selectedModalOrder, closeModal}){
 
     return (
         <div className="modal-content">
             <div className="inner-modal">
             {selectedModalOrder?.order_items.map((item, index)=> (
                 <div key={index}>
-                    <h4><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                    <h4 id="modalItem"><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
                 </div>
             ))}
             </div>

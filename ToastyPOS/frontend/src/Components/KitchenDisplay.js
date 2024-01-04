@@ -47,10 +47,8 @@ function KitchenDisplay() {
         setShowModal(false)
     }
 
-    // sharedData is info passed to both the KitchenCard and Modal components
-    const sharedData = {
+    const kitchenCardData = {
         completeOrdersGetterAndSetter,
-        // showModal,
         openModal,
         closeModal
     }
@@ -66,16 +64,16 @@ function KitchenDisplay() {
             <Header/>
             <div>
                 <div id={showModal ? "modalOpened" : "modalClosed"} className="modal">
-                    <Modal selectedModalOrder={selectedModalOrder} sharedData={sharedData}/>
+                    <Modal selectedModalOrder={selectedModalOrder} closeModal={closeModal}/>
                 </div>
                 <button tabIndex={showModal === true ? "-1" : "0"} onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}
                 </button>
                     <div className="CardDisplay-div">
                         {showRecentlyFulfilled === true && incompleteOrders.length > 0 ? 
-                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} sharedData={sharedData}/>))
+                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
                         : incompleteOrders.length > 0 ? 
-                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} sharedData={sharedData}/>))
+                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
                         : null}
                     </div>
             </div>
