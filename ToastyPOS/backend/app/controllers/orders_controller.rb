@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
 
     def create_params
         # Build the order with nested attributes
-        order_instance = Order.new(params.require(:order).permit(:user_id, :tab_id, order_items_attributes: [:food_id, :quantity]))
+        order_instance = Order.new(params.require(:order).permit(:user_id, :tab_id, order_items_attributes: [:food_id, :quantity, :fulfilled]))
       
         # Calculate total for this order_instance instance
         total = order_instance.calculate_total
@@ -69,7 +69,7 @@ class OrdersController < ApplicationController
         # Merge the calculated total and other defaults
         not_editable_defaults = {user_id: current_user.id}
         editable_defaults = {is_complete: false, total: total}
-        params.require(:order).permit(:is_complete, :user_id, :tab_id, order_items_attributes: [:food_id, :quantity]).merge(not_editable_defaults).reverse_merge(editable_defaults)
+        params.require(:order).permit(:is_complete, :user_id, :tab_id, order_items_attributes: [:food_id, :quantity, :fulfilled]).merge(not_editable_defaults).reverse_merge(editable_defaults)
     end
 
     def update_params

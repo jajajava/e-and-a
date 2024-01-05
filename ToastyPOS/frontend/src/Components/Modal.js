@@ -14,6 +14,7 @@ function Modal({selectedModalOrder, closeModal}){
     }, [itemToBeFulfilled])
 
     console.log(itemToBeFulfilled)
+    console.log(selectedModalOrder)
 
     return (
         <div className="modal-content">

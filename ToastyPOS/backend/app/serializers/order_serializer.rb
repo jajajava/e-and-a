@@ -8,7 +8,8 @@ class OrderSerializer < ActiveModel::Serializer
         object.order_items.map do |order_item|{
             id: order_item.id,
             food_id: order_item.food_id,
-            quantity: order_item.quantity
+            quantity: order_item.quantity,
+            fulfilled: order_item.fulfilled
         } end
     end
 end

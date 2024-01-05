@@ -17,7 +17,7 @@ class OrderItemsController < ApplicationController
   end
 
   def create
-    @order_item = OrderItem.new(order_item_params)
+    @order_item = OrderItem.new(create_params)
 
     if @order_item.save
       render json: @order_item, status: :created, location: @order_item
@@ -27,7 +27,7 @@ class OrderItemsController < ApplicationController
   end
 
   def update
-    if @order_item.update(order_item_params)
+    if @order_item.update(update_params)
       render json: @order_item
     else
       render json: @order_item.errors, status: :unprocessable_entity
@@ -43,7 +43,12 @@ class OrderItemsController < ApplicationController
       @order_item = OrderItem.find(params[:id])
     end
 
-    def order_item_params
-      params.permit(:order_id, :food_id, :quantity)
+    def create_params
+      order_item_instance = OrderItem.new(params.require(:order_item).permit(:order_id, :food_id, :quantity, :fulfilled))
+      params.require(:order_item).permit(:order_id, :food_id, :quantity, :fulfilled).merge(fulfilled: false)
+    end
+
+    def update_params
+      params.require(:order_item).permit(:fulfilled)
     end
 end
