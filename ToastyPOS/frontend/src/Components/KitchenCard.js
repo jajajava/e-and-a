@@ -36,17 +36,30 @@ function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            const newElapsedTime = getElapsedTime(order.created_at)
-            setElapsedTime(newElapsedTime)
-            if (order.is_complete === false){
-                setCardHeaderID(cardHeaderStyler(newElapsedTime))
-                setTimerID(timerStyler())
+            const currentTime = new Date().getTime()
+            const createdAtTime = new Date(order.created_at).getTime()
+            const elapsedSeconds = Math.floor((currentTime - createdAtTime) / 1000)
+            const elapsedMinutes = Math.floor(elapsedSeconds / 60)
+            const remainingSeconds = (elapsedSeconds % 60 < 10) ? `0${elapsedSeconds % 60}` : elapsedSeconds % 60
+            
+            setElapsedTime(`${elapsedMinutes}:${remainingSeconds}`)
+            
+            if (order.is_complete === false) {
+                setCardHeaderID(cardHeaderStyler(`${elapsedMinutes}:${remainingSeconds}`))
+                setTimerID(timerStyler(`${elapsedMinutes}:${remainingSeconds}`))
             }
         }, 1000)
-        
-        return () => clearInterval(intervalId)
-        }, [order, elapsedTime])
 
+        const initialElapsedTime = getElapsedTime(order.created_at)
+        setElapsedTime(initialElapsedTime)
+    
+        if (order.is_complete === false) {
+        setCardHeaderID(cardHeaderStyler(initialElapsedTime))
+        setTimerID(timerStyler(initialElapsedTime))
+        }
+    
+        return () => clearInterval(intervalId)
+    }, [order, elapsedTime])
     useEffect(()=> {
         if (order.is_complete === true){
             setKitchenCardComplete("KitchenCard-div-completed")
