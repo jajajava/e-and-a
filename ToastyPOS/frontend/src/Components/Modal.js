@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 function Modal({selectedModalOrder, closeModal}){
     const [itemToBeFulfilled, setItemToBeFulfilled] = useState([])
@@ -12,26 +12,44 @@ function Modal({selectedModalOrder, closeModal}){
         }
     }
 
-    // useEffect(()=> {
-    //     const filteredArray = selectedModalOrder?.order_items.filter((element) => element.fulfilled === true)
+    function updateFulfillmentStatus(e){
+        e.preventDefault()
         
-    // }, [itemToBeFulfilled])
+        for (let i = 0; i < itemToBeFulfilled.length; i++){
+            const item = selectedModalOrder?.order_items.find((item)=> item.food_id === itemToBeFulfilled[i].id)
+            fetch(`http://127.0.0.1:3001/order_items/${item.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                },
+                body: JSON.stringify({
+                    "order_item": {
+                        fulfilled: !item.fulfilled
+                    }
+                })
+            })
+        }
+    }
 
     console.log(itemToBeFulfilled)
+    console.log(selectedModalOrder)
 
     return (
         <div className="modal-content">
-            <form className="inner-modal">
-            {selectedModalOrder?.order_items.map((item, index)=> (
-                <div key={index}>
-                    <h4 onClick={()=> itemsSelected(index)} id="modalItem"><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+            <form onSubmit={(e)=> updateFulfillmentStatus(e)}>
+                <div className="inner-modal">
+                {selectedModalOrder?.order_items.map((item, index)=> (
+                    <div key={index}>
+                        <h4 onClick={()=> itemsSelected(index)} id="modalItem"><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                    </div>
+                ))}
                 </div>
-            ))}
+                <div id="modalButtons">
+                    <button onClick={(e)=> (closeModal(e), setItemToBeFulfilled([]))} className="modalButton">Cancel</button>
+                    <button className="modalButton">Fulfill</button>
+                </div>
             </form>
-            <div id="modalButtons">
-                <button onClick={()=> (closeModal(), setItemToBeFulfilled([]))} className="modalButton">Cancel</button>
-                <button className="modalButton">Fulfill</button>
-            </div>
         </div>
     )
 }

@@ -43,7 +43,8 @@ function KitchenDisplay() {
         setShowModal(true)
     }
 
-    function closeModal(){
+    function closeModal(e){
+        e.preventDefault()
         setShowModal(false)
     }
 
