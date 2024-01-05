@@ -1,6 +1,12 @@
+  /* FONT IMPORT */
+  @font-face {
+    font-family: 'FiraCode';
+    src: url('./Fonts/FiraCode-VariableFont_wght.ttf');
+  }  
+  
   /* VARIABLES */
-    $main-orange: rgba(255, 166, 0, 0.884);
-    $main-font: rgba(39, 26, 6, 0.76);
+  $main-orange: rgba(255, 166, 0, 0.884);
+  $main-font: rgba(39, 26, 6, 0.76);
 
   .background {
     text-align: center;
@@ -252,6 +258,7 @@
       position: relative;
       color: white;
       transition: 1s;
+      font-family: 'FiraCode'
     }
 
     #cardHeader1 {
@@ -275,27 +282,31 @@
 
     #cardHeader-timer-1 {
       right: 3%;
-      width: 42px;
+      width: 4ch;
       position: absolute;
     }
 
     #cardHeader-timer-2 {
       right: 3%;
-      width: 51px;
+      width: 5ch;
       position: absolute;
     }
 
     #cardHeader-timer-3 {
       right: 3%;
-      width: 62px;
+      width: 6ch;
       position: absolute;
     }
 
-    #cardHeader-
-
-    h3 {
-      margin-bottom: 0;
+    #cardHeader-timer-4 {
+      right: 3%;
+      width: 7ch;
+      position: absolute;
     }
+
+    // h3 {
+    //   margin-bottom: 0;
+    // }
   
     h4 {
       margin-top: 10px;

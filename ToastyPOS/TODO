@@ -11,3 +11,4 @@ FRONTEND:
 9. Recently fulfilled/recall button
 11. Make the Order have a name whether or not the tab exists (if it does, take the name from the tab) (should be really easy, only frontend stuff)
 12. Make the Order have a "Dine-in" or "Take-out" option, also frontend only
+13. Experiment with the cardheader font; make sure it's monospaced
