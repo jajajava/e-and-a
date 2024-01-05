@@ -45,7 +45,7 @@ function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
         }, 1000)
         
         return () => clearInterval(intervalId)
-        }, [order])
+        }, [order, elapsedTime])
 
     useEffect(()=> {
         if (order.is_complete === true){
@@ -141,12 +141,14 @@ function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
         const timeSelection = order.is_complete ? completionTime : elapsedTime
         const timeSelectionLength = timeSelection.length
 
-        if (timeSelectionLength < 5) {
+        if (timeSelectionLength === 4) {
             return 1
-        } else if (timeSelectionLength < 6) {
+        } else if (timeSelectionLength === 5) {
             return 2
+        } else if (timeSelectionLength === 6) {
+            return 3
         }
-        return 3
+        return 4
     }
 
     return (

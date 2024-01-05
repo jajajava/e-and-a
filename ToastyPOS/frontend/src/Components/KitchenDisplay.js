@@ -65,7 +65,7 @@ function KitchenDisplay() {
             <Header/>
             <div>
                 <div id={showModal ? "modalOpened" : "modalClosed"} className="modal">
-                    <Modal selectedModalOrder={selectedModalOrder} closeModal={closeModal}/>
+                    <Modal selectedModalOrder={selectedModalOrder} closeModal={closeModal} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>
                 </div>
                 <button tabIndex={showModal === true ? "-1" : "0"} onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}

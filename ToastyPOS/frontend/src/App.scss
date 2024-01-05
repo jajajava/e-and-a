@@ -246,7 +246,6 @@
     .cardHeader {
       display: flex;
       padding-left: 0.5rem;
-      padding-bottom: 1rem;
       border-top-left-radius: 2px;
       border-top-right-radius: 2px;
       text-align: left;
@@ -275,22 +274,24 @@
     }
 
     #cardHeader-timer-1 {
-      right: 13%;
-      width: 20px;
+      right: 3%;
+      width: 42px;
       position: absolute;
     }
 
     #cardHeader-timer-2 {
-      right: 19%;
-      width: 20px;
+      right: 3%;
+      width: 51px;
       position: absolute;
     }
 
     #cardHeader-timer-3 {
-      right: 26%;
-      width: 20px;
+      right: 3%;
+      width: 62px;
       position: absolute;
     }
+
+    #cardHeader-
 
     h3 {
       margin-bottom: 0;
@@ -355,8 +356,7 @@
     flex-direction: column;
     align-items: center;
   }
-  
-  /* The Close Button */
+
   .modalButton {
     color: #aaaaaa;
     float: none;

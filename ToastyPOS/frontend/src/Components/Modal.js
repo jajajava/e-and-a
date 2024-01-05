@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Modal({selectedModalOrder, closeModal}){
+function Modal({selectedModalOrder, closeModal, completeOrdersGetterAndSetter}){
     const [itemToBeFulfilled, setItemToBeFulfilled] = useState([])
 
     function itemsSelected(index){
@@ -29,6 +29,8 @@ function Modal({selectedModalOrder, closeModal}){
                     }
                 })
             })
+            //! This isn't working
+            .then(()=> completeOrdersGetterAndSetter())
         }
     }
 
