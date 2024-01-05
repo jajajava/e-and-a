@@ -70,7 +70,7 @@ function KitchenDisplay() {
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}
                 </button>
                     <div className="CardDisplay-div">
-                        {showRecentlyFulfilled === true && incompleteOrders.length > 0 ? 
+                        {showRecentlyFulfilled === true && completeOrders.length > 0 ? 
                         [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
                         : incompleteOrders.length > 0 ? 
                         incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
