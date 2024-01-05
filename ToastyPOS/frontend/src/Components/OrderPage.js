@@ -160,7 +160,7 @@ function OrderPage({toHomepage}){
                 body: JSON.stringify({
                     "order": {
                         "tab_id": tabID,
-                        "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity, fulfilled: false}))
+                        "order_items_attributes": orderArray.map((item) => ({food_id: item.food_id, quantity: item.quantity}))
                     }
                 })
             })
