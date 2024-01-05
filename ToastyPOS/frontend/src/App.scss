@@ -1,7 +1,7 @@
   /* FONT IMPORT */
   @font-face {
-    font-family: 'FiraCode';
-    src: url('./Fonts/FiraCode-VariableFont_wght.ttf');
+    font-family: 'Arial Monospaced';
+    src: url('./Fonts/arial_monospaced_mt.ttf');
   }  
   
   /* VARIABLES */
@@ -258,7 +258,7 @@
       position: relative;
       color: white;
       transition: 1s;
-      font-family: 'FiraCode'
+      font-family: 'Arial Monospaced'
     }
 
     #cardHeader1 {
