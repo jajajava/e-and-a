@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
+function KitchenCard({order, kitchenCardData}){
     const [loadedOrders, setLoadedOrders] = useState([])
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [completionTime] = useState(()=> getCompletedTime())
@@ -9,7 +9,7 @@ function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
     const [kitchenCardComplete, setKitchenCardComplete] = useState(null)
     const [headerName] = useState(upperHeaderContent())
 
-    const {completeOrdersGetterAndSetter, openModal} = kitchenCardData
+    const {completeOrdersGetterAndSetter, openModal, setSelectedModalOrder} = kitchenCardData
 
     useEffect(()=> {
         orderLoad()

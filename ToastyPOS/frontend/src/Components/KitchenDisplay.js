@@ -13,7 +13,7 @@ function KitchenDisplay() {
 
     useEffect(()=> {
         completeOrdersGetterAndSetter()
-    }, [selectedModalOrder])
+    }, [showRecentlyFulfilled, selectedModalOrder])
 
     function completeOrdersGetterAndSetter(){
         fetch("http://127.0.0.1:3001/orders/incomplete", {
@@ -47,6 +47,7 @@ function KitchenDisplay() {
     }
 
     const kitchenCardData = {
+        setSelectedModalOrder,
         completeOrdersGetterAndSetter,
         openModal,
         closeModal
@@ -77,9 +78,9 @@ function KitchenDisplay() {
                 </button>
                     <div className="CardDisplay-div">
                         {showRecentlyFulfilled === true && completeOrders.length > 0 ? 
-                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
+                        [...completeOrders, ...incompleteOrders].map((order) => (<KitchenCard key={order.id} order={order} kitchenCardData={kitchenCardData}/>))
                         : incompleteOrders.length > 0 ? 
-                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} setSelectedModalOrder={setSelectedModalOrder} kitchenCardData={kitchenCardData}/>))
+                        incompleteOrders.map((order) => (<KitchenCard key={order.id} order={order} kitchenCardData={kitchenCardData}/>))
                         : null}
                     </div>
             </div>

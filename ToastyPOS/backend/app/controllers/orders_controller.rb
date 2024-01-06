@@ -8,12 +8,12 @@ class OrdersController < ApplicationController
   end
 
   def indexComplete
-    @orders = Order.where(is_complete: true)
+    @orders = Order.where(is_complete: true).order(updated_at: :asc)
     render json: @orders
   end
 
   def indexIncomplete
-    @orders = Order.where(is_complete: false)
+    @orders = Order.where(is_complete: false).order(created_at: :asc)
     render json: @orders
   end
 
