@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-function Modal({selectedModalOrder, closeModal, completeOrdersGetterAndSetter}){
+function Modal({modalData}){
+    const {
+        selectedModalOrder,
+        setSelectedModalOrder,
+        closeModal,
+        completeOrdersGetterAndSetter} = modalData
+
     const [itemToBeFulfilled, setItemToBeFulfilled] = useState([])
 
     function itemsSelected(index){
@@ -29,8 +35,8 @@ function Modal({selectedModalOrder, closeModal, completeOrdersGetterAndSetter}){
                     }
                 })
             })
-            //! This isn't working
-            .then(()=> completeOrdersGetterAndSetter())
+            .then(()=> setSelectedModalOrder(selectedModalOrder))
+            .then(()=> (closeModal(), setItemToBeFulfilled([])))
         }
     }
 
@@ -43,12 +49,12 @@ function Modal({selectedModalOrder, closeModal, completeOrdersGetterAndSetter}){
                 <div className="inner-modal">
                 {selectedModalOrder?.order_items.map((item, index)=> (
                     <div key={index}>
-                        <h4 onClick={()=> itemsSelected(index)} id="modalItem"><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${item.fulfilled ? 'itemFulfilled' : null}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
                     </div>
                 ))}
                 </div>
                 <div id="modalButtons">
-                    <button onClick={(e)=> (closeModal(e), setItemToBeFulfilled([]))} className="modalButton">Cancel</button>
+                    <button onClick={()=> (closeModal(), setItemToBeFulfilled([]))} className="modalButton">Cancel</button>
                     <button className="modalButton">Fulfill</button>
                 </div>
             </form>

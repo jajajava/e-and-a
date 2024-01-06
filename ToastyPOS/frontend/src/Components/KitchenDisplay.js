@@ -11,10 +11,9 @@ function KitchenDisplay() {
     const [showModal, setShowModal] = useState(false)
     const [selectedModalOrder, setSelectedModalOrder] = useState(null)
 
-    // Gets the incomplete orders and complete orders separately (and asynchronously)
     useEffect(()=> {
         completeOrdersGetterAndSetter()
-    }, [showRecentlyFulfilled])
+    }, [selectedModalOrder])
 
     function completeOrdersGetterAndSetter(){
         fetch("http://127.0.0.1:3001/orders/incomplete", {
@@ -43,8 +42,7 @@ function KitchenDisplay() {
         setShowModal(true)
     }
 
-    function closeModal(e){
-        e.preventDefault()
+    function closeModal(){
         setShowModal(false)
     }
 
@@ -52,6 +50,13 @@ function KitchenDisplay() {
         completeOrdersGetterAndSetter,
         openModal,
         closeModal
+    }
+
+    const modalData = {
+        selectedModalOrder,
+        setSelectedModalOrder,
+        closeModal,
+        completeOrdersGetterAndSetter
     }
 
     useEffect(()=> {
@@ -65,7 +70,7 @@ function KitchenDisplay() {
             <Header/>
             <div>
                 <div id={showModal ? "modalOpened" : "modalClosed"} className="modal">
-                    <Modal selectedModalOrder={selectedModalOrder} closeModal={closeModal} completeOrdersGetterAndSetter={completeOrdersGetterAndSetter}/>
+                    <Modal modalData={modalData}/>
                 </div>
                 <button tabIndex={showModal === true ? "-1" : "0"} onClick={()=> setShowRecentlyFulfilled(!showRecentlyFulfilled)}>
                     {!showRecentlyFulfilled ? "Show Recently Fulfilled" : "Hide Recently Fulfilled"}

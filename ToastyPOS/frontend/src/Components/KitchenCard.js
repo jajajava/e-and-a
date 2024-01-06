@@ -97,14 +97,14 @@ function KitchenCard({order, setSelectedModalOrder, kitchenCardData}){
         if (order.order_items.length > 18) {
             const newOrders = order.order_items.slice(0, 17).map((item, index) => (
                 <div key={index}>
-                <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
+                <h4 className={item.fulfilled ? "itemFulfilled" : null}>{item.quantity} - {order.foods[index].name}</h4>
                 </div>
             ))
             setLoadedOrders(newOrders)
         } else {
             const newOrders = order.order_items.map((item, index) => (
                 <div key={index}>
-                <h4><b>{item.quantity}</b> - {order.foods[index].name}</h4>
+                <h4 className={item.fulfilled ? "itemFulfilled" : null}>{item.quantity} - {order.foods[index].name}</h4>
                 </div>
             ))
             setLoadedOrders(newOrders)
