@@ -324,6 +324,10 @@
 
   #KitchenCard-div-completed {
     filter: contrast(70%);
+    
+    h4.itemFulfilled {
+      color: $main-font;
+    }
   }
 
   .modal {

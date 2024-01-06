@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 function Modal({modalData}){
     const {
@@ -17,6 +17,10 @@ function Modal({modalData}){
             setItemToBeFulfilled(removedItem)
         }
     }
+
+    useEffect(()=>{
+        console.log(itemToBeFulfilled)
+    }, [itemToBeFulfilled])
 
     function updateFulfillmentStatus(e){
         e.preventDefault()
@@ -40,16 +44,13 @@ function Modal({modalData}){
         }
     }
 
-    console.log(itemToBeFulfilled)
-    console.log(selectedModalOrder)
-
     return (
         <div className="modal-content">
             <form onSubmit={(e)=> updateFulfillmentStatus(e)}>
                 <div className="inner-modal">
                 {selectedModalOrder?.order_items.map((item, index)=> (
                     <div key={index}>
-                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${item.fulfilled ? 'itemFulfilled' : null}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${item.fulfilled || itemToBeFulfilled?.find((i) => item.food_id === i.id) ? 'itemFulfilled' : null}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
                     </div>
                 ))}
                 </div>
