@@ -2419,19 +2419,19 @@
 
 //! USEFUL STRING METHODS:
 
-//# "Welcome".length() -> returns 7                                                                                 GET LENGTH
-//# message.charAt(index) -> returns char at (index)                                                                FIND INDEX OF CHAR
-//# String s3 = s1.concat(s2) -> s3 = "s1 + s2"                                                                     CONCATENATION
-//# String s2 = s1.substring(0, 11) -> Returns 10 chars from index 0 - 10                                           EXTRACT SUBSTRING
-//# s1.equals(s2) -> compares contents of 2 strings, returns true/false                                             COMPARES STRINGS
-//# s1.toLowerCase -> makes all letters lowercase                                                                   LOWERCASE
-//# s1.toUpperCase -> makes all letters uppercase                                                                   UPPERCASE
-//# s1.trim -> removes whitespace before and after string                                                           TRIM WHITESPACE
-//# s1.replace(oldChar, newChar) -> replace all occurrences of oldChar w/ newChar                                   REPLACE CHARS
-//# s1.replaceAll(oldString REGEX, newString) -> replace all occurrences of regex selection                         REPLACE VIA REGEX
-//# s1.indexOf("char/substring", startingIndex) -> find index of a char or starting index of a substring            SEARCH STRING
-//# s1.lastIndexOf('a') -> returns largest index at which a char/substring occurs                                   SEARCH LARGEST INDEX
-//# String.valueOf(5.44) -> Creates string "5.44"                                                                   TO STRING CONVERSION
+//# "Welcome".length() -> returns 7 ------------------------------------------------------------------------------- GET LENGTH
+//# message.charAt(index) -> returns char at (index) -------------------------------------------------------------- FIND INDEX OF CHAR
+//# String s3 = s1.concat(s2) -> s3 = "s1 + s2" ------------------------------------------------------------------- CONCATENATION
+//# String s2 = s1.substring(0, 11) -> Returns 10 chars from index 0 - 10 ----------------------------------------- EXTRACT SUBSTRING
+//# s1.equals(s2) -> compares contents of 2 strings, returns true/false ------------------------------------------- COMPARES STRINGS
+//# s1.toLowerCase -> makes all letters lowercase ----------------------------------------------------------------- LOWERCASE
+//# s1.toUpperCase -> makes all letters uppercase ----------------------------------------------------------------- UPPERCASE
+//# s1.trim -> removes whitespace before and after string --------------------------------------------------------- TRIM WHITESPACE
+//# s1.replace(oldChar, newChar) -> replace all occurrences of oldChar w/ newChar --------------------------------- REPLACE CHARS
+//# s1.replaceAll(oldString REGEX, newString) -> replace all occurrences of regex selection ----------------------- REPLACE VIA REGEX
+//# s1.indexOf("char/substring", startingIndex) -> find index of a char or starting index of a substring ---------- SEARCH STRING
+//# s1.lastIndexOf('a') -> returns largest index at which a char/substring occurs --------------------------------- SEARCH LARGEST INDEX
+//# String.valueOf(5.44) -> Creates string "5.44" ----------------------------------------------------------------- TO STRING CONVERSION
 
 //# COMMAND LINE PARAMETERS FOR THE MAIN METHOD:
 
