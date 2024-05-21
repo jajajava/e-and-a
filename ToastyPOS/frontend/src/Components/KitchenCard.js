@@ -91,8 +91,8 @@ function KitchenCard({order, kitchenCardData}){
         }
 
     function orderLoad() {
-        if (order.order_items.length > 18) {
-            const newOrders = order.order_items.slice(0, 17).map((item, index) => (
+        if (order.order_items.length > 11) {
+            const newOrders = order.order_items.slice(0, 10).map((item, index) => (
                 <div key={index}>
                 <h4 className={item.fulfilled ? "itemFulfilled" : null}>{item.quantity} - {order.foods[index].name}</h4>
                 </div>
@@ -155,7 +155,7 @@ function KitchenCard({order, kitchenCardData}){
                     <h3>{order.tab_id !== null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
                     <h3 id={"cardHeader-timer"}>{!order.is_complete ? elapsedTime : completionTime}</h3>
                 </div>
-                <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
+                <h4 id="kitchenCardOrderItems">{order.order_items.length > 0 ? loadedOrders : null}</h4>
                 {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
             </div>
         </div>

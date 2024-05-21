@@ -282,6 +282,13 @@
       right: 3%;
       position: absolute;
     }
+
+    #kitchenCardOrderItems {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-left: 7%;
+    }
   
     h4 {
       margin-top: 10px;
@@ -301,6 +308,7 @@
     filter: contrast(70%);
     
     h4.itemFulfilled {
+      // Did this so that the blue "itemFulfilled" fonts weren't blue
       color: $main-font;
     }
   }
