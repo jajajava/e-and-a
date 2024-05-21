@@ -257,8 +257,6 @@
       position: relative;
       color: white;
       transition: 1s;
-      font-family: monospace;
-      font-stretch: expanded;
     }
 
     #cardHeader1 {
@@ -280,33 +278,10 @@
       color: peachpuff;
     }
 
-    #cardHeader-timer-1 {
+    #cardHeader-timer {
       right: 3%;
-      width: 4ch;
       position: absolute;
     }
-
-    #cardHeader-timer-2 {
-      right: 3%;
-      width: 5ch;
-      position: absolute;
-    }
-
-    #cardHeader-timer-3 {
-      right: 3%;
-      width: 6ch;
-      position: absolute;
-    }
-
-    #cardHeader-timer-4 {
-      right: 3%;
-      width: 7ch;
-      position: absolute;
-    }
-
-    // h3 {
-    //   margin-bottom: 0;
-    // }
   
     h4 {
       margin-top: 10px;

@@ -5,7 +5,6 @@ function KitchenCard({order, kitchenCardData}){
     const [elapsedTime, setElapsedTime] = useState(getElapsedTime(order.created_at))
     const [completionTime] = useState(()=> getCompletedTime())
     const [cardHeaderID, setCardHeaderID] = useState(!order.is_complete ? cardHeaderStyler(elapsedTime) : cardHeaderStyler(completionTime))
-    const [timerID, setTimerID] = useState(()=> timerStyler())
     const [kitchenCardComplete, setKitchenCardComplete] = useState(null)
     const [headerName] = useState(upperHeaderContent())
 
@@ -46,7 +45,6 @@ function KitchenCard({order, kitchenCardData}){
             
             if (order.is_complete === false) {
                 setCardHeaderID(cardHeaderStyler(`${elapsedMinutes}:${remainingSeconds}`))
-                setTimerID(timerStyler(`${elapsedMinutes}:${remainingSeconds}`))
             }
         }, 1000)
 
@@ -55,7 +53,6 @@ function KitchenCard({order, kitchenCardData}){
     
         if (order.is_complete === false) {
         setCardHeaderID(cardHeaderStyler(initialElapsedTime))
-        setTimerID(timerStyler(initialElapsedTime))
         }
     
         return () => clearInterval(intervalId)
@@ -150,27 +147,13 @@ function KitchenCard({order, kitchenCardData}){
         return 4
     }
 
-    function timerStyler(){
-        const timeSelection = order.is_complete ? completionTime : elapsedTime
-        const timeSelectionLength = timeSelection.length
-
-        if (timeSelectionLength === 4) {
-            return 1
-        } else if (timeSelectionLength === 5) {
-            return 2
-        } else if (timeSelectionLength === 6) {
-            return 3
-        }
-        return 4
-    }
-
     return (
         <div>
             <div onClick={handleSingleClick} className="KitchenCard-div" id={kitchenCardComplete}>
                 <div className="cardHeader" id={`cardHeader${cardHeaderID}`}>
                     {/* If order.tab_id === null, make order name a separate name */}
                     <h3>{order.tab_id !== null ? <span>{headerName}<br/></span> : null} Order #{order.id}</h3>
-                    <h3 id={`cardHeader-timer-${timerID}`}>{!order.is_complete ? elapsedTime : completionTime}</h3>
+                    <h3 id={"cardHeader-timer"}>{!order.is_complete ? elapsedTime : completionTime}</h3>
                 </div>
                 <h4>{order.order_items.length > 0 ? loadedOrders : null}</h4>
                 {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
