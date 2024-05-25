@@ -103,6 +103,18 @@
 //# CONDITIONAL STATEMENTS IN SHELL:
 //# if/elif/else/fi
 // In older languages, they'd close a statement with the reverse of the starting word (if is closed with fi)
+//# When using if or elif, you need the "then" keyword to indicate the start of the code block, like so:
+// if [ condition1 ]; then
+//   (commands go here)
+// elif [ conditional2 ]; then
+//   (commands go here)
+// else
+//   (commands go here)
+// fi
+//# NOTE: the spacing between the brackets of the conditional statement and the condition. That is required.
+//# Also, note that you finish the conditional statement with a semicolon, write "then", and then write commands (could be on same line but it's less readable imo)
+//# Multiple commands are separated with semicolons. Note the way the else clause also doesn't have any requirements (semicolon, do, spacing, etc.)
+//# Then you just close all of the conditional statements with one "fi"
 
 //# RELATIONAL OPERATORS IN SHELL:
 //# -lt = less than
@@ -142,5 +154,28 @@
 // done
 //# The outer ${} allows you to reference the current value of the arrayName array. You then access a value in the array via []. Inside, you have ${} to reference the current value of i
 //# So to clarify, you access values in an array the same way. ${array[0]} -> first value of the array
+//# You can apparently do a hell of a lot more with symbols and the ${} syntax. One very useful thing is default values for variables.
+//# If you do this: ${variableName:-whatever_value_you_want}  --> if your variableName variable is null or unset (empty in javascript), it temporarily becomes the string "whatever_value_you_want".
+//# HOWEVER, when you reference it again without the default flag, like so: ${variableName}  --> it returns an empty string, "".
+//# If you want to ASSIGN an unset or null variable to a default value, you do it with this:
+//# ${variableName:=Value}  --> Now if your variableName variable was unset originally, it is assigned the string "Value" and referencing it will return "Value"!
 
 //# Bash allows you to execute commands in a subshell like so: echo $( command )
+
+//# FUNCTIONS IN SHELL:
+//# You can define functions and call them SEQUENTIALLY (you can't define a function at the bottom cause it isn't pre-compiled, it's executed at runtime) like so:
+
+// function function_name {
+//     local VAR_NAME="This is an example variable"
+//     echo VAR_NAME
+// }
+
+// function_name  --> calls the function
+
+//# NOTE the function keyword, the use of curly braces, lack of semicolons between commands (only necessary if they're on one line), the LOCAL keyword, and the way you call the function.
+//# The local keyword is used to declare a local variable that's only visible in the function. If you have a VAR_NAME variable outside the function and don't use local, it gets reassigned.
+//# To call the function, you just write the function's name, no need for the () like in other languages.
+//# TO WRITE A FUNCTION WITH PARAMETERS:
+//# All you need to do is add () to the function name, like so:
+// function function_name(){...}
+//# Then you just access the arguments passed via $1, $2, ... $n
