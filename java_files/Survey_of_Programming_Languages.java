@@ -179,3 +179,61 @@
 //# All you need to do is add () to the function name, like so:
 // function function_name(){...}
 //# Then you just access the arguments passed via $1, $2, ... $n
+
+
+//! Assignment 3 - Python
+
+// with open("grades.txt", "r") as file:
+//     class_data = {}
+//     for line in file:
+//         locatorFront = line.find(',')
+//         locatorBack = line.find(',') + 1
+//         student = line[:locatorFront]
+//         grade = line[locatorBack:].strip()
+//         class_data[student] = float(grade)
+//     students_list = list(class_data.keys())
+//     grades_list = list(class_data.values())
+
+// def get_average():
+//     total = 0
+//     for grade in grades_list:
+//         if grade is not None:
+//             total += grade
+//     return float(total / len(grades_list))
+
+// def get_max():
+//     max_grade = max(grades_list)
+//     best_student = students_list[grades_list.index(max_grade)]
+//     return f"Maximum: {max_grade} ({best_student})"
+
+// def get_min():
+//     min_grade = min(grades_list)
+//     worst_student = students_list[grades_list.index(min_grade)]
+//     return f"Minimum: {min_grade} ({worst_student})"
+
+// def above_average_counter():
+//     average = get_average()
+//     counter = 0
+//     for grade in grades_list:
+//         if grade > average:
+//             counter += 1
+//     percent_of_class = (counter/len(grades_list)) * 100
+//     return f"Grades above average: {counter}, {percent_of_class}%"
+
+// def below_average_counter():
+//     average = get_average()
+//     counter = 0
+//     for grade in grades_list:
+//         if grade < average:
+//             counter += 1
+//     percent_of_class = (counter/len(grades_list)) * 100
+//     return f"Grades below average: {counter}, {percent_of_class}%"
+
+// # I hope it's not an issue that I put the formatting in the print(). I originally had it inside of the method, but moved it so I can reuse it in the two counter methods
+// print(f"Average: {get_average()}")
+// print(get_max())
+// print(get_min())
+// print(above_average_counter())
+// print(below_average_counter())
+
+//# Note: The format for each line in the imported file was "firstName LastName,grade", with grade being a float
