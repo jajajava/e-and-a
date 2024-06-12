@@ -237,3 +237,61 @@
 // print(below_average_counter())
 
 //# Note: The format for each line in the imported file was "firstName LastName,grade", with grade being a float
+
+
+//! Assignment 4: C#
+
+//# Records in C#:
+//# Similar to making an object, but less overhead and less bulky; less modifiability
+// namespace Assignment4 {
+//     public class C_Sharp_Records {
+//         internal record Student (string FirstName, string LastName, double GPA, string Major, int AttemptedHours, int CompletedHours);
+//         public static void Main (string[] args){
+//             Student student1 = new("Rob", "Graves", 2.9, "Archaeology", 120, 90);
+//             Student student2 = new("Ivan", "Pavlov", 2.4, "Psychology", 120, 114);
+//             Student student3 = new("Mike", "Hawk", 3.8, "Biology", 120, 110);
+
+
+//             Console.WriteLine(student1);
+//             Console.WriteLine(student2);
+//             Console.WriteLine(student3);
+
+//             // student1.FirstName = "Robert";
+//             // This doesn't work because Records are immutable by default (though if you use "init", you can change that property)
+//         }
+//     }
+// }
+
+//# Making a class in C# (getters and setters):
+// namespace FanNamespace {
+//     public class Fan {
+//         // Data fields
+//         public int Speed {get; set;}
+//         // Note: You can put access modifiers before the get/set properties- but they MUST be more restrictive than original data field (public in this case)
+//         public double Radius {get; set;}
+//         private string Color {get; set;}
+
+//         // Constructor 
+//         public Fan(){
+//             Speed = 1;
+//             Radius = 1.53;
+//             Color = "green";
+//         }
+
+//         // Override object's ToString method
+//         public override string ToString(){
+//             return $"A {this.Radius} inch {this.Color} fan at a speed of {this.Speed}";
+//         }
+
+//             public static void Main (string[] args){
+//             Fan fan1 = new(){Speed = 3, Radius = 10.26, Color = "yellow"};
+//             Console.WriteLine(fan1);
+            
+//             Fan fan2 = new(){Radius = 5.79, Speed = 2, Color = "blue"};
+//             Console.WriteLine(fan2);
+
+//             Fan fan3 = new();
+//             Console.WriteLine(fan3);
+//         }
+//     }
+// }
