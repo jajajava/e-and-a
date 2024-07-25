@@ -44,7 +44,11 @@ class OrderItemsController < ApplicationController
     end
 
     def create_params
-      order_item_instance = OrderItem.new(params.require(:order_item).permit(:order_id, :food_id, :quantity))
+      order_item_instance = OrderItem.new(params.require(:order_item).permit(:order_id, :food_id, :quantity, :fulfilled))
       params.require(:order_item).permit(:order_id, :food_id, :quantity)
+    end
+
+    def update_params
+      params.require(:order_item).permit(:fulfilled)
     end
 end

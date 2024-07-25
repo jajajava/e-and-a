@@ -135,6 +135,7 @@ function KitchenCard({order, kitchenCardData}){
             .then(()=> completeOrdersGetterAndSetter())
         }
     }
+    //! Need a way to return fulfilled orders (new function)
 
     function cardHeaderStyler(elapsedTime){
         if (parseInt(elapsedTime) < 5) {
@@ -156,7 +157,7 @@ function KitchenCard({order, kitchenCardData}){
                     <h3 id={"cardHeader-timer"}>{!order.is_complete ? elapsedTime : completionTime}</h3>
                 </div>
                 <h4 id="kitchenCardOrderItems">{order.order_items.length > 0 ? loadedOrders : null}</h4>
-                {order.order_items.length > 18 ? <h4><b>Tap to see more</b></h4> : null}
+                {order.order_items.length > 10 ? <h4><b>Tap to see more</b></h4> : null}
             </div>
         </div>
     )

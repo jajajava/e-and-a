@@ -12,3 +12,7 @@ FRONTEND:
 11. Make the Order have a name whether or not the tab exists (if it does, take the name from the tab) (should be really easy, only frontend stuff)
 12. Make the Order have a "Dine-in" or "Take-out" option, also frontend only
 13. Experiment with the cardheader font; make sure it's monospaced
+<!-- 14. Make it so that if your item.fulfilled === true and itemToBeFulfilled array .find() -->
+
+//# Once all items on an order are fulfilled, it should automatically complete the order (PATCH request necessary).
+//# Need to make blue show up on cards too

@@ -1,100 +1,97 @@
 import React, { useEffect, useState } from "react";
 
-function Modal({ modalData }) {
+function Modal({modalData}){
     const {
-        selectedModalOrder,
-        setSelectedModalOrder,
-        closeModal,
+        selectedModalOrder, // Clicking on a KitchenCard opens a modal with the Order on the card
+        setSelectedModalOrder, 
+        closeModal, // Method to close the modal
         completeOrdersGetterAndSetter
     } = modalData;
 
-    const [itemToBeFulfilled, setItemToBeFulfilled] = useState([]);
+    const [itemsToBeFulfilled, setItemsToBeFulfilled] = useState([]) // State array holding all items to be fulfilled in a menu item
 
-    useEffect(() => {
-        if (selectedModalOrder) {
-            // Load fulfilled items from localStorage when the component mounts
-            const fulfilledItems = localStorage.getItem("fulfilled");
-            if (fulfilledItems) {
-                const fulfilledArray = fulfilledItems.split(",").map(id => parseInt(id, 10));
-                setItemToBeFulfilled(selectedModalOrder.order_items.filter(item => fulfilledArray.includes(item.id)));
+    function itemsSelected(index){
+        // If the selected order isn't complete and the list of changes (selected/deselected items) DOESNT include item
+        if (selectedModalOrder?.is_complete === false && !itemsToBeFulfilled.includes(selectedModalOrder.foods[index])){
+            // Adds an item to the itemsToBeFulfilled array
+            setItemsToBeFulfilled([...itemsToBeFulfilled, selectedModalOrder.foods[index]])
+        } 
+        // If the selected order isn't complete and the list of changes (selected/deselected items) includes item
+        else if (selectedModalOrder?.is_complete === false && itemsToBeFulfilled.includes(selectedModalOrder.foods[index])){
+            // Updates itemsToBeFulfilled array to exclude a removed item 
+            const removedItem = itemsToBeFulfilled.filter((item) => item !== selectedModalOrder.foods[index])
+            setItemsToBeFulfilled(removedItem)
+        }
+    }
+
+     useEffect(()=> {console.log(selectedModalOrder)}, [])
+
+    useEffect(()=>{
+        console.log(itemsToBeFulfilled)
+    }, [itemsToBeFulfilled])
+
+    async function updateFulfillmentStatus(e) {
+        e.preventDefault();
+    
+        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+    
+        for (let i = 0; i < itemsToBeFulfilled.length; i++) {
+            const item = selectedModalOrder?.order_items.find((orderItem) => orderItem.food_id === itemsToBeFulfilled[i].id);
+            
+            if (item) {
+                try {
+                    const response = await fetch(`http://127.0.0.1:3001/order_items/${item.id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                        },
+                        body: JSON.stringify({
+                            "order_item": {
+                                fulfilled: !item.fulfilled
+                            }
+                        })
+                    });
+    
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+    
+                    const data = await response.json();
+                    console.log(`Updated item: ${data}`);
+                    // Update the local state of the item
+                    item.fulfilled = !item.fulfilled;
+                } catch (error) {
+                    console.error('Fetch error:', error);
+                }
+    
+                // Delay between requests to prevent database locking
+                await delay(200); // Adjust delay as needed
             }
         }
-    }, [selectedModalOrder]);
-
-    function itemsSelected(index) {
-        if (!selectedModalOrder) return;
-
-        const selectedItem = selectedModalOrder.order_items[index];
-
-        const itemExists = itemToBeFulfilled.find(item => item.id === selectedItem.id);
-        if (selectedModalOrder?.is_complete === false && !itemExists) {
-            setItemToBeFulfilled([...itemToBeFulfilled, selectedItem]);
-        } else if (selectedModalOrder?.is_complete === false && itemExists) {
-            itemRemover(selectedItem);
-        }
-    }
-
-    function itemRemover(selectedItem) {
-        const removedItems = itemToBeFulfilled.filter(item => item.id !== selectedItem.id);
-        setItemToBeFulfilled(removedItems);
-    }
-
-    function cancelChanges() {
-        if (!selectedModalOrder){
-            return
-        }
-
-        const fulfilledItems = localStorage.getItem("fulfilled");
-        if (fulfilledItems) {
-            const fulfilledArray = fulfilledItems.split(",").map(id => parseInt(id, 10));
-            setItemToBeFulfilled(selectedModalOrder.order_items.filter(item => fulfilledArray.includes(item.id)));
-        } else {
-            setItemToBeFulfilled([]);
-        }
+    
+        // Update state and UI after all fetch requests
+        setSelectedModalOrder({ ...selectedModalOrder });
+        setItemsToBeFulfilled([]);
         closeModal();
     }
-
-    function updateFulfillmentStatus(e) {
-        e.preventDefault();
-        if (!selectedModalOrder){
-            return
-        }
-
-        const tempArray = itemToBeFulfilled.map(item => item.id);
-        localStorage.setItem("fulfilled", tempArray.toString());
-        closeModal();
-    }
-
-    function isItemFulfilled(item) {
-        return item.fulfilled || itemToBeFulfilled.find(i => i.id === item.id);
-    }
-
-    if (!selectedModalOrder) {
-        return null;
-    }
-
     return (
         <div className="modal-content">
-            <form>
+            <form onSubmit={(e)=> updateFulfillmentStatus(e)}>
                 <div className="inner-modal">
-                    {selectedModalOrder.order_items.map((item, index) => (
-                        <div key={item.id}>
-                            <h4
-                                onClick={() => itemsSelected(index)}
-                                className={`modalItem ${isItemFulfilled(item) ? 'itemFulfilled' : ''}`}
-                            >
-                                <b>{item.quantity}</b> - {selectedModalOrder.foods.find(food => food.id === item.food_id)?.name || 'Unknown Food'}
-                            </h4>
-                        </div>
-                    ))}
+                {selectedModalOrder?.order_items.map((item, index)=> (
+                    <div key={index}>
+                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${(item.fulfilled && !itemsToBeFulfilled?.some((i) => item.food_id === i.id)) || (!item.fulfilled && itemsToBeFulfilled?.some((i) => item.food_id === i.id)) ? 'itemFulfilled' : ''}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                    </div>
+                ))}
                 </div>
                 <div id="modalButtons">
-                    <button type="button" onClick={cancelChanges} className="modalButton">Cancel</button>
-                    <button type="button" onClick={updateFulfillmentStatus} className="modalButton">Fulfill</button>
+                    <button onClick={()=> (closeModal(), setItemsToBeFulfilled([]))} className="modalButton">Cancel</button>
+                    <button className="modalButton">Fulfill</button>
                 </div>
             </form>
         </div>
-    );
+    )
 }
 
-export default Modal;
+export default Modal
