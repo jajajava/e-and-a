@@ -24,16 +24,12 @@ function Modal({modalData}){
         }
     }
 
-     useEffect(()=> {console.log(selectedModalOrder)}, [])
-
     useEffect(()=>{
         console.log(itemsToBeFulfilled)
     }, [itemsToBeFulfilled])
 
     async function updateFulfillmentStatus(e) {
         e.preventDefault();
-    
-        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
     
         for (let i = 0; i < itemsToBeFulfilled.length; i++) {
             const item = selectedModalOrder?.order_items.find((orderItem) => orderItem.food_id === itemsToBeFulfilled[i].id);
@@ -56,21 +52,15 @@ function Modal({modalData}){
                     if (!response.ok) {
                         throw new Error(`HTTP error! Status: ${response.status}`);
                     }
-    
-                    const data = await response.json();
-                    console.log(`Updated item: ${data}`);
+
                     // Update the local state of the item
                     item.fulfilled = !item.fulfilled;
                 } catch (error) {
                     console.error('Fetch error:', error);
                 }
-    
-                // Delay between requests to prevent database locking
-                await delay(200); // Adjust delay as needed
             }
         }
-    
-        // Update state and UI after all fetch requests
+
         setSelectedModalOrder({ ...selectedModalOrder });
         setItemsToBeFulfilled([]);
         closeModal();
