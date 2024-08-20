@@ -377,6 +377,13 @@
     }
   }
 
+  .modalItem:not(.itemFulfilled){
+    &:hover {
+      color: black;
+      cursor: text;
+    }
+  }
+
   .itemFulfilled {
     color: blue;
   }
