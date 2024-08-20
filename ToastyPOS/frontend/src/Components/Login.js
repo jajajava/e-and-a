@@ -100,7 +100,7 @@ function Login() {
             <h1 className="loginGreeting">Welcome!</h1>
             <form className='loginForm'>
             <div id="pinInputContainer">
-                <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput}></input>
+                <input id="loginInput" type="password" maxLength="4" value={pin} onKeyDown={keyboardInput} autoFocus={true} onBlur={({ target }) => target.focus()}></input>
             </div>
             {/* If the user enters a pin that's not in the database, it gives an error message ("User doesn't exist!") */}
             {error.length !== 0 ? <h4 style={{marginTop: '5px', marginBottom: '5px'}}>{error.message}</h4> : null}
