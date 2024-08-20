@@ -71,7 +71,7 @@ function Modal({modalData}){
                 <div className="inner-modal">
                 {selectedModalOrder?.order_items.map((item, index)=> (
                     <div key={index}>
-                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${(item.fulfilled && !itemsToBeFulfilled?.some((i) => item.food_id === i.id)) || (!item.fulfilled && itemsToBeFulfilled?.some((i) => item.food_id === i.id)) ? 'itemFulfilled' : ''}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
+                        <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${(item.fulfilled && !itemsToBeFulfilled?.some((i) => item.food_id === i.id) && selectedModalOrder.is_complete == false) || (!item.fulfilled && itemsToBeFulfilled?.some((i) => item.food_id === i.id) && selectedModalOrder.is_complete == false) ? 'itemFulfilled' : ''}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
                     </div>
                 ))}
                 </div>
