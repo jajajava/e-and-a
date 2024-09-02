@@ -6,7 +6,7 @@ class Order < ApplicationRecord
   accepts_nested_attributes_for :order_items
 
   def calculate_total
-    total = 0.0
+    total = 0.00
     self.order_items.each do |n|
       food_price = Food.find(n.food_id).price
       total += (food_price * n.quantity)
