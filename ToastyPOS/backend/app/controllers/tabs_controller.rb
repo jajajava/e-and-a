@@ -25,6 +25,7 @@ class TabsController < ApplicationController
 
   # PATCH/PUT /tabs/1
   def update
+    # Prevents updating old tabs
     if @tab.is_active == false
       render json: @tab
       return
