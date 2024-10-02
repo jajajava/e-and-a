@@ -1,6 +1,0 @@
-chardet==5.2.0
-click==8.1.7
-deptry==0.12.0
-pathspec==0.11.2
-python-dotenv==1.0.0
-RateMyProfessorAPI==1.3.6
