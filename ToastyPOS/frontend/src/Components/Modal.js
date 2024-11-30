@@ -26,6 +26,7 @@ function Modal({modalData}){
     }
 
     function markOrderFulfilled(){
+        //! The fulfill button isn't successfully marking the order completed
         if (selectedModalOrder.is_complete === false){
             let fulfilledArray = selectedModalOrder.order_items.map(i => i.fulfilled)
 
