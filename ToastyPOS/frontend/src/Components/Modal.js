@@ -77,7 +77,7 @@ function Modal({modalData}){
                 </div>
                 <div id="modalButtons">
                     <button onClick={()=> (closeModal(), setItemsToBeFulfilled([]))} className="modalButton">Cancel</button>
-                    <button className="modalButton">Fulfill</button>
+                    {selectedModalOrder?.is_complete === false ? <button className="modalButton">Fulfill</button> : <button className="modalButton">Return</button>}
                 </div>
             </form>
         </div>
