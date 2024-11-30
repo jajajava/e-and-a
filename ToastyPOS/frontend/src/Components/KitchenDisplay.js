@@ -57,7 +57,8 @@ function KitchenDisplay() {
         selectedModalOrder,
         setSelectedModalOrder,
         closeModal,
-        completeOrdersGetterAndSetter
+        completeOrdersGetterAndSetter,
+        setShowRecentlyFulfilled
     }
 
     useEffect(()=> {

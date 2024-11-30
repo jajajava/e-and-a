@@ -5,7 +5,8 @@ function Modal({modalData}){
         selectedModalOrder, // Clicking on a KitchenCard opens a modal with the Order on the card
         setSelectedModalOrder, 
         closeModal, // Method to close the modal
-        completeOrdersGetterAndSetter
+        completeOrdersGetterAndSetter,
+        setShowRecentlyFulfilled
     } = modalData;
 
     const [itemsToBeFulfilled, setItemsToBeFulfilled] = useState([]) // State array holding all items to be fulfilled in a menu item
@@ -26,24 +27,31 @@ function Modal({modalData}){
 
     function markOrderFulfilled(){
         if (selectedModalOrder.is_complete === false){
-            fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-                },
-                body: JSON.stringify({
-                    "order": {
-                        is_complete: true
-                    }
-                })
-            })
-            .then(()=> completeOrdersGetterAndSetter())
+            let fulfilledArray = selectedModalOrder.order_items.map(i => i.fulfilled)
+
+            for (let i = 1; i <= selectedModalOrder.order_items.length; i++){ // Checks if each order item is fulfilled. If all are fulfilled, the order is marked completed
+                if (fulfilledArray[i] === false){
+                    return;
+                }
+                if (i === selectedModalOrder.order_items.length){
+                    fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
+                        method: "PATCH",
+                        headers: {
+                            "Content-Type": "application/json",
+                            "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                        },
+                        body: JSON.stringify({
+                            "order": {
+                                is_complete: true
+                            }
+                        })
+                    })
+                    .then(()=> completeOrdersGetterAndSetter())
+                }
+            }
         }
     }
 
-    //! Finish working on this
-    //! Make sure the patch is selecting the right order (selectedModalOrder should be correct id), and that patching is_complete to false is possible in postman. If not, fix backend
     function returnOrder(){
         if (selectedModalOrder?.is_complete === true){
             fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
@@ -58,12 +66,13 @@ function Modal({modalData}){
                     }
                 })
             })
-            .then(()=> completeOrdersGetterAndSetter())
+            .then(()=> {setShowRecentlyFulfilled(false); completeOrdersGetterAndSetter()})
         }
     }
 
     useEffect(()=>{
         console.log(itemsToBeFulfilled)
+        console.log(selectedModalOrder)
     }, [itemsToBeFulfilled])
 
     async function updateFulfillmentStatus(e) {
