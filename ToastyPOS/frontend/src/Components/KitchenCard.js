@@ -136,25 +136,6 @@ function KitchenCard({order, kitchenCardData}){
         }
     }
 
-    //! Finish working on this
-    function returnOrder(){
-        if (order.is_complete === true){
-            fetch(`http://127.0.0.1:3001/orders/${order.id}`, {
-                method: "PATCH",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
-                },
-                body: JSON.stringify({
-                    "order": {
-                        is_complete: false
-                    }
-                })
-            })
-            .then(()=> completeOrdersGetterAndSetter())
-        }
-    }
-
     function cardHeaderStyler(elapsedTime){
         if (parseInt(elapsedTime) < 5) {
             return 1

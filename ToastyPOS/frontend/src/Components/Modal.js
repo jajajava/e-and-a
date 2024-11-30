@@ -24,6 +24,25 @@ function Modal({modalData}){
         }
     }
 
+    //! Finish working on this
+    function returnOrder(){
+        if (selectedModalOrder.is_complete === true){
+            fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                },
+                body: JSON.stringify({
+                    "order": {
+                        is_complete: false
+                    }
+                })
+            })
+            .then(()=> completeOrdersGetterAndSetter())
+        }
+    }
+
     useEffect(()=>{
         console.log(itemsToBeFulfilled)
     }, [itemsToBeFulfilled])
@@ -77,7 +96,7 @@ function Modal({modalData}){
                 </div>
                 <div id="modalButtons">
                     <button onClick={()=> (closeModal(), setItemsToBeFulfilled([]))} className="modalButton">Cancel</button>
-                    {selectedModalOrder?.is_complete === false ? <button className="modalButton">Fulfill</button> : <button className="modalButton">Return</button>}
+                    {selectedModalOrder?.is_complete === false ? <button className="modalButton" onClick={()=> returnOrder()}>Fulfill</button> : <button className="modalButton">Return</button>}
                 </div>
             </form>
         </div>
