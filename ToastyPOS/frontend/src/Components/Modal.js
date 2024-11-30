@@ -25,6 +25,7 @@ function Modal({modalData}){
     }
 
     //! Finish working on this
+    //! Make sure the patch is selecting the right order (selectedModalOrder should be correct id), and that patching is_complete to false is possible in postman. If not, fix backend
     function returnOrder(){
         if (selectedModalOrder.is_complete === true){
             fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
