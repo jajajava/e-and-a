@@ -24,10 +24,28 @@ function Modal({modalData}){
         }
     }
 
+    function markOrderFulfilled(){
+        if (selectedModalOrder.is_complete === false){
+            fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
+                method: "PATCH",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("jwt")}`
+                },
+                body: JSON.stringify({
+                    "order": {
+                        is_complete: true
+                    }
+                })
+            })
+            .then(()=> completeOrdersGetterAndSetter())
+        }
+    }
+
     //! Finish working on this
     //! Make sure the patch is selecting the right order (selectedModalOrder should be correct id), and that patching is_complete to false is possible in postman. If not, fix backend
     function returnOrder(){
-        if (selectedModalOrder.is_complete === true){
+        if (selectedModalOrder?.is_complete === true){
             fetch(`http://127.0.0.1:3001/orders/${selectedModalOrder.id}`, {
                 method: "PATCH",
                 headers: {
@@ -97,7 +115,7 @@ function Modal({modalData}){
                 </div>
                 <div id="modalButtons">
                     <button onClick={()=> (closeModal(), setItemsToBeFulfilled([]))} className="modalButton">Cancel</button>
-                    {selectedModalOrder?.is_complete === false ? <button className="modalButton" onClick={()=> returnOrder()}>Fulfill</button> : <button className="modalButton">Return</button>}
+                    {selectedModalOrder?.is_complete === false ? <button className="modalButton" onClick={()=> markOrderFulfilled()}>Fulfill</button> : <button className="modalButton" onClick={()=> returnOrder()}>Return</button>}
                 </div>
             </form>
         </div>

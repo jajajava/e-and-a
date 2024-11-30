@@ -36,7 +36,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   def update
     # Cannot update an order marked completed nor an order's tab_id
-    if @order.is_complete == true || params[:order].key?(:tab_id)
+    # if @order.is_complete == true || params[:order].key?(:tab_id)
+    if params[:order].key?(:tab_id)
       render json: @order
       return
     end
