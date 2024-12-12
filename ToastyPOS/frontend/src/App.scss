@@ -353,6 +353,10 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    &.orderCompleted > div > *{
+      cursor: text;
+    }
   }
 
   .modalButton {
@@ -380,7 +384,6 @@
   .modalItem:not(.itemFulfilled){
     &:hover {
       color: black;
-      cursor: text;
     }
   }
 

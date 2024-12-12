@@ -116,7 +116,7 @@ function Modal({modalData}){
     return (
         <div className="modal-content">
             <form onSubmit={(e)=> updateFulfillmentStatus(e)}>
-                <div className="inner-modal">
+                <div className={`inner-modal ${selectedModalOrder?.is_complete ? "orderCompleted" : ""}`}>
                 {selectedModalOrder?.order_items.map((item, index)=> (
                     <div key={index}>
                         <h4 onClick={()=> itemsSelected(index)} className={`modalItem ${(item.fulfilled && !itemsToBeFulfilled?.some((i) => item.food_id === i.id) && selectedModalOrder.is_complete == false) || (!item.fulfilled && itemsToBeFulfilled?.some((i) => item.food_id === i.id) && selectedModalOrder.is_complete == false) ? 'itemFulfilled' : ''}`}><b>{item.quantity}</b> - {selectedModalOrder.foods[index].name}</h4>
