@@ -28,7 +28,11 @@ function Modal({modalData}){
     function markOrderFulfilled(){
         //! The fulfill button isn't successfully marking the order completed
         if (selectedModalOrder.is_complete === false){
+            //! Maybe the solution would be to make an array that is like a join of selectedModalOrder and itemsToBeFulfilled (only the items that AREN'T already true)
+            //! You can try using .filter(), or .includes()?
+
             let fulfilledArray = selectedModalOrder.order_items.map(i => i.fulfilled)
+            console.log(fulfilledArray)
 
             for (let i = 1; i <= selectedModalOrder.order_items.length; i++){ // Checks if each order item is fulfilled. If all are fulfilled, the order is marked completed
                 if (fulfilledArray[i] === false){

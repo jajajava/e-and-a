@@ -3,6 +3,7 @@
 # * Variable assignment: No let/const/var keywords; snake_case; just like Ruby
 # // pet_mood = 'hungry'
 # // pet_name = 'Jim'
+# * If you want to have a constant variable, though python won't stop you, you should capitalize the variable name to indicate it shouldn't be changed. (Ex: MAX_INPUTS)
 
 
 # * if/ elif/ else instead of if/elseif/else. Uses : and indentation to indicate scope in code, not curly braces (INDENT NEEDS TO BE 4 SPACES)
@@ -55,11 +56,15 @@
 
 # * While an if/else statement can be made for the same thing, try and except is for error handling usually
 
-# ! ARRAYS = LISTS
+# ! ARRAYLISTS = LISTS
+# ! IMMUTABLE ARRAYLISTS = TUPLES
 # ! OBJECTS = DICTIONARIES
 
-# !                                          LISTS (arrays in python)
+# !                                          LISTS (dynamic arrays in python; same as Java ArrayLists)
 # * In python, if you put a negative "list" index value- array[-1] - it would start from the last number and go backwards.
+# * You can use the "in" operator to see if a value is in a list (returns boolean), or "not in" to check if it's NOT in the list
+# // list = [1, 2, 3]
+# // print(2 in list) ==> true
 
 # // menu_items = ["pizza", "mushroom stew",
 # //               "burger", "sushi", "cheese fries", "wonton soup", "beer", "salad"]
@@ -68,11 +73,17 @@
 # // If you want all list items above index # 3, you can just do the following:
 # // print(menu_items[3:]) ==> ["sushi", "cheese fries","wonton soup", "beer", "salad"] (As you can see, inclusive)
 
-# // As you might expect, if you want the opposite, showing before an index:
+# // As you might expect, if you want the opposite (all list items UP TO an index):
 # // print(menu_items[:3]) ==> ["pizza", "mushroom stew", "burger"] (You just move the : before the index #; NOTE that it is exclusive, doesn't include #3)
 
 # // You can combine the two to make a range:
 # // print(menu_items[3:7]) ==> ["sushi", "cheese fries", "wonton soup", "beer"] (Note how it doesn't include 7, it goes 3-6)
+
+# // You can also use [-3:] to get the last 3 values in a list no matter the size of the list
+# // Another useful trick is COPYING lists (don't directly reference the first list, it'll just assign the new list to the old list's memory address):
+# // list1 = [1, 2, 3, 4]
+# // list2 = list1[:]
+# // print(list2) ==> [1, 2, 3, 4]
 
 # * .index() tells us the index of a list item
 # // print(menu_items.index("cheese fries")) ==> 4
@@ -80,7 +91,7 @@
 # * .reverse() doesn't return anything for us, but this reverses our original lists (LISTS ARE MUTABLE)
 # * .upper() is non-destructive (doesn't change our original list like .reverse() did )
 # * .count() counts number of times a list item is repeated (you must pass the value in- .count('item_to_look_for"))
-# * .append() is like JavaScript ".pop()"; it adds a value at the end of the list (MUTATES OG LIST)
+# * .append() is like JavaScript ".pop()"; it adds a value at the end of the list (MUTATES OG LIST) (NOTE: You can remove a specific element like so: del arrayName[i])
 # * .insert() takes 2 arguments: first one = index, second one = value. (list.insert(0, "bread") => inserts "bread" into list at array= 0)
 # * .pop() takes no arguments, removes last item (just like with JavaScript)(obviously destructive)
 # * .remove() is better- takes an argument of the thing you want to remove, removes from og list destructively (menu_items.remove("pizza"))
@@ -267,3 +278,7 @@
 
 # // for cowboy in cowboys:
 # //     print(cowboy, cowboys[cowboy], sep=": ") --> John: high honor / Bill: low honor / Arthur: high honor
+
+# * You can use underscores in numbers to make them more readable. Python doesn't care about the placement, so you can have 1 million be 1000000, 1_000_000, or 1_0_0_0_00_0 
+# *  and it will be interpreted the same
+
