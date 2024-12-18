@@ -5,3 +5,4 @@ java_files/CostcoCalculation.java
 .env
 *.excalidraw
 **/*.DS_Store
+**/*__pycache__

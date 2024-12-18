@@ -263,7 +263,7 @@
 # * In loops, like some other languages, you can return, continue, and break.
 # * Break- stops the loop without returning anything
 # * Continue- Keeps the loop going if a condition is (or isn't) met
-# * Return- lets you use a value returned by the function
+# * Return- lets you use a value returned by the function. NOTE: If no explicit return, a printed function will print "None"
 
 # * list-
 # // cowboys = ["John", "Bill", "Arthur"]
@@ -282,3 +282,39 @@
 # * You can use underscores in numbers to make them more readable. Python doesn't care about the placement, so you can have 1 million be 1000000, 1_000_000, or 1_0_0_0_00_0 
 # *  and it will be interpreted the same
 
+# !        DYNAMIC PARAMETERS
+# * If you use *args at the end of a method's parameters, you're allowing any number of parameters to be inserted into a function. Ex:
+# //   def method_name(height, *args):
+# //       height = height
+# //       for value in args:  <-- args can have any size, it'll all get printed
+# //           print(value)
+# // Example method call: method_name(40, "john", 1, None)
+
+# * If you use **kwargs (keyword args) at the end of a method's parameters, you're passing keyword arguments (labeled arguments, like food='apple'). It accepts key/value pairs (dicts can be passed)
+# // def method_name(**kwargs):
+# //     for k, v in kwargs.items():
+# //         print(f"key: {k}, value: {v})
+
+# * You can then pass a dictionary like so:
+# // method_name(**dic)
+# *  This basically converts your dictionary into method_name(a=1, b=2)
+
+# !        OOP in Python
+# * Note: A function that is part of a class is called a method.
+# // You create a class with the "class" keyword, and name it with a capital letter per convention. Ex:
+# //     class Person:
+# //        data_field = "this is a variable shared across all instances. IT SHARES ONE MEMORY ADDRESS; UPDATING IN ONE INSTANCE MEANS UPDATING FOR ALL"
+#           * The __init__() function is normally empty by default, automatically given if no other constructor is given
+#           * It's used to 
+# //        def __init__(self, name, age):
+#               * This is where you insert attributes (instance variables). Not the same as data fields, which are basically static class variables
+# //            self.name = name
+# //            self.age = age
+# //        -- DEFINE OTHER INSTANCE METHODS HERE --
+
+# * When we use the __init__() method, we must list "self" as the first parameter each time; when we make an instance of the class though, it's automatically inserted so we skip over that argument.
+# * NOTE: When we instantiate a class, we don't call __init__(), we call ClassName(param2, param3); __init__() is called automatically from inside the class, and self is auto-inserted
+# * ("self" is like "this" in Java OOP)
+
+# * If you have a child class, you must write super().__init__(...) inside the child's __init__().
+# * If you want a sister class, you just do self.attribute_name = SisterClass() inside the original class's init method (dividing one class into several peer classes is "composition")
