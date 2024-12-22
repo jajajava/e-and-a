@@ -318,3 +318,74 @@
 
 # * If you have a child class, you must write super().__init__(...) inside the child's __init__().
 # * If you want a sister class, you just do self.attribute_name = SisterClass() inside the original class's init method (dividing one class into several peer classes is "composition")
+
+# !         File I/O
+# * You need to create a path, an object that represents a file path (location).
+
+# // from pathlib import Path
+# // path = Path('file_name.txt')
+# // contents = path.read_text()
+
+# * We can remove the space/linebreaks in a file with .strip(), or just .rstrip() for the right side of the text (the end of the text, in other words)
+#// contents = path.read_text().rstrip()
+
+# * If we want to create a list from a string, we can do so with ".splitlines()", which looks for a physical linebreak in a text document, or an escape sequence like \n in a python program
+# // lines = contents.splitlines()
+# // print(lines[0]) ==> prints the first part of the text, before a line break
+# // for line in lines
+# //    print(line) ==> prints the text as normal
+
+# * We can use this to make one string out of it- useful for string methods, or to get the length of the text:
+# // lines = contents.splitlines()
+# // text_string = ''
+# // for line in lines:
+# //    text_string += line.lstrip()  <== we use lstrip() to remove the line break on the left side
+# // print(f"{text_string[:52]}...") ==> prints first 52 values in text string without mutating the string
+# // print(len(text_string)) ==> prints the actual text_string length
+
+# * To write to a file, you make a separate Path object:
+# // path = Path("output.txt")
+# // path.write_text("This string will be in the output file")
+
+# !          Exceptions
+# * In Java, we have try/catch, with the syntax like this:
+# // try {
+# //    System.out.println(5/0);
+# // }
+# // catch (ArithmeticException e){
+# //    System.out.println("You can't divide by 0! You're better than this");
+# // }
+
+# * Exceptions in python are handled in a similar way, using "except" instead of "catch":
+# // try:
+# //    print(5/0)
+# // except ZeroDivisionError:
+# //    print("You can't divide by 0!")
+
+# * Just like in Java, all code in the program after a try/except block is executed as normal
+# * NOTE: In Java, you're kind of forced to make a FileNotFoundException catch block to prevent issues. Python doesn't force you, so don't forget it!
+# * Also, the Path object has a method, ".exists()", which returns true/false depending on whether a file exists or not
+# // path = Path('example.json')
+# // if path.exists():
+# //    print(json.loads(path.read_text()))
+# // else:
+# //    print("The file was not found!")
+# * In python you could make an except block for "FileNotFoundError".
+
+# !         File Serialization (JSON)
+
+# * JSON is a human-readable text format used for storing/transmitting data.
+# * Serialization- The process of converting an object/data into a format that can be stored/transmitted (such as JSON)
+# * Deserialization- The process of converting an object in serialization format to an object that can be used by a program.
+
+# * In JavaScript, we use JSON.stringify() to convert an object in the program to JSON format, and Response.json() converts a JSON object into a JavaScript object.
+# * In Python, we use json.dumps(data) to convert the data into JSON, and json.loads(data) converts JSON into a Python object. YOU NEED TO IMPORT JSON!
+
+# // from pathlib import Path
+# // import json
+
+# // numbers = [2, 3, 5, 7, 11, 13]
+
+# // path = Path('numbers.json')
+# // contents = json.dumps(numbers)
+# // path.write_text(contents)
