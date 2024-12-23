@@ -6,3 +6,4 @@ java_files/CostcoCalculation.java
 *.excalidraw
 **/*.DS_Store
 **/*__pycache__
+**/*.pytest_cache
