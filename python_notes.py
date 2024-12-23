@@ -46,7 +46,7 @@
 # // greet("David")  ==> "hello, David"
 
 # * SOME USEFUL KEYWORDS IN PYTHON
-#! try/except - these are for error catching & handling! Example:
+#! try/except - these are for error catching & handling! Example (More on this later):
 
 # // def functionName():
 # //     try:
@@ -55,6 +55,7 @@
 # //         print("When a TypeError occurs, THIS code runs instead!")
 
 # * While an if/else statement can be made for the same thing, try and except is for error handling usually
+
 
 # ! ARRAYLISTS = LISTS
 # ! IMMUTABLE ARRAYLISTS = TUPLES
@@ -100,6 +101,7 @@
 # * You can combine two lists together by making a new variable and using +, as follows:
 # // new_list = menu_items + ["another_item1", "another_item2"]
 
+
 # !                                          TUPLES (immutable data structures)
 # * With tuples. we use parentheses, as opposed to square or curly brackets.
 # * Used to read data, not modify. If you do something like ".pop()" on a tuple, it'll say that the tuple object doesn't have that attribute.
@@ -107,6 +109,7 @@
 # // pet_ages = (1,2,3,4,5,6,7,8,9,10)
 
 # // print(pet_ages[0] ==> 1)
+
 
 # !                                          RANGES (mostly used in loops)
 # // print(range(#)) => range(0, #)
@@ -230,6 +233,7 @@
 # // first, last = name.split(' ')
 # // print(f"Hello, {first}") --> "Hello, David"
 
+
 #! Data types in Python:
 # * str - string
 # * int - integer
@@ -282,6 +286,7 @@
 # * You can use underscores in numbers to make them more readable. Python doesn't care about the placement, so you can have 1 million be 1000000, 1_000_000, or 1_0_0_0_00_0 
 # *  and it will be interpreted the same
 
+
 # !        DYNAMIC PARAMETERS
 # * If you use *args at the end of a method's parameters, you're allowing any number of parameters to be inserted into a function. Ex:
 # //   def method_name(height, *args):
@@ -298,6 +303,7 @@
 # * You can then pass a dictionary like so:
 # // method_name(**dic)
 # *  This basically converts your dictionary into method_name(a=1, b=2)
+
 
 # !        OOP in Python
 # * Note: A function that is part of a class is called a method.
@@ -318,6 +324,7 @@
 
 # * If you have a child class, you must write super().__init__(...) inside the child's __init__().
 # * If you want a sister class, you just do self.attribute_name = SisterClass() inside the original class's init method (dividing one class into several peer classes is "composition")
+
 
 # !         File I/O
 # * You need to create a path, an object that represents a file path (location).
@@ -347,6 +354,7 @@
 # // path = Path("output.txt")
 # // path.write_text("This string will be in the output file")
 
+
 # !          Exceptions
 # * In Java, we have try/catch, with the syntax like this:
 # // try {
@@ -372,6 +380,7 @@
 # //    print("The file was not found!")
 # * In python you could make an except block for "FileNotFoundError".
 
+
 # !         File Serialization (JSON)
 
 # * JSON is a human-readable text format used for storing/transmitting data.
@@ -389,3 +398,62 @@
 # // path = Path('numbers.json')
 # // contents = json.dumps(numbers)
 # // path.write_text(contents)
+
+# * An easy way to remember it: json.dumps() throws data out of python code, json.loads() loads the data into python
+
+
+# !         Installing third party packages:
+# * To install third party packages, type this in the CLI:
+# // python3 -m pip install --user [package name] <== the --user flag tells pip to install the package for the current user only
+# * You can upgrade third party packages like so:
+# //  $  python3 -m pip install --upgrade [package name] <== You can update the pip package installer by putting "pip" as the argument
+
+# !         Testing with pytest
+# * Having tests automates the process of checking whether a function works after a modification has been made to it. 
+# * For instance, instead of having to manually run the program and inputting values for a function each time, you can just have tests do it for you
+
+# * Unit test: verifies that one specific part of a function's behavior is correct
+# * Test case: a collection of unit tests that together show that a function behaves as it's supposed to within the full range of situations you expect it to handle
+# * Might be easy to remember it like unit = singular, test case = briefcase full of tests
+
+# * A test file's name MUST start with test_ so that pytest may recognize it as a test.
+# * If it's a separate test file, we import the functions that we want to test.
+# * You don't ever call a test function yourself, pytest finds it and calls it.
+# * We call the function we're testing and assign it to a variable, then assert that the variable should be equal to whatever output we expect, like so:
+
+# // def test_first_last_name():
+# //    formatted_name = get_formatted_name('James', 'Bond')
+# //    assert formatted_name == "James Bond"
+
+# * To then run the test, we would have the test file open, then type "pytest" in the terminal and it will run the tests.
+# * IF that doesn't work, your package might have not been installed on the path (same directory as python itself)
+# * In that case, try "python3 -m pytest". It runs the pytest module as a script
+
+# * It's good practice to have each possible case of a function be separate test functions ("unit tests").
+# * If you want to group the unit tests into a test case, you can put them in a class TestClassName (has to start with Test). MAKE SURE EACH UNIT TEST GETS "self" AS A PARAM IF IT'S IN A CLASS
+# * To run only a specific class/method, you can type "python3 -m pytest -k '<expression>'", where expression is a set of unit tests or a set of test cases.
+# * You can select multiple test cases or unit tests by doing "python3 -m pytest -k 'formatted_name and other_function_name'". Even typing a part of the name is enough so make sure to be specific!
+# * If You have more than one test file, you can select the correct one with "python3 -m pytest file_name.py"
+
+# * Here is a list of common assertions and what they mean:
+# * assert a == b                   ==> Assert that two values are equal
+# * assert a != b                   ==> Assert that two values aren't equal
+# * assert a                        ==> Assert that a evaluates to True
+# * assert not a                    ==> Assert that a evaluates to False
+# * assert element in list          ==> Assert that an element is in a list
+# * assert element not in list      ==> Assert that an element is not in a list
+# * assert type(a) == type          ==> Assert that an element is of a certain data type
+# * NOTE: Anything that can be expressed conditionally can be included in a test
+
+# * To avoid having a new instance for every unit test, we can set up a test environment using a fixture. Here's how:
+
+# // import pytest  <== we import pytest now because we're using a decorator defined in pytest (@pytest.fixture is a decorator, a directive that alters how a function is processed)
+# // @pytest.fixture(scope="class") <== coould also be scope="function". By default it will have a scope of running before each function
+# // def method_name():
+# //    variable = ClassName(value)
+# //    return variable
+
+# * When a parameter in a test function matches the name of a function with the @pytest.fixture decorator right before it,
+# * the fixture will run automatically and the return value will be passed as an argument to the other function.
+# * So we can make an instance in one method, then use the fixture and use that value in the other functions
+# * The easy way to understand fixtures is that it's like Java's JUnit testing library's "@BeforeAll"/"@BeforeEach" methods. They help declare and initialize values
