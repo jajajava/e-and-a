@@ -457,3 +457,51 @@
 # * the fixture will run automatically and the return value will be passed as an argument to the other function.
 # * So we can make an instance in one method, then use the fixture and use that value in the other functions
 # * The easy way to understand fixtures is that it's like Java's JUnit testing library's "@BeforeAll"/"@BeforeEach" methods. They help declare and initialize values
+
+
+# !         Plotting Data (Matplotlib)
+# ** We begin by installing the Matplotlib package: 
+# // $ python3 -m pip install --user matplotlib
+
+# ** Import the package:
+# // import matplotlib.pyplot as plt <== allows us to use an alias for the module to shorten/simplify the name
+
+# ** To create a simple line graph:
+# // fig, ax = plt.subplots(figsize=(10,6), dpi=128)  <== .subplots() generates the fig, a collection of generated plots, and ax, a single plot in the figure.
+# //                                                      The size of the figure can be given with the arguments shown in example. No args allowed
+# // ax.plot(list_name)        <== .plot() tries to plot the data it's given in a meaningful way
+# //                               If you want to make it index 1 based instead of index 0, you can make a tuple starting with 1 as the first param, and the actual list as the second param
+# // plt.show()                <== opens the Matplotlib viewer (should be at the end of all customizations)
+#* If you would like to save the generated fig:
+# // plt.savefig('output_name.png', bbox_inches='tight') <== First arg necessary. Second arg trims extra white space, can be omitted
+
+# * NOTE: pretty much all aspects of Matplotlib's visualization are customizable (many use keyword arguments). Here are some examples:
+# // ax.set_title("chart title", fontsize = 48, color = 'red', loc="right")
+# // ax.set_xlabel("temp", color = 'orange')
+# // ax.set_ylabel("time", color = 'green')
+# // ax.set_facecolor("red")
+# // ax.tick_params(direction="inout", grid_color = "purple", length=10, width=10)
+# // ax.ticklabel_format(style="plain") <== sets tick labels to plain format instead of scientific notation
+# // ax.set_facecolor("pink")
+
+# * If you don't have time for customizations but want a different style, you can use preset styles:
+# // print(plt.style.available) ==> print  a list of style names you can apply
+# // plt.style.use('seaborn-v0_8')  <== apply the style of choice
+
+# * To make a scatter plot, you can do this:
+# // ax.scatter(nums, squares, s=100) <== takes nums as the list of x coordinates, squares as the list of y coordinates, s=100 as the size of each point (optional);
+# //                                       BOTH x AND y MUST USE LISTS OF THE SAME LENGTH
+# // ax.scatter(1, 2) <== takes a single value for the x and y coordinates.
+# * To plot a lot of points, you can have x be automatically created:
+# // x_val = range(1, 1001)           <== creates x values from 1 - 1000
+# // y_val = [x**2 for x in x_val]
+# // ax.scatter(x_val, y_val, c=y_val, cmap=plt.cm.coolwarm) <== c= takes the axis which we color code, cmap=plt.cm.[mapName] lets us pick the color map (find them on matplotlib.org)
+
+
+# !         Plotting Data (Plotly Express)
+# * You can make a bar plot using plotly.express. Here's how:
+# // import plotly.express as px
+# // labels = {'x': 'Result', 'y': 'Frequency'}                      <== create the labels for x and y axis, which then get added in next line
+# // fig = px.bar(x=possible_results, y=frequency, labels=labels)    <== creates the bar plot
+# // fig.show()                                                      <== visualizes data in HTML format
+# // fig.write_html("output.html")                                   <== generates HTML file that can be opened any time
