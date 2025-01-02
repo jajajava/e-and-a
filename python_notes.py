@@ -505,3 +505,46 @@
 # // fig = px.bar(x=possible_results, y=frequency, labels=labels)    <== creates the bar plot
 # // fig.show()                                                      <== visualizes data in HTML format
 # // fig.write_html("output.html")                                   <== generates HTML file that can be opened any time
+
+
+# !         GeoJSON
+# * JSON allows you to store and transfer data easily and in a structured way.
+# * GeoJSON is technically a separate file type but it's basically just JSON with a specific file structure. EX:
+# // {
+# //     "type": "FeatureColelction",
+# //     "metadata": {
+# //         "date": 01/01/2025,
+# //         "title": "Collection of earthquake data",
+# //         "count": 160
+# //     },
+# //     "features": [
+# //         {
+# //             "type": "Feature",
+# //             "properties": {
+# //                 "magnitude": 1.6,
+# //                 "title": "M 1.6 - 27km NW of Susitna, Alaska"
+# //             },
+# //             "geometry": {
+# //                 "type": "Point",
+# //                 "coordinates": [
+# //                     -150.7585,
+# //                     61.7591,
+# //                     56.3
+# //                 ]
+# //             },
+# //             "id": 12345
+# //         }
+# //     ]
+# // }
+
+# * The top level shown here is a collection of "features", individual geojson values
+# * Metadata tells us information about the file.
+# * Features is a list of individual objects. In the example above, there's only one feature but know that one collection can have many listed there
+# * The second level is the individual feature.
+# * The properties dict holds data pertaining to the individual object
+# * The geometry holds geographical data. The type could be a single geographical coordinate with x, y, and (optionally) z values. Note that z is usually elevation in meters though it doesn't have to be
+# *     It can also be a MultiPoint (unconnected points), LineString, MultiLineString, Polygon, MultiPolygon, or a GeometryCollection (several different types)
+# * NOTE: when we look at locations, we usually talk about latitude first, then longitude.
+# *     Many geospatial frameworks list the longitude first and then the latitude because it corresponds to the (x,y) format used in math. GeoJSON follows the (longitude, latitude) convention.
+# * There's also a format called "TopoJSON" which is similar to GeoJSON, but is better for storing large datasets and topological data (spatial relationships/connectivity of different features on a map)
+# * The tradeoff is that its structure is more complicated than GeoJSON's; if the file isn't too big and you don't care about topology, you should use GeoJSON
