@@ -1,9 +1,14 @@
-# Java class files will now be ignored
+# Java
 **/*.class
+
+# General (vscode, github, misc)
+**/*.DS_Store
 .vscode
-java_files/CostcoCalculation.java
 .env
 *.excalidraw
-**/*.DS_Store
+world_fires_7_day.csv
+
+# Python
 **/*__pycache__
 **/*.pytest_cache
+**/*practice_virt_env
