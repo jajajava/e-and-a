@@ -548,3 +548,12 @@
 # *     Many geospatial frameworks list the longitude first and then the latitude because it corresponds to the (x,y) format used in math. GeoJSON follows the (longitude, latitude) convention.
 # * There's also a format called "TopoJSON" which is similar to GeoJSON, but is better for storing large datasets and topological data (spatial relationships/connectivity of different features on a map)
 # * The tradeoff is that its structure is more complicated than GeoJSON's; if the file isn't too big and you don't care about topology, you should use GeoJSON
+
+# !         Creating a Virtual Environment
+# * Virtual environments allow you to create a workspace in which you can install packages and isolate them from all your other Python packages.
+# * When working on a project, especially something like Django, you should create and use a virtual environment (venv). Here's how:
+# // $ python3 -m venv [your_venv_name_here]        <== Create the virtual environment
+# // $ source [your_venv_name_here]/bin/activate    <== source command is a zsh command that executes the file content of a given file. Can write "source" or ".", but make sure you use that file structure
+# // $ deactivate                                   <== Once you're done using the virtual environment, simply typing deactivate shuts it down
+
+# * Packages installed in the venv will not be available when the environment is inactive.
