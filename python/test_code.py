@@ -391,3 +391,56 @@
 #     print(list(d.values())[0])
 # else:
 #     print("No")
+
+# from pathlib import Path
+# import datetime as dt
+# import csv
+# import polars as pl
+# import geopandas as gpd
+# from lonboard import Map, ScatterplotLayer
+
+# path = Path('world_fires_7_day.csv')
+# lines = path.read_text().splitlines()
+# reader = csv.reader(lines)
+# header = next(reader)
+
+# lats = []
+# lons = []
+# for row in reader:
+#     lats.append(row[0])
+#     lons.append(row[1])
+
+# df = pl.DataFrame({
+#     "latitudes": lats,
+#     "longitudes": lons
+# })
+
+# df = pl.DataFrame(
+#     {
+#         "Name": ["Ben", "James", "Sarah", "Felicia"],
+#         "Weight": [57.9, 72.5, 53.6, 83.1], # (kg)
+#         "Height": [1.56, 1.77, 1.65, 1.75], # (m)
+#     }
+# )
+
+# pl.Config.set_tbl_rows(len(df))
+# print(df)
+
+# result = df.select(
+#     pl.col("Name").alias("Nombre").map_elements(lambda x: f"Name: {x}"),
+#     pl.col("Height").cast(pl.Int8),
+#     (pl.col("Weight") % 1),
+# )
+# print(result)
+# gdf = gpd.GeoDataFrame()
+# layer = ScatterplotLayer.from_geopandas(
+#     gdf,
+#     get_fill_color=[255,0,0]
+# )
+# m = Map(layer)
+
+# import polars as pl
+
+# read = pl.read_csv("./world_fires_7_day.csv", try_parse_dates=True)
+# pl.Config.set_tbl_cols(len(read))
+# print(read.describe())

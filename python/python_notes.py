@@ -564,3 +564,122 @@
 
 # * Packages installed in the venv will not be available when the environment is inactive.
 # * It is suggested that you add the virtual environment files to .gitignore and keep the requirements.txt file visible so you can install necessary packages
+
+
+# !         DataFrame
+# * A DataFrame is a type of data structure in Python (like lists or dictionaries).
+# * A DataFrame is two dimensional, and basically forms a table from given data.
+# * DataFrames are not native, so we must import them. You can use either the Pandas or Polars library.
+# * To use it, first you must install the library you prefer to use. We'll use Polars for this example.
+# // $ pip install polars
+# * Then we import the library:
+# // import polars as pl
+# // df = pl.DataFrame(
+# //     {
+# //         "Name": ["Ben", "James", "Sarah", "Felicia"],
+# //         "Weight": [57.9, 72.5, 53.6,83.1], # (kg)
+# //         "Height": [1.56, 1.77, 1.65, 1.75] # (m)
+# //     }
+# // )
+
+# // print(df)
+
+# * Here is the output of the print(df) statement:
+# shape: (4, 3)
+# ┌─────────┬────────┬────────┐
+# │ Name    ┆ Weight ┆ Height │
+# │ ---     ┆ ---    ┆ ---    │
+# │ str     ┆ f64    ┆ f64    │
+# ╞═════════╪════════╪════════╡
+# │ Ben     ┆ 57.9   ┆ 1.56   │
+# │ James   ┆ 72.5   ┆ 1.77   │
+# │ Sarah   ┆ 53.6   ┆ 1.65   │
+# │ Felicia ┆ 83.1   ┆ 1.75   │
+# └─────────┴────────┴────────┘
+
+# * Shape describes the table size regardless of whether it's shown or not (big tables are shrunken with ...)
+# * If you have a very long list and want to print it, you can do it like this:
+# // pl.Config.set_tbl_rows(len(df)) <== we're setting it to len(df), the length of the list. Can also be an integer literal, like 10
+# * For a wide list, it's the same principle but you use .set_tbl_cols()
+# * All rows must have the same length of data. We cannot have the list of names have a length of 4 but the list of weights have 3 values.
+
+# * You can specify what columns you want to print with SELECT like so:
+# // result = df.select(
+# //     pl.col("Name"),
+# //     pl.col("Weight")
+# // )
+# // print(result)
+# * NOTE: case sensitive. Also, it prints in the order specified with the select statement
+
+# * Output:
+# shape: (4, 2)
+# ┌─────────┬────────┐
+# │ Name    ┆ Weight │
+# │ ---     ┆ ---    │
+# │ str     ┆ f64    │
+# ╞═════════╪════════╡
+# │ Ben     ┆ 57.9   │
+# │ James   ┆ 72.5   │
+# │ Sarah   ┆ 53.6   │
+# │ Felicia ┆ 83.1   │
+# └─────────┴────────┘
+
+# * You can also alias the columns, and perform operations on the columns too. This latter should be very useful. Ex:
+# // result = df.select(
+# //     pl.col("Name").alias("Nombre"),  <== Renames "Name" to "Nombre"
+# //     pl.col("Height").cast(pl.Int8),  <== Changes data type from Float64 to Int8 (type casting)
+# //     (pl.col("Weight") % 1)           <== Math operations; we're extracting the decimal from the value in the Weight column
+# // )
+
+# * You can also perform an action on every element in a column using the "map_elements() method". Here's how:
+# // pl.col("bar").map_elements(lambda x: f"This is ${x:,.2f}!").alias("bar_fstring")
+# * A lot is happening here. Here's a closer look at each part:
+# * 1. 'lambda x:' allows us to create an anonymous function, with "x" being the current value
+# * 2. 'f"This is ${x:,.2f}!"' puts x in a format string. What is it doing to it?
+# *    The colon indicates that we're passing formatting specifications on the number, x
+# *    , adds a thousands separator (1000 becomes 1,000).
+# *    .2f makes it so that the floating point number had exactly 2 decimal places.
+# *    Note that putting it in a format string means that the column will have a str data type, not a numerical type
+
+# * Output:
+# shape: (4, 2)
+# ┌────────┬────────────────────────┐
+# │ bar    ┆ bar_fstring            │
+# │ ---    ┆ ---                    │
+# │ f64    ┆ str                    │
+# ╞════════╪════════════════════════╡
+# │ 100.5  ┆ This is $100.50!       │
+# │ 250.25 ┆ This is $250.25!       │
+# │ 1.25e6 ┆ This is $1,250,000.00! │
+# │ null   ┆ null                   │
+# └────────┴────────────────────────┘
+
+# * You can import data from many different sources, including a CSV file, a JSON file, even your clipboard! There are many options available. Here's how:
+# // import polars as pl
+# // df_from_import = pl.read_csv("./file_name.csv", try_parse_dates=True) <== reads csv on the given file path, and tries to parse dates 
+# // Note: if your dates aren't organized in the same way, it will throw an exception
+
+# * VERY IMPORTANT ASPECT OF DATAFRAMES: You can summarize them! By using the .describe() method, you're performing a bunch of basic statistical operations on each column. Ex:
+# // read = pl.read_csv("./world_fires_7_day.csv", try_parse_dates=True)
+# // pl.Config.set_tbl_cols(len(read))
+# // print(read.describe())
+
+# * Output:
+# shape: (9, 14)
+# ┌────────────┬───────────┬────────────┬────────────┬──────────┬──────────┬────────────────────────────┬─────────────┬───────────┬────────────┬─────────┬────────────┬───────────┬──────────┐
+# │ statistic  ┆ latitude  ┆ longitude  ┆ brightness ┆ scan     ┆ track    ┆ acq_date                   ┆ acq_time    ┆ satellite ┆ confidence ┆ version ┆ bright_t31 ┆ frp       ┆ daynight │
+# │ ---        ┆ ---       ┆ ---        ┆ ---        ┆ ---      ┆ ---      ┆ ---                        ┆ ---         ┆ ---       ┆ ---        ┆ ---     ┆ ---        ┆ ---       ┆ ---      │
+# │ str        ┆ f64       ┆ f64        ┆ f64        ┆ f64      ┆ f64      ┆ str                        ┆ f64         ┆ str       ┆ f64        ┆ str     ┆ f64        ┆ f64       ┆ str      │
+# ╞════════════╪═══════════╪════════════╪════════════╪══════════╪══════════╪════════════════════════════╪═════════════╪═══════════╪════════════╪═════════╪════════════╪═══════════╪══════════╡
+# │ count      ┆ 41670.0   ┆ 41670.0    ┆ 41670.0    ┆ 41670.0  ┆ 41670.0  ┆ 41670                      ┆ 41670.0     ┆ 41670     ┆ 41670.0    ┆ 41670   ┆ 41670.0    ┆ 41670.0   ┆ 41670    │
+# │ null_count ┆ 0.0       ┆ 0.0        ┆ 0.0        ┆ 0.0      ┆ 0.0      ┆ 0                          ┆ 0.0         ┆ 0         ┆ 0.0        ┆ 0       ┆ 0.0        ┆ 0.0       ┆ 0        │
+# │ mean       ┆ 16.635404 ┆ 29.554502  ┆ 324.317263 ┆ 1.542984 ┆ 1.191522 ┆ 2022-03-30 03:57:28.639000 ┆ 1030.587017 ┆ null      ┆ 65.601128  ┆ null    ┆ 299.628603 ┆ 34.470754 ┆ null     │
+# │ std        ┆ 20.34758  ┆ 72.393281  ┆ 15.974926  ┆ 0.772789 ┆ 0.234489 ┆ null                       ┆ 544.508992  ┆ null      ┆ 20.034378  ┆ null    ┆ 11.122517  ┆ 70.618228 ┆ null     │
+# │ min        ┆ -46.24372 ┆ -172.31816 ┆ 300.0      ┆ 1.0      ┆ 1.0      ┆ 2022-03-28                 ┆ 3.0         ┆ A         ┆ 0.0        ┆ 6.1NRT  ┆ 264.82     ┆ 0.0       ┆ D        │
+# │ 25%        ┆ 7.3306    ┆ -11.74589  ┆ 312.75     ┆ 1.04     ┆ 1.02     ┆ 2022-03-28                 ┆ 610.0       ┆ null      ┆ 53.0       ┆ null    ┆ 292.46     ┆ 9.9       ┆ null     │
+# │ 50%        ┆ 17.92461  ┆ 32.87429   ┆ 323.09     ┆ 1.21     ┆ 1.09     ┆ 2022-03-30                 ┆ 939.0       ┆ null      ┆ 67.0       ┆ null    ┆ 298.62     ┆ 17.12     ┆ null     │
+# │ 75%        ┆ 30.35903  ┆ 85.47151   ┆ 332.42     ┆ 1.68     ┆ 1.28     ┆ 2022-03-31                 ┆ 1422.0      ┆ null      ┆ 80.0       ┆ null    ┆ 307.68     ┆ 33.93     ┆ null     │
+# │ max        ┆ 61.35179  ┆ 176.78239  ┆ 499.97     ┆ 4.82     ┆ 2.0      ┆ 2022-04-04                 ┆ 2358.0      ┆ T         ┆ 100.0      ┆ 6.1NRT  ┆ 343.29     ┆ 3298.82   ┆ N        │
+# └────────────┴───────────┴────────────┴────────────┴──────────┴──────────┴────────────────────────────┴─────────────┴───────────┴────────────┴─────────┴────────────┴───────────┴──────────┘
+
+# * Though knowing the mean latitude and longitude is both useless and cool, as you can see, the .describe() function is very important!
