@@ -443,4 +443,13 @@
 
 # read = pl.read_csv("./world_fires_7_day.csv", try_parse_dates=True)
 # pl.Config.set_tbl_cols(len(read))
+# pl.Config.set_tbl_rows(len(read))
 # print(read.describe())
+
+# import polars as pl
+
+# read = pl.read_csv("./world_fires_7_day.csv", try_parse_dates=True)
+# pl.Config.set_tbl_cols(len(read))
+# pl.Config.set_tbl_rows(len(read))
+# pr = read.filter(pl.col("latitude") < 2).select(pl.col("latitude", "longitude")).sort("latitude", descending=True)
+# print(pr)
