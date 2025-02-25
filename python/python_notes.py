@@ -554,7 +554,7 @@
 # * Virtual environments allow you to create a workspace in which you can install packages and isolate them from all your other Python packages.
 # * When working on a project, especially something like Django, you should create and use a virtual environment (venv). Here's how:
 # // $ python3 -m venv [your_venv_name_here]        <== Create the virtual environment
-# // $ source [your_venv_name_here]/bin/activate    <== source command is a zsh command that executes the file content of a given file. Can write "source" or ".", but make sure you use that file structure
+# // $ source [your_venv_name_here]/bin/activate    <== source command starts venv. Can write "source" or ".", but make sure you use that file structure
 # // $ deactivate                                   <== Once you're done using the virtual environment, simply typing deactivate shuts it down
 # // $ pip install [package name]                   <== Uses pip installer to download packages into environment
 # // $ pip list                                     <== Lists all installed packages in environment, along with their versions

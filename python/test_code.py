@@ -395,7 +395,7 @@
 # from pathlib import Path
 # import datetime as dt
 # import csv
-import polars as pl
+# import polars as pl
 # import geopandas as gpd
 # from lonboard import Map, ScatterplotLayer
 
@@ -453,14 +453,16 @@ import polars as pl
 #         "Name": ["Ben", "James", "Sarah", "Felicia"],
 #         "Weight": ["Steve", 57.9, 72.5, 53.6], # (kg)
 #         "Height": [1.56, 1.77, 1.65, 1.75], # (m)
-#     }, strict=False  <== Allows you to mix data types
+#     }, strict=False  # <== Allows you to mix data types
 # )
 
 # pl.Config.set_tbl_rows(len(df))
 # print(df)
 
+# import polars as pl
+
 # read = pl.read_csv("./world_fires_7_day.csv", try_parse_dates=True)
 # pl.Config.set_tbl_cols(len(read))
 # pl.Config.set_tbl_rows(len(read))
 # pr = read.filter(pl.col("latitude") < 2).select(pl.col("latitude", "longitude")).sort("latitude", descending=True)
-# print(pr)
+# print(pr.describe())
