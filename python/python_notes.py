@@ -558,6 +558,7 @@
 # // $ deactivate                                   <== Once you're done using the virtual environment, simply typing deactivate shuts it down
 # // $ pip install [package name]                   <== Uses pip installer to download packages into environment
 # // $ pip list                                     <== Lists all installed packages in environment, along with their versions
+# // $ pip show [package name]                      <== Shows package details, including what other package has it as a dependency ("required by: ---")
 # // $ pip freeze  -l > requirements.txt            <== Creates a requirements.txt file with pip freeze command; -l flag only includes local packages (so the ones in the venv)
 # // $ pip install -r requirements.txt              <== Installs all packages listed in requirements.txt
 # // $ pip uninstall -r requirements.txt            <== Removes all installed packages that are listed in requirements.txt
