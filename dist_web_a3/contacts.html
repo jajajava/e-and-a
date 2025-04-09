@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contacts page</title>
+    <script>
+        var people = []
+
+        function arrayToText() {
+            fetch("contacts.csv")
+                .then(res => res.text())
+                .then(text => {
+                    console.log("CSV raw text:", text)
+
+                    const rows = text.split("\n").filter(row => row.trim() !== "")
+                    people = []
+
+                    for (let i = 0; i < rows.length; i++) {
+                        const columns = rows[i].split(",")
+                        if (columns.length < 7) continue
+
+                        let person = {
+                            fname: columns[0],
+                            lname: columns[1],
+                            address: columns[2],
+                            state: columns[3],
+                            zip: columns[4],
+                            phone: columns[5],
+                            email: columns[6]
+                        }
+                        people.push(person)
+                    }
+
+                    const list = document.getElementById("contactsList")
+                    console.log("Found list element:", list)
+                    list.innerHTML = ""
+
+                    people.forEach(person => {
+                        const li = document.createElement("li")
+                        const form = document.createElement("form")
+                        form.method = "post"
+                        form.action = "./php/contactinfo.php"
+
+                        for (const key in person) {
+                            const input = document.createElement("input")
+                            input.type = "hidden"
+                            input.name = key
+                            input.value = person[key]
+                            form.appendChild(input)
+                        }
+
+                        const button = document.createElement("button")
+                        button.type = "submit"
+                        button.textContent = `${person.fname} ${person.lname}`
+                        button.style.background = "none"
+                        button.style.border = "none"
+                        button.style.padding = "0"
+                        button.style.margin = "0"
+                        button.style.color = "blue"
+                        button.style.textDecoration = "underline"
+                        button.style.cursor = "pointer"
+
+                        form.appendChild(button)
+                        li.appendChild(form)
+                        list.appendChild(li)
+                    })
+                })
+                .catch(e => console.error("Fetch error:", e))
+        }
+
+        document.addEventListener("DOMContentLoaded", arrayToText)
+    </script>
+</head>
+<body>
+    <h1 id="header">Contacts page</h1>
+    <ul id="contactsList"></ul>
+</body>
+</html>

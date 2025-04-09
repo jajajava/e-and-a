@@ -1,0 +1,121 @@
+<html>
+
+<head>
+        <title>Form example</title>
+        <style>
+            .input {
+                align-self: flex-end;
+                max-width: "40";
+                width: 50%;
+            }
+        </style>
+
+        <script>
+            // A method to reset inputs. Used this instead of input type="reset" to have more control over form
+            function resetInputs(e){
+                const elements = document.getElementsByClassName("input")
+                for (let i = 0; i < elements.length; i++){
+                    elements[i].value = ""
+                }
+                // State gets reset to its default index, which has no input
+                const state = document.getElementById("state")
+                state.selectedIndex = 0
+            }
+
+
+        </script>
+</head>
+
+<body>
+        <table align="center" bgcolor="lightgrey" style="border: solid black 5px;">
+                <tbody>
+                        <tr>
+                                <td>
+                                        <form id="myForm" align="center" style="width: 20vw;" method="post" action="./php/response.php">
+                                                <h2>Contact form</h2>
+                                                First Name: <input size="10" name="fname" class="input" type="text" required/> <br /><br />
+                                                Last Name: <input size="10"name="lname" class="input" type="text" required/> <br /><br />
+                                                Address: <input size="20" name="address" class="input" type="text" required/> <br />
+                                                <br/>
+                                                
+                                                State:
+                                                <select name="state" id="state" required>
+                                                    <option selected="selected" value=""></option>
+                                                    <option value="Alabama">AL</option>
+                                                    <option value="Alaska">AK</option>
+                                                    <option value="Arizona">AZ</option>
+                                                    <option value="Arkansas">AR</option>
+                                                    <option value="California">CA</option>
+                                                    <option value="Colorado">CO</option>
+                                                    <option value="Connecticut">CT</option>
+                                                    <option value="Delaware">DE</option>
+                                                    <option value="Florida">FL</option>
+                                                    <option value="Georgia">GA</option>
+                                                    <option value="Hawaii">HI</option>
+                                                    <option value="Idaho">ID</option>
+                                                    <option value="Illinois">IL</option>
+                                                    <option value="Indiana">IN</option>
+                                                    <option value="Iowa">IA</option>
+                                                    <option value="Kansas">KS</option>
+                                                    <option value="Kentucky">KY</option>
+                                                    <option value="Louisiana">LA</option>
+                                                    <option value="Maine">ME</option>
+                                                    <option value="Maryland">MD</option>
+                                                    <option value="Massachusetts">MA</option>
+                                                    <option value="Michigan">MI</option>
+                                                    <option value="Minnesota">MN</option>
+                                                    <option value="Mississippi">MS</option>
+                                                    <option value="Missouri">MO</option>
+                                                    <option value="Montana">MT</option>
+                                                    <option value="Nebraska">NE</option>
+                                                    <option value="Nevada">NV</option>
+                                                    <option value="New Hampshire">NH</option>
+                                                    <option value="New Jersey">NJ</option>
+                                                    <option value="New Mexico">NM</option>
+                                                    <option value="New York">NY</option>
+                                                    <option value="North Carolina">NC</option>
+                                                    <option value="North Dakota">ND</option>
+                                                    <option value="Ohio">OH</option>
+                                                    <option value="Oklahoma">OK</option>
+                                                    <option value="Oregon">OR</option>
+                                                    <option value="Pennsylvania">PA</option>
+                                                    <option value="Rhode Island">RI</option>
+                                                    <option value="South Carolina">SC</option>
+                                                    <option value="South Dakota">SD</option>
+                                                    <option value="Tennessee">TN</option>
+                                                    <option value="Texas">TX</option>
+                                                    <option value="Utah">UT</option>
+                                                    <option value="Vermont">VT</option>
+                                                    <option value="Virginia">VA</option>
+                                                    <option value="Washington">WA</option>
+                                                    <option value="West Virginia">WV</option>
+                                                    <option value="Wisconsin">WI</option>
+                                                    <option value="Wyoming">WY</option>
+                                                </select>
+                                                <br/><br/>
+                                                Zip: <input size="10" name="zip" class="input" type="text" required/> <br /><br />
+                                                Telephone: <input size="10" name="phone" class="input" type="text" required/> <br /><br />
+                                                Email: <input size="20" name="email" class="input" type="text" required/> <br /> <br/>
+                                        </form>
+
+                                        <div align="center" style="width: 20vw;">
+                                            <div>
+                                                <button onclick="resetInputs()">Reset</button>
+                                                <input type="submit" form="myForm" value="Save to Database"></input>
+                                                <button>Save to File</button>
+                                            </div>
+                                            <br/>
+
+                                            <div>
+                                                <a href="">View contacts in database</a><br/>
+                                                <a href="">View contacts in file</a>
+                                            </div>
+                                            <br/>
+                                        </div>
+                                </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </body>
+        
+</html>        
