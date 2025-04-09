@@ -1,0 +1,7 @@
+1. Add comments
+2. Add home button contacts page
+3. Save to file functionality (as csv?)
+4. Input errors (user inputs must be validated; regex for email? maybe built in html)
+5. Make 50 lines in csv file
+6. Indent the code at the end
+7. Test that everything works and submit the documents as needed (put url in textbox before submitting)
