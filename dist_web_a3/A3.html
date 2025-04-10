@@ -11,6 +11,12 @@ but the instructions were very vague so I hope I won't lose points for that -->
             max-width: "40";
             width: 50%;
         }
+
+        #fakeAnchor {
+            text-decoration: underline;
+            cursor: pointer;
+            color: -webkit-link;
+        }
     </style>
 
     <script>
@@ -46,7 +52,7 @@ but the instructions were very vague so I hope I won't lose points for that -->
             link.href = URL.createObjectURL(file);
             link.download = "user_data.txt";
             link.click();
-        }
+            }
     </script>
 </head>
 
@@ -125,15 +131,16 @@ but the instructions were very vague so I hope I won't lose points for that -->
                                         <div align="center" style="width: 20vw;">
                                             <div>
                                                 <button onclick="resetInputs()">Reset</button>
-                                                <input type="submit" form="myForm" value="Save to Database"></input>
+                                                <!-- <input onclick="event.preventDefault();"></input> type="submit" form="myForm" value="Save to Database" -->
+                                                <button onclick="event.preventDefault();">Save to Database</button>
                                                 <button onclick="downloadTxt()">Save to File</button>
                                             </div>
                                             <br/>
 
                                             <div>
                                                 <!-- TODO: Need to connect contacts.html with formA3.html -->
-                                                <a href="">View contacts in database</a><br/>
-                                                <a href="">View contacts in file</a>
+                                                <a href="" onclick="event.preventDefault()">View contacts in database</a><br/> <!--id="fakeAnchor"-->
+                                                <a href="./contacts.html">View contacts in file</a>
                                             </div>
                                             <br/>
                                         </div>
