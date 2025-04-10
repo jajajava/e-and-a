@@ -22,6 +22,28 @@
                 state.selectedIndex = 0
             }
 
+            function downloadTxt() {
+                // Select inputs and state's value (I made it the abbreviation instead of the actual value)
+                const inputs = document.getElementsByClassName("input")
+                const stateSelect = document.getElementById("state");
+                const state = stateSelect.options[stateSelect.selectedIndex].text;
+
+                // Format the file
+                let content = `First name: ${inputs[0].value}\n`
+                content += `Last name: ${inputs[1].value}\n`
+                content += `Address: ${inputs[2].value}\n`
+                content += `State: ${state}\n`
+                content += `Zip: ${inputs[3].value}\n`
+                content += `Telephone: ${inputs[4].value}\n`
+                content += `Email: ${inputs[5].value}\n`
+
+                const file = new Blob([content], { type: "text/plain" });
+                const link = document.getElementById("downloadLink");
+                link.href = URL.createObjectURL(file);
+                link.download = "user_data.txt";
+                link.click();
+            }
+
 
         </script>
 </head>
@@ -102,7 +124,7 @@
                                             <div>
                                                 <button onclick="resetInputs()">Reset</button>
                                                 <input type="submit" form="myForm" value="Save to Database"></input>
-                                                <button>Save to File</button>
+                                                <button onclick="downloadTxt()">Save to File</button>
                                             </div>
                                             <br/>
 
@@ -116,6 +138,7 @@
                         </tr>
                     </tbody>
                 </table>
+                <a id="downloadLink" style="display:none"></a>
             </body>
         
 </html>        
