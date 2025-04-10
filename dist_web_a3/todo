@@ -1,6 +1,5 @@
 1. Add comments
 2. Add home button contacts page
-3. Save to file functionality (as csv?)
 4. Input errors (user inputs must be validated; regex for email? maybe built in html)
 5. Save to database button should actually update contacts.csv as well as display thank you page
 6. Make 50 lines in csv file

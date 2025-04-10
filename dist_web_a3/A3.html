@@ -1,51 +1,53 @@
+<!-- I realize now that the "view contacts in file" is implemented incorrectly, 
+but the instructions were very vague so I hope I won't lose points for that -->
+
 <html>
 
 <head>
-        <title>Form example</title>
-        <style>
-            .input {
-                align-self: flex-end;
-                max-width: "40";
-                width: 50%;
+    <title>Form example</title>
+    <style>
+        .input {
+            align-self: flex-end;
+            max-width: "40";
+            width: 50%;
+        }
+    </style>
+
+    <script>
+        // A method to reset inputs. Used this instead of input type="reset" to have more control over form
+        function resetInputs(e){
+            const elements = document.getElementsByClassName("input")
+            for (let i = 0; i < elements.length; i++){
+                elements[i].value = ""
             }
-        </style>
+            // State gets reset to its default index, which has no input
+            const state = document.getElementById("state")
+            state.selectedIndex = 0
+        }
 
-        <script>
-            // A method to reset inputs. Used this instead of input type="reset" to have more control over form
-            function resetInputs(e){
-                const elements = document.getElementsByClassName("input")
-                for (let i = 0; i < elements.length; i++){
-                    elements[i].value = ""
-                }
-                // State gets reset to its default index, which has no input
-                const state = document.getElementById("state")
-                state.selectedIndex = 0
-            }
+        function downloadTxt() {
+            // Select inputs and state's value (I made it the state abbreviation instead of the actual value)
+            const inputs = document.getElementsByClassName("input")
+            const stateSelect = document.getElementById("state");
+            const state = stateSelect.options[stateSelect.selectedIndex].text;
 
-            function downloadTxt() {
-                // Select inputs and state's value (I made it the abbreviation instead of the actual value)
-                const inputs = document.getElementsByClassName("input")
-                const stateSelect = document.getElementById("state");
-                const state = stateSelect.options[stateSelect.selectedIndex].text;
+            // Format the text
+            let content = `First name: ${inputs[0].value}\n`
+            content += `Last name: ${inputs[1].value}\n`
+            content += `Address: ${inputs[2].value}\n`
+            content += `State: ${state}\n`
+            content += `Zip: ${inputs[3].value}\n`
+            content += `Telephone: ${inputs[4].value}\n`
+            content += `Email: ${inputs[5].value}\n`
 
-                // Format the file
-                let content = `First name: ${inputs[0].value}\n`
-                content += `Last name: ${inputs[1].value}\n`
-                content += `Address: ${inputs[2].value}\n`
-                content += `State: ${state}\n`
-                content += `Zip: ${inputs[3].value}\n`
-                content += `Telephone: ${inputs[4].value}\n`
-                content += `Email: ${inputs[5].value}\n`
-
-                const file = new Blob([content], { type: "text/plain" });
-                const link = document.getElementById("downloadLink");
-                link.href = URL.createObjectURL(file);
-                link.download = "user_data.txt";
-                link.click();
-            }
-
-
-        </script>
+            // Download the file
+            const file = new Blob([content], { type: "text/plain" });
+            const link = document.getElementById("downloadLink");
+            link.href = URL.createObjectURL(file);
+            link.download = "user_data.txt";
+            link.click();
+        }
+    </script>
 </head>
 
 <body>
@@ -129,6 +131,7 @@
                                             <br/>
 
                                             <div>
+                                                <!-- TODO: Need to connect contacts.html with formA3.html -->
                                                 <a href="">View contacts in database</a><br/>
                                                 <a href="">View contacts in file</a>
                                             </div>
@@ -141,4 +144,4 @@
                 <a id="downloadLink" style="display:none"></a>
             </body>
         
-</html>        
+</html>
