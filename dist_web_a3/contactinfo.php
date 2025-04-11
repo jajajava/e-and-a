@@ -4,6 +4,7 @@
         <tbody>
             <tr>
                 <td>
+                    // The contact info gets passed by contacts.html
                     <h2>Existing Contacts</h2>
                     <p>First Name: ' . $_POST['fname'] . '</p>
                     <p>Last Name: ' . $_POST['lname'] . '</p>

@@ -30,7 +30,7 @@ but the instructions were vague so I hope I won't lose points for that -->
                 state.selectedIndex = 0
             }
 
-            function downloadTxt() {
+            function downloadTxt(){
                 // Select inputs and state's value (I made it the state abbreviation instead of the actual value)
                 const inputs = document.getElementsByClassName("input")
                 const stateSelect = document.getElementById("state");
@@ -123,8 +123,9 @@ but the instructions were vague so I hope I won't lose points for that -->
                             </select>
                             <br/><br/>
                             Zip: <input size="10" name="zip" class="input" type="text" required/> <br /><br />
-                            Telephone: <input size="10" name="phone" class="input" type="text" required/> <br /><br />
-                            Email: <input size="20" name="email" class="input" type="text" required/> <br /> <br/>
+                            Telephone: <input size="10" name="phone" class="input" type="tel" pattern="[0-9]{10}" 
+                            oninvalid="this.setCustomValidity('Format: XXXXXXXXXX')" oninput="this.setCustomValidity('')" required/> <br /><br />
+                            Email: <input size="20" name="email" class="input" type="email" required/> <br /> <br/>
                         </form>
 
                         <div align="center" style="width: 20vw;">

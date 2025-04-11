@@ -4,79 +4,82 @@ Please don't dock points for that-->
 
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Contacts page</title>
-    <script>
-        var people = []
+    <head>
+        <title>Contacts page</title>
+        <script>
+            var people = []
 
-        function arrayToText() {
-            // Forces the browser to fetch data each time instead of using cached values
-            fetch("contacts.csv?" + new Date().getTime())
-                .then(res => res.text())
-                .then(text => {
-                    console.log("CSV raw text:", text)
+            // Process the csv file on the server
+            function arrayToText() {
+                // Forces the browser to fetch data each time instead of using cached values
+                fetch("contacts.csv?" + new Date().getTime())
+                    .then(res => res.text())
+                    .then(text => {
+                        console.log("CSV raw text:", text)
 
-                    const rows = text.split("\n").filter(row => row.trim() !== "")
-                    people = []
+                        const rows = text.split("\n").filter(row => row.trim() !== "")
+                        people = []
 
-                    for (let i = 0; i < rows.length; i++) {
-                        const columns = rows[i].split(",")
-                        if (columns.length < 7) continue
+                        for (let i = 0; i < rows.length; i++) {
+                            const columns = rows[i].split(",")
+                            // Skips incomplete rows (shouldn't exist cause of the html validation)
+                            if (columns.length < 7) continue
 
-                        let person = {
-                            fname: columns[0],
-                            lname: columns[1],
-                            address: columns[2],
-                            state: columns[3],
-                            zip: columns[4],
-                            phone: columns[5],
-                            email: columns[6]
-                        }
-                        people.push(person)
-                    }
-
-                    const list = document.getElementById("contactsList")
-                    console.log("Found list element:", list)
-                    list.innerHTML = ""
-
-                    people.forEach(person => {
-                        const li = document.createElement("li")
-                        const form = document.createElement("form")
-                        form.method = "post"
-                        form.action = "./php/contactinfo.php"
-
-                        for (const key in person) {
-                            const input = document.createElement("input")
-                            input.type = "hidden"
-                            input.name = key
-                            input.value = person[key]
-                            form.appendChild(input)
+                            let person = {
+                                fname: columns[0],
+                                lname: columns[1],
+                                address: columns[2],
+                                state: columns[3],
+                                zip: columns[4],
+                                phone: columns[5],
+                                email: columns[6]
+                            }
+                            people.push(person)
                         }
 
-                        const button = document.createElement("button")
-                        button.type = "submit"
-                        button.textContent = `${person.fname} ${person.lname}`
-                        button.style.background = "none"
-                        button.style.border = "none"
-                        button.style.padding = "0"
-                        button.style.margin = "0"
-                        button.style.color = "blue"
-                        button.style.textDecoration = "underline"
-                        button.style.cursor = "pointer"
+                        const list = document.getElementById("contactsList")
+                        console.log("Found list element:", list)
+                        list.innerHTML = ""
 
-                        form.appendChild(button)
-                        li.appendChild(form)
-                        list.appendChild(li)
+                        // Lets you select each person, returns contactinfo.php with their info
+                        people.forEach(person => {
+                            const li = document.createElement("li")
+                            const form = document.createElement("form")
+                            form.method = "post"
+                            form.action = "./php/contactinfo.php"
+
+                            for (const key in person) {
+                                const input = document.createElement("input")
+                                input.type = "hidden"
+                                input.name = key
+                                input.value = person[key]
+                                form.appendChild(input)
+                            }
+
+                            const button = document.createElement("button")
+                            button.type = "submit"
+                            button.textContent = `${person.fname} ${person.lname}`
+                            button.style.background = "none"
+                            button.style.border = "none"
+                            button.style.padding = "0"
+                            button.style.margin = "0"
+                            button.style.color = "blue"
+                            button.style.textDecoration = "underline"
+                            button.style.cursor = "pointer"
+
+                            form.appendChild(button)
+                            li.appendChild(form)
+                            list.appendChild(li)
+                        })
                     })
-                })
-                .catch(e => console.error("Fetch error:", e))
-        }
-
-        document.addEventListener("DOMContentLoaded", arrayToText)
-    </script>
-</head>
-<body>
-    <h1 id="header">Contacts page</h1>
-    <ul id="contactsList"></ul>
-</body>
+                    .catch(e => console.error("Fetch error:", e))
+            }
+            // Run arrayToText when the page loads
+            document.addEventListener("DOMContentLoaded", arrayToText)
+        </script>
+    </head>
+    <body>
+        <h1 id="header">Contacts page</h1>
+        <ul id="contactsList"></ul>
+    </body>
 </html>

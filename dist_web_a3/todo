@@ -1,8 +1,4 @@
-1. Add comments
 2. Add home button contacts page
-4. Input errors (user inputs must be validated; regex for email? maybe built in html)
-5. Save to database button should actually update contacts.csv as well as display thank you page
 6. Make 50 lines in csv file
 7. Fix response.php table to have the same border style as other components
-8. Indent the code at the end
 9. Test that everything works and submit the documents as needed (put url in textbox before submitting)
