@@ -15,7 +15,7 @@
                     <p>Email: ' . $_POST['email'] . '</p>
                     
                     <div align="center">
-                        <a href="../formA3.html">Return to previous page</a>
+                        <a href="../home.html">Return to previous page</a>
                     </div>
                 </td>
             </tr>
