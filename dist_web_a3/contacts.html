@@ -10,7 +10,8 @@ Please don't dock points for that-->
         var people = []
 
         function arrayToText() {
-            fetch("contacts.csv")
+            // Forces the browser to fetch data each time instead of using cached values
+            fetch("contacts.csv?" + new Date().getTime())
                 .then(res => res.text())
                 .then(text => {
                     console.log("CSV raw text:", text)

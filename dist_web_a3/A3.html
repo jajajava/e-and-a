@@ -60,7 +60,7 @@ but the instructions were vague so I hope I won't lose points for that -->
             <tbody>
                 <tr>
                     <td>
-                        <form id="myForm" align="center" style="width: 20vw;" onkeypress="" method="post" action="./php/response.php">
+                        <form id="myForm" align="center" style="width: 20vw;" method="post" action="./php/response.php">
                             <h2>Contact form</h2>
                             First Name: <input size="10" name="fname" class="input" type="text" required/> <br /><br />
                             Last Name: <input size="10"name="lname" class="input" type="text" required/> <br /><br />
@@ -137,8 +137,8 @@ but the instructions were vague so I hope I won't lose points for that -->
                             <br/>
 
                             <div>
-                                <a href="" onclick="event.preventDefault()">View contacts in database</a><br/> <!--id="fakeAnchor"-->
-                                <a href="./contacts.html">View contacts in file</a>
+                                <a href="./contacts.html">View contacts on server</a><br/>
+                                <a href="" onclick="event.preventDefault()">View contacts in database</a>
                             </div>
                             <br/>
                         </div>
@@ -146,9 +146,11 @@ but the instructions were vague so I hope I won't lose points for that -->
                 </tr>
             </tbody>
         </table>
-        <div>
+        <br/><br/>
+        <div align="center">
             <h2>Note for professor/TA:</h2>
-            <p>I misunderstood the instructions. "Save as TXT" saves the current inputs to .txt; "Save to server" adds the contact info to a csv file stored on the remote server</p>
+            <p>I misunderstood the instructions. "Save as .txt" saves the current inputs to .txt; "Save to server" adds the contact info to a csv file stored on the remote server</p>
+            <p>View contacts in database was left unimplemented, view contacts on server shows contacts from csv file</p>
         </div>
         <a id="downloadLink" style="display:none"></a>
     </body>
