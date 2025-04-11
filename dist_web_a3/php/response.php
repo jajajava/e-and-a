@@ -14,10 +14,10 @@ $file = fopen("../contacts.csv", "a");
 fputcsv($file, $data);
 fclose($file);
 
-// Thank you page
+// Thank you page is loaded
 echo '
 <body>
-    <table align="center" bgcolor="lightgrey" border="2">
+    <table align="center" bgcolor="lightgrey" style="border: solid black 5px;">
         <tbody>
             <tr>
                 <td>
