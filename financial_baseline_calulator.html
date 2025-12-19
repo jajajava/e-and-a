@@ -3,29 +3,53 @@
 <html>
     <head>
         <style>
-            input {margin-bottom: 10px;}
+            #mainDiv {
+                display: grid;
+                grid-template-columns: 200px auto;
+                column-gap: 20px;
+            }
+            input {
+                margin-bottom: 10px;
+                grid-column: 1;
+                width: 200px;
+            }
+            label {
+                grid-column: 1;
+            }
+            #addExpenseButton{
+                grid-column: 2;
+                grid-row: 2;
+                width: fit-content;
+                height: fit-content;
+            }
+            #calculate{
+                grid-column: 2;
+                grid-row: 4;
+                width: fit-content;
+                height: fit-content;
+            }
         </style>
     </head>
 
     <body>
         <h1>Enter your monthly:</h1>
-        <label for="rentInput">Rent/mortgage</br></label>
-        <input id="rentInput"/>
-        </br>
 
-        <label for="utilitiesInput">Utilities</br></label>
-        <input id="utilitiesInput"/>
-        </br>
+        <div id="mainDiv">
+            <label for="rentInput">Rent/mortgage</br></label>
+            <input id="rentInput"/>
 
-        <label for="carInput">Car insurance</br></label>
-        <input id="carInput"/>
-        </br>
+            <label for="utilitiesInput">Utilities</br></label>
+            <input id="utilitiesInput"/>
 
-        <label for="healthInput">Health insurance</br></label>
-        <input id="healthInput"/>
-        </br>
+            <label for="carInput">Car insurance</br></label>
+            <input id="carInput"/>
 
-        <button id="addExpenseButton">Add expense</button>
+            <label for="healthInput">Health insurance</br></label>
+            <input id="healthInput"/>
+
+            <button id="addExpenseButton">Add expense</button>
+            <button id="calculate">Calculate</button>
+        </div>
 
         <script>
             const button = document.getElementById("addExpenseButton");
