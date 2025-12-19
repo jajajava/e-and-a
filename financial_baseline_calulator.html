@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <style>
+            input {margin-bottom: 10px;}
+        </style>
+    </head>
+
+    <body>
+        <h1>Enter your monthly:</h1>
+        <label for="rentInput">Rent/mortgage</br></label>
+        <input id="rentInput"/>
+        </br>
+
+        <label for="utilitiesInput">Utilities</br></label>
+        <input id="utilitiesInput"/>
+        </br>
+
+        <label for="carInput">Car insurance</br></label>
+        <input id="carInput"/>
+        </br>
+
+        <label for="healthInput">Health insurance</br></label>
+        <input id="healthInput"/>
+        </br>
+
+        <button id="addExpenseButton">Add expense</button>
+
+        <script>
+            const button = document.getElementById("addExpenseButton");
+            button.addEventListener("click", addExpense);
+
+            function addExpense(){
+                console.log("click!");
+                // TODO: create the new element
+            }
+
+        </script>
+    </body>
+</html>
