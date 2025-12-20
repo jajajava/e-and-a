@@ -82,10 +82,13 @@
 
                 saveBtn.addEventListener("click", () => {
                 let label = labelInput.value.trim();
-                if (!label) return; // nothing entered
+                if (!label) return; // If no label is given
 
-                label = label.toLowerCase().replace(/\s+/g, "_"); // safe-ish id
-                label = label[0].toUpperCase() + label.slice(1);
+                label = label.toLowerCase().replace(/\s+/g, "_");
+
+                const tempId = `${label}Input`
+                if (document.getElementById(tempId) != null) return;
+
                 saveAddExpense(label);
                 });
 
@@ -96,10 +99,13 @@
                 const mainDiv = document.getElementById("mainDiv");
 
                 const newLabel = document.createElement("label");
-                newLabel.innerHTML = `<label for="${label}Input">${label}<br></label>`;
+                newLabel.setAttribute("for", `${label}Input`);
+                const upperLabel = label[0].toUpperCase() + label.slice(1);
+                newLabel.innerHTML = `${upperLabel}<br>`;
                 
                 const newInput = document.createElement("input");
-                newInput.innerHTML = `<input id="${label}Input"/>`;
+                newInput.id = `${label}Input`
+                newInput.innerHTML = `${label}Input"`;
 
                 mainDiv.appendChild(newLabel);
                 mainDiv.appendChild(newInput);
