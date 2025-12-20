@@ -62,7 +62,7 @@
         </div>
 
         <script>
-            const constantExpenses = [
+            let constantExpenses = [
                 document.getElementById("salaryInput"),
                 document.getElementById("rentInput"),
                 document.getElementById("utilitiesInput"),
@@ -159,21 +159,26 @@
                 try {
                     // Get all values
                     let total = 0;
-                    let salary = constantExpenses[0].value;
+                    let salary = Number(constantExpenses[0].value);
 
-                    constantExpenses.unshift();
+                    let copyConstantExpenses = constantExpenses.slice(1);
 
-                    constantExpenses.forEach((item) => {
-                        total += item.value;
+                    copyConstantExpenses.forEach((item) => {
+                        total += Number(item.value);
                     })
 
                     customExpenses.forEach((item) => {
-                        total += item.value;
+                        total += Number(item.value);
                     })
 
-                    console.log(total);
-                } catch (error) {
+                    console.log(total)
+
+                    // if (salary > 0){
+                    //     return 
+                    // }
                     
+                } catch (error) { // NaNs should be safely ignored by default when converting to Number
+                    console.log(error)
                 }
             }
         </script>
