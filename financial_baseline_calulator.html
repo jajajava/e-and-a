@@ -42,7 +42,7 @@
         <h1>Enter your monthly:</h1>
 
         <div id="mainDiv">
-            <label for="salaryInput">Annual salary</br></label>
+            <label for="salaryInput">Annual salary (optional)</br></label>
             <input id="salaryInput"/>
 
             <label for="rentInput">Rent/mortgage</br></label>
@@ -73,7 +73,7 @@
             const customExpenses = []
 
             document.getElementById("addExpenseButton").addEventListener("click", addExpense);
-            document.getElementById("calculateButton").addEventListener("click", calculate);
+            document.getElementById("calculateButton").addEventListener("click", () => console.log(calculate()));
 
             function addExpense() {
                 const mainDiv = document.getElementById("mainDiv");
@@ -167,18 +167,24 @@
                         total += Number(item.value);
                     })
 
+                    // constantExpenses.forEach((item) => {
+                    //     total += Number(item.value);
+                    // })
+
                     customExpenses.forEach((item) => {
                         total += Number(item.value);
                     })
 
-                    console.log(total)
+                    if (salary > 0){
+                        let output = ((salary - ((salary * 0.05) + (salary * 0.22))) / 12) - total; // Monthly salary minus total. Subtracts 5% state income tax, 22% federal income tax.
+                        return output;
+                    }
 
-                    // if (salary > 0){
-                    //     return 
-                    // }
+                    return total;
                     
                 } catch (error) { // NaNs should be safely ignored by default when converting to Number
-                    console.log(error)
+                    // console.log(error)
+                    return error
                 }
             }
         </script>
