@@ -29,7 +29,7 @@
                 width: fit-content;
                 height: fit-content;
             }
-            #calculate{
+            #calculateButton{
                 grid-column: 2;
                 grid-row: 4;
                 width: fit-content;
@@ -58,11 +58,22 @@
             <input id="healthInput"/>
 
             <button id="addExpenseButton">Add expense</button>
-            <button id="calculate">Calculate</button>
+            <button id="calculateButton">Calculate</button>
         </div>
 
         <script>
+            const constantExpenses = [
+                document.getElementById("salaryInput"),
+                document.getElementById("rentInput"),
+                document.getElementById("utilitiesInput"),
+                document.getElementById("carInput"),
+                document.getElementById("healthInput")
+            ]
+
+            const customExpenses = []
+
             document.getElementById("addExpenseButton").addEventListener("click", addExpense);
+            document.getElementById("calculateButton").addEventListener("click", calculate);
 
             function addExpense() {
                 const mainDiv = document.getElementById("mainDiv");
@@ -121,6 +132,9 @@
                 mainDiv.appendChild(newLabel);
                 mainDiv.appendChild(newInput);
                 mainDiv.appendChild(newDelete);
+
+                customExpenses.push(newInput);
+
                 closeAddExpense();
             }
 
@@ -132,10 +146,35 @@
                 labelEl.remove();
                 inputEl.remove();
                 buttonEl.remove();
+
+                const tempIndex = customExpenses.indexOf(label);
+                customExpenses.splice(tempIndex, 1);
             }
 
             function closeAddExpense() {
                 document.getElementById("column2input")?.remove();
+            }
+
+            function calculate() {
+                try {
+                    // Get all values
+                    let total = 0;
+                    let salary = constantExpenses[0].value;
+
+                    constantExpenses.unshift();
+
+                    constantExpenses.forEach((item) => {
+                        total += item.value;
+                    })
+
+                    customExpenses.forEach((item) => {
+                        total += item.value;
+                    })
+
+                    console.log(total);
+                } catch (error) {
+                    
+                }
             }
         </script>
     </body>
