@@ -13,6 +13,9 @@
                 grid-column: 1;
                 width: 200px;
             }
+            #column2input{
+                grid-column: 2;
+            }
             label {
                 grid-column: 1;
             }
@@ -35,6 +38,9 @@
         <h1>Enter your monthly:</h1>
 
         <div id="mainDiv">
+            <label for="salaryInput">Annual salary</br></label>
+            <input id="salaryInput"/>
+
             <label for="rentInput">Rent/mortgage</br></label>
             <input id="rentInput"/>
 
@@ -52,14 +58,57 @@
         </div>
 
         <script>
-            const button = document.getElementById("addExpenseButton");
-            button.addEventListener("click", addExpense);
+            document.getElementById("addExpenseButton").addEventListener("click", addExpense);
 
-            function addExpense(){
-                console.log("click!");
-                // TODO: create the new element
+            function addExpense() {
+                const mainDiv = document.getElementById("mainDiv");
+
+                if (document.getElementById("column2input")) return;
+
+                const column2input = document.createElement("div");
+                column2input.id = "column2input";
+
+                column2input.innerHTML = `
+                <input id="expenseLabelInput" placeholder="label"/>
+                <button id="saveAddExpense">Save</button>
+                <button id="cancelAddExpense">Cancel</button>
+                `;
+
+                const labelInput = column2input.querySelector("#expenseLabelInput");
+                const saveBtn = column2input.querySelector("#saveAddExpense");
+                const cancelBtn = column2input.querySelector("#cancelAddExpense");
+
+                cancelBtn.addEventListener("click", closeAddExpense);
+
+                saveBtn.addEventListener("click", () => {
+                let label = labelInput.value.trim();
+                if (!label) return; // nothing entered
+
+                label = label.toLowerCase().replace(/\s+/g, "_"); // safe-ish id
+                label = label[0].toUpperCase() + label.slice(1);
+                saveAddExpense(label);
+                });
+
+                mainDiv.appendChild(column2input);
             }
 
+            function saveAddExpense(label) {
+                const mainDiv = document.getElementById("mainDiv");
+
+                const newLabel = document.createElement("label");
+                newLabel.innerHTML = `<label for="${label}Input">${label}<br></label>`;
+                
+                const newInput = document.createElement("input");
+                newInput.innerHTML = `<input id="${label}Input"/>`;
+
+                mainDiv.appendChild(newLabel);
+                mainDiv.appendChild(newInput);
+                closeAddExpense();
+            }
+
+            function closeAddExpense() {
+                document.getElementById("column2input")?.remove();
+            }
         </script>
     </body>
 </html>
