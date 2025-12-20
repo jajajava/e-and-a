@@ -15,6 +15,7 @@
             }
             #column2input{
                 grid-column: 2;
+                grid-row: 6;
             }
             label {
                 grid-column: 1;
@@ -60,6 +61,8 @@
             <button id="addExpenseButton">Add expense</button>
             <button id="calculateButton">Calculate</button>
         </div>
+        <p id="output"></p>
+
 
         <script>
             let constantExpenses = [
@@ -156,6 +159,8 @@
             }
 
             function calculate() {
+                const outputEl = document.getElementById("output");
+
                 try {
                     // Get all values
                     let total = 0;
@@ -167,24 +172,20 @@
                         total += Number(item.value);
                     })
 
-                    // constantExpenses.forEach((item) => {
-                    //     total += Number(item.value);
-                    // })
-
                     customExpenses.forEach((item) => {
                         total += Number(item.value);
                     })
 
                     if (salary > 0){
                         let output = ((salary - ((salary * 0.05) + (salary * 0.22))) / 12) - total; // Monthly salary minus total. Subtracts 5% state income tax, 22% federal income tax.
-                        return output;
+                        outputEl.innerHTML = output;
+                        
                     }
 
-                    return total;
+                    outputEl.innerHTML = total;
                     
                 } catch (error) { // NaNs should be safely ignored by default when converting to Number
-                    // console.log(error)
-                    return error
+                    outputEl.innerHTML = error;
                 }
             }
         </script>
