@@ -76,7 +76,7 @@
             const customExpenses = []
 
             document.getElementById("addExpenseButton").addEventListener("click", addExpense);
-            document.getElementById("calculateButton").addEventListener("click", () => console.log(calculate()));
+            document.getElementById("calculateButton").addEventListener("click", () => calculate());
 
             function addExpense() {
                 const mainDiv = document.getElementById("mainDiv");
@@ -176,13 +176,12 @@
                         total += Number(item.value);
                     })
 
-                    if (salary > 0){
+                    if (salary > 0 && salary !== undefined){
                         let output = ((salary - ((salary * 0.05) + (salary * 0.22))) / 12) - total; // Monthly salary minus total. Subtracts 5% state income tax, 22% federal income tax.
-                        outputEl.innerHTML = output;
-                        
+                        outputEl.innerHTML = `Post tax monthly salary - total monthly spending = $${output.toFixed(2)}`;
+                    } else {
+                        outputEl.innerHTML = `Total monthly spending: $${total.toFixed(2)}`;
                     }
-
-                    outputEl.innerHTML = total;
                     
                 } catch (error) { // NaNs should be safely ignored by default when converting to Number
                     outputEl.innerHTML = error;
